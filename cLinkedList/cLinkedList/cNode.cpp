@@ -4,11 +4,9 @@
 
 cNode::cNode(void)
 {
-	g_setPool.insert(this);
 }
 
 
 cNode::~cNode(void)
 {
-	g_setPool.erase(this);
 }

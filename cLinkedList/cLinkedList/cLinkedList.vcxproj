@@ -11,9 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1CB93220-23AB-4C68-9418-C793DF62F4F0}</ProjectGuid>
+    <ProjectGuid>{94CB9357-9066-4DC2-8920-E671D6C126FD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>BST</RootNamespace>
+    <RootNamespace>cLinkedList</RootNamespace>
+    <ProjectName>LinkedList</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,14 +78,14 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cBST.h" />
+    <ClInclude Include="cLinkedList.h" />
     <ClInclude Include="cNode.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BST.cpp" />
-    <ClCompile Include="cBST.cpp" />
+    <ClCompile Include="cLinkedList.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="cNode.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
