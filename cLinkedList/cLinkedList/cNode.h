@@ -4,7 +4,7 @@ class cNode
 {
 public:
 	cNode(void); //영빈이는 오늘도 눈이 야하다
-	~cNode(void);
+	~cNode(void); //한나는 머리를 감지 않았다.
 
 	int		m_nValue;
 	cNode*	m_pNext;
