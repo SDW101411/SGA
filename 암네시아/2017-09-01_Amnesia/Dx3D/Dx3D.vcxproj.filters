@@ -70,6 +70,9 @@
     <Filter Include="영빈\GridNode">
       <UniqueIdentifier>{d0827ca5-14e9-4d63-b77f-4c467f15b265}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\메인%28cMain_admin%29">
+      <UniqueIdentifier>{fac846eb-5857-477e-8186-82b9bfa4cafa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -83,9 +86,6 @@
   <ItemGroup>
     <ClInclude Include="cMainGame.h">
       <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cMain_admin.h">
-      <Filter>동욱</Filter>
     </ClInclude>
     <ClInclude Include="cAStar.h">
       <Filter>영빈\AStar</Filter>
@@ -216,13 +216,13 @@
     <ClInclude Include="cGridNode.h">
       <Filter>영빈\GridNode</Filter>
     </ClInclude>
+    <ClInclude Include="cMain_admin.h">
+      <Filter>동욱\메인%28cMain_admin%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
       <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cMain_admin.cpp">
-      <Filter>동욱</Filter>
     </ClCompile>
     <ClCompile Include="cAStar.cpp">
       <Filter>영빈\AStar</Filter>
@@ -343,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="cGridNode.cpp">
       <Filter>영빈\GridNode</Filter>
+    </ClCompile>
+    <ClCompile Include="cMain_admin.cpp">
+      <Filter>동욱\메인%28cMain_admin%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
