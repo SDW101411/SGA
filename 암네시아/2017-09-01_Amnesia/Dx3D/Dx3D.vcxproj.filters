@@ -225,6 +225,9 @@
     <ClInclude Include="singletonBase.h">
       <Filter>선생님</Filter>
     </ClInclude>
+    <ClInclude Include="cKeyManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -354,6 +357,9 @@
       <Filter>동욱\메인%28cMain_admin%29</Filter>
     </ClCompile>
     <ClCompile Include="cUIManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cKeyManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
