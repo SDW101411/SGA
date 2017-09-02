@@ -25,6 +25,48 @@
     <Filter Include="선생님">
       <UniqueIdentifier>{a6182cfb-4a85-402c-8245-379a6f2922b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\AStar">
+      <UniqueIdentifier>{776f3fc5-8e49-4fd4-9f26-0e6d95a450cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\AStar\Node">
+      <UniqueIdentifier>{75ab9f1a-847f-41f6-a90d-c5b56d3c3321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Loader">
+      <UniqueIdentifier>{a03676d3-0e51-40dc-ac8a-f4095ac5c4d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Manager">
+      <UniqueIdentifier>{6b3eda58-190d-45e6-9917-b0fa3711ec85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\UI">
+      <UniqueIdentifier>{98ba53ca-1f4b-4248-9837-8dc617a409b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\cGroup">
+      <UniqueIdentifier>{08354e65-befb-4b62-94f5-3f8b1e488cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Util">
+      <UniqueIdentifier>{df3b1da5-8b8f-4661-9c11-98d8d84cc705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Grid">
+      <UniqueIdentifier>{4988ec14-3293-4e08-b276-08245706d16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\SkinnedMesh">
+      <UniqueIdentifier>{5c6a2f4b-b9d6-4748-bc6f-3ddc53b24dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Action">
+      <UniqueIdentifier>{5a3fa23d-24b2-4077-a252-817be7f7de5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Object">
+      <UniqueIdentifier>{e5159402-c075-4f81-86b8-d6c3cf52335c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Frame">
+      <UniqueIdentifier>{e5e2f997-735c-4258-b771-0c81019fa8ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Camera">
+      <UniqueIdentifier>{3c2eb40c-cc47-4619-b20e-33bbeded700f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="선생님\Map">
+      <UniqueIdentifier>{fc8ecbfb-792b-43d7-96bd-be2484610bc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -36,250 +78,262 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asciitok.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cAction.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cActionMove.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cActionRepeat.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cActionSeq.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cAllocateHierarchy.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cAseLoader.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cAutoReleasePool.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cCamera.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cCrtCtrl.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cCube.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cDeviceManager.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cFontManager.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cFrame.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cFrustum.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cGameObject.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cGrid.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cGroup.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cHeightMap.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cLerp.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
     <ClInclude Include="cMainGame.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cMtlTex.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cObject.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cObjectPool.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cObjLoader.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cObjMap.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cPyramid.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cRay.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cSkinnedMesh.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cSkinnedMeshManager.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cTextureManager.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cTimeManager.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIButton.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIImageView.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIObject.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="cUITextView.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="Dx3D.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="iMap.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>선생님</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
       <Filter>선생님</Filter>
     </ClInclude>
     <ClInclude Include="cMain_admin.h">
       <Filter>동욱</Filter>
     </ClInclude>
+    <ClInclude Include="cAStar.h">
+      <Filter>영빈\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="cAStarNode.h">
+      <Filter>영빈\AStar\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="cActionMove.h">
+      <Filter>선생님\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cAction.h">
+      <Filter>선생님\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cCamera.h">
+      <Filter>선생님\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="cObjLoader.h">
+      <Filter>선생님\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="cActionRepeat.h">
+      <Filter>선생님\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cActionSeq.h">
+      <Filter>선생님\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cAseLoader.h">
+      <Filter>선생님\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="cDeviceManager.h">
+      <Filter>선생님\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cFontManager.h">
+      <Filter>선생님\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkinnedMeshManager.h">
+      <Filter>선생님\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cTextureManager.h">
+      <Filter>선생님\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIButton.h">
+      <Filter>선생님\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIImageView.h">
+      <Filter>선생님\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIObject.h">
+      <Filter>선생님\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUITextView.h">
+      <Filter>선생님\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cTimeManager.h">
+      <Filter>선생님\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cGroup.h">
+      <Filter>선생님\cGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="cFrame.h">
+      <Filter>선생님\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="cRay.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cGrid.h">
+      <Filter>선생님\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="cPyramid.h">
+      <Filter>선생님\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="cObjectPool.h">
+      <Filter>선생님\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject.h">
+      <Filter>선생님\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkinnedMesh.h">
+      <Filter>선생님\SkinnedMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="cAutoReleasePool.h">
+      <Filter>선생님\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cMtlTex.h">
+      <Filter>선생님\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="iMap.h">
+      <Filter>선생님\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="cHeightMap.h">
+      <Filter>선생님\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameObject.h">
+      <Filter>선생님\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cObjMap.h">
+      <Filter>선생님\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="cFrustum.h">
+      <Filter>선생님\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="cLerp.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Dx3D.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cCube.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cCrtCtrl.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Asciitok.h">
+      <Filter>선생님\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="cAllocateHierarchy.h">
+      <Filter>선생님\SkinnedMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cAction.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cActionMove.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cActionRepeat.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cActionSeq.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cAllocateHierarchy.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cAseLoader.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cAutoReleasePool.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cCamera.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cCrtCtrl.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cCube.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cDeviceManager.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cFontManager.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cFrame.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cFrustum.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cGameObject.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cGrid.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cGroup.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cHeightMap.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cLerp.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
     <ClCompile Include="cMainGame.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cMtlTex.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cObject.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cObjectPool.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cObjLoader.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cObjMap.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cPyramid.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cRay.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cSkinnedMesh.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cSkinnedMeshManager.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cTextureManager.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cTimeManager.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIButton.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIImageView.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIObject.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="cUITextView.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="Dx3D.cpp">
-      <Filter>선생님</Filter>
-    </ClCompile>
-    <ClCompile Include="iMap.cpp">
       <Filter>선생님</Filter>
     </ClCompile>
     <ClCompile Include="cMain_admin.cpp">
       <Filter>동욱</Filter>
+    </ClCompile>
+    <ClCompile Include="cAStar.cpp">
+      <Filter>영빈\AStar</Filter>
+    </ClCompile>
+    <ClCompile Include="cAStarNode.cpp">
+      <Filter>영빈\AStar\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="cActionMove.cpp">
+      <Filter>선생님\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cAction.cpp">
+      <Filter>선생님\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cCamera.cpp">
+      <Filter>선생님\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="cObjLoader.cpp">
+      <Filter>선생님\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="cActionRepeat.cpp">
+      <Filter>선생님\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cActionSeq.cpp">
+      <Filter>선생님\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cAseLoader.cpp">
+      <Filter>선생님\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="cDeviceManager.cpp">
+      <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cFontManager.cpp">
+      <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkinnedMeshManager.cpp">
+      <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cTextureManager.cpp">
+      <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIButton.cpp">
+      <Filter>선생님\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIImageView.cpp">
+      <Filter>선생님\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIObject.cpp">
+      <Filter>선생님\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUITextView.cpp">
+      <Filter>선생님\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cTimeManager.cpp">
+      <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cGroup.cpp">
+      <Filter>선생님\cGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="cFrame.cpp">
+      <Filter>선생님\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="cRay.cpp">
+      <Filter>선생님\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cGrid.cpp">
+      <Filter>선생님\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="cPyramid.cpp">
+      <Filter>선생님\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="cObjectPool.cpp">
+      <Filter>선생님\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject.cpp">
+      <Filter>선생님\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkinnedMesh.cpp">
+      <Filter>선생님\SkinnedMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="cAutoReleasePool.cpp">
+      <Filter>선생님\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cMtlTex.cpp">
+      <Filter>선생님\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>선생님\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="iMap.cpp">
+      <Filter>선생님\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="cHeightMap.cpp">
+      <Filter>선생님\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameObject.cpp">
+      <Filter>선생님\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cObjMap.cpp">
+      <Filter>선생님\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="cFrustum.cpp">
+      <Filter>선생님\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="cLerp.cpp">
+      <Filter>선생님\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Dx3D.cpp">
+      <Filter>선생님\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cCube.cpp">
+      <Filter>선생님\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cCrtCtrl.cpp">
+      <Filter>선생님\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cAllocateHierarchy.cpp">
+      <Filter>선생님\SkinnedMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
