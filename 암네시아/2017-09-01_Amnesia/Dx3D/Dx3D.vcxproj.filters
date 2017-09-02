@@ -222,6 +222,9 @@
     <ClInclude Include="cUIManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="singletonBase.h">
+      <Filter>선생님</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
