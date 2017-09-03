@@ -14,7 +14,7 @@
     <ProjectGuid>{0E1212A3-31D5-4481-815B-C481B1D01CA3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Dx3D</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -103,7 +103,6 @@
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cGroup.h" />
     <ClInclude Include="cHeightMap.h" />
-    <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMain_admin.h" />
@@ -120,7 +119,6 @@
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="cUIButton.h" />
     <ClInclude Include="cUIImageView.h" />
-    <ClInclude Include="cUIManager.h" />
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
     <ClInclude Include="Dx3D.h" />
@@ -152,7 +150,6 @@
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cGroup.cpp" />
     <ClCompile Include="cHeightMap.cpp" />
-    <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
@@ -169,7 +166,6 @@
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="cUIButton.cpp" />
     <ClCompile Include="cUIImageView.cpp" />
-    <ClCompile Include="cUIManager.cpp" />
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />
     <ClCompile Include="Dx3D.cpp" />

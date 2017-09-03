@@ -73,9 +73,6 @@
     <Filter Include="동욱\메인%28cMain_admin%29">
       <UniqueIdentifier>{fac846eb-5857-477e-8186-82b9bfa4cafa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="한나\UIManager">
-      <UniqueIdentifier>{4c4d209f-cd71-4753-8c83-9ad45b90fc2b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -225,12 +222,6 @@
     <ClInclude Include="singletonBase.h">
       <Filter>선생님</Filter>
     </ClInclude>
-    <ClInclude Include="cUIManager.h">
-      <Filter>한나\UIManager</Filter>
-    </ClInclude>
-    <ClInclude Include="cKeyManager.h">
-      <Filter>선생님\Manager</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -358,12 +349,6 @@
     </ClCompile>
     <ClCompile Include="cMain_admin.cpp">
       <Filter>동욱\메인%28cMain_admin%29</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIManager.cpp">
-      <Filter>한나\UIManager</Filter>
-    </ClCompile>
-    <ClCompile Include="cKeyManager.cpp">
-      <Filter>선생님\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
