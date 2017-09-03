@@ -18,5 +18,7 @@ public:
 	void SetUp(D3DXVECTOR3 leftTop, int row, int col);
 	void Render();
 
+	void CreateNode(D3DXVECTOR3 pos);
+
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);
 };
