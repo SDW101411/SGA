@@ -18,3 +18,8 @@ void cScene_Manager::INSERT(char* szName, cScene * Insert_cScene)
 	Save = new cScene();
 	cScene_database.insert(map<string, cScene*>::value_type(szName, Save));
 }
+
+void cScene_Manager::FIND(char * szName)
+{
+
+}
