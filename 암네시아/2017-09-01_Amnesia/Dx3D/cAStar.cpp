@@ -8,6 +8,13 @@ cAStar::cAStar()
 
 cAStar::~cAStar()
 {
+	for (int row = 0; row < m_rowMax; row++)
+	{
+		for (int col = 0; col < m_colMax; col++)
+		{
+			SAFE_DELETE(m_nodeList[row][col]);
+		}
+	}
 }
 
 void cAStar::SetUp(D3DXVECTOR3 leftTop, int row, int col)
@@ -23,7 +30,7 @@ void cAStar::Render()
 	{
 		for (int col = 0; col < m_colMax; col++)
 		{
-			m_nodeList[row][col]->Render();
+			if (m_nodeList[row][col]) m_nodeList[row][col]->Render();
 		}
 	}
 }
