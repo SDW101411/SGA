@@ -43,9 +43,9 @@ void cMainGame::Update()
 {
 	g_pTimeManager->Update();
 
-	if (m_pCrtCtrl) m_pCrtCtrl->Update();
-	if (m_pCamera) m_pCamera->Update();
-	if (m_pMain_admin) m_pMain_admin->Update();
+	SAFE_UPDATE(m_pCrtCtrl);
+	SAFE_UPDATE(m_pCamera);
+	SAFE_UPDATE(m_pMain_admin);
 
 	g_pAutoReleasePool->Drain();
 }
@@ -60,10 +60,8 @@ void cMainGame::Render()
 
 	g_pD3DDevice->BeginScene();
 
-
-	if(m_pGrid) m_pGrid->Render();
-	if (m_pMain_admin) m_pMain_admin->Render();
-
+	SAFE_RENDER(m_pGrid);
+	SAFE_RENDER(m_pMain_admin);
 
 	g_pD3DDevice->EndScene();
 
