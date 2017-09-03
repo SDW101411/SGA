@@ -11,6 +11,10 @@ cSceneUI::~cSceneUI()
 {
 }
 
+void cSceneUI::Setup()
+{
+}
+
 void cSceneUI::Update()
 {
 }
