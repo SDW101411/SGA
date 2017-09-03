@@ -68,6 +68,7 @@ public: virtual void Set##funName(varType var){\
 	}\
 }
 
+#define KEYMANAGER cKeyManager::getSingleton()
 
 // 1. Position 정점의 좌표 x,y,z(float)			: D3DFVF_XYZ
 // 2. RHW (float)                               : D3DFVF_XYZRHW (D3DFVF_XYZ 또는 D3DFVF_NORMAL과 같이 사용불가)
@@ -168,3 +169,5 @@ struct ST_SIZE
 #include "cAutoReleasePool.h"
 #include "cSkinnedMeshManager.h"
 #include "cFontManager.h"
+#include "singletonBase.h"
+#include "cKeyManager.h"

@@ -14,7 +14,7 @@
     <ProjectGuid>{0E1212A3-31D5-4481-815B-C481B1D01CA3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Dx3D</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -103,6 +103,7 @@
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cGroup.h" />
     <ClInclude Include="cHeightMap.h" />
+    <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMain_admin.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cGroup.cpp" />
     <ClCompile Include="cHeightMap.cpp" />
+    <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
