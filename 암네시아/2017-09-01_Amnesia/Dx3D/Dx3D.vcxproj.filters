@@ -246,14 +246,14 @@
     <ClInclude Include="cSceneManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="cUtiles.h">
-      <Filter>선생님\Util</Filter>
-    </ClInclude>
     <ClInclude Include="cScene_Manager.h">
       <Filter>동욱</Filter>
     </ClInclude>
     <ClInclude Include="cScene.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utiles.h">
+      <Filter>선생님\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -401,14 +401,14 @@
     <ClCompile Include="cSceneManager.cpp">
       <Filter>선생님\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="cUtiles.cpp">
-      <Filter>선생님\Util</Filter>
-    </ClCompile>
     <ClCompile Include="cScene_Manager.cpp">
       <Filter>동욱</Filter>
     </ClCompile>
     <ClCompile Include="cScene.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utiles.cpp">
+      <Filter>선생님\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
