@@ -12,7 +12,5 @@ public:
 
 	void INSERT(char * szName, cScene * Insert_cScene);
 	cScene *FIND(char * szName);
-
-
 };
 
