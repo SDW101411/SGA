@@ -88,6 +88,9 @@
     <Filter Include="동욱\씬%28Test%29">
       <UniqueIdentifier>{40d70a34-d301-4dd2-9e1b-468c274ad74d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\Tool">
+      <UniqueIdentifier>{5416c279-e34b-4a5a-a084-56a3e5f0f813}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -264,6 +267,9 @@
     <ClInclude Include="cUIManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="PickingTool.h">
+      <Filter>영빈\Tool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -418,6 +424,9 @@
     </ClCompile>
     <ClCompile Include="cUIManager.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PickingTool.cpp">
+      <Filter>영빈\Tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
