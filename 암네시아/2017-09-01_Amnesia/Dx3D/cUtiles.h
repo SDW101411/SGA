@@ -1,11 +1,6 @@
 #pragma once
 
-class cUtiles
+namespace MY_UTIL
 {
-private:
-
-public:
-	cUtiles();
-	~cUtiles();
-};
-
+	static float GetDistance(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2);
+}
