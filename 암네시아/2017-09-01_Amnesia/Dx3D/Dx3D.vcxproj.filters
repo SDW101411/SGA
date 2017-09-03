@@ -76,6 +76,12 @@
     <Filter Include="한나\UIManager">
       <UniqueIdentifier>{35a135f0-c44b-4836-bcb5-df0e2dda8d29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\UIInterface">
+      <UniqueIdentifier>{c34bab66-84e8-448a-bf5e-9f0a836ffc12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\UIs">
+      <UniqueIdentifier>{c62f82d2-f4f5-4fcd-b577-70db98b5f6e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -234,6 +240,9 @@
     <ClInclude Include="cSoundManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="cTabUI.h">
+      <Filter>한나\UIs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -370,6 +379,9 @@
     </ClCompile>
     <ClCompile Include="cSoundManager.cpp">
       <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cTabUI.cpp">
+      <Filter>한나\UIs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
