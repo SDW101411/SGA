@@ -237,9 +237,6 @@
     <ClInclude Include="cKeyManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="cUIManager.h">
-      <Filter>한나\UIManager</Filter>
-    </ClInclude>
     <ClInclude Include="cSoundManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
@@ -391,9 +388,6 @@
     </ClCompile>
     <ClCompile Include="cKeyManager.cpp">
       <Filter>선생님\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIManager.cpp">
-      <Filter>한나\UIManager</Filter>
     </ClCompile>
     <ClCompile Include="cSoundManager.cpp">
       <Filter>선생님\Manager</Filter>
