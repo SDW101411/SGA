@@ -8,22 +8,25 @@ cMain_Game에서 가져온 값들 Update와 Render, MsgProc
 
 
 cMain_admin::cMain_admin()
+	:m_pNow_Scene(NULL)
 {
 }
 
 
 cMain_admin::~cMain_admin()
 {
+	SAFE_DELETE(m_pNow_Scene);
 }
 
 
 void cMain_admin::Update()
 {
-	
+	SAFE_UPDATE(m_pNow_Scene);
 }
 
 void cMain_admin::Render()
 {
+	SAFE_RENDER(m_pNow_Scene);
 }
 
 void cMain_admin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
