@@ -14,6 +14,15 @@ private:
 	int					m_colMax;
 
 public:
+	enum GRIDNODE_DIR
+	{
+		GRIDNODE_DIR_LEFT =		1 << 0,
+		GRIDNODE_DIR_RIGHT =	1 << 1,
+		GRIDNODE_DIR_UP =		1 << 2,
+		GRIDNODE_DIR_DOWN =		1 << 3,
+	};
+
+public:
 	cAStar();
 	~cAStar();
 	void SetUp(D3DXVECTOR3 leftTop, int row, int col);

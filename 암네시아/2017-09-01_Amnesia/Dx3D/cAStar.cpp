@@ -72,7 +72,12 @@ bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
 
 void cAStar::AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList)
 {
-
+	int centerRow = 0;
+	int centerCol = 0;
+	if (FindRowCol(pos, centerRow, centerCol))
+	{
+		DWORD state = 0;
+	}
 }
 
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
