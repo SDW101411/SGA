@@ -10,3 +10,7 @@ cSceneUI::cSceneUI()
 cSceneUI::~cSceneUI()
 {
 }
+
+void cSceneUI::Update()
+{
+}
