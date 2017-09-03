@@ -80,8 +80,9 @@ void cAStar::AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList)
 	}
 }
 
-void cAStar::AddCloseList(IN cGridNode * pNode, OUT vector<cGridNode> openList, OUT vector<cGridNode> closeList)
+void cAStar::AddCloseList(IN cGridNode * pNode, OUT vector<cGridNode*> openList, OUT vector<cGridNode*> closeList)
 {
+	vector<cGridNode*>::iterator it = openList.begin();
 
 }
 
