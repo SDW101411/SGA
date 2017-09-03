@@ -114,6 +114,7 @@
     <ClInclude Include="cObjMap.h" />
     <ClInclude Include="cPyramid.h" />
     <ClInclude Include="cRay.h" />
+    <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSceneUI.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="cObjMap.cpp" />
     <ClCompile Include="cPyramid.cpp" />
     <ClCompile Include="cRay.cpp" />
+    <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSceneUI.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />

@@ -241,7 +241,10 @@
       <Filter>한나\UIs</Filter>
     </ClInclude>
     <ClInclude Include="cSceneUI.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>한나\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="cSceneManager.h">
+      <Filter>선생님\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -384,7 +387,10 @@
       <Filter>한나\UIs</Filter>
     </ClCompile>
     <ClCompile Include="cSceneUI.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>한나\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="cSceneManager.cpp">
+      <Filter>선생님\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
