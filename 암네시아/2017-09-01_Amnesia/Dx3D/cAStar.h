@@ -8,6 +8,7 @@ class cGridNode;
 class cAStar
 {
 private:
+	// m_node[row][col]로 관리합니다.
 	map<int, map<int, cGridNode*>>	m_nodeList;
 	D3DXVECTOR3			m_leftTopPos;
 	int					m_rowMax;
@@ -20,6 +21,8 @@ public:
 	void Render();
 
 	void CreateNode(D3DXVECTOR3 pos, int row, int col);
+	void CreateNode(D3DXVECTOR3 pos);
+	void CreateNode(int row, int col);
 
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);
 };
