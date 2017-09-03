@@ -9,6 +9,10 @@ cTabUI::~cTabUI()
 {
 }
 
+void cTabUI::Setup()
+{
+}
+
 void cTabUI::Update()
 {
 	/*if (KEYMANAGER->isOnceKeyDown(VK_TAB))
