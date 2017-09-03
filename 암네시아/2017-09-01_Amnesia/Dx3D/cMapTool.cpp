@@ -21,3 +21,8 @@ void cMapTool::Update()
 void cMapTool::Render()
 {
 }
+
+vector<D3DXVECTOR3> cMapTool::FindPickingGround()
+{
+	return vector<D3DXVECTOR3>();
+}

@@ -13,4 +13,6 @@ public:
 	void SetUp();
 	void Update();
 	void Render();
+
+	vector<D3DXVECTOR3> FindPickingGround();
 };
