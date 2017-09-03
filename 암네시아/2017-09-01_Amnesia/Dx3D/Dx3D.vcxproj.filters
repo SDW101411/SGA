@@ -85,6 +85,9 @@
     <Filter Include="동욱\씬매니져%28cScene_Manager%29">
       <UniqueIdentifier>{f13e7876-6392-463a-9b92-960143138487}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\씬%28Test%29">
+      <UniqueIdentifier>{40d70a34-d301-4dd2-9e1b-468c274ad74d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -258,6 +261,9 @@
     <ClInclude Include="cScene_Manager.h">
       <Filter>동욱\씬매니져%28cScene_Manager%29</Filter>
     </ClInclude>
+    <ClInclude Include="cScene_Test_1.h">
+      <Filter>동욱\씬%28Test%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -409,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="cScene_Manager.cpp">
       <Filter>동욱\씬매니져%28cScene_Manager%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene_Test_1.cpp">
+      <Filter>동욱\씬%28Test%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

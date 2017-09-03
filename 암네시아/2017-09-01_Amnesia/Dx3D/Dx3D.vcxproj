@@ -118,6 +118,7 @@
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSceneUI.h" />
     <ClInclude Include="cScene_Manager.h" />
+    <ClInclude Include="cScene_Test_1.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSoundManager.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSceneUI.cpp" />
     <ClCompile Include="cScene_Manager.cpp" />
+    <ClCompile Include="cScene_Test_1.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
     <ClCompile Include="cSoundManager.cpp" />
