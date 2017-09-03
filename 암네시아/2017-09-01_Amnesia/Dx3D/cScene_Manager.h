@@ -11,7 +11,7 @@ public:
 	~cScene_Manager();
 
 	void INSERT(char * szName, cScene * Insert_cScene);
-	void FIND(char * szName);
+	cScene *FIND(char * szName);
 
 
 };

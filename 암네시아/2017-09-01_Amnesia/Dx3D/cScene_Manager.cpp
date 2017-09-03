@@ -19,7 +19,8 @@ void cScene_Manager::INSERT(char* szName, cScene * Insert_cScene)
 	cScene_database.insert(map<string, cScene*>::value_type(szName, Save));
 }
 
-void cScene_Manager::FIND(char * szName)
+cScene *cScene_Manager::FIND(char * szName)
 {
-	
+	string  Name = (string)szName;
+	return cScene_database.find(Name)->second;
 }
