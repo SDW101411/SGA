@@ -16,3 +16,7 @@ void cTabUI::Update()
 
 	}*/
 }
+
+void cTabUI::Render()
+{
+}
