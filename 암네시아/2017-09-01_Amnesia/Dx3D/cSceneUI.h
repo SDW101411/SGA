@@ -6,5 +6,6 @@ public:
 	~cSceneUI();
 
 	void Update();
+	void Render();
 };
 

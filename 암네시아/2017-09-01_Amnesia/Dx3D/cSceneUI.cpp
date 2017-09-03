@@ -14,3 +14,7 @@ cSceneUI::~cSceneUI()
 void cSceneUI::Update()
 {
 }
+
+void cSceneUI::Render()
+{
+}
