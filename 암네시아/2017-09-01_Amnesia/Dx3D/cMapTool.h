@@ -3,6 +3,7 @@
 #define TILE_SIZE 1
 
 class cGridNode;
+class cAStar;
 
 class cMapTool
 {
