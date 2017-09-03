@@ -79,6 +79,12 @@
     <Filter Include="한나\UIs">
       <UniqueIdentifier>{c62f82d2-f4f5-4fcd-b577-70db98b5f6e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\씬%28cScene%29">
+      <UniqueIdentifier>{3f5062da-c1aa-424d-9bc0-49e174a66985}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\씬매니져%28cScene_Manager%29">
+      <UniqueIdentifier>{f13e7876-6392-463a-9b92-960143138487}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -243,14 +249,14 @@
     <ClInclude Include="cSceneManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="cScene_Manager.h">
-      <Filter>동욱</Filter>
-    </ClInclude>
-    <ClInclude Include="cScene.h">
-      <Filter>동욱</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>선생님</Filter>
+    </ClInclude>
+    <ClInclude Include="cScene.h">
+      <Filter>동욱\씬%28cScene%29</Filter>
+    </ClInclude>
+    <ClInclude Include="cScene_Manager.h">
+      <Filter>동욱\씬매니져%28cScene_Manager%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -395,14 +401,14 @@
     <ClCompile Include="cSceneManager.cpp">
       <Filter>선생님\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="cScene_Manager.cpp">
-      <Filter>동욱</Filter>
-    </ClCompile>
-    <ClCompile Include="cScene.cpp">
-      <Filter>동욱</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>선생님</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene.cpp">
+      <Filter>동욱\씬%28cScene%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene_Manager.cpp">
+      <Filter>동욱\씬매니져%28cScene_Manager%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
