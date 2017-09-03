@@ -21,5 +21,5 @@ void cScene_Manager::INSERT(char* szName, cScene * Insert_cScene)
 
 void cScene_Manager::FIND(char * szName)
 {
-
+	
 }
