@@ -101,5 +101,7 @@ void cAStar::AddCloseList(IN cGridNode* pNode, OUT vector<cGridNode*> openList, 
 
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 {
+	vector<cGridNode*> OpenList;
+	vector<cGridNode*> CloseList;
 	return list<D3DXVECTOR3>();
 }
