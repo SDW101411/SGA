@@ -232,7 +232,7 @@
       <Filter>한나\UIManager</Filter>
     </ClInclude>
     <ClInclude Include="cSoundManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>선생님\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -369,7 +369,7 @@
       <Filter>한나\UIManager</Filter>
     </ClCompile>
     <ClCompile Include="cSoundManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>선생님\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
