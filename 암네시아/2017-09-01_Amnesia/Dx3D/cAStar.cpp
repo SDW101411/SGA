@@ -74,7 +74,7 @@ void cAStar::AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList)
 {
 	int centerRow = 0;
 	int centerCol = 0;
-	if (FindRowCol(pos, centerRow, centerCol))
+	if (FindRowCol(pos, centerRow, centerCol))	// 가운데 노드가 존재할경우
 	{
 		DWORD state = 0;
 	}
