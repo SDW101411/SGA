@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cMain_admin.h"
 #include "cScene.h"
+#include "cScene_Test_1.h"
 /*2017-09-02 오후 1시 25분 메인 게임 입니다. 
 이곳에서 부터 게임제작을 시작 하도록 합시다. 
 cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
@@ -10,6 +11,8 @@ cMain_Game에서 가져온 값들 Update와 Render, MsgProc
 cMain_admin::cMain_admin()
 	:m_pNow_Scene(NULL)
 {
+	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
+
 }
 
 
