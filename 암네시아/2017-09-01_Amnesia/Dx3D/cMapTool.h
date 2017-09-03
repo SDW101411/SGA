@@ -11,6 +11,7 @@ private:
 	D3DXVECTOR3		m_leftTop;
 	int				m_row;
 	int				m_col;
+	cGridNode*		m_pCurrentNode;
 
 public:
 	cMapTool();
