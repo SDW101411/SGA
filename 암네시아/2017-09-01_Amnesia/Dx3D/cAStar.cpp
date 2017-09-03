@@ -80,10 +80,21 @@ void cAStar::AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList)
 	}
 }
 
-void cAStar::AddCloseList(IN cGridNode * pNode, OUT vector<cGridNode*> openList, OUT vector<cGridNode*> closeList)
+void cAStar::AddCloseList(IN cGridNode* pNode, OUT vector<cGridNode*> openList, OUT vector<cGridNode*> closeList)
 {
 	vector<cGridNode*>::iterator it = openList.begin();
 
+	for (; it != openList.end(); it++)
+	{
+		if ((*it) == pNode)
+		{
+			openList.erase(it);
+			break;
+		}
+	}
+
+	pNode->SetIsOpen(false);
+	pNode->SetIsClose(true);
 }
 
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
