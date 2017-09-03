@@ -24,5 +24,7 @@ public:
 	void CreateNode(D3DXVECTOR3 pos);
 	void CreateNode(int row, int col);
 
+	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
+
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);
 };

@@ -30,7 +30,7 @@ void cAStar::Render()
 	{
 		for (int col = 0; col < m_colMax; col++)
 		{
-			if (m_nodeList[row][col]) m_nodeList[row][col]->Render();
+			SAFE_RENDER(m_nodeList[row][col]);
 		}
 	}
 }
@@ -57,6 +57,17 @@ void cAStar::CreateNode(int row, int col)
 	pos.x += row * TILE_SIZE;
 	pos.z -= col * TILE_SIZE;
 	CreateNode(pos, row, col);
+}
+
+bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
+{
+	int rtnRow = abs((pos.x - m_leftTopPos.x) / TILE_SIZE);
+	int rtnCol = abs((pos.z - m_leftTopPos.z) / TILE_SIZE);
+	row = rtnRow;
+	col = rtnCol;
+
+	if (rtnRow >= m_rowMax || rtnCol >= m_colMax || rtnRow < 0 || rtnCol < 0) return false;
+	return true;
 }
 
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
