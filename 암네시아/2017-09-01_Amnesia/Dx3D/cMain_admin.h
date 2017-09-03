@@ -1,5 +1,5 @@
 #pragma once
-//Main투데이 추가
+//2017-09-04
 class cMain_admin
 {
 public:
