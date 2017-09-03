@@ -4,5 +4,13 @@ class cGridNode;
 
 class cMapTool
 {
+private:
 
+public:
+	cMapTool();
+	~cMapTool();
+
+	void SetUp();
+	void Update();
+	void Render();
 };
