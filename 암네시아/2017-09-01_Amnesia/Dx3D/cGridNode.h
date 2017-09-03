@@ -3,13 +3,12 @@
 class cGridNode
 {
 private:
-	LPD3DXMESH m_pSphere;
-	LPD3DXMESH m_pBox;
+	LPD3DXMESH				m_pSphere;
+	LPD3DXMESH				m_pBox;
+	ID3DXMesh*				m_pGrid;
 
-	LPDIRECT3DINDEXBUFFER9	m_ib;
-	LPDIRECT3DVERTEXBUFFER9	m_vb;
-
-	D3DXMATRIX m_matWorld;
+	D3DXMATRIX				m_matWorld;
+	D3DMATERIAL9			m_material;
 
 	SYNTHESIZE(D3DXVECTOR3, m_pos, Position);
 

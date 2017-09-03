@@ -17,6 +17,7 @@ cMainGame::~cMainGame(void)
 	SAFE_DELETE(m_pGrid);
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pCrtCtrl);
+	SAFE_DELETE(m_pMain_admin);
 	g_pFontManager->Destroy();
 	g_pObjectPool->Destroy();
 	g_pTextureManager->Destroy();
