@@ -12,9 +12,16 @@ cAStar::~cAStar()
 
 void cAStar::SetUp(D3DXVECTOR3 leftTop, int row, int col)
 {
+	m_leftTopPos = leftTop;
+	m_rowMax = row;
+	m_colMax = col;
 }
 
 void cAStar::Render()
+{
+}
+
+void cAStar::CreateNode(D3DXVECTOR3 pos)
 {
 }
 
