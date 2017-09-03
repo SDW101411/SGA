@@ -116,6 +116,7 @@
     <ClInclude Include="cRay.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
+    <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="cUIButton.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
+    <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="cUIButton.cpp" />

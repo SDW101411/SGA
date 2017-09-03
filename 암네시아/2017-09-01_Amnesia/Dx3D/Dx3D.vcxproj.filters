@@ -231,6 +231,9 @@
     <ClInclude Include="cUIManager.h">
       <Filter>한나\UIManager</Filter>
     </ClInclude>
+    <ClInclude Include="cSoundManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -364,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="cUIManager.cpp">
       <Filter>한나\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cSoundManager.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
