@@ -17,5 +17,6 @@ public:
 	void Setup(D3DXVECTOR3* pvTarget = NULL);
 	void Update();
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	D3DXVECTOR3 * get_pvPostion();
 };
 
