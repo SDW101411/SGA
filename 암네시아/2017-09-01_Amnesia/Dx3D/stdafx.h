@@ -171,4 +171,7 @@ struct ST_SIZE
 #include "cFontManager.h"
 #include "singletonBase.h"
 #include "cKeyManager.h"
+#include "cScene_Manager.h"
 //#include "Utiles.h"
+
+#define SCENE_MANAGER cScene_Manager::getSingleton()
