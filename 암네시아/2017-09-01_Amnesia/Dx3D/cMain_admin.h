@@ -1,5 +1,6 @@
 #pragma once
 //2017-09-04
+//cScene 매니져 에 넣을 부분들 체크중
 class cScene;
 
 class cMain_admin
