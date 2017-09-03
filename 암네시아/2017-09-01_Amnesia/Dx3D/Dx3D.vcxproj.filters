@@ -246,6 +246,9 @@
     <ClInclude Include="cSceneManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="cUtiles.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -391,6 +394,9 @@
     </ClCompile>
     <ClCompile Include="cSceneManager.cpp">
       <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cUtiles.cpp">
+      <Filter>선생님\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
