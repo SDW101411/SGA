@@ -17,16 +17,16 @@ public:
 	HRESULT init(void);
 	void release(void);
 
-	//한번만 눌렀을때..
+	//한번만 눌렀을때
 	bool isOnceKeyDown(int key);
 
-	//한번만 떼었을때..
+	//한번만 떼었을때
 	bool isOnceKeyUp(int key);
 
-	//계속 누르고 있을때..
+	//계속 누르고 있을때
 	bool isStayKeyDown(int key);
 
-	//딸깍 on 딸깍 off ~~~~~ (전등 스위치 개념...)
+	//딸깍 on 딸깍 off ~~~~~ (전등 스위치 개념)
 	bool isToggleKey(int key);
 
 	bitset<KEYMAX> getKeyUp() { return _keyUp; }

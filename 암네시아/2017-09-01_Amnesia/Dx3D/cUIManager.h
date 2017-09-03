@@ -8,7 +8,5 @@ private:
 	SINGLETON(cUIManager)
 
 public:
-	cUIManager();
-	~cUIManager();
 };
 

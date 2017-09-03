@@ -8,9 +8,6 @@ private:
 	SINGLETON(cSoundManager)
 
 public:
-	cSoundManager();
-	~cSoundManager();
-
 	void Update();
 };
 
