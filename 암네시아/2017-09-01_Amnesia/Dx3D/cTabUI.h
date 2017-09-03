@@ -6,5 +6,6 @@ public:
 	~cTabUI();
 
 	void Update();
+	void Render();
 };
 
