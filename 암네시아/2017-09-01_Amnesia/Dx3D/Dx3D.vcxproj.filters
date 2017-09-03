@@ -73,6 +73,9 @@
     <Filter Include="동욱\메인%28cMain_admin%29">
       <UniqueIdentifier>{fac846eb-5857-477e-8186-82b9bfa4cafa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\UIManager">
+      <UniqueIdentifier>{35a135f0-c44b-4836-bcb5-df0e2dda8d29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -219,11 +222,14 @@
     <ClInclude Include="cMain_admin.h">
       <Filter>동욱\메인%28cMain_admin%29</Filter>
     </ClInclude>
-    <ClInclude Include="cKeyManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="singletonBase.h">
       <Filter>선생님</Filter>
+    </ClInclude>
+    <ClInclude Include="cKeyManager.h">
+      <Filter>선생님\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIManager.h">
+      <Filter>한나\UIManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -354,7 +360,10 @@
       <Filter>동욱\메인%28cMain_admin%29</Filter>
     </ClCompile>
     <ClCompile Include="cKeyManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>선생님\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIManager.cpp">
+      <Filter>한나\UIManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
