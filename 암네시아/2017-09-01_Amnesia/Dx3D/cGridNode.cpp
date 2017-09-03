@@ -69,7 +69,9 @@ void cGridNode::Render()
 {
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
 	g_pD3DDevice->SetMaterial(&m_material);
+	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 	m_pGrid->DrawSubset(0);
+	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	if (m_isObstacle) m_pBox->DrawSubset(0);
 }
 
