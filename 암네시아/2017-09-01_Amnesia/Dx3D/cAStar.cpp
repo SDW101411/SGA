@@ -21,7 +21,7 @@ void cAStar::Render()
 {
 }
 
-void cAStar::CreateNode(D3DXVECTOR3 pos)
+void cAStar::CreateNode(D3DXVECTOR3 pos, int row, int col)
 {
 }
 
