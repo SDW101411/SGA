@@ -25,5 +25,7 @@ public:
 
 	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
 
+	void AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList);
+
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);
 };
