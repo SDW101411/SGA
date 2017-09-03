@@ -3,6 +3,7 @@
 #define TILE_SIZE 1
 
 class cAStarNode;
+class cGridNode;
 
 class cAStar
 {

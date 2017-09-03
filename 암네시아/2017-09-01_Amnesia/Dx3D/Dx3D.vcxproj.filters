@@ -177,9 +177,6 @@
     <ClInclude Include="Resource.h">
       <Filter>선생님\Util</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>선생님\Util</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>선생님\Util</Filter>
     </ClInclude>
@@ -250,10 +247,10 @@
       <Filter>동욱</Filter>
     </ClInclude>
     <ClInclude Include="cScene.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>동욱</Filter>
     </ClInclude>
-    <ClInclude Include="Utiles.h">
-      <Filter>선생님\Util</Filter>
+    <ClInclude Include="stdafx.h">
+      <Filter>선생님</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -341,9 +338,6 @@
     <ClCompile Include="cMtlTex.cpp">
       <Filter>선생님\Object</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>선생님\Util</Filter>
-    </ClCompile>
     <ClCompile Include="iMap.cpp">
       <Filter>선생님\Map</Filter>
     </ClCompile>
@@ -405,10 +399,10 @@
       <Filter>동욱</Filter>
     </ClCompile>
     <ClCompile Include="cScene.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>동욱</Filter>
     </ClCompile>
-    <ClCompile Include="Utiles.cpp">
-      <Filter>선생님\Util</Filter>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>선생님</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

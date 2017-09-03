@@ -14,7 +14,7 @@
     <ProjectGuid>{0E1212A3-31D5-4481-815B-C481B1D01CA3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Dx3D</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,7 +129,6 @@
     <ClInclude Include="cUIManager.h" />
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
-    <ClInclude Include="Utiles.h" />
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
@@ -185,7 +184,6 @@
     <ClCompile Include="cUIManager.cpp" />
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />
-    <ClCompile Include="Utiles.cpp" />
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
