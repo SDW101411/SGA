@@ -175,4 +175,7 @@ struct ST_SIZE
 #include "cKeyManager.h"
 #include "cScene_Manager.h"
 
+
 #define SCENE_MANAGER cScene_Manager::getSingleton()
+class iObject;
+typedef vector<iObject*> Scene_oBject_List;
