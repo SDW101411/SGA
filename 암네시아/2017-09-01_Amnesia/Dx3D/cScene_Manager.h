@@ -1,8 +1,9 @@
 #pragma once
+
 #include "singletonbase.h"
 
 class cScene;
-class cScene_Manager : public singletonBase <cKeyManager>
+class cScene_Manager : public singletonBase <cScene_Manager>
 {
 private:
 	map<string, cScene*> cScene_database;
