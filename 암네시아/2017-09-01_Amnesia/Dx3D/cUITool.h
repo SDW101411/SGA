@@ -1,13 +1,15 @@
 #pragma once
 
-class cTabUI
+class cUIGrid;
+
+class cUITool
 {
 private:
-	vector<D3DXVECTOR3>				m_ImagePos;
-	
+	cUIGrid*						m_pUIGrid;
+
 public:
-	cTabUI();
-	~cTabUI();
+	cUITool();
+	~cUITool();
 
 	void Setup();
 	void Update();
