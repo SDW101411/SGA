@@ -8,10 +8,11 @@ class cAStar;
 class cMapTool
 {
 private:
-	D3DXVECTOR3		m_leftTop;
-	int				m_row;
-	int				m_col;
-	cGridNode*		m_pCurrentNode;
+	SYNTHESIZE(D3DXVECTOR3, m_leftTop, LeftTopPos);
+	SYNTHESIZE(int, m_row, MaxRow);
+	SYNTHESIZE(int, m_col, MaxCol);
+
+	map<int, map<int, cGridNode*>> m_nodeList;
 
 public:
 	cMapTool();
@@ -21,5 +22,10 @@ public:
 	void Update();
 	void Render();
 
+	void CreateNode(D3DXVECTOR3 pos);
+	void CreateNode(int row, int col);
+
 	vector<D3DXVECTOR3> FindPickingGround();
+	bool FindPickingPosition(IN int x, IN int y, OUT D3DXVECTOR3& pos);
+	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
 };
