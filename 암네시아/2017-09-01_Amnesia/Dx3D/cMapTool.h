@@ -1,7 +1,5 @@
 #pragma once
 
-#define TILE_SIZE 1
-
 class cGridNode;
 class cAStar;
 
@@ -12,7 +10,7 @@ private:
 	SYNTHESIZE(int, m_row, MaxRow);
 	SYNTHESIZE(int, m_col, MaxCol);
 
-	map<int, map<int, cGridNode*>> m_nodeList;
+	map<int, map<int, cGridNode*>>	m_nodeList;
 
 public:
 	cMapTool();
@@ -26,6 +24,6 @@ public:
 	void CreateNode(int row, int col);
 
 	vector<D3DXVECTOR3> FindPickingGround();
-	bool FindPickingPosition(IN int x, IN int y, OUT D3DXVECTOR3& pos);
+	bool FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground);
 	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
 };

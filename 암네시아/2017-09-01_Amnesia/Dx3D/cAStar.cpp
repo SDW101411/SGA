@@ -48,23 +48,23 @@ void cAStar::CreateNode(D3DXVECTOR3 pos)
 {
 	cGridNode* pNode = new cGridNode;
 	pNode->SetUp(pos);
-	int row = abs((pos.x - m_leftTopPos.x) / TILE_SIZE);
-	int col = abs((pos.z - m_leftTopPos.z) / TILE_SIZE);
+	int row = abs((pos.x - m_leftTopPos.x) / GRIDNODE_SIZE);
+	int col = abs((pos.z - m_leftTopPos.z) / GRIDNODE_SIZE);
 	m_nodeList[row][col] = pNode;
 }
 
 void cAStar::CreateNode(int row, int col)
 {
 	D3DXVECTOR3 pos = m_leftTopPos;
-	pos.x += row * TILE_SIZE;
-	pos.z -= col * TILE_SIZE;
+	pos.x += row * GRIDNODE_SIZE;
+	pos.z -= col * GRIDNODE_SIZE;
 	CreateNode(pos, row, col);
 }
 
 bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
 {
-	int rtnRow = (pos.x - m_leftTopPos.x) / TILE_SIZE;
-	int rtnCol = m_colMax - (pos.z - m_leftTopPos.z) / TILE_SIZE;
+	int rtnRow = (pos.x - m_leftTopPos.x) / GRIDNODE_SIZE;
+	int rtnCol = m_colMax - (pos.z - m_leftTopPos.z) / GRIDNODE_SIZE;
 	row = rtnRow;
 	col = rtnCol;
 
