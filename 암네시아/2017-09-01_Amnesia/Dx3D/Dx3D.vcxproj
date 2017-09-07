@@ -107,7 +107,6 @@
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMain_admin.h" />
-    <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectPool.h" />
@@ -127,15 +126,13 @@
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="cUIButton.h" />
+    <ClInclude Include="cUIGrid.h" />
     <ClInclude Include="cUIImageView.h" />
     <ClInclude Include="cUIManager.h" />
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
-<<<<<<< HEAD
     <ClInclude Include="cUITool.h" />
     <ClInclude Include="cUIToolTestScene.h" />
-=======
->>>>>>> 40645fe592455b910f27ef73464cf90de92ab206
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
@@ -188,19 +185,16 @@
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="cUIButton.cpp" />
+    <ClCompile Include="cUIGrid.cpp" />
     <ClCompile Include="cUIImageView.cpp" />
     <ClCompile Include="cUIManager.cpp" />
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="cUITool.cpp" />
     <ClCompile Include="cUIToolTestScene.cpp" />
-=======
->>>>>>> 40645fe592455b910f27ef73464cf90de92ab206
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
-    <ClCompile Include="cMapToolScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
