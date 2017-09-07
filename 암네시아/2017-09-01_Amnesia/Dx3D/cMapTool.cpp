@@ -10,13 +10,21 @@ cMapTool::cMapTool()
 
 cMapTool::~cMapTool()
 {
-	map<int, map<int, cGridNode*>>::iterator row = m_nodeList.begin();
-	for (; row != m_nodeList.end(); row++)
+	//map<int, map<int, cGridNode*>>::iterator row = m_nodeList.begin();
+	//for (; row != m_nodeList.end(); row++)
+	//{
+	//	map<int, cGridNode*>::iterator col = (*row).second.begin();
+	//	for (; col != (*row).second.end(); col++)
+	//	{
+	//		SAFE_DELETE((*col).second);
+	//	}
+	//}
+
+	for (size_t row = 0; row < m_row; row++)
 	{
-		map<int, cGridNode*>::iterator col = (*row).second.begin();
-		for (; col != (*row).second.end(); col++)
+		for (size_t col = 0; col < m_col; col++)
 		{
-			SAFE_DELETE((*col).second);
+			SAFE_DELETE(m_nodeList[row][col]);
 		}
 	}
 }
@@ -45,16 +53,17 @@ void cMapTool::Render()
 
 void cMapTool::CreateNode(D3DXVECTOR3 pos)
 {
-	int row = abs((pos.x - m_leftTop.x + (TILE_SIZE * 0.5f)) / TILE_SIZE);
-	int col = abs((pos.z - m_leftTop.z - (TILE_SIZE * 0.5f)) / TILE_SIZE);
+	int row = abs((pos.x - m_leftTop.x + GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	int col = abs((pos.z - m_leftTop.z - GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
 	CreateNode(row, col);
 }
 
 void cMapTool::CreateNode(int row, int col)
 {
+	if (m_nodeList[row][col] || row < 0 || row >= m_row || col < 0 || col >= m_col) return;
 	D3DXVECTOR3 pos = m_leftTop;
-	pos.x += row * TILE_SIZE;
-	pos.z -= col * TILE_SIZE;
+	pos.x += row * GRIDNODE_SIZE;
+	pos.z -= col * GRIDNODE_SIZE;
 	cGridNode* pNode = new cGridNode;
 	pNode->SetUp(pos);
 	m_nodeList[row][col] = pNode;
@@ -63,8 +72,8 @@ void cMapTool::CreateNode(int row, int col)
 vector<D3DXVECTOR3> cMapTool::FindPickingGround()
 {
 	D3DXVECTOR3 rightBottom = m_leftTop;
-	rightBottom.x = m_leftTop.x + m_row * TILE_SIZE;
-	rightBottom.z = m_leftTop.z - m_col * TILE_SIZE;
+	rightBottom.x = m_leftTop.x + m_row * GRIDNODE_SIZE;
+	rightBottom.z = m_leftTop.z - m_col * GRIDNODE_SIZE;
 
 	D3DXVECTOR3 rightTop = D3DXVECTOR3(rightBottom.x, 0, m_leftTop.z);
 	D3DXVECTOR3 leftBottom = D3DXVECTOR3(m_leftTop.x, 0, rightBottom.z);
@@ -80,11 +89,9 @@ vector<D3DXVECTOR3> cMapTool::FindPickingGround()
 	return rtnVec;
 }
 
-bool cMapTool::FindPickingPosition(IN int x, IN int y, OUT D3DXVECTOR3& pos)
+bool cMapTool::FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground)
 {
-	vector<D3DXVECTOR3> ground = FindPickingGround();
-
-	cRay ray = cRay::RayAtWorldSpace(x, y);
+	cRay ray = cRay::RayAtWorldSpace(_ptMousePos.x, _ptMousePos.y);
 	float dist = 0;
 	float nearDist = -1;
 	for (size_t i = 0; i < ground.size(); i += 3)
@@ -105,8 +112,8 @@ bool cMapTool::FindPickingPosition(IN int x, IN int y, OUT D3DXVECTOR3& pos)
 
 bool cMapTool::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
 {
-	int rtnRow = (pos.x - m_leftTop.x) / TILE_SIZE;
-	int rtnCol = m_col - (pos.z - m_leftTop.z) / TILE_SIZE;
+	int rtnRow = (pos.x - m_leftTop.x) / GRIDNODE_SIZE;
+	int rtnCol = m_col - (pos.z - m_leftTop.z) / GRIDNODE_SIZE;
 	row = rtnRow;
 	col = rtnCol;
 
