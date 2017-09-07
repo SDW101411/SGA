@@ -2,7 +2,7 @@
 #include "cMain_admin.h"
 #include "cScene.h"
 #include "cScene_Test_1.h"
-//#include "cMapToolTestScene.h"	// 테스트 씬 입니다 -영빈-
+#include "cMapToolScene.h"	// 테스트 씬 입니다 -영빈-
 /*2017-09-02 오후 1시 25분 메인 게임 입니다. 
 이곳에서 부터 게임제작을 시작 하도록 합시다. 
 cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
@@ -13,7 +13,7 @@ cMain_admin::cMain_admin()
 	:m_pNow_Scene(NULL)
 {
 	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
-	//m_pNow_Scene = new cMapToolTestScene; // 맵툴 테스트 입니다 - 영빈 -
+	//m_pNow_Scene = new cMapToolScene; // 맵툴 테스트 입니다 - 영빈 -
 }
 
 

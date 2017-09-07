@@ -91,12 +91,15 @@
     <Filter Include="영빈\MapToolTestScene">
       <UniqueIdentifier>{3059c16a-4030-4304-9a58-97da827d0f6b}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="한나\UITool">
       <UniqueIdentifier>{86dd0e22-9726-4860-8d3f-ad4e9b5e2893}</UniqueIdentifier>
     </Filter>
     <Filter Include="한나\UIToolTestScene">
       <UniqueIdentifier>{4b12ca14-588b-4f61-8130-a78e2cdd2b50}</UniqueIdentifier>
     </Filter>
+=======
+>>>>>>> 40645fe592455b910f27ef73464cf90de92ab206
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -270,6 +273,7 @@
     <ClInclude Include="cScene_Test_1.h">
       <Filter>동욱\씬%28Test%29</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="cUIGrid.h">
       <Filter>한나\UIs</Filter>
     </ClInclude>
@@ -281,6 +285,13 @@
     </ClInclude>
     <ClInclude Include="cUIToolTestScene.h">
       <Filter>한나\UIToolTestScene</Filter>
+=======
+    <ClInclude Include="cUIManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapToolScene.h">
+      <Filter>영빈\MapToolTestScene</Filter>
+>>>>>>> 40645fe592455b910f27ef73464cf90de92ab206
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -434,6 +445,7 @@
     <ClCompile Include="cScene_Test_1.cpp">
       <Filter>동욱\씬%28Test%29</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="cUIGrid.cpp">
       <Filter>한나\UIs</Filter>
     </ClCompile>
@@ -445,6 +457,13 @@
     </ClCompile>
     <ClCompile Include="cUIToolTestScene.cpp">
       <Filter>한나\UIToolTestScene</Filter>
+=======
+    <ClCompile Include="cUIManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapToolScene.cpp">
+      <Filter>영빈\MapToolTestScene</Filter>
+>>>>>>> 40645fe592455b910f27ef73464cf90de92ab206
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
