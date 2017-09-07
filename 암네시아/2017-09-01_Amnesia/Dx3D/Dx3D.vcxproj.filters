@@ -268,7 +268,7 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="cMapToolTestScene.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>영빈\MapToolTestScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -426,7 +426,7 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cMapToolTestScene.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>영빈\MapToolTestScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
