@@ -132,6 +132,7 @@
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
     <ClInclude Include="cUITool.h" />
+    <ClInclude Include="cUIToolTestScene.h" />
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />
     <ClCompile Include="cUITool.cpp" />
+    <ClCompile Include="cUIToolTestScene.cpp" />
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
