@@ -2,8 +2,8 @@
 class cRay
 {
 private:
-	D3DXVECTOR3 m_vRayOrg;
-	D3DXVECTOR3 m_vRayDir;
+	SYNTHESIZE(D3DXVECTOR3, m_vRayOrg, RayOrg);
+	SYNTHESIZE(D3DXVECTOR3, m_vRayDir, RayDir);
 
 	enum eRaySpace
 	{
@@ -11,7 +11,7 @@ private:
 		E_VIEW,
 		E_WORLD,
 	};
-	
+
 	eRaySpace m_eRaySpace;
 
 public:

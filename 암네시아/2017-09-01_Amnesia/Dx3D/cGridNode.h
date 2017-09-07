@@ -1,5 +1,12 @@
 #pragma once
 
+enum GRIDNODE_COLOR
+{
+	GRIDNODE_COLOR_DEFAULT,
+	GRIDNODE_COLOR_PICK,
+	GRIDNODE_COLOR_OBSTACLE,
+};
+
 class cGridNode
 {
 private:
@@ -30,4 +37,5 @@ public:
 	void SphereRender();
 
 	void CleanUp();
+	void SetColor(int value);
 };

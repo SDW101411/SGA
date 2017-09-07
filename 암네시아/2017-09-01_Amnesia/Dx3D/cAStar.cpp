@@ -61,8 +61,8 @@ void cAStar::CreateNode(int row, int col)
 
 bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
 {
-	int rtnRow = abs((pos.x - m_leftTopPos.x) / TILE_SIZE);
-	int rtnCol = abs((pos.z - m_leftTopPos.z) / TILE_SIZE);
+	int rtnRow = (pos.x - m_leftTopPos.x) / TILE_SIZE;
+	int rtnCol = m_colMax - (pos.z - m_leftTopPos.z) / TILE_SIZE;
 	row = rtnRow;
 	col = rtnCol;
 
