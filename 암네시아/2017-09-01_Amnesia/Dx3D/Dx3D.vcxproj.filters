@@ -267,7 +267,7 @@
     <ClInclude Include="cUIManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="cMapToolTestScene.h">
+    <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\MapToolTestScene</Filter>
     </ClInclude>
   </ItemGroup>
@@ -425,7 +425,7 @@
     <ClCompile Include="cUIManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cMapToolTestScene.cpp">
+    <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\MapToolTestScene</Filter>
     </ClCompile>
   </ItemGroup>

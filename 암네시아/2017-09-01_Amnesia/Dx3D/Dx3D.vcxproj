@@ -107,7 +107,7 @@
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMain_admin.h" />
-    <ClInclude Include="cMapToolTestScene.h" />
+    <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectPool.h" />
@@ -164,7 +164,6 @@
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
-    <ClCompile Include="cMapToolTestScene.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectPool.cpp" />
@@ -191,6 +190,7 @@
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
+    <ClCompile Include="cMapToolScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
