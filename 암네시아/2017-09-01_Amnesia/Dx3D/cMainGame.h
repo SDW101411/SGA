@@ -5,7 +5,6 @@ class cGrid;
 class cCamera;
 class cCrtCtrl;
 class cMain_admin;
-class cUITool;
 
 class cMainGame : public iButtonDelegate
 {
@@ -14,7 +13,6 @@ private:
 	cCamera*		m_pCamera;
 	cCrtCtrl*		m_pCrtCtrl;
 	cMain_admin*	m_pMain_admin;
-	cUITool*		m_pUITool;
 
 public:
 	cMainGame(void);
