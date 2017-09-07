@@ -12,6 +12,7 @@ HINSTANCE hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 HWND g_hWnd;
+POINT _ptMousePos = { 0, 0 };								// 마우스 좌표
 cMainGame* g_pMainGame;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
@@ -166,6 +167,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	switch (message)
 	{
+	case WM_LBUTTONDOWN: case WM_LBUTTONUP: case WM_RBUTTONDOWN: case WM_RBUTTONUP: case WM_MOUSEMOVE:
+		_ptMousePos.x = LOWORD(lParam);
+		_ptMousePos.y = HIWORD(lParam);
+		break;
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);

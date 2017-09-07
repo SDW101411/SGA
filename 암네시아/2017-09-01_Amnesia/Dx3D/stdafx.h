@@ -34,6 +34,7 @@
 using namespace std;
 
 extern HWND g_hWnd;
+extern POINT _ptMousePos;
 
 #define SAFE_ADD_REF(p) if(p) { (p)->AddRef(); }
 #define SAFE_RELEASE(p) if(p) { (p)->Release(); p = NULL; }
