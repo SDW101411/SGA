@@ -6,7 +6,7 @@ private:
 public:
 	cScene();
 	~cScene();
-	void Update();
-	void Render();
+	virtual void Update();
+	virtual void Render();
 };
 
