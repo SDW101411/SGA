@@ -8,11 +8,13 @@ cAStar::cAStar()
 
 cAStar::~cAStar()
 {
-	for (int row = 0; row < m_rowMax; row++)
+	map<int, map<int, cGridNode*>>::iterator row = m_nodeList.begin();
+	for (; row != m_nodeList.end(); row++)
 	{
-		for (int col = 0; col < m_colMax; col++)
+		map<int, cGridNode*>::iterator col = (*row).second.begin();
+		for (; col != (*row).second.end(); col++)
 		{
-			SAFE_DELETE(m_nodeList[row][col]);
+			SAFE_DELETE((*col).second);
 		}
 	}
 }

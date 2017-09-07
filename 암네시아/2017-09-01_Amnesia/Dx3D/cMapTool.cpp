@@ -18,7 +18,6 @@ cMapTool::~cMapTool()
 		{
 			SAFE_DELETE((*col).second);
 		}
-
 	}
 }
 
