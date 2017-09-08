@@ -10,16 +10,6 @@ cMapTool::cMapTool()
 
 cMapTool::~cMapTool()
 {
-	//map<int, map<int, cGridNode*>>::iterator row = m_nodeList.begin();
-	//for (; row != m_nodeList.end(); row++)
-	//{
-	//	map<int, cGridNode*>::iterator col = (*row).second.begin();
-	//	for (; col != (*row).second.end(); col++)
-	//	{
-	//		SAFE_DELETE((*col).second);
-	//	}
-	//}
-
 	for (size_t row = 0; row < m_row; row++)
 	{
 		for (size_t col = 0; col < m_col; col++)

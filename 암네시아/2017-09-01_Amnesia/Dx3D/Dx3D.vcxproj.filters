@@ -88,6 +88,9 @@
     <Filter Include="동욱\씬%28Test%29">
       <UniqueIdentifier>{40d70a34-d301-4dd2-9e1b-468c274ad74d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\cMapToolScene">
+      <UniqueIdentifier>{cc6268da-ef25-4249-a2eb-8583d94e61a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -273,6 +276,9 @@
     <ClInclude Include="cUIGrid.h">
       <Filter>한나</Filter>
     </ClInclude>
+    <ClInclude Include="cMapToolScene.h">
+      <Filter>영빈\cMapToolScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -436,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="cUIGrid.cpp">
       <Filter>한나</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapToolScene.cpp">
+      <Filter>영빈\cMapToolScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
