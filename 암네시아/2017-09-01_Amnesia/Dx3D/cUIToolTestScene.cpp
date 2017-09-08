@@ -15,6 +15,7 @@ cUIToolTestScene::~cUIToolTestScene()
 void cUIToolTestScene::Setup()
 {
 	m_pUITool = new cUITool;
+	m_pUITool->Setup();
 }
 
 void cUIToolTestScene::Update()
@@ -23,4 +24,5 @@ void cUIToolTestScene::Update()
 
 void cUIToolTestScene::Render()
 {
+	SAFE_RENDER(m_pUITool);
 }

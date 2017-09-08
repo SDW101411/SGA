@@ -4,7 +4,6 @@
 #include "cGrid.h"
 #include "cCrtCtrl.h"
 #include "cMain_admin.h"
-#include "cUITool.h"
 
 cMainGame::cMainGame(void)
 	: m_pGrid(NULL)
@@ -19,7 +18,6 @@ cMainGame::~cMainGame(void)
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pCrtCtrl);
 	SAFE_DELETE(m_pMain_admin);
-	SAFE_DELETE(m_pUITool);
 	g_pFontManager->Destroy();
 	g_pObjectPool->Destroy();
 	g_pTextureManager->Destroy();
@@ -37,9 +35,6 @@ void cMainGame::Setup()
 	m_pGrid->Setup(100,1.0f);
 	
 	m_pMain_admin = new cMain_admin;
-
-	m_pUITool = new cUITool;
-	m_pUITool->Setup();
 
 	SetLight();
 }
@@ -67,7 +62,6 @@ void cMainGame::Render()
 
 	SAFE_RENDER(m_pGrid);
 	SAFE_RENDER(m_pMain_admin);
-	SAFE_RENDER(m_pUITool);
 	
 	g_pD3DDevice->EndScene();
 

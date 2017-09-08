@@ -88,10 +88,14 @@
     <Filter Include="동욱\씬%28Test%29">
       <UniqueIdentifier>{40d70a34-d301-4dd2-9e1b-468c274ad74d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="영빈\cMapToolScene">
-      <UniqueIdentifier>{cc6268da-ef25-4249-a2eb-8583d94e61a2}</UniqueIdentifier>
+
+
+    <Filter Include="한나\UITool">
+      <UniqueIdentifier>{fb8aca00-da71-4235-b5d1-69a17c4cf118}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
+    <Filter Include="한나\UIToolTestScene">
+      <UniqueIdentifier>{f4636067-05e2-41af-9559-b1b001173232}</UniqueIdentifier>
+    </Filter>  </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
     <None Include="small.ico">
@@ -265,16 +269,16 @@
       <Filter>동욱\씬%28Test%29</Filter>
     </ClInclude>
     <ClInclude Include="cUIManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>한나\UIManager</Filter>
     </ClInclude>
     <ClInclude Include="cUITool.h">
-      <Filter>한나</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIToolTestScene.h">
-      <Filter>한나</Filter>
+      <Filter>한나\UITool</Filter>
     </ClInclude>
     <ClInclude Include="cUIGrid.h">
-      <Filter>한나</Filter>
+      <Filter>한나\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIToolTestScene.h">
+      <Filter>한나\UIToolTestScene</Filter>
     </ClInclude>
     <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\cMapToolScene</Filter>
@@ -432,16 +436,16 @@
       <Filter>동욱\씬%28Test%29</Filter>
     </ClCompile>
     <ClCompile Include="cUIManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>한나\UIManager</Filter>
     </ClCompile>
     <ClCompile Include="cUITool.cpp">
-      <Filter>한나</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIToolTestScene.cpp">
-      <Filter>한나</Filter>
+      <Filter>한나\UITool</Filter>
     </ClCompile>
     <ClCompile Include="cUIGrid.cpp">
-      <Filter>한나</Filter>
+      <Filter>한나\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIToolTestScene.cpp">
+      <Filter>한나\UIToolTestScene</Filter>
     </ClCompile>
     <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\cMapToolScene</Filter>
