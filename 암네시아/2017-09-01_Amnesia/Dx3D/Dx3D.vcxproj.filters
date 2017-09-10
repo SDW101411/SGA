@@ -94,8 +94,8 @@
     <Filter Include="한나\UIToolTestScene">
       <UniqueIdentifier>{f4636067-05e2-41af-9559-b1b001173232}</UniqueIdentifier>
     </Filter>
-    <Filter Include="동욱\플레이어%28cPlayer%29">
-      <UniqueIdentifier>{0dac3724-d297-458a-a96d-ee1800551380}</UniqueIdentifier>
+    <Filter Include="영빈\MapToolScene">
+      <UniqueIdentifier>{181a899c-05d2-41e6-aafa-b975ebfc0590}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -283,10 +283,7 @@
       <Filter>한나\UIToolTestScene</Filter>
     </ClInclude>
     <ClInclude Include="cMapToolScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cPlayer.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -453,10 +450,7 @@
       <Filter>한나\UIToolTestScene</Filter>
     </ClCompile>
     <ClCompile Include="cMapToolScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayer.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>영빈\MapToolScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
