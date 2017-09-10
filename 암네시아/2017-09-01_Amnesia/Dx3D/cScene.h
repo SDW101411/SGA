@@ -10,5 +10,6 @@ public:
 	virtual ~cScene();
 	virtual void Update();
 	virtual void Render();
+	virtual void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
 

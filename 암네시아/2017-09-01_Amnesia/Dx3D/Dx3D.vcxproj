@@ -114,6 +114,7 @@
     <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cObjMap.h" />
     <ClInclude Include="cPlayer.h" />
+    <ClInclude Include="cPlayer_Ctrl.h" />
     <ClInclude Include="cPyramid.h" />
     <ClInclude Include="cRay.h" />
     <ClInclude Include="cScene.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cObjMap.cpp" />
     <ClCompile Include="cPlayer.cpp" />
+    <ClCompile Include="cPlayer_Ctrl.cpp" />
     <ClCompile Include="cPyramid.cpp" />
     <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cScene.cpp" />

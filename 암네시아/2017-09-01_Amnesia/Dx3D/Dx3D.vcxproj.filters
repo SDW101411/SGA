@@ -282,10 +282,13 @@
     <ClInclude Include="cUIToolTestScene.h">
       <Filter>한나\UIToolTestScene</Filter>
     </ClInclude>
-    <ClInclude Include="cMapToolScene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cPlayer.h">
+      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayer_Ctrl.h">
+      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapToolScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -456,7 +459,10 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cPlayer.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayer_Ctrl.cpp">
+      <Filter>동욱\플레이어%28cPlayer%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
