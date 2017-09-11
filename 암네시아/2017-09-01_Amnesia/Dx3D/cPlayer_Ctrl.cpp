@@ -4,6 +4,8 @@
 // d
 cPlayer_Ctrl::cPlayer_Ctrl()
 {
+	Target = new D3DXVECTOR3(0.f,0.f,0.f);
+
 }
 
 

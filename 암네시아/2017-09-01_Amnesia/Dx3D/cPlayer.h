@@ -1,5 +1,6 @@
 #pragma once
 class cSkinnedMesh;
+class cPlayer_Ctrl;
 class cPlayer
 {
 private:

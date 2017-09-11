@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cPlayer.h"
 #include "cSkinnedMesh.h"
+#include "cPlayer_Ctrl.h"
 
 
 cPlayer::cPlayer()

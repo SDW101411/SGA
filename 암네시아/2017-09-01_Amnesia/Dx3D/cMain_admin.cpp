@@ -12,7 +12,7 @@ cMain_Game에서 가져온 값들 Update와 Render, MsgProc
 cMain_admin::cMain_admin()
 	:m_pNow_Scene(NULL)
 {
-	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
+	m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
 	//m_pNow_Scene = new cMapToolScene; // 맵툴 테스트 입니다 - 영빈 -
 }
 
