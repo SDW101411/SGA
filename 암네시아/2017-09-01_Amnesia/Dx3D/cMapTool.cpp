@@ -3,6 +3,7 @@
 #include "cGridNode.h"
 #include "cAStar.h"
 #include "cRay.h"
+#include "cMapObject.h"
 
 cMapTool::cMapTool()
 {
@@ -16,6 +17,11 @@ cMapTool::~cMapTool()
 		{
 			SAFE_DELETE(m_nodeList[row][col]);
 		}
+	}
+
+	for each(auto p in m_objList)
+	{
+		SAFE_DELETE(p.second);
 	}
 }
 
@@ -32,11 +38,22 @@ void cMapTool::Update()
 
 void cMapTool::Render()
 {
-	for (int row = 0; row < m_row; row++)
+	if (KEYMANAGER->isToggleKey('Q'))
 	{
-		for (int col = 0; col < m_col; col++)
+		for (int row = 0; row < m_row; row++)
 		{
-			SAFE_RENDER(m_nodeList[row][col]);
+			for (int col = 0; col < m_col; col++)
+			{
+				SAFE_RENDER(m_nodeList[row][col]);
+			}
+		}
+	}
+
+	if (KEYMANAGER->isToggleKey('E'))
+	{
+		for each (auto p in m_objList)
+		{
+			p.second->Render();
 		}
 	}
 }
@@ -57,6 +74,28 @@ void cMapTool::CreateNode(int row, int col)
 	cGridNode* pNode = new cGridNode;
 	pNode->SetUp(pos);
 	m_nodeList[row][col] = pNode;
+}
+
+void cMapTool::CreateObject(int id, D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scl)
+{
+	int row = abs((pos.x - m_leftTop.x + GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	int col = abs((pos.z - m_leftTop.z - GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	if (row < 0 || row >= m_row || col < 0 || col >= m_col) return;
+	D3DXVECTOR3 _pos = m_leftTop;
+	_pos.x += row * GRIDNODE_SIZE;
+	_pos.z -= col * GRIDNODE_SIZE;
+	_pos.y = 0;
+	if (m_objList[id])
+	{
+		m_objList[id]->AddObject(_pos, rot, scl);
+	}
+	else
+	{
+		cMapObject* pObj = new cMapObject;
+		pObj->Setup(id);
+		pObj->AddObject(_pos, rot, scl);
+		m_objList[id] = pObj;
+	}
 }
 
 vector<D3DXVECTOR3> cMapTool::FindPickingGround()

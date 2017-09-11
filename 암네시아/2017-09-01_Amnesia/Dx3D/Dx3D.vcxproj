@@ -107,6 +107,8 @@
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMain_admin.h" />
+    <ClInclude Include="cMapObject.h" />
+    <ClInclude Include="cMapObjState.h" />
     <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
@@ -169,6 +171,8 @@
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
+    <ClCompile Include="cMapObject.cpp" />
+    <ClCompile Include="cMapObjState.cpp" />
     <ClCompile Include="cMapToolScene.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />

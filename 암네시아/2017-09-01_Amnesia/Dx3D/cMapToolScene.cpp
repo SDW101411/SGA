@@ -5,6 +5,7 @@
 
 cMapToolScene::cMapToolScene()
 	: m_pPickingArea(NULL)
+	, m_state(0)
 {
 	m_pMapTool = new cMapTool;
 	m_pMapTool->SetUp(D3DXVECTOR3(0, 0, 0), 10, 10);
@@ -25,12 +26,16 @@ cMapToolScene::~cMapToolScene()
 
 void cMapToolScene::Update()
 {
+	if (KEYMANAGER->isOnceKeyDown('1'))m_state = MAPTOOL_STATE_DRAW_GRID;
+	if (KEYMANAGER->isOnceKeyDown('2'))m_state = MAPTOOL_STATE_DRAW_CUBE;
+
 	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON))
 	{
 		D3DXVECTOR3 pos;
 		if (m_pMapTool->FindPickingPosition(pos, m_ground))
 		{
-			m_pMapTool->CreateNode(pos);
+			if(m_state == MAPTOOL_STATE_DRAW_GRID) m_pMapTool->CreateNode(pos);
+			else m_pMapTool->CreateObject(0, pos);
 		}
 	}
 	SAFE_UPDATE(m_pMapTool);
@@ -38,15 +43,15 @@ void cMapToolScene::Update()
 
 void cMapToolScene::Render()
 {
+	RenderPickingArea();
 	SAFE_RENDER(m_pMapTool);
-	//RenderPickingArea();
 }
 
 void cMapToolScene::SetupPickingArea()
 {
 	SAFE_RELEASE(m_pPickingArea);
 
-	D3DXCreateMeshFVF(2, 4, D3DXMESH_MANAGED, ST_PN_VERTEX::FVF, g_pD3DDevice, &m_pPickingArea);
+	D3DXCreateMeshFVF(2, 6, D3DXMESH_MANAGED, ST_PN_VERTEX::FVF, g_pD3DDevice, &m_pPickingArea);
 
 	ST_PN_VERTEX* vertex;
 	m_pPickingArea->LockVertexBuffer(0, (VOID**)&vertex);
@@ -64,14 +69,14 @@ void cMapToolScene::SetupPickingArea()
 	}
 	m_pPickingArea->UnlockIndexBuffer();
 
-	DWORD* attribute;
-	m_pPickingArea->LockAttributeBuffer(0, &attribute);
-	attribute[0] = 0;
-	attribute[1] = 0;
-	m_pPickingArea->UnlockAttributeBuffer();
+	//DWORD* attribute;
+	//m_pPickingArea->LockAttributeBuffer(0, &attribute);
+	//attribute[0] = 0;
+	//attribute[1] = 0;
+	//m_pPickingArea->UnlockAttributeBuffer();
 
 	D3DXVECTOR3 leftTop = m_pMapTool->GetLeftTopPos();
-	D3DXMatrixTranslation(&m_matWorld, leftTop.x, 0, leftTop.z);
+	D3DXMatrixTranslation(&m_matWorld, leftTop.x, -0.1f, leftTop.z);
 }
 
 void cMapToolScene::RenderPickingArea()
