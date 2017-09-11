@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include "cUIToolTestScene.h"
 #include "cUITool.h"
+#include "cUIImageView.h"
 
 cUIToolTestScene::cUIToolTestScene()
-	: m_pUITool(NULL)
+	//: m_pUITool(NULL)
+	: m_pSprite(NULL)
+	, m_pUIRoot(NULL)
 {
-<<<<<<< HEAD
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	//m_pUITool = new cUITool;
@@ -15,32 +17,26 @@ cUIToolTestScene::cUIToolTestScene()
 	pImageView->SetTexture("UI/tab_UI.png");
 	pImageView->SetScaling(0.595f, 0.5f);
  	m_pUIRoot = pImageView;
-=======
->>>>>>> feff05f73f58a371e9e2c70f41684c9609ea2af4
 }
 
 cUIToolTestScene::~cUIToolTestScene()
 {
-<<<<<<< HEAD
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
 	//SAFE_DELETE(m_pUITool);
-=======
-	SAFE_DELETE(m_pUITool);
-}
-
-void cUIToolTestScene::Setup()
-{
-	m_pUITool = new cUITool;
-	m_pUITool->Setup();
->>>>>>> feff05f73f58a371e9e2c70f41684c9609ea2af4
 }
 
 void cUIToolTestScene::Update()
 {
+	if (m_pUIRoot) m_pUIRoot->Update();
 }
 
 void cUIToolTestScene::Render()
 {
-	SAFE_RENDER(m_pUITool);
+	//SAFE_RENDER(m_pUITool);
+
+	if(KEYMANAGER->isToggleKey(VK_TAB))
+	{
+		m_pUIRoot->Render(m_pSprite);
+	}
 }
