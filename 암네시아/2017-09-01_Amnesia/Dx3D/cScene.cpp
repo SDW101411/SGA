@@ -16,12 +16,10 @@ cScene::~cScene()
 
 void cScene::Update()
 {
-	m_pPlayer->Update();
 }
 
 void cScene::Render()
 {
-	m_pPlayer->Render();
 }
 
 void cScene::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

@@ -127,9 +127,7 @@
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cTabUI.h" />
     <ClInclude Include="cTextureManager.h" />
-    <ClInclude Include="cTimer.h" />
     <ClInclude Include="cTimeManager.h" />
-    <ClInclude Include="cTimer_Manager.h" />
     <ClInclude Include="cUIButton.h" />
     <ClInclude Include="cUIGrid.h" />
     <ClInclude Include="cUIImageView.h" />
@@ -191,9 +189,7 @@
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cTabUI.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
-    <ClCompile Include="cTimer.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
-    <ClCompile Include="cTimer_Manager.cpp" />
     <ClCompile Include="cUIButton.cpp" />
     <ClCompile Include="cUIGrid.cpp" />
     <ClCompile Include="cUIImageView.cpp" />

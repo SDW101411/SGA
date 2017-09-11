@@ -1,15 +1,11 @@
 #pragma once
 
-#include "cScene.h"
-
 class cUITool;
 
-class cUIToolTestScene : public cScene
+class cUIToolTestScene
 {
 private:
-	cUITool*		m_pUITool;
-	cUIObject*		m_pUIRoot;
-	LPD3DXSPRITE	m_pSprite;
+	cUITool* m_pUITool;
 
 public:
 	cUIToolTestScene();
