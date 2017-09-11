@@ -38,13 +38,8 @@ void cUIToolTestScene::Render()
 {
 	//SAFE_RENDER(m_pUITool);
 
-	//if (KEYMANAGER->isOnceKeyDown(VK_TAB))
-	if (KEYMANAGER->isStayKeyDown('Q'))
+	if (KEYMANAGER->isToggleKey(VK_TAB))
 	{
 		m_pUIRoot->Render(m_pSprite);
 	}
-	/*if (KEYMANAGER->isOnceKeyUp(VK_TAB))
-	{
-
-	}*/
 }
