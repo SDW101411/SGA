@@ -97,6 +97,9 @@
     <Filter Include="동욱\플레이어%28cPlayer%29">
       <UniqueIdentifier>{0dac3724-d297-458a-a96d-ee1800551380}</UniqueIdentifier>
     </Filter>
+    <Filter Include="선생님\Time">
+      <UniqueIdentifier>{f3253d34-7094-4952-ac70-010a9437c68b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -291,6 +294,12 @@
     <ClInclude Include="cMapToolScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="cTimer.h">
+      <Filter>선생님\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="cTimer_Manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -463,6 +472,12 @@
     </ClCompile>
     <ClCompile Include="cPlayer_Ctrl.cpp">
       <Filter>동욱\플레이어%28cPlayer%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cTimer.cpp">
+      <Filter>선생님\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="cTimer_Manager.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

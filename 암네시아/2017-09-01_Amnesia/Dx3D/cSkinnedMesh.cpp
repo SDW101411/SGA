@@ -37,7 +37,8 @@ cSkinnedMesh::cSkinnedMesh()
 
 cSkinnedMesh::~cSkinnedMesh(void)
 {
-	SAFE_RELEASE(m_pAnimController);
+	//SAFE_RELEASE(m_pAnimController);
+	SAFE_DELETE(m_pAnimController);
 }
 
 void cSkinnedMesh::Load( char* szDirectory, char* szFilename )

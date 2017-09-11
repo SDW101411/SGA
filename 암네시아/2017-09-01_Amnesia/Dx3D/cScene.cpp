@@ -14,6 +14,10 @@ cScene::~cScene()
 	SAFE_DELETE(m_pPlayer);
 }
 
+void cScene::Setup()
+{
+}
+
 void cScene::Update()
 {
 	m_pPlayer->Update();
