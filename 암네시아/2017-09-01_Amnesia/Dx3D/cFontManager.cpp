@@ -19,17 +19,17 @@ LPD3DXFONT cFontManager::GetFont( eFontType e )
 
 		if(e == E_NORMAL)
 		{
-			fd.Height			= 24;
-			fd.Width			= 12;
+			fd.Height			= 20;
+			fd.Width			= 8;
 			fd.Weight			= FW_NORMAL;
 			fd.Italic			= false;
 			fd.CharSet			= DEFAULT_CHARSET;
 			fd.OutputPrecision  = OUT_DEFAULT_PRECIS;
 			fd.PitchAndFamily   = FF_DONTCARE;
 			//AddFontResource("umberto.ttf");
-			strcpy_s(fd.FaceName, "궁서체");	//글꼴 스타일
+			strcpy_s(fd.FaceName, "굴림");	//글꼴 스타일
 		}
-		else if(e == E_QUEST)
+		else if(e == E_EXPLANATION)
 		{
 			fd.Height			= 50;
 			fd.Width			= 25;
@@ -39,9 +39,21 @@ LPD3DXFONT cFontManager::GetFont( eFontType e )
 			fd.OutputPrecision  = OUT_DEFAULT_PRECIS;
 			fd.PitchAndFamily   = FF_DONTCARE;
 			//AddFontResource("umberto.ttf");
+			strcpy_s(fd.FaceName, "굴림");	//글꼴 스타일
+		}
+		else if (e == E_NUMBER)
+		{
+			fd.Height = 50;
+			fd.Width = 25;
+			fd.Weight = FW_NORMAL;
+			fd.Italic = false;
+			fd.CharSet = DEFAULT_CHARSET;
+			fd.OutputPrecision = OUT_DEFAULT_PRECIS;
+			fd.PitchAndFamily = FF_DONTCARE;
+			//AddFontResource("umberto.ttf");
 			strcpy_s(fd.FaceName, "궁서체");	//글꼴 스타일
 		}
-		
+
 		D3DXCreateFontIndirect(g_pD3DDevice, &fd, &m_mapFont[e]);
 	}
 

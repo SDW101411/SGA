@@ -11,7 +11,8 @@ public:
 	enum eFontType
 	{
 		E_NORMAL,
-		E_QUEST,
+		E_EXPLANATION,
+		E_NUMBER,
 		E_END,
 	};
 
