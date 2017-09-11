@@ -8,17 +8,6 @@ cUIToolTestScene::cUIToolTestScene()
 	: m_pSprite(NULL)
 	, m_pUIRoot(NULL)
 {
-}
-
-cUIToolTestScene::~cUIToolTestScene()
-{
-	SAFE_RELEASE(m_pSprite);
-	SAFE_RELEASE(m_pUIRoot);
-	//SAFE_DELETE(m_pUITool);
-}
-
-void cUIToolTestScene::Setup()
-{
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	//m_pUITool = new cUITool;
@@ -26,7 +15,15 @@ void cUIToolTestScene::Setup()
 
 	cUIImageView* pImageView = new cUIImageView;
 	pImageView->SetTexture("UI/tab_UI.png");
-	m_pUIRoot = pImageView;
+	pImageView->SetScaling(0.595f, 0.5f);
+ 	m_pUIRoot = pImageView;
+}
+
+cUIToolTestScene::~cUIToolTestScene()
+{
+	SAFE_RELEASE(m_pSprite);
+	SAFE_RELEASE(m_pUIRoot);
+	//SAFE_DELETE(m_pUITool);
 }
 
 void cUIToolTestScene::Update()

@@ -35,7 +35,7 @@ void cMainGame::Setup()
 	m_pGrid->Setup(100,1.0f);
 	
 	m_pMain_admin = new cMain_admin;
-	m_pMain_admin->Setup();
+//	m_pMain_admin->Setup();
 
 	SetLight();
 }

@@ -15,7 +15,6 @@ public:
 	cUIToolTestScene();
 	~cUIToolTestScene();
 
-	void Setup();
 	void Update();
 	void Render();
 };
