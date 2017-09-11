@@ -96,6 +96,25 @@ void cSkinnedMesh::UpdateAndRender()
 	}
 }
 
+void cSkinnedMesh::UpdateAndRender(D3DXMATRIX Intersept)
+{
+	if (m_pAnimController)
+	{
+		m_pAnimController->AdvanceTime(g_pTimeManager->GetDeltaTime(), NULL);
+	}
+
+	if (m_pRootFrame)
+	{
+		D3DXMATRIXA16 mat;
+		D3DXMatrixTranslation(&mat, m_vPosition.x, m_vPosition.y, m_vPosition.z);
+
+		mat *= Intersept;
+
+		Update(m_pRootFrame, &mat);
+		Render(m_pRootFrame);
+	}
+}
+
 void cSkinnedMesh::Render(ST_BONE* pBone /*= NULL*/)
 {
 	assert(pBone);

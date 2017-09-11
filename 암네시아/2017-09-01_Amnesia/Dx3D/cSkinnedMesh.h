@@ -24,6 +24,7 @@ public:
 	~cSkinnedMesh(void);
 	
 	void UpdateAndRender();
+	void UpdateAndRender(D3DXMATRIX Intersept);
 	void SetAnimationIndex(int nIndex);
 
 	void SetRandomTrackPosition(); // 테스트용

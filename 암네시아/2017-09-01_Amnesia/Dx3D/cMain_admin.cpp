@@ -3,10 +3,12 @@
 #include "cScene.h"
 #include "cScene_Test_1.h"
 #include "cMapToolScene.h"	// 테스트 씬 입니다 -영빈-
-/*2017-09-02 오후 1시 25분 메인 게임 입니다. 
-이곳에서 부터 게임제작을 시작 하도록 합시다. 
-cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
-*/
+		
+/*
+		2017-09-02 Main_admin. 
+		이곳에서 부터 게임제작을 시작 하도록 합시다. 
+		cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
+		*/
 
 
 cMain_admin::cMain_admin()
@@ -35,4 +37,6 @@ void cMain_admin::Render()
 
 void cMain_admin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	if(m_pNow_Scene)
+	m_pNow_Scene->MsgProc(hWnd, message, wParam, lParam);
 }

@@ -31,6 +31,8 @@ void cMainGame::Setup()
 	m_pCrtCtrl = new cCrtCtrl;
 	m_pCamera = new cCamera;
 	m_pCamera->Setup(m_pCrtCtrl->GetPosition());
+
+
 	m_pGrid = new cGrid;
 	m_pGrid->Setup(100,1.0f);
 	

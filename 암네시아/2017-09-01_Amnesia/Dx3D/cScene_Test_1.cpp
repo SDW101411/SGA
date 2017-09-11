@@ -10,19 +10,21 @@ cScene_Test_1::cScene_Test_1()
 
 cScene_Test_1::~cScene_Test_1()
 {
+	SAFE_DELETE(m_pPlayer);
 }
 
 void cScene_Test_1::Update()
 {
-	//int D = 0;
-	m_pPlayer->Update();
+	SAFE_UPDATE(m_pPlayer);
 }
 
 void cScene_Test_1::Render()
 {
-	m_pPlayer->Render();
+	SAFE_RENDER(m_pPlayer);
 }
 
 void cScene_Test_1::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	if(m_pPlayer)
+	m_pPlayer->MsgProc(hWnd, message, wParam, lParam);
 }
