@@ -97,6 +97,12 @@
     <Filter Include="동욱\플레이어%28cPlayer%29">
       <UniqueIdentifier>{0dac3724-d297-458a-a96d-ee1800551380}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\MapObject">
+      <UniqueIdentifier>{cd9c7c7c-f0e5-49e3-ba85-05396d86ee30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\MapToolScene">
+      <UniqueIdentifier>{c30d5bae-a3c3-4c4d-b4b3-c999db11ec53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -288,8 +294,14 @@
     <ClInclude Include="cPlayer_Ctrl.h">
       <Filter>동욱\플레이어%28cPlayer%29</Filter>
     </ClInclude>
+    <ClInclude Include="cMapObject.h">
+      <Filter>영빈\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapObjState.h">
+      <Filter>영빈\MapObject</Filter>
+    </ClInclude>
     <ClInclude Include="cMapToolScene.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -455,14 +467,20 @@
     <ClCompile Include="cUIToolTestScene.cpp">
       <Filter>한나\UIToolTestScene</Filter>
     </ClCompile>
-    <ClCompile Include="cMapToolScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cPlayer.cpp">
       <Filter>동욱\플레이어%28cPlayer%29</Filter>
     </ClCompile>
     <ClCompile Include="cPlayer_Ctrl.cpp">
       <Filter>동욱\플레이어%28cPlayer%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapObject.cpp">
+      <Filter>영빈\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapObjState.cpp">
+      <Filter>영빈\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapToolScene.cpp">
+      <Filter>영빈\MapToolScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
