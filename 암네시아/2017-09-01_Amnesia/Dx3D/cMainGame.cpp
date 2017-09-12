@@ -114,9 +114,9 @@ void cMainGame::SetLight()
 
 void cMainGame::OnClick( cUIButton* pSender )
 {
-	//cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
+	//	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
 	/*if(pTextView == NULL) return;
-
+	
 	if (pSender->GetTag() == E_CONFIRM_BUTTON)
 	{
 		pTextView->SetText("위 버튼 눌림");

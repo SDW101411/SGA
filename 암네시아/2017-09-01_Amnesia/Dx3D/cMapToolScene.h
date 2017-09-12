@@ -3,9 +3,17 @@
 
 class cMapTool;
 
+enum MAPTOOL_STATE
+{
+	MAPTOOL_STATE_DRAW_GRID,
+	MAPTOOL_STATE_DRAW_CUBE,
+};
+
 class cMapToolScene : public cScene
 {
 private:
+	int m_state;
+
 	cMapTool*			m_pMapTool;
 	vector<D3DXVECTOR3> m_ground;
 	ID3DXMesh*			m_pPickingArea;
