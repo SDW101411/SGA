@@ -32,14 +32,6 @@ void cPlayer::Update()
 
 void cPlayer::Render()
 {
-	
-
-
-
-	
-
-
-
 	if (m_PTarget_Mesh)
 	{
 		D3DXVECTOR3 Hand_Vector = D3DXVECTOR3(

@@ -16,6 +16,7 @@ cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save)
 	m_pPos = new D3DXVECTOR3(0.f, 0.f, 0.f);
 	*m_pPos = m_Camera = Save;
 	m_Camera.y += 10.0f;
+	check = 0.f;
 }
 
 cPlayer_Ctrl::~cPlayer_Ctrl()
@@ -124,17 +125,37 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 
 	D3DXVec3Normalize(&Direction, &Direction);
 
+	
+	static float Speed = 0.04f;
+
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		*m_pPos += Direction * m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += 10.0f;
+		m_Camera.y += 10.0f + check;
+		check += Speed;
+
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
 		*m_pPos += Direction * -m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += 10.0f;
+		m_Camera.y += 10.0f + check;
+		check += Speed * -1;
+	}
+
+	if (check >= 1.f)
+	{
+		Speed *= -1;
+	}
+	else if (check < 0.f)
+	{
+		Speed *= -1;
+	}
+
+	if (KEYMANAGER->isStayKeyDown('F'))
+	{
+
 	}
 }
 
