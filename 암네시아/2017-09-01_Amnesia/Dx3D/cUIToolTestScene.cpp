@@ -111,11 +111,11 @@ void cUIToolTestScene::OnClick(cUIButton* pSender)
 
 	if (pSender->GetTag() == E_HEART)
 	{
-		pTextView->SetText("Ã¼·Â\n\n±ò²ûÇÏ´Ù");
+		pTextView->SetText("Ã¼·Â");
 	}
 	else if (pSender->GetTag() == E_BRAIN)
 	{
-		pTextView->SetText("Á¤½Å·Â");
+		pTextView->SetText("Á¤½Å·Â\n\n±ò²ûÇÏ´Ù");
 	}
 	else if (pSender->GetTag() == E_TINDER)
 	{
