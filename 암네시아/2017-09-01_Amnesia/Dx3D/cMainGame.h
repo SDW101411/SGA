@@ -25,6 +25,7 @@ public:
 
 private:
 	void SetLight();
+	virtual void OnMouse(cUIButton* pSender) override;
 	virtual void OnClick(cUIButton* pSender) override;
 };
 

@@ -2,8 +2,8 @@
 #include "cUITextView.h"
 
 
-cUITextView::cUITextView(void)
-	: m_eFontType(cFontManager::E_NORMAL)
+cUITextView::cUITextView(cFontManager::eFontType type)
+	: m_eFontType(type)
 	, m_dwDT(DT_LEFT | DT_TOP | DT_NOCLIP)
 	, m_dwColor(D3DCOLOR_XRGB(255, 255, 255))
 {
