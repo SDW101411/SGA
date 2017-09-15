@@ -5,6 +5,7 @@
 cUIObject::cUIObject(void)
 	: m_vPosition(0, 0, 0)
 	, m_vScaling(1, 1, 1)
+	, m_fAngle(0.0f)
 	, m_stSize(0, 0)
 	, m_pParent(NULL)
 	, m_nTag(0)
@@ -29,6 +30,8 @@ void cUIObject::AddChild( cUIObject* pChild )
 void cUIObject::Update()
 {
 	D3DXMatrixScaling(&m_matWorld, m_vScaling.x, m_vScaling.y, m_vScaling.z);
+	D3DXMatrixRotationZ(&m_matR, m_fAngle);
+	m_matWorld *= m_matR;
 	m_matWorld._41 = m_vPosition.x;
 	m_matWorld._42 = m_vPosition.y;
 	if(m_pParent)
@@ -63,6 +66,11 @@ void cUIObject::SetScaling(float x, float y)
 	m_vScaling.x = x;
 	m_vScaling.y = y;
 	m_vScaling.z = 1.0f;
+}
+
+void cUIObject::SetRotationX(float x)
+{
+	m_fAngle = x;
 }
 
 void cUIObject::GetRect(RECT* pRect)

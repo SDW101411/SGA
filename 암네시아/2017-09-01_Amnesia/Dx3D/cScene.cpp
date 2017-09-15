@@ -4,6 +4,7 @@
 
 //Scene
 cScene::cScene()
+	:UI_On(false)
 {
 	m_pPlayer = new cPlayer;
 }

@@ -5,6 +5,7 @@ class cUIButton;
 class iButtonDelegate
 {
 public:
+	virtual void OnMouse(cUIButton* pSender) PURE;
 	virtual void OnClick(cUIButton* pSender) PURE;
 };
 

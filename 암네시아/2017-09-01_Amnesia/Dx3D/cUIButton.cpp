@@ -46,11 +46,12 @@ void cUIButton::Update()
 		{
 			if (m_eButtonStatus == E_SELECTED)
 			{
-			//	if(m_pDelegate) m_pDelegate->OnClick(this);
+				if(m_pDelegate) m_pDelegate->OnClick(this);
 			}
 			else if (m_eButtonStatus == E_MOUSEOVER)
 			{
-				if (m_pDelegate) m_pDelegate->OnClick(this);
+				if (m_pDelegate) m_pDelegate->OnMouse(this);
+				//if (m_pDelegate) m_pDelegate->OnClick(this);
 			}
 
 			m_eButtonStatus = E_MOUSEOVER;

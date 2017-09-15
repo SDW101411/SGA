@@ -37,7 +37,6 @@ void cMainGame::Setup()
 	m_pGrid->Setup(100,1.0f);
 	
 	m_pMain_admin = new cMain_admin;
-//	m_pMain_admin->Setup();
 
 	SetLight();
 }
@@ -111,6 +110,22 @@ void cMainGame::SetLight()
 	g_pD3DDevice->SetLight(0, &stLight);
 	g_pD3DDevice->LightEnable(0, true);
 }
+
+void cMainGame::OnMouse(cUIButton* pSender)
+{
+	//	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
+	/*if(pTextView == NULL) return;
+
+	if (pSender->GetTag() == E_CONFIRM_BUTTON)
+	{
+	pTextView->SetText("위 버튼 눌림");
+	}
+	else if (pSender->GetTag() == E_CANCEL_BUTTON)
+	{
+	pTextView->SetText("아래 버튼 눌림");
+	}*/
+}
+
 
 void cMainGame::OnClick( cUIButton* pSender )
 {

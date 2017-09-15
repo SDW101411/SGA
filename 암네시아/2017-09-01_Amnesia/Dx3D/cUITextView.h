@@ -8,7 +8,7 @@ protected:
 	SYNTHESIZE(DWORD, m_dwDT, DrawTextFormat);
 	SYNTHESIZE(D3DCOLOR, m_dwColor, Color);
 public:
-	cUITextView(void);
+	cUITextView(cFontManager::eFontType type);
 	virtual ~cUITextView(void);
 
 	// cUIObject override

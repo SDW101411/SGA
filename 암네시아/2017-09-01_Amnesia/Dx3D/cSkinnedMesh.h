@@ -28,6 +28,10 @@ public:
 	void SetAnimationIndex(int nIndex);
 
 	void SetRandomTrackPosition(); // 테스트용
+
+	float Get_Return_ANIM_Time();
+	void Anireset();
+
 private:
 	cSkinnedMesh();
 	void Load(char* szFolder, char* szFilename);

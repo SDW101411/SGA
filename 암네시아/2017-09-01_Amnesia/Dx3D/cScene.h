@@ -5,6 +5,7 @@ class cScene
 private:
 	SYNTHESIZE(Scene_oBject_List, oBject_List, OBJECTLIST);
 	cPlayer *m_pPlayer;
+	SYNTHESIZE(bool, UI_On);
 public:
 	cScene();
 	virtual ~cScene();
