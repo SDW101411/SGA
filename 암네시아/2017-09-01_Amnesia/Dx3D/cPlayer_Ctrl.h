@@ -1,4 +1,7 @@
 #pragma once
+
+
+
 class cPlayer_Ctrl
 {//d
 private:
@@ -14,6 +17,9 @@ private:
 	float			m_fAngleX;
 	float			m_fAngleY;
 	POINT			m_ptPrevMouse;
+	float			check;
+
+	float			fx, fy;
 
 
 	SYNTHESIZE_PASS_BY_REF(D3DXMATRIX, m_World, m_World_f);

@@ -24,6 +24,7 @@ cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 		pSkinnedMesh->m_pAnimController->GetMaxNumTracks(),
 		pSkinnedMesh->m_pAnimController->GetMaxNumEvents(),
 		&m_pAnimController);
+	//pSkinnedMesh->m_pAnimController->
 }
 
 cSkinnedMesh::cSkinnedMesh()
@@ -341,3 +342,17 @@ void cSkinnedMesh::SetRandomTrackPosition()
 {
 	m_pAnimController->SetTrackPosition(0, (rand() % 100) / 10.0f);
 }
+
+float cSkinnedMesh::Get_Return_ANIM_Time()
+{
+	ID3DXAnimationSet *Save;
+	m_pAnimController->GetAnimationSet(0, &Save);
+	
+	return Save->GetPeriod();
+}
+
+void cSkinnedMesh::Anireset()
+{
+	m_pAnimController->ResetTime();
+}
+

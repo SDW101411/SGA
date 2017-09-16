@@ -12,6 +12,9 @@ cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save)
 	, m_isLButtonDown(false)
 	, m_Speed(0.3f)
 	, m_pTarget(NULL)
+	, check(0.0f)
+	, fx(0.0f)
+	, fy(0.0f)
 {
 	m_pPos = new D3DXVECTOR3(0.f, 0.f, 0.f);
 	*m_pPos = m_Camera = Save;
@@ -34,10 +37,6 @@ void cPlayer_Ctrl::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam
 {
 	cPlayer_cCamera_MsgProc(hWnd, message, wParam, lParam);
 }
-
-
-
-
 
 void cPlayer_Ctrl::cPlayer_cCamera_Update()
 {
@@ -67,7 +66,6 @@ void cPlayer_Ctrl::cPlayer_cCamera_Update()
 
 void cPlayer_Ctrl::cPlayer_cCamera_MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	//bool Mouse_Move_Check = falsae;;
 	switch (message)
 	{
 	case WM_LBUTTONDOWN:
@@ -112,9 +110,6 @@ void cPlayer_Ctrl::cPlayer_cCamera_MsgProc(HWND hWnd, UINT message, WPARAM wPara
 	}
 }
 
-
-
-
 void cPlayer_Ctrl::cPlayer_cMove_Update()
 {
 	D3DXVECTOR3 Direction;
@@ -124,21 +119,39 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 
 	D3DXVec3Normalize(&Direction, &Direction);
 
+	
+	static float Speed = 0.04f;
+
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		*m_pPos += Direction * m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += 10.0f;
+		m_Camera.y += 10.0f + check;
+		check += Speed;
+
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
 		*m_pPos += Direction * -m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += 10.0f;
+		m_Camera.y += 10.0f + check;
+		check += Speed * -1;
+	}
+
+	if (check >= 1.f)
+	{
+		Speed *= -1;
+	}
+	else if (check < 0.f)
+	{
+		Speed *= -1;
+	}
+
+	if (KEYMANAGER->isStayKeyDown('F'))
+	{
+
 	}
 }
-
-
 
 D3DXVECTOR3 * cPlayer_Ctrl::Get_m_pTarget()
 {
@@ -171,19 +184,22 @@ D3DXMATRIX cPlayer_Ctrl::Get_m_pTarget_Matrix(D3DXVECTOR3 Insert)
 
 D3DXMATRIX cPlayer_Ctrl::Get_m_pTarget_Matrix()
 {
-	/*D3DXMATRIX matR;
-	D3DXVECTOR3 View = m_pViewTarget;
-	D3DXVec3Normalize(&View, &View);
-	D3DXMatrixIdentity(&matR);
-	D3DXMatrixLookAtLH(&matR,
-		&m_Camera,
-		&(m_pViewTarget),
-		&D3DXVECTOR3(0, 1, 0));
 
-	return matR;*/
 	D3DXMATRIX matRX, matRY, matR;
-	D3DXMatrixRotationX(&matRX, m_fAngleX * -1);
-	D3DXMatrixRotationY(&matRY, m_fAngleY + 3.14);
+	float SAVE = fy - m_fAngleY;
+	if (fabs(SAVE) > 0.0001)
+	{
+		fy -= SAVE * 0.1f ;
+	}
+
+	SAVE = fx - m_fAngleX;
+	if (fabs(SAVE) > 0.0001)
+	{
+		fx -= SAVE * 0.1f;
+	}
+
+	D3DXMatrixRotationX(&matRX, fx * -1);
+	D3DXMatrixRotationY(&matRY, fy + 3.14);
 	D3DXMatrixIdentity(&matR);
 	matR = matRX * matRY;
 
