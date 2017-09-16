@@ -103,6 +103,9 @@
     <Filter Include="영빈\MapToolScene">
       <UniqueIdentifier>{c30d5bae-a3c3-4c4d-b4b3-c999db11ec53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\UI정리">
+      <UniqueIdentifier>{5df5349a-8d09-4c03-9aab-2887835f1f25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -303,6 +306,15 @@
     <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
+    <ClInclude Include="IUI.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_In_Game.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
+    <ClInclude Include="cUITool_In_Game_Test.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -481,6 +493,15 @@
     </ClCompile>
     <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\MapToolScene</Filter>
+    </ClCompile>
+    <ClCompile Include="IUI.cpp">
+      <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_In_Game.cpp">
+      <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cUITool_In_Game_Test.cpp">
+      <Filter>한나\UI정리</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

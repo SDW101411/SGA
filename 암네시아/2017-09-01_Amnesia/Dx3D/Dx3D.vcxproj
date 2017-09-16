@@ -138,9 +138,12 @@
     <ClInclude Include="cUITextView.h" />
     <ClInclude Include="cUITool.h" />
     <ClInclude Include="cUIToolTestScene.h" />
+    <ClInclude Include="cUITool_In_Game_Test.h" />
+    <ClInclude Include="cUI_In_Game.h" />
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
+    <ClInclude Include="IUI.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="singletonBase.h" />
     <ClInclude Include="stdafx.h" />
@@ -202,9 +205,12 @@
     <ClCompile Include="cUITextView.cpp" />
     <ClCompile Include="cUITool.cpp" />
     <ClCompile Include="cUIToolTestScene.cpp" />
+    <ClCompile Include="cUITool_In_Game_Test.cpp" />
+    <ClCompile Include="cUI_In_Game.cpp" />
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
+    <ClCompile Include="IUI.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
