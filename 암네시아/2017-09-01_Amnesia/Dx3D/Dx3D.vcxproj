@@ -113,6 +113,10 @@
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectPool.h" />
+    <ClInclude Include="cObject_bottle.h" />
+    <ClInclude Include="cObject_Game.h" />
+    <ClInclude Include="cObject_shirt_white.h" />
+    <ClInclude Include="cObject_shirt_white_Normal.h" />
     <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cObjMap.h" />
     <ClInclude Include="cPlayer.h" />
@@ -123,6 +127,7 @@
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSceneUI.h" />
     <ClInclude Include="cScene_Manager.h" />
+    <ClInclude Include="cScene_Shader_Scene_Test.h" />
     <ClInclude Include="cScene_Test_1.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
@@ -177,6 +182,10 @@
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectPool.cpp" />
+    <ClCompile Include="cObject_bottle.cpp" />
+    <ClCompile Include="cObject_Game.cpp" />
+    <ClCompile Include="cObject_shirt_white.cpp" />
+    <ClCompile Include="cObject_shirt_white_Normal.cpp" />
     <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cObjMap.cpp" />
     <ClCompile Include="cPlayer.cpp" />
@@ -187,6 +196,7 @@
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSceneUI.cpp" />
     <ClCompile Include="cScene_Manager.cpp" />
+    <ClCompile Include="cScene_Shader_Scene_Test.cpp" />
     <ClCompile Include="cScene_Test_1.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />

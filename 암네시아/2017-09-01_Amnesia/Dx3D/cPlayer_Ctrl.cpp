@@ -10,7 +10,7 @@ cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save)
 	: m_fAngleX(0.0f)
 	, m_fAngleY(0.0f)
 	, m_isLButtonDown(false)
-	, m_Speed(0.3f)
+	, m_Speed(0.1f)
 	, m_pTarget(NULL)
 	, check(0.0f)
 	, fx(0.0f)
@@ -19,6 +19,22 @@ cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save)
 	m_pPos = new D3DXVECTOR3(0.f, 0.f, 0.f);
 	*m_pPos = m_Camera = Save;
 	m_Camera.y += 10.0f;
+}
+
+cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save, float UpY)
+	: m_fAngleX(0.0f)
+	, m_fAngleY(0.0f)
+	, m_isLButtonDown(false)
+	, m_Speed(0.1f)
+	, m_pTarget(NULL)
+	, check(0.0f)
+	, fx(0.0f)
+	, fy(0.0f)
+{
+	m_pPos = new D3DXVECTOR3(0.f, 0.f, 0.f);
+	*m_pPos = m_Camera = Save;
+	m_UpY = UpY;
+	m_Camera.y += UpY;
 }
 
 cPlayer_Ctrl::~cPlayer_Ctrl()
@@ -31,6 +47,8 @@ void cPlayer_Ctrl::Update()
 {
 	cPlayer_cCamera_Update();
 	cPlayer_cMove_Update();
+
+	cCameara_seting = m_Camera;
 }
 
 void cPlayer_Ctrl::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -43,11 +61,10 @@ void cPlayer_Ctrl::cPlayer_cCamera_Update()
 	D3DXMATRIX matRX, matRY, matR;
 	D3DXMatrixRotationX(&matRX, m_fAngleX);
 	D3DXMatrixRotationY(&matRY, m_fAngleY);
-
 	D3DXMatrixIdentity(&matR);
-
 	m_pViewTarget = D3DXVECTOR3(0, 0, -10.0);
 	matR = matRX * matRY;
+
 	D3DXVec3TransformCoord(&m_pViewTarget, &m_pViewTarget, &matR);
 
 	m_pViewTarget = m_pViewTarget + m_Camera;
@@ -120,13 +137,13 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	D3DXVec3Normalize(&Direction, &Direction);
 
 	
-	static float Speed = 0.04f;
+	static float Speed = 0.02f;
 
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		*m_pPos += Direction * m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += 10.0f + check;
+		m_Camera.y += m_UpY + check;
 		check += Speed;
 
 	}
@@ -134,22 +151,17 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	{
 		*m_pPos += Direction * -m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += 10.0f + check;
+		m_Camera.y += m_UpY + check;
 		check += Speed * -1;
 	}
 
-	if (check >= 1.f)
+	if (check >= m_UpY/3)
 	{
 		Speed *= -1;
 	}
 	else if (check < 0.f)
 	{
 		Speed *= -1;
-	}
-
-	if (KEYMANAGER->isStayKeyDown('F'))
-	{
-
 	}
 }
 

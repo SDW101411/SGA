@@ -186,3 +186,8 @@ struct ST_SIZE
 #define SCENE_MANAGER cScene_Manager::getSingleton()
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;
+
+extern D3DXVECTOR3 cCameara_seting;
+extern D3DXVECTOR3 cLight_Seting;
+extern D3DXVECTOR3 cLight_Color_Seting;
+extern D3DXVECTOR3 cLight_Color_Seting_2;

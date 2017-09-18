@@ -4,6 +4,7 @@
 #include "cScene_Test_1.h"
 #include "cMapToolScene.h"   // 테스트 씬 입니다 -영빈-
 #include "cUIToolTestScene.h"
+#include "cScene_Shader_Scene_Test.h"
 /*
 		2017-09-02 Main_admin. 
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
@@ -20,6 +21,7 @@ cMain_admin::cMain_admin()
 
 	//m_pNow_Scene = new cUIToolTestScene; // UI 테스트 - LEE
 
+	m_pNow_Scene = new cScene_Shader_Scene_Test;
 }
 
 
