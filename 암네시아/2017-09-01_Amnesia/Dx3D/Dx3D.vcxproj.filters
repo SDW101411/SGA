@@ -106,6 +106,12 @@
     <Filter Include="한나\UI정리">
       <UniqueIdentifier>{5df5349a-8d09-4c03-9aab-2887835f1f25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\MainMenuScene">
+      <UniqueIdentifier>{c653b1d2-a439-408a-b988-cdfa7a2a54d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\Database">
+      <UniqueIdentifier>{728e83e4-28b3-4eb9-a8d6-02dda77cb99b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -315,6 +321,12 @@
     <ClInclude Include="cUITool_In_Game_Test.h">
       <Filter>한나\UI정리</Filter>
     </ClInclude>
+    <ClInclude Include="cMainMenuScene.h">
+      <Filter>한나\MainMenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="cDatabase.h">
+      <Filter>한나\Database</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -502,6 +514,12 @@
     </ClCompile>
     <ClCompile Include="cUITool_In_Game_Test.cpp">
       <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cMainMenuScene.cpp">
+      <Filter>한나\MainMenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="cDatabase.cpp">
+      <Filter>한나\Database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

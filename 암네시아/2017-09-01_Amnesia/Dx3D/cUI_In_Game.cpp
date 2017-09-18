@@ -2,6 +2,7 @@
 #include "cUI_In_Game.h"
 #include "cUIImageView.h"
 #include "cUITextView.h"
+#include "cUITool.h"
 
 enum
 {
@@ -27,10 +28,10 @@ cUI_In_Game::cUI_In_Game()
 	, m_szHeartGlowState("\0")
 	, m_szBrainState("\0")
 	, m_szTinderNum("\0")
-	, m_nTinderNum(0)
 	, m_nHeartHP(100)
 	, m_nBrainHP(100)
 	, m_fOilValue(0.5f)
+	, m_pBorder(NULL)
 {
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
@@ -45,6 +46,8 @@ cUI_In_Game::cUI_In_Game()
 	pImageView->SetScaling(0.75f, 0.65f);
 	pImageView->SetTag(E_BORDER);
 	m_pUIRoot->AddChild(pImageView);
+
+	m_pBorder = new cUITool;
 
 	pImageView = new cUIImageView;		//기름 이미지로
 	pImageView->SetTexture("UI/inventory_oil_liquid.tga");
@@ -129,17 +132,6 @@ cUI_In_Game::cUI_In_Game()
 	pButton->SetTag(E_JOURNAL);
 	m_pUIRoot->AddChild(pButton);
 
-	/*pButton = new cUIButton;			// 기름 버튼 화
-	pButton->SetTexture("UI/inventory_oil_liquid.tga",
-	"UI/inventory_oil_liquid.tga",
-	"UI/inventory_oil_liquid.tga");
-	pButton->SetPosition(1136, 390);
-	pButton->SetScaling(0.5f, m_fOilValue);
-	pButton->SetRotationX(D3DX_PI);
-	pButton->SetDelegate(this);
-	pButton->SetTag(E_OIL);
-	m_pUIRoot->AddChild(pButton);*/
-
 	pButton = new cUIButton;			// 랜턴 기름 틀
 	pButton->SetTexture("UI/inventory_oil_fg.tga",
 		"UI/inventory_oil_fg.tga",
@@ -157,7 +149,7 @@ cUI_In_Game::cUI_In_Game()
 	pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
 	pTextView->SetTag(E_TEXT_VIEW);
 	m_pUIRoot->AddChild(pTextView);
-
+	
 	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
 	pTextView->SetText("");
 	pTextView->SetSize(ST_SIZE(450, 100));
@@ -166,7 +158,7 @@ cUI_In_Game::cUI_In_Game()
 	pTextView->SetTag(E_TEXT_VIEW_2);
 	m_pUIRoot->AddChild(pTextView);
 
-	sprintf(m_szTinderNum, "x %d", m_nTinderNum);
+	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
 	pTextView = new cUITextView(cFontManager::E_NORMAL);
 	pTextView->SetText(m_szTinderNum);
 	pTextView->SetSize(ST_SIZE(40, 20));
@@ -180,6 +172,7 @@ cUI_In_Game::~cUI_In_Game()
 {
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
+	SAFE_DELETE(m_pBorder);
 }
 
 void cUI_In_Game::Update()
@@ -190,9 +183,8 @@ void cUI_In_Game::Update()
 	if (pTextView_2) pTextView_2->SetText("");
 
 	pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_TINDER_NUM);
-	sprintf(m_szTinderNum, "x %d", m_nTinderNum);
+	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
 	pTextView->SetText(m_szTinderNum);
-	if (m_nTinderNum <= 0) m_nTinderNum = 0;
 
 	sprintf(m_szHeartState, "UI/inventory_health_%d.tga", m_nHeartHP);
 	cUIButton* pButton = (cUIButton*)m_pUIRoot->GetChildByTag(E_HEART);
@@ -230,13 +222,21 @@ void cUI_In_Game::Update()
 	{
 		m_nHeartHP -= 25;
 		m_nBrainHP -= 25;
-		m_nTinderNum--;
+		//DATABASE->Delete(ITEM_TINDER);
 	}
 	if (KEYMANAGER->isOnceKeyDown('X'))
 	{
 		m_nHeartHP += 25;
 		m_nBrainHP += 25;
-		m_nTinderNum++;
+		//DATABASE->Insert(ITEM_TINDER);
+	}
+	if (KEYMANAGER->isOnceKeyDown('R'))
+	{
+		DATABASE->Delete(ITEM_TINDER);
+	}
+	if (KEYMANAGER->isOnceKeyDown('T'))
+	{
+		DATABASE->Insert(ITEM_TINDER);
 	}
 	if (KEYMANAGER->isStayKeyDown('F'))
 	{
@@ -247,6 +247,7 @@ void cUI_In_Game::Update()
 		m_fOilValue -= 0.0001f;
 	}
 
+	SAFE_UPDATE(m_pBorder);
 	SAFE_UPDATE(m_pUIRoot);
 }
 
@@ -258,6 +259,7 @@ void cUI_In_Game::Render()
 	else
 	{
 		m_pUIRoot->Render(m_pSprite);
+		//m_pBorder->Render();
 	}
 }
 

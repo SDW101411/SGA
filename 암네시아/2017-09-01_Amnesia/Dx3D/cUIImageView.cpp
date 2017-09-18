@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "cUIImageView.h"
 
-
 cUIImageView::cUIImageView(void)
 {
 }

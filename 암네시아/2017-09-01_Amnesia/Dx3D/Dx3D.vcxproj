@@ -90,6 +90,7 @@
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cAseLoader.h" />
     <ClInclude Include="cAStar.h" />
+    <ClInclude Include="cDatabase.h" />
     <ClInclude Include="cGridNode.h" />
     <ClInclude Include="cAutoReleasePool.h" />
     <ClInclude Include="cCamera.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cMainMenuScene.h" />
     <ClInclude Include="cMain_admin.h" />
     <ClInclude Include="cMapObject.h" />
     <ClInclude Include="cMapObjState.h" />
@@ -157,6 +159,7 @@
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cAseLoader.cpp" />
     <ClCompile Include="cAStar.cpp" />
+    <ClCompile Include="cDatabase.cpp" />
     <ClCompile Include="cGridNode.cpp" />
     <ClCompile Include="cAutoReleasePool.cpp" />
     <ClCompile Include="cCamera.cpp" />
@@ -173,6 +176,7 @@
     <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cMainMenuScene.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
     <ClCompile Include="cMapObject.cpp" />
     <ClCompile Include="cMapObjState.cpp" />
