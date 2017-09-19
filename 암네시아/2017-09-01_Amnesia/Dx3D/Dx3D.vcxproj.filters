@@ -121,6 +121,15 @@
     <Filter Include="동욱\셰이더%28Test%29\cObject_X\병">
       <UniqueIdentifier>{0046c7e3-444d-4832-94b9-7d45f6bdb390}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\MainMenuScene">
+      <UniqueIdentifier>{a79e778a-b113-4b9e-947b-5cb9c0ae6fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\Database">
+      <UniqueIdentifier>{9a528334-6a7a-4b72-bd80-5e3821cc24f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\UI정리">
+      <UniqueIdentifier>{a5491387-8a75-4b1f-9c3b-abc491c2db89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -336,6 +345,21 @@
     <ClInclude Include="cObject_bottle.h">
       <Filter>동욱\셰이더%28Test%29\cObject_X\병</Filter>
     </ClInclude>
+    <ClInclude Include="cMainMenuScene.h">
+      <Filter>한나\MainMenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="cDatabase.h">
+      <Filter>한나\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_In_Game.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
+    <ClInclude Include="cUITool_In_Game_Test.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
+    <ClInclude Include="IUI.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -529,6 +553,21 @@
     </ClCompile>
     <ClCompile Include="cObject_bottle.cpp">
       <Filter>동욱\셰이더%28Test%29\cObject_X\병</Filter>
+    </ClCompile>
+    <ClCompile Include="cMainMenuScene.cpp">
+      <Filter>한나\MainMenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="cDatabase.cpp">
+      <Filter>한나\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_In_Game.cpp">
+      <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cUITool_In_Game_Test.cpp">
+      <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="IUI.cpp">
+      <Filter>한나\UI정리</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

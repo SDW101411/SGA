@@ -73,7 +73,7 @@ public: virtual void Set##funName(varType var){\
 
 #define KEYMANAGER cKeyManager::getSingleton()
 #define SOUNDMANAGER cSoundManager::getSingleton()
-
+#define DATABASE cDatabase::getSingleton()
 
 #define GRIDNODE_SIZE 1
 #define GRIDNODE_HALFSIZE (GRIDNODE_SIZE * 0.5f)
@@ -181,7 +181,7 @@ struct ST_SIZE
 #include "cKeyManager.h"
 #include "cScene_Manager.h"
 #include "cSoundManager.h"
-
+#include "cDatabase.h"
 
 #define SCENE_MANAGER cScene_Manager::getSingleton()
 class iObject;

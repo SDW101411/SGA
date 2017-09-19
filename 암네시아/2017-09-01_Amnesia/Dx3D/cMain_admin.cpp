@@ -5,6 +5,8 @@
 #include "cMapToolScene.h"   // 테스트 씬 입니다 -영빈-
 #include "cUIToolTestScene.h"
 #include "cScene_Shader_Scene_Test.h"
+#include "cMainMenuScene.h"
+#include "cUITool_In_Game_Test.h"	// 게임 UI - LEE
 /*
 		2017-09-02 Main_admin. 
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
@@ -15,18 +17,13 @@
 cMain_admin::cMain_admin()
 	:m_pNow_Scene(NULL)
 {
-	m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
+	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
 
 	//m_pNow_Scene = new cMapToolScene; // 맵툴 테스트 입니다 - 영빈 -
-<<<<<<< HEAD
-	//m_pNow_Scene = new cUITool_In_Game_Test;	// UI 테스트 - LEE
+	m_pNow_Scene = new cUITool_In_Game_Test;	// UI 테스트 - LEE
 	//m_pNow_Scene = new cMainMenuScene;			// 시작 UI - LEE
-=======
 
-	//m_pNow_Scene = new cUIToolTestScene; // UI 테스트 - LEE
-
-	m_pNow_Scene = new cScene_Shader_Scene_Test;
->>>>>>> 01430011363ccae0e11f34519774e6077738ea8f
+	//m_pNow_Scene = new cScene_Shader_Scene_Test;
 }
 
 
