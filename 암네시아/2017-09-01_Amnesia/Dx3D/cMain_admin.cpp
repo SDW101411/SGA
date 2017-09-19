@@ -6,7 +6,7 @@
 #include "cUIToolTestScene.h"
 #include "cScene_Shader_Scene_Test.h"
 /*
-		2017-09-02 Main_admin. 
+		2017-09-02 Main_admin.
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
 		cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
 		*/

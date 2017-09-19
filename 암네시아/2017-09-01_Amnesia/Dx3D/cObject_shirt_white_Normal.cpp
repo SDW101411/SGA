@@ -35,7 +35,7 @@ void cObject_shirt_white_Normal::Render()
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &WorldReturn());
 	g_pD3DDevice->GetTransform(D3DTS_VIEW, &matView);
 	g_pD3DDevice->GetTransform(D3DTS_PROJECTION, &matProjection);
-	D3DXVECTOR4		gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
+	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
 
 	FLOAT Length = D3DXVec3Length(&(m_Pos - cCameara_seting));
 
