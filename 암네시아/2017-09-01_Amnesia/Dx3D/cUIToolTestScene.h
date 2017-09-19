@@ -3,12 +3,9 @@
 #include "cScene.h"
 #include "cUIButton.h"
 
-class cUITool;
-
 class cUIToolTestScene : public cScene, iButtonDelegate
 {
 private:
-	cUITool*		m_pUITool;
 	cUIObject*		m_pUIRoot;
 	LPD3DXSPRITE	m_pSprite;
 	int				m_nPlayerHeartType;
