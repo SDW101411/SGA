@@ -82,20 +82,11 @@
     <Filter Include="동욱\씬%28cScene%29">
       <UniqueIdentifier>{3f5062da-c1aa-424d-9bc0-49e174a66985}</UniqueIdentifier>
     </Filter>
-    <Filter Include="동욱\씬매니져%28cScene_Manager%29">
-      <UniqueIdentifier>{f13e7876-6392-463a-9b92-960143138487}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="동욱\씬%28Test%29">
-      <UniqueIdentifier>{40d70a34-d301-4dd2-9e1b-468c274ad74d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="한나\UITool">
       <UniqueIdentifier>{fb8aca00-da71-4235-b5d1-69a17c4cf118}</UniqueIdentifier>
     </Filter>
     <Filter Include="한나\UIToolTestScene">
       <UniqueIdentifier>{f4636067-05e2-41af-9559-b1b001173232}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="동욱\플레이어%28cPlayer%29">
-      <UniqueIdentifier>{0dac3724-d297-458a-a96d-ee1800551380}</UniqueIdentifier>
     </Filter>
     <Filter Include="영빈\MapObject">
       <UniqueIdentifier>{cd9c7c7c-f0e5-49e3-ba85-05396d86ee30}</UniqueIdentifier>
@@ -103,14 +94,32 @@
     <Filter Include="영빈\MapToolScene">
       <UniqueIdentifier>{c30d5bae-a3c3-4c4d-b4b3-c999db11ec53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="한나\UI정리">
-      <UniqueIdentifier>{5df5349a-8d09-4c03-9aab-2887835f1f25}</UniqueIdentifier>
+    <Filter Include="동욱\셰이더%28Test%29">
+      <UniqueIdentifier>{3567c6e9-76c5-45bf-8a12-5da9e5d48cb5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="한나\MainMenuScene">
-      <UniqueIdentifier>{c653b1d2-a439-408a-b988-cdfa7a2a54d7}</UniqueIdentifier>
+    <Filter Include="동욱\플레이어%28Test%29">
+      <UniqueIdentifier>{6b98974a-79b5-4c0e-9bae-2882ca9a8284}</UniqueIdentifier>
     </Filter>
-    <Filter Include="한나\Database">
-      <UniqueIdentifier>{728e83e4-28b3-4eb9-a8d6-02dda77cb99b}</UniqueIdentifier>
+    <Filter Include="동욱\플레이어%28Test%29\씬%28Test%29">
+      <UniqueIdentifier>{40d70a34-d301-4dd2-9e1b-468c274ad74d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\플레이어%28Test%29\씬매니져%28cScene_Manager%29">
+      <UniqueIdentifier>{f13e7876-6392-463a-9b92-960143138487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\플레이어%28Test%29\플레이어%28cPlayer%29">
+      <UniqueIdentifier>{0dac3724-d297-458a-a96d-ee1800551380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\셰이더%28Test%29\Scene%28Test%29">
+      <UniqueIdentifier>{35e47d55-5e12-40f1-b25a-1f7d0102ce0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\셰이더%28Test%29\cObject_X">
+      <UniqueIdentifier>{419f3c8e-44d8-4a44-a761-56675d8d5ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\셰이더%28Test%29\cObject_X\옷">
+      <UniqueIdentifier>{225651aa-6c63-45e3-87b0-86ed970c27eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\셰이더%28Test%29\cObject_X\병">
+      <UniqueIdentifier>{0046c7e3-444d-4832-94b9-7d45f6bdb390}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -280,10 +289,10 @@
       <Filter>동욱\씬%28cScene%29</Filter>
     </ClInclude>
     <ClInclude Include="cScene_Manager.h">
-      <Filter>동욱\씬매니져%28cScene_Manager%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\씬매니져%28cScene_Manager%29</Filter>
     </ClInclude>
     <ClInclude Include="cScene_Test_1.h">
-      <Filter>동욱\씬%28Test%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\씬%28Test%29</Filter>
     </ClInclude>
     <ClInclude Include="cUIManager.h">
       <Filter>한나\UIManager</Filter>
@@ -298,10 +307,10 @@
       <Filter>한나\UIToolTestScene</Filter>
     </ClInclude>
     <ClInclude Include="cPlayer.h">
-      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\플레이어%28cPlayer%29</Filter>
     </ClInclude>
     <ClInclude Include="cPlayer_Ctrl.h">
-      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\플레이어%28cPlayer%29</Filter>
     </ClInclude>
     <ClInclude Include="cMapObject.h">
       <Filter>영빈\MapObject</Filter>
@@ -312,20 +321,20 @@
     <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
-    <ClInclude Include="IUI.h">
-      <Filter>한나\UI정리</Filter>
+    <ClInclude Include="cScene_Shader_Scene_Test.h">
+      <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClInclude>
-    <ClInclude Include="cUI_In_Game.h">
-      <Filter>한나\UI정리</Filter>
+    <ClInclude Include="cObject_Game.h">
+      <Filter>동욱\셰이더%28Test%29\cObject_X</Filter>
     </ClInclude>
-    <ClInclude Include="cUITool_In_Game_Test.h">
-      <Filter>한나\UI정리</Filter>
+    <ClInclude Include="cObject_shirt_white.h">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
     </ClInclude>
-    <ClInclude Include="cMainMenuScene.h">
-      <Filter>한나\MainMenuScene</Filter>
+    <ClInclude Include="cObject_shirt_white_Normal.h">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
     </ClInclude>
-    <ClInclude Include="cDatabase.h">
-      <Filter>한나\Database</Filter>
+    <ClInclude Include="cObject_bottle.h">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\병</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -474,10 +483,10 @@
       <Filter>동욱\씬%28cScene%29</Filter>
     </ClCompile>
     <ClCompile Include="cScene_Manager.cpp">
-      <Filter>동욱\씬매니져%28cScene_Manager%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\씬매니져%28cScene_Manager%29</Filter>
     </ClCompile>
     <ClCompile Include="cScene_Test_1.cpp">
-      <Filter>동욱\씬%28Test%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\씬%28Test%29</Filter>
     </ClCompile>
     <ClCompile Include="cUIManager.cpp">
       <Filter>한나\UIManager</Filter>
@@ -492,10 +501,10 @@
       <Filter>한나\UIToolTestScene</Filter>
     </ClCompile>
     <ClCompile Include="cPlayer.cpp">
-      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\플레이어%28cPlayer%29</Filter>
     </ClCompile>
     <ClCompile Include="cPlayer_Ctrl.cpp">
-      <Filter>동욱\플레이어%28cPlayer%29</Filter>
+      <Filter>동욱\플레이어%28Test%29\플레이어%28cPlayer%29</Filter>
     </ClCompile>
     <ClCompile Include="cMapObject.cpp">
       <Filter>영빈\MapObject</Filter>
@@ -506,20 +515,20 @@
     <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\MapToolScene</Filter>
     </ClCompile>
-    <ClCompile Include="IUI.cpp">
-      <Filter>한나\UI정리</Filter>
+    <ClCompile Include="cScene_Shader_Scene_Test.cpp">
+      <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClCompile>
-    <ClCompile Include="cUI_In_Game.cpp">
-      <Filter>한나\UI정리</Filter>
+    <ClCompile Include="cObject_Game.cpp">
+      <Filter>동욱\셰이더%28Test%29\cObject_X</Filter>
     </ClCompile>
-    <ClCompile Include="cUITool_In_Game_Test.cpp">
-      <Filter>한나\UI정리</Filter>
+    <ClCompile Include="cObject_shirt_white.cpp">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
     </ClCompile>
-    <ClCompile Include="cMainMenuScene.cpp">
-      <Filter>한나\MainMenuScene</Filter>
+    <ClCompile Include="cObject_shirt_white_Normal.cpp">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
     </ClCompile>
-    <ClCompile Include="cDatabase.cpp">
-      <Filter>한나\Database</Filter>
+    <ClCompile Include="cObject_bottle.cpp">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\병</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

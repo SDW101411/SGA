@@ -5,6 +5,7 @@
 
 cScene_Test_1::cScene_Test_1()
 {
+	m_pPlayer = new cPlayer;
 }
 
 

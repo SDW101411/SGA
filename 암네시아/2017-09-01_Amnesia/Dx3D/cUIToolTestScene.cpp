@@ -1,27 +1,28 @@
 #include "stdafx.h"
 #include "cUIToolTestScene.h"
+#include "cUITool.h"
 #include "cUIImageView.h"
 #include "cUITextView.h"
 
-//enum
-//{
-//	E_BACKGROUND	= 211,
-//	E_BORDER		= 212,
-//	E_HEART			= 213,
-//	E_HEART_UP		= 214,
-//	E_BRAIN			= 215,
-//	E_BRAIN_UP		= 216,
-//	E_TINDER		= 217,
-//	E_JOURNAL		= 218,
-//	E_RANTERNSHAPE	= 219,
-//	E_OIL			= 220,
-//	E_TEXT_VIEW,
-//	E_TEXT_VIEW_2,
-//	E_TEXT_TINDER_NUM,
-//};
+enum
+{
+	E_BACKGROUND	= 211,
+	E_BORDER		= 212,
+	E_HEART			= 213,
+	E_HEART_UP		= 214,
+	E_BRAIN			= 215,
+	E_BRAIN_UP		= 216,
+	E_TINDER		= 217,
+	E_JOURNAL		= 218,
+	E_RANTERNSHAPE	= 219,
+	E_OIL			= 220,
+	E_TEXT_VIEW,
+	E_TEXT_VIEW_2,
+	E_TEXT_TINDER_NUM,
+};
 
 cUIToolTestScene::cUIToolTestScene()
-	/*: m_pSprite(NULL)
+	: m_pSprite(NULL)
 	, m_pUIRoot(NULL)
 	, m_szHeartState("\0")
 	, m_szHeartGlowState("\0")
@@ -30,163 +31,164 @@ cUIToolTestScene::cUIToolTestScene()
 	, m_nTinderNum(0)
 	, m_nHeartHP(100)
 	, m_nBrainHP(100)
-	, m_fOilValue(0.5f)*/
+	, m_fOilValue(0.5f)
 {
-	//D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
+	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
-	//cUIImageView* pImageView = new cUIImageView;
-	//pImageView->SetTexture("UI/tab_UI_bg.png");
-	//pImageView->SetScaling(0.75f, 0.65f);
-	//pImageView->SetTag(E_BACKGROUND);
-	//m_pUIRoot = pImageView;
+	cUIImageView* pImageView = new cUIImageView;
+	pImageView->SetTexture("UI/tab_UI_bg.png");
+	pImageView->SetScaling(0.75f, 0.65f);
+	pImageView->SetTag(E_BACKGROUND);
+	m_pUIRoot = pImageView;
 
-	//pImageView = new cUIImageView;
-	//pImageView->SetTexture("UI/tab_UI_border.png");
-	//pImageView->SetScaling(0.75f, 0.65f);
-	//pImageView->SetTag(E_BORDER);
- //	m_pUIRoot->AddChild(pImageView);
+	pImageView = new cUIImageView;
+	pImageView->SetTexture("UI/tab_UI_border.png");
+	pImageView->SetScaling(0.75f, 0.65f);
+	pImageView->SetTag(E_BORDER);
+ 	m_pUIRoot->AddChild(pImageView);
 
-	//pImageView = new cUIImageView;		//기름 이미지로
-	//pImageView->SetTexture("UI/inventory_oil_liquid.tga");
-	//pImageView->SetPosition(1138, 390);
-	//pImageView->SetScaling(0.5f, m_fOilValue);
-	//pImageView->SetRotationX(D3DX_PI);
-	//pImageView->SetTag(E_OIL);
-	//m_pUIRoot->AddChild(pImageView);
+	pImageView = new cUIImageView;		//기름 이미지로
+	pImageView->SetTexture("UI/inventory_oil_liquid.tga");
+	pImageView->SetPosition(1138, 390);
+	pImageView->SetScaling(0.5f, m_fOilValue);
+	pImageView->SetRotationX(D3DX_PI);
+	pImageView->SetTag(E_OIL);
+	m_pUIRoot->AddChild(pImageView);
 
-	//sprintf(m_szHeartState, "UI/inventory_health_%d.tga", m_nHeartHP);
-	//cUIButton* pButton = new cUIButton;
-	//pButton->SetTexture(m_szHeartState,
-	//	m_szHeartState,
-	//	m_szHeartState);
-	//pButton->SetPosition(244, 100);
-	////pButton->SetScaling(0.54f, 0.54f);
-	//pButton->SetScaling(1.1f, 1.1f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_HEART);
-	//m_pUIRoot->AddChild(pButton);
+	sprintf(m_szHeartState, "UI/inventory_health_%d.tga", m_nHeartHP);
+	cUIButton* pButton = new cUIButton;
+	pButton->SetTexture(m_szHeartState,
+		m_szHeartState,
+		m_szHeartState);
+	pButton->SetPosition(244, 100);
+	//pButton->SetScaling(0.54f, 0.54f);
+	pButton->SetScaling(1.1f, 1.1f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_HEART);
+	m_pUIRoot->AddChild(pButton);
 
-	//sprintf(m_szHeartGlowState, "UI/inventory_health_glow_%d.tga", m_nHeartHP);
-	//cUIButton* pButton_2 = new cUIButton;
-	//pButton_2->SetTexture(m_szHeartState,
-	//	m_szHeartGlowState,
-	//	m_szHeartState);
-	//pButton_2->SetPosition(244, 100);
-	//pButton_2->SetScaling(1.1f, 1.1f);
-	//pButton_2->SetDelegate(this);
-	//pButton_2->SetTag(E_HEART_UP);
-	//m_pUIRoot->AddChild(pButton_2);
+	sprintf(m_szHeartGlowState, "UI/inventory_health_glow_%d.tga", m_nHeartHP);
+	cUIButton* pButton_2 = new cUIButton;
+	pButton_2->SetTexture(m_szHeartState,
+		m_szHeartGlowState,
+		m_szHeartState);
+	pButton_2->SetPosition(244, 100);
+	pButton_2->SetScaling(1.1f, 1.1f);
+	pButton_2->SetDelegate(this);
+	pButton_2->SetTag(E_HEART_UP);
+	m_pUIRoot->AddChild(pButton_2);
 
-	//sprintf(m_szBrainState, "UI/inventory_sanity_%d.tga", m_nBrainHP);
-	//pButton = new cUIButton;
-	//pButton->SetTexture(m_szBrainState,
-	//	m_szBrainState,
-	//	m_szBrainState);
-	//pButton->SetPosition(254, 380);
-	//pButton->SetScaling(1.1f, 1.1f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_BRAIN);
-	//m_pUIRoot->AddChild(pButton);
+	sprintf(m_szBrainState, "UI/inventory_sanity_%d.tga", m_nBrainHP);
+	pButton = new cUIButton;
+	pButton->SetTexture(m_szBrainState,
+		m_szBrainState,
+		m_szBrainState);
+	pButton->SetPosition(254, 380);
+	pButton->SetScaling(1.1f, 1.1f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_BRAIN);
+	m_pUIRoot->AddChild(pButton);
 
-	//sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_%d.tga", m_nBrainHP);
-	//pButton = new cUIButton;
-	//pButton->SetTexture(m_szBrainState,
-	//	m_szBrainGlowState,
-	//	m_szBrainState);
-	//pButton->SetPosition(254, 380);
-	//pButton->SetScaling(1.1f, 1.1f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_BRAIN_UP);
-	//m_pUIRoot->AddChild(pButton);
+	sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_%d.tga", m_nBrainHP);
+	pButton = new cUIButton;
+	pButton->SetTexture(m_szBrainState,
+		m_szBrainGlowState,
+		m_szBrainState);
+	pButton->SetPosition(254, 380);
+	pButton->SetScaling(1.1f, 1.1f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_BRAIN_UP);
+	m_pUIRoot->AddChild(pButton);
 
-	//pButton = new cUIButton;
-	//pButton->SetTexture("UI/inventory_tinderboxes.tga",
-	//	"UI/inventory_tinderboxes.tga",
-	//	"UI/inventory_tinderboxes.tga");
-	//pButton->SetPosition(1094, 110);
-	//pButton->SetScaling(1.0f, 1.0f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_TINDER);
-	//m_pUIRoot->AddChild(pButton);
+	pButton = new cUIButton;
+	pButton->SetTexture("UI/inventory_tinderboxes.tga",
+		"UI/inventory_tinderboxes.tga",
+		"UI/inventory_tinderboxes.tga");
+	pButton->SetPosition(1094, 110);
+	pButton->SetScaling(1.0f, 1.0f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_TINDER);
+	m_pUIRoot->AddChild(pButton);
 
-	//pButton = new cUIButton;
-	//pButton->SetTexture("UI/inventory_journal.tga",
-	//	"UI/inventory_journal.tga",
-	//	"UI/inventory_journal.tga");
-	//pButton->SetPosition(1070, 496);
-	//pButton->SetScaling(1.1f, 1.1f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_JOURNAL);
-	//m_pUIRoot->AddChild(pButton);
+	pButton = new cUIButton;
+	pButton->SetTexture("UI/inventory_journal.tga",
+		"UI/inventory_journal.tga",
+		"UI/inventory_journal.tga");
+	pButton->SetPosition(1070, 496);
+	pButton->SetScaling(1.1f, 1.1f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_JOURNAL);
+	m_pUIRoot->AddChild(pButton);
 
-	//pButton = new cUIButton;			// 마우스 오버시 노란 테두리 용
-	//pButton->SetTexture("UI/inventory_journal.tga",
-	//	"UI/inventory_journal_mouse_over.tga",
-	//	"UI/inventory_journal.tga");
-	//pButton->SetPosition(1070, 496);
-	//pButton->SetScaling(1.1f, 1.1f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_JOURNAL);
-	//m_pUIRoot->AddChild(pButton);
+	pButton = new cUIButton;			// 마우스 오버시 노란 테두리 용
+	pButton->SetTexture("UI/inventory_journal.tga",
+		"UI/inventory_journal_mouse_over.tga",
+		"UI/inventory_journal.tga");
+	pButton->SetPosition(1070, 496);
+	pButton->SetScaling(1.1f, 1.1f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_JOURNAL);
+	m_pUIRoot->AddChild(pButton);
 
-	///*pButton = new cUIButton;			// 기름 버튼 화
-	//pButton->SetTexture("UI/inventory_oil_liquid.tga",
-	//	"UI/inventory_oil_liquid.tga",
-	//	"UI/inventory_oil_liquid.tga");
-	//pButton->SetPosition(1136, 390);
-	//pButton->SetScaling(0.5f, m_fOilValue);
-	//pButton->SetRotationX(D3DX_PI);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_OIL);
-	//m_pUIRoot->AddChild(pButton);*/
+	/*pButton = new cUIButton;			// 기름 버튼 화
+	pButton->SetTexture("UI/inventory_oil_liquid.tga",
+		"UI/inventory_oil_liquid.tga",
+		"UI/inventory_oil_liquid.tga");
+	pButton->SetPosition(1136, 390);
+	pButton->SetScaling(0.5f, m_fOilValue);
+	pButton->SetRotationX(D3DX_PI);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_OIL);
+	m_pUIRoot->AddChild(pButton);*/
 
-	//pButton = new cUIButton;			// 랜턴 기름 틀
-	//pButton->SetTexture("UI/inventory_oil_fg.tga",
-	//	"UI/inventory_oil_fg.tga",
-	//	"UI/inventory_oil_fg.tga");
-	//pButton->SetPosition(1088, 288);
-	//pButton->SetScaling(1.0f, 1.0f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(E_RANTERNSHAPE);
-	//m_pUIRoot->AddChild(pButton);
-	//
-	//cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
-	//pTextView->SetText("");
-	//pTextView->SetSize(ST_SIZE(312, 100));
-	//pTextView->SetPosition(566, 494);
-	//pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
-	//pTextView->SetTag(E_TEXT_VIEW);
-	//m_pUIRoot->AddChild(pTextView);
+	pButton = new cUIButton;			// 랜턴 기름 틀
+	pButton->SetTexture("UI/inventory_oil_fg.tga",
+		"UI/inventory_oil_fg.tga",
+		"UI/inventory_oil_fg.tga");
+	pButton->SetPosition(1088, 288);
+	pButton->SetScaling(1.0f, 1.0f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_RANTERNSHAPE);
+	m_pUIRoot->AddChild(pButton);
+	
+	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
+	pTextView->SetText("");
+	pTextView->SetSize(ST_SIZE(312, 100));
+	pTextView->SetPosition(566, 494);
+	pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
+	pTextView->SetTag(E_TEXT_VIEW);
+	m_pUIRoot->AddChild(pTextView);
 
-	//pTextView = new cUITextView(cFontManager::E_EXPLANATION);
-	//pTextView->SetText("");
-	//pTextView->SetSize(ST_SIZE(450, 100));
-	//pTextView->SetPosition(440, 546);
-	//pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	//pTextView->SetTag(E_TEXT_VIEW_2);
-	//m_pUIRoot->AddChild(pTextView);
+	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
+	pTextView->SetText("");
+	pTextView->SetSize(ST_SIZE(450, 100));
+	pTextView->SetPosition(440, 546);
+	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
+	pTextView->SetTag(E_TEXT_VIEW_2);
+	m_pUIRoot->AddChild(pTextView);
 
-	//sprintf(m_szTinderNum, "x %d", m_nTinderNum);
-	//pTextView = new cUITextView(cFontManager::E_NORMAL);
-	//pTextView->SetText(m_szTinderNum);
-	//pTextView->SetSize(ST_SIZE(40, 20));
-	//pTextView->SetPosition(1102, 136);
-	//pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
-	//pTextView->SetTag(E_TEXT_TINDER_NUM);
-	//m_pUIRoot->AddChild(pTextView);
+	sprintf(m_szTinderNum, "x %d", m_nTinderNum);
+	pTextView = new cUITextView(cFontManager::E_NORMAL);
+	pTextView->SetText(m_szTinderNum);
+	pTextView->SetSize(ST_SIZE(40, 20));
+	pTextView->SetPosition(1102, 136);
+	pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
+	pTextView->SetTag(E_TEXT_TINDER_NUM);
+	m_pUIRoot->AddChild(pTextView);
 
-	//m_nPlayerHeartType = 1;
+	m_nPlayerHeartType = 1;
 }
 
 cUIToolTestScene::~cUIToolTestScene()
 {
-	/*SAFE_RELEASE(m_pSprite);
-	SAFE_RELEASE(m_pUIRoot);*/
+	SAFE_RELEASE(m_pSprite);
+	SAFE_RELEASE(m_pUIRoot);
+	//SAFE_DELETE(m_pUITool);
 }
 
 void cUIToolTestScene::Update()
 {
-	/*cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
+	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
 	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_2);
 	if (pTextView) pTextView->SetText("");
 	if (pTextView_2) pTextView_2->SetText("");
@@ -249,23 +251,22 @@ void cUIToolTestScene::Update()
 		m_fOilValue -= 0.0001f;
 	}
 
-	if (m_pUIRoot) m_pUIRoot->Update();*/
+	if (m_pUIRoot) m_pUIRoot->Update();
 }
 
 void cUIToolTestScene::Render()
 {
-	/*if(KEYMANAGER->isToggleKey(VK_TAB))
-	{
-	}
-	else
+	//SAFE_RENDER(m_pUITool);
+
+	if(KEYMANAGER->isToggleKey(VK_TAB))
 	{
 		m_pUIRoot->Render(m_pSprite);
-	}*/
+	}
 }
 
 void cUIToolTestScene::OnMouse(cUIButton* pSender)
 {
-	/*cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
+	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
 	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_2);
 	if (pTextView == NULL) return;
 
@@ -305,7 +306,7 @@ void cUIToolTestScene::OnMouse(cUIButton* pSender)
 	{
 		pTextView->SetText("기름");
 		pTextView_2->SetText("기름이 남아있는 한, 랜턴을 켤 수 있다. 하지만 다 쓰면 못 쓰게 돼버린다.");
-	}*/
+	}
 }
 
 void cUIToolTestScene::OnClick(cUIButton* pSender)

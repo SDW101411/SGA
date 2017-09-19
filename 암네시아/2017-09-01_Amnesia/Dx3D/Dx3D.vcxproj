@@ -90,7 +90,6 @@
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cAseLoader.h" />
     <ClInclude Include="cAStar.h" />
-    <ClInclude Include="cDatabase.h" />
     <ClInclude Include="cGridNode.h" />
     <ClInclude Include="cAutoReleasePool.h" />
     <ClInclude Include="cCamera.h" />
@@ -107,7 +106,6 @@
     <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cLerp.h" />
     <ClInclude Include="cMainGame.h" />
-    <ClInclude Include="cMainMenuScene.h" />
     <ClInclude Include="cMain_admin.h" />
     <ClInclude Include="cMapObject.h" />
     <ClInclude Include="cMapObjState.h" />
@@ -115,6 +113,10 @@
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectPool.h" />
+    <ClInclude Include="cObject_bottle.h" />
+    <ClInclude Include="cObject_Game.h" />
+    <ClInclude Include="cObject_shirt_white.h" />
+    <ClInclude Include="cObject_shirt_white_Normal.h" />
     <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cObjMap.h" />
     <ClInclude Include="cPlayer.h" />
@@ -125,6 +127,7 @@
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSceneUI.h" />
     <ClInclude Include="cScene_Manager.h" />
+    <ClInclude Include="cScene_Shader_Scene_Test.h" />
     <ClInclude Include="cScene_Test_1.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
@@ -140,12 +143,9 @@
     <ClInclude Include="cUITextView.h" />
     <ClInclude Include="cUITool.h" />
     <ClInclude Include="cUIToolTestScene.h" />
-    <ClInclude Include="cUITool_In_Game_Test.h" />
-    <ClInclude Include="cUI_In_Game.h" />
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
-    <ClInclude Include="IUI.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="singletonBase.h" />
     <ClInclude Include="stdafx.h" />
@@ -159,7 +159,6 @@
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cAseLoader.cpp" />
     <ClCompile Include="cAStar.cpp" />
-    <ClCompile Include="cDatabase.cpp" />
     <ClCompile Include="cGridNode.cpp" />
     <ClCompile Include="cAutoReleasePool.cpp" />
     <ClCompile Include="cCamera.cpp" />
@@ -176,7 +175,6 @@
     <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cMainGame.cpp" />
-    <ClCompile Include="cMainMenuScene.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
     <ClCompile Include="cMapObject.cpp" />
     <ClCompile Include="cMapObjState.cpp" />
@@ -184,6 +182,10 @@
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectPool.cpp" />
+    <ClCompile Include="cObject_bottle.cpp" />
+    <ClCompile Include="cObject_Game.cpp" />
+    <ClCompile Include="cObject_shirt_white.cpp" />
+    <ClCompile Include="cObject_shirt_white_Normal.cpp" />
     <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cObjMap.cpp" />
     <ClCompile Include="cPlayer.cpp" />
@@ -194,6 +196,7 @@
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSceneUI.cpp" />
     <ClCompile Include="cScene_Manager.cpp" />
+    <ClCompile Include="cScene_Shader_Scene_Test.cpp" />
     <ClCompile Include="cScene_Test_1.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
@@ -209,12 +212,9 @@
     <ClCompile Include="cUITextView.cpp" />
     <ClCompile Include="cUITool.cpp" />
     <ClCompile Include="cUIToolTestScene.cpp" />
-    <ClCompile Include="cUITool_In_Game_Test.cpp" />
-    <ClCompile Include="cUI_In_Game.cpp" />
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
-    <ClCompile Include="IUI.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

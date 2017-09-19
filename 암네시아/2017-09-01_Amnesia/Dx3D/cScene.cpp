@@ -6,13 +6,13 @@
 cScene::cScene()
 	:UI_On(false)
 {
-	m_pPlayer = new cPlayer;
+	
 }
 
 
 cScene::~cScene()
 {
-	SAFE_DELETE(m_pPlayer);
+	
 }
 
 void cScene::Update()

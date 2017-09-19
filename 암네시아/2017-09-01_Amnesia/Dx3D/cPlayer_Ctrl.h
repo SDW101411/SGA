@@ -1,7 +1,4 @@
 #pragma once
-
-
-
 class cPlayer_Ctrl
 {//d
 private:
@@ -18,8 +15,8 @@ private:
 	float			m_fAngleY;
 	POINT			m_ptPrevMouse;
 	float			check;
-
 	float			fx, fy;
+	float			m_UpY;
 
 
 	SYNTHESIZE_PASS_BY_REF(D3DXMATRIX, m_World, m_World_f);
@@ -27,6 +24,7 @@ private:
 public:
 	cPlayer_Ctrl();
 	cPlayer_Ctrl(D3DXVECTOR3 Save);
+	cPlayer_Ctrl(D3DXVECTOR3 Save, float UpY);
 	~cPlayer_Ctrl();
 	void Update();
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

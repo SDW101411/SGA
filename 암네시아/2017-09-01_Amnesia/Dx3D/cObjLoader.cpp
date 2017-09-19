@@ -170,9 +170,7 @@ void cObjLoader::LoadMtlLib( char* szFullPath )
 	fclose(fp);
 }
 
-bool cObjLoader::LoadMesh( IN char* szFullPath,
-	OUT LPD3DXMESH* ppMesh,
-	OUT vector<cMtlTex*>& vecMtlTex )
+bool cObjLoader::LoadMesh( IN char* szFullPath, OUT LPD3DXMESH* ppMesh, OUT vector<cMtlTex*>& vecMtlTex )
 {
 	m_mapMtlTex.clear();
 

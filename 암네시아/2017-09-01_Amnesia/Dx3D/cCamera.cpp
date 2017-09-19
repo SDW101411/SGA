@@ -119,6 +119,6 @@ void cCamera::MsgProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 
 D3DXVECTOR3 * cCamera::get_pvPostion()
 {
-	return nullptr;
+	return &m_vEye;
 }
 

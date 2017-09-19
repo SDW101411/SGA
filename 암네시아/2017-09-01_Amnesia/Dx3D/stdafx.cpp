@@ -6,3 +6,8 @@
 
 // TODO: 필요한 추가 헤더는
 // 이 파일이 아닌 STDAFX.H에서 참조합니다.
+
+D3DXVECTOR3 cCameara_seting = D3DXVECTOR3(0.0f,0.0f,0.0f);
+D3DXVECTOR3 cLight_Seting = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+D3DXVECTOR3 cLight_Color_Seting = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+D3DXVECTOR3 cLight_Color_Seting_2 = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
