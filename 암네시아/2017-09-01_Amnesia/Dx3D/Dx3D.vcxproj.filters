@@ -94,7 +94,6 @@
     <Filter Include="영빈\MapToolScene">
       <UniqueIdentifier>{c30d5bae-a3c3-4c4d-b4b3-c999db11ec53}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
     <Filter Include="동욱\셰이더%28Test%29">
       <UniqueIdentifier>{3567c6e9-76c5-45bf-8a12-5da9e5d48cb5}</UniqueIdentifier>
     </Filter>
@@ -121,16 +120,6 @@
     </Filter>
     <Filter Include="동욱\셰이더%28Test%29\cObject_X\병">
       <UniqueIdentifier>{0046c7e3-444d-4832-94b9-7d45f6bdb390}</UniqueIdentifier>
-=======
-    <Filter Include="한나\UI정리">
-      <UniqueIdentifier>{5df5349a-8d09-4c03-9aab-2887835f1f25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="한나\MainMenuScene">
-      <UniqueIdentifier>{c653b1d2-a439-408a-b988-cdfa7a2a54d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="한나\Database">
-      <UniqueIdentifier>{728e83e4-28b3-4eb9-a8d6-02dda77cb99b}</UniqueIdentifier>
->>>>>>> f923c5e352ebbc4beae924924972ac54f127d0fe
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -332,7 +321,6 @@
     <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="cScene_Shader_Scene_Test.h">
       <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClInclude>
@@ -347,22 +335,6 @@
     </ClInclude>
     <ClInclude Include="cObject_bottle.h">
       <Filter>동욱\셰이더%28Test%29\cObject_X\병</Filter>
-=======
-    <ClInclude Include="IUI.h">
-      <Filter>한나\UI정리</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_In_Game.h">
-      <Filter>한나\UI정리</Filter>
-    </ClInclude>
-    <ClInclude Include="cUITool_In_Game_Test.h">
-      <Filter>한나\UI정리</Filter>
-    </ClInclude>
-    <ClInclude Include="cMainMenuScene.h">
-      <Filter>한나\MainMenuScene</Filter>
-    </ClInclude>
-    <ClInclude Include="cDatabase.h">
-      <Filter>한나\Database</Filter>
->>>>>>> f923c5e352ebbc4beae924924972ac54f127d0fe
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -543,7 +515,6 @@
     <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\MapToolScene</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="cScene_Shader_Scene_Test.cpp">
       <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClCompile>
@@ -558,22 +529,6 @@
     </ClCompile>
     <ClCompile Include="cObject_bottle.cpp">
       <Filter>동욱\셰이더%28Test%29\cObject_X\병</Filter>
-=======
-    <ClCompile Include="IUI.cpp">
-      <Filter>한나\UI정리</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_In_Game.cpp">
-      <Filter>한나\UI정리</Filter>
-    </ClCompile>
-    <ClCompile Include="cUITool_In_Game_Test.cpp">
-      <Filter>한나\UI정리</Filter>
-    </ClCompile>
-    <ClCompile Include="cMainMenuScene.cpp">
-      <Filter>한나\MainMenuScene</Filter>
-    </ClCompile>
-    <ClCompile Include="cDatabase.cpp">
-      <Filter>한나\Database</Filter>
->>>>>>> f923c5e352ebbc4beae924924972ac54f127d0fe
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

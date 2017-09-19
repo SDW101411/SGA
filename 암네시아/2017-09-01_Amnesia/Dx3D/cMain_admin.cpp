@@ -2,20 +2,15 @@
 #include "cMain_admin.h"
 #include "cScene.h"
 #include "cScene_Test_1.h"
-<<<<<<< HEAD
 #include "cMapToolScene.h"   // 테스트 씬 입니다 -영빈-
 #include "cUIToolTestScene.h"
 #include "cScene_Shader_Scene_Test.h"
-=======
-#include "cMapToolScene.h"			// 테스트 씬 입니다 -영빈-
-#include "cUITool_In_Game_Test.h"	// 게임 UI - LEE
-#include "cMainMenuScene.h"			// 시작 UI - LEE
->>>>>>> f923c5e352ebbc4beae924924972ac54f127d0fe
 /*
 		2017-09-02 Main_admin. 
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
 		cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
 		*/
+
 
 cMain_admin::cMain_admin()
 	:m_pNow_Scene(NULL)
@@ -23,15 +18,10 @@ cMain_admin::cMain_admin()
 	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
 
 	//m_pNow_Scene = new cMapToolScene; // 맵툴 테스트 입니다 - 영빈 -
-<<<<<<< HEAD
 
 	//m_pNow_Scene = new cUIToolTestScene; // UI 테스트 - LEE
 
 	m_pNow_Scene = new cScene_Shader_Scene_Test;
-=======
-	m_pNow_Scene = new cUITool_In_Game_Test;	// UI 테스트 - LEE
-	//m_pNow_Scene = new cMainMenuScene;			// 시작 UI - LEE
->>>>>>> f923c5e352ebbc4beae924924972ac54f127d0fe
 }
 
 
