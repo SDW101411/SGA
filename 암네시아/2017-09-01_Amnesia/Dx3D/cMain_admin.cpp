@@ -20,10 +20,10 @@ cMain_admin::cMain_admin()
 	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
 
 	//m_pNow_Scene = new cMapToolScene; // 맵툴 테스트 입니다 - 영빈 -
-	m_pNow_Scene = new cUITool_In_Game_Test;	// UI 테스트 - LEE
+	//m_pNow_Scene = new cUITool_In_Game_Test;	// UI 테스트 - LEE
 	//m_pNow_Scene = new cMainMenuScene;			// 시작 UI - LEE
 
-	//m_pNow_Scene = new cScene_Shader_Scene_Test;
+	m_pNow_Scene = new cScene_Shader_Scene_Test;
 }
 
 

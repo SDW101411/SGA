@@ -37,14 +37,14 @@ void cObject_shirt_white_Normal::Render()
 	g_pD3DDevice->GetTransform(D3DTS_PROJECTION, &matProjection);
 	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
 
-	FLOAT Length = D3DXVec3Length(&(m_Pos - cCameara_seting));
-
-	m_Efffect->SetFloat("gLightLength", Length);
+	/*FLOAT Length = D3DXVec3Length(&(m_Pos - cCameara_seting));
+	m_Efffect->SetFloat("gLightLength", Length);*/
 
 	m_Efffect->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
 	m_Efffect->SetVector("gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z,1.0f));
 	m_Efffect->SetVector("gLightColor_1", &D3DXVECTOR4(cLight_Color_Seting_2.x, cLight_Color_Seting_2.y, cLight_Color_Seting_2.z, 1));
 	m_Efffect->SetVector("gLightColor_2", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1));
+	m_Efffect->SetVector("NormalMapping_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
 	m_Efffect->SetMatrix("gWorldMatrix", &WorldReturn());
 	m_Efffect->SetMatrix("gViewMatrix", &matView);
 	m_Efffect->SetMatrix("gProjectionMatrix", &matProjection);
