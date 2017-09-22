@@ -363,6 +363,9 @@
     <ClInclude Include="cObject_shirt_white_Normal_Shadow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="cXButton.h">
+      <Filter>한나\UI정리</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -574,6 +577,9 @@
     </ClCompile>
     <ClCompile Include="cObject_shirt_white_Normal_Shadow.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cXButton.cpp">
+      <Filter>한나\UI정리</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

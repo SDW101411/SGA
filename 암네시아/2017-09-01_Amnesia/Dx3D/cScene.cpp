@@ -9,7 +9,6 @@ cScene::cScene()
 	
 }
 
-
 cScene::~cScene()
 {
 	

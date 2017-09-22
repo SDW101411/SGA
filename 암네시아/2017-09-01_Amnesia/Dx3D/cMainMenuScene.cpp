@@ -10,6 +10,7 @@ enum
 	E_GAME_OPTION		= 102,
 	E_GAME_CLOSE		= 103,
 	E_BTN_SDW			= 104,
+	E_BTN_NGYB			= 105,
 	E_TEXT_VIEW,
 };
 
@@ -71,6 +72,16 @@ cMainMenuScene::cMainMenuScene()
 	pButton->SetTag(E_BTN_SDW);
 	m_pUIRoot->AddChild(pButton);
 
+	pButton = new cUIButton;
+	pButton->SetTexture("UI/²áÀÌ.png",
+		"UI/²áÀÌMouse.png",
+		"UI/²áÀÌ.png");
+	pButton->SetPosition(1080, 480);
+	pButton->SetScaling(0.5f, 0.5f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_BTN_NGYB);
+	m_pUIRoot->AddChild(pButton);
+
 	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
 	pTextView->SetText("");
 	pTextView->SetSize(ST_SIZE(312, 100));
@@ -128,7 +139,7 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	if (pSender->GetTag() == E_GAME_START)
 	{
 	//	pTextView->SetText("°ÔÀÓ ½ÃÀÛ");
-		g_pSceneManager->SceneChange("2");
+		g_pSceneManager->SceneChange("cUITool_In_Game_Test");
 	}
 	else if (pSender->GetTag() == E_GAME_OPTION)
 	{
@@ -141,5 +152,9 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	else if (pSender->GetTag() == E_BTN_SDW)
 	{
 		g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
+	}
+	else if (pSender->GetTag() == E_BTN_NGYB)
+	{
+		g_pSceneManager->SceneChange("cMapToolScene");
 	}
 }
