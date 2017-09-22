@@ -353,6 +353,7 @@ float cSkinnedMesh::Get_Return_ANIM_Time()
 
 void cSkinnedMesh::Anireset()
 {
-	m_pAnimController->ResetTime();
+	//m_pAnimController->ResetTime();
+	m_pAnimController->SetTrackPosition(0, 0.0f);
 }
 

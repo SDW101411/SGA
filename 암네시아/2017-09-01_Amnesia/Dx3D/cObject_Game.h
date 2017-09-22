@@ -11,6 +11,13 @@ public:
 	LPD3DXMESH			m_Mesh;
 	LPD3DXEFFECT		m_Efffect;
 
+	LPDIRECT3DTEXTURE9		gpShadowRenderTarget;
+	LPDIRECT3DSURFACE9		m_pShadowDepthStencil;
+	const int shadowMapSize = 2048;
+	LPDIRECT3DSURFACE9 pHWBackBuffer = NULL;
+	LPDIRECT3DSURFACE9 pHWDepthStencilBuffer = NULL;
+	LPDIRECT3DSURFACE9 pShadowSurface = NULL;
+
 public:
 	cObject_Game();
 	virtual ~cObject_Game();
@@ -27,6 +34,8 @@ public:
 	void Set_Anit1hing_Test(D3DXVECTOR3 Save, float Ax, float Ay, float Az, float Sx, float Sy, float Sz);
 	D3DXMATRIX WorldReturn();
 	void AnotherRander();
+
+	void Shadow_Render();
 
 public:
 	LPDIRECT3DTEXTURE9 LoadTexture(const char * filename);
