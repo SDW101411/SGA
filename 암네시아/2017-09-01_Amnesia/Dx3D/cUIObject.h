@@ -12,7 +12,6 @@ protected:
 	float				m_fAngle;
 	SYNTHESIZE(ST_SIZE,	m_stSize, Size);
 	SYNTHESIZE(int, m_nTag, Tag);
-	//SYNTHESIZE(int, m_nSave, Save);
 
 public:
 	cUIObject(void);

@@ -9,6 +9,7 @@ enum
 	E_GAME_START		= 101,
 	E_GAME_OPTION		= 102,
 	E_GAME_CLOSE		= 103,
+	E_BTN_SDW			= 104,
 	E_TEXT_VIEW,
 };
 
@@ -58,6 +59,16 @@ cMainMenuScene::cMainMenuScene()
 	pButton->SetScaling(0.8f, 0.8f);
 	pButton->SetDelegate(this);
 	pButton->SetTag(E_GAME_CLOSE);
+	m_pUIRoot->AddChild(pButton);
+
+	pButton = new cUIButton;
+	pButton->SetTexture("UI/우기.png",
+		"UI/우기Mouse.png",
+		"UI/우기.png");
+	pButton->SetPosition(1080, 410);
+	pButton->SetScaling(0.5f, 0.5f);
+	pButton->SetDelegate(this);
+	pButton->SetTag(E_BTN_SDW);
 	m_pUIRoot->AddChild(pButton);
 
 	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
@@ -116,7 +127,8 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 
 	if (pSender->GetTag() == E_GAME_START)
 	{
-		pTextView->SetText("게임 시작");
+	//	pTextView->SetText("게임 시작");
+		g_pSceneManager->SceneChange("2");
 	}
 	else if (pSender->GetTag() == E_GAME_OPTION)
 	{
@@ -125,5 +137,9 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	else if (pSender->GetTag() == E_GAME_CLOSE)
 	{
 		pTextView->SetText("게임 종료");
+	}
+	else if (pSender->GetTag() == E_BTN_SDW)
+	{
+		g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
 	}
 }
