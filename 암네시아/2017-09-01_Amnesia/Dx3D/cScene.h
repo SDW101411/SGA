@@ -9,6 +9,9 @@ private:
 public:
 	cScene();
 	virtual ~cScene();
+
+	virtual void Setup();
+	virtual void Release();
 	virtual void Update();
 	virtual void Render();
 	virtual void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

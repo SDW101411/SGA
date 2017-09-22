@@ -1,18 +1,22 @@
 #pragma once
 
-class cUIGrid;
-
 class cUITool
 {
 private:
-	cUIGrid*						m_pUIGrid;
+	cUIObject*		m_pUIRoot;
+	LPD3DXSPRITE	m_pSprite;
 
 public:
 	cUITool();
 	~cUITool();
 
-	void Setup();
+	void InventoryBorder();
+	void HealthBorder();
+	void SanityBorder();
+	void ExplanationBorder();
+	void TinderBoxBorder();
+	void OilBorder();
+	void JournalBorder();
 	void Update();
 	void Render();
 };
-

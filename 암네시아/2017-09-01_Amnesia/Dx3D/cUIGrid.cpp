@@ -2,6 +2,7 @@
 #include "cUIGrid.h"
 
 cUIGrid::cUIGrid()
+	: m_vPosition(0, 0, 0)
 {
 }
 
@@ -40,9 +41,11 @@ void cUIGrid::Render()
 	DWORD dwPrev;
 	g_pD3DDevice->GetRenderState(D3DRS_LIGHTING, &dwPrev);
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
-	D3DXMATRIX matWorld;
-	D3DXMatrixIdentity(&matWorld);
-	g_pD3DDevice->SetTransform(D3DTS_WORLD, &matWorld);
+//	D3DXMATRIX matWorld;
+	D3DXMatrixIdentity(&m_matWorld);
+//	m_matWorld._41 = m_vPosition.x;
+//	m_matWorld._42 = m_vPosition.y;
+	g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
 	g_pD3DDevice->SetTexture(0, NULL);
 	g_pD3DDevice->SetFVF(ST_PC_VERTEX::FVF);
 	g_pD3DDevice->DrawPrimitiveUP(D3DPT_LINELIST,

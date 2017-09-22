@@ -18,6 +18,7 @@ cMainGame::~cMainGame(void)
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pCrtCtrl);
 	SAFE_DELETE(m_pMain_admin);
+	g_pSceneManager->Destroy(); 
 	g_pFontManager->Destroy();
 	g_pObjectPool->Destroy();
 	g_pTextureManager->Destroy();
@@ -66,6 +67,8 @@ void cMainGame::Render()
 
 	SAFE_RENDER(m_pGrid);
 	SAFE_RENDER(m_pMain_admin);
+
+	g_pTimeManager->Render();
 	
 	g_pD3DDevice->EndScene();
 
@@ -86,15 +89,22 @@ void cMainGame::MsgProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 		}
 		break;
 	case WM_KEYDOWN:
-		switch(wParam) {
+		switch(wParam) 
+		{
 		case VK_SPACE:
 			{
 				//static int n = 0;
 				//m_pSkinnedMesh->SetAnimationIndex(++n);
 			}
 			break;
+		case VK_ESCAPE:	//esc키로 종료한다
+			PostMessage(hWnd, WM_DESTROY, 0, 0);
+			break;
 		}
 		break;
+	case WM_DESTROY:	//종료 메시지
+		PostQuitMessage(0);
+		//return 0;
 	}
 	if (m_pMain_admin)
 		m_pMain_admin->MsgProc(hWnd, message, wParam, lParam);

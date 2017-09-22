@@ -13,6 +13,7 @@ public:
 		E_NORMAL,
 		E_EXPLANATION,
 		E_NUMBER,
+		E_ITEM_VALUE,
 		E_END,
 	};
 
