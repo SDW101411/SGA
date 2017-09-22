@@ -2,16 +2,24 @@
 
 #include "singletonbase.h"
 
+#define g_pSceneManager cScene_Manager::GetInstance()
+
 class cScene;
-class cScene_Manager : public singletonBase <cScene_Manager>
+class cScene_Manager
 {
 private:
-	map<string, cScene*> cScene_database;
-public:
-	cScene_Manager();
-	~cScene_Manager();
+	SINGLETON(cScene_Manager);
 
-	void INSERT(char * szName, cScene * Insert_cScene);
+	map<string, cScene*>	cScene_database;
+	cScene*					m_pCurrentScene;
+public:
+
+	void INSERT(char * szName, cScene* pScene);
 	cScene *FIND(char * szName);
+	void SceneChange(char * szName);
+	void Destroy();
+
+	void Update();
+	void Render();
 };
 

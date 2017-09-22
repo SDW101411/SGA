@@ -15,36 +15,32 @@
 
 
 cMain_admin::cMain_admin()
-	:m_pNow_Scene(NULL)
 {
-	//m_pNow_Scene = new cScene_Test_1; // 1차 테스트 완료 상속에 대한 기본 테스트
+	//SCENE_MANAGER->INSERT("MapToolScene", new cMapToolScene);
+	//SCENE_MANAGER->INSERT("1", new cScene_Test_1);
+	g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
+	//g_pSceneManager->INSERT("3", new cMainMenuScene);
+	//SCENE_MANAGER->INSERT("4", new cScene_Shader_Scene_Test);
 
-	//m_pNow_Scene = new cMapToolScene; // 맵툴 테스트 입니다 - 영빈 -
-	//m_pNow_Scene = new cUITool_In_Game_Test;	// UI 테스트 - LEE
-	//m_pNow_Scene = new cMainMenuScene;			// 시작 UI - LEE
-
-	m_pNow_Scene = new cScene_Shader_Scene_Test;
+	g_pSceneManager->SceneChange("2");
 }
 
 
 cMain_admin::~cMain_admin()
 {
-	SAFE_DELETE(m_pNow_Scene);
 }
 
 
 void cMain_admin::Update()
 {
-	SAFE_UPDATE(m_pNow_Scene);
+	g_pSceneManager->Update();
 }
 
 void cMain_admin::Render()
 {
-	SAFE_RENDER(m_pNow_Scene);
+	g_pSceneManager->Render();
 }
 
 void cMain_admin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	if(m_pNow_Scene)
-	m_pNow_Scene->MsgProc(hWnd, message, wParam, lParam);
 }

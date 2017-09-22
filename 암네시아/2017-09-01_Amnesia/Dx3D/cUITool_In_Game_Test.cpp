@@ -14,6 +14,14 @@ cUITool_In_Game_Test::~cUITool_In_Game_Test()
 	SAFE_DELETE(m_pUI);
 }
 
+void cUITool_In_Game_Test::Setup()
+{
+}
+
+void cUITool_In_Game_Test::Release()
+{
+}
+
 void cUITool_In_Game_Test::Update()
 {
 	SAFE_UPDATE(m_pUI);

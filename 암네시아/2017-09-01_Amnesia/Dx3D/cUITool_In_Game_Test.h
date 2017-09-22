@@ -13,6 +13,8 @@ public:
 	cUITool_In_Game_Test();
 	~cUITool_In_Game_Test();
 
+	void Setup();
+	void Release();
 	void Update();
 	void Render();
 };

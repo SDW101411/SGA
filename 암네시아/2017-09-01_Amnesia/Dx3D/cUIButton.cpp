@@ -36,6 +36,7 @@ void cUIButton::Update()
 	if (PtInRect(&rc, ptMouse))
 	{
 		if (GetKeyState(VK_LBUTTON) & 0x8000)
+		//if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
 			if (m_eButtonStatus == E_MOUSEOVER)
 			{

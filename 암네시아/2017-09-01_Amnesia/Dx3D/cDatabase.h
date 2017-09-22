@@ -24,6 +24,7 @@ public:
 	void Delete(int key);
 	int Load(int key);
 	bool isHave(int key);
+	ITEM GetTag(int key);
 
 };
 

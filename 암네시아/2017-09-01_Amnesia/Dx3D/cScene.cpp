@@ -15,6 +15,14 @@ cScene::~cScene()
 	
 }
 
+void cScene::Setup()
+{
+}
+
+void cScene::Release()
+{
+}
+
 void cScene::Update()
 {
 }

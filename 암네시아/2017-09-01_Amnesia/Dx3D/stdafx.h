@@ -183,7 +183,6 @@ struct ST_SIZE
 #include "cSoundManager.h"
 #include "cDatabase.h"
 
-#define SCENE_MANAGER cScene_Manager::getSingleton()
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;
 
