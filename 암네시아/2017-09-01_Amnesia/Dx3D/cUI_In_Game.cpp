@@ -179,6 +179,7 @@ cUI_In_Game::cUI_In_Game()
 	//m_itemList[0][1] = m_pItemOil;
 
 	CreateItem(ITEM_OIL);
+	CreateItem(ITEM_HP);
 
 	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
 	pTextView->SetText("");

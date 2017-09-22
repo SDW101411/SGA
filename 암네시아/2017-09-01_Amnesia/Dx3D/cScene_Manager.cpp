@@ -47,3 +47,8 @@ void cScene_Manager::Render()
 {
 	if (m_pCurrentScene) m_pCurrentScene->Render();
 }
+
+void cScene_Manager::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	if (m_pCurrentScene) m_pCurrentScene->MsgProc(hWnd, message, wParam, lParam);
+}

@@ -13,14 +13,19 @@
 		cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
 		*/
 
-
 cMain_admin::cMain_admin()
 {
 	//SCENE_MANAGER->INSERT("MapToolScene", new cMapToolScene);
 	//SCENE_MANAGER->INSERT("1", new cScene_Test_1);
+<<<<<<< .mine
 	//g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("3", new cMainMenuScene);
 	g_pSceneManager->INSERT("4", new cScene_Shader_Scene_Test);
+=======
+	g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
+	g_pSceneManager->INSERT("3", new cMainMenuScene);
+	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
+>>>>>>> .theirs
 
 	g_pSceneManager->SceneChange("3");
 }
@@ -43,4 +48,5 @@ void cMain_admin::Render()
 
 void cMain_admin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	g_pSceneManager->MsgProc(hWnd, message, wParam, lParam);
 }

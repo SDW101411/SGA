@@ -9,11 +9,10 @@ class cScene_Manager
 {
 private:
 	SINGLETON(cScene_Manager);
-
 	map<string, cScene*>	cScene_database;
 	cScene*					m_pCurrentScene;
-public:
 
+public:
 	void INSERT(char * szName, cScene* pScene);
 	cScene *FIND(char * szName);
 	void SceneChange(char * szName);
@@ -21,5 +20,7 @@ public:
 
 	void Update();
 	void Render();
+
+	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
 
