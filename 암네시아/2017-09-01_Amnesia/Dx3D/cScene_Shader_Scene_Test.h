@@ -10,7 +10,9 @@ private:
 public:
 	cScene_Shader_Scene_Test();
 	~cScene_Shader_Scene_Test();
-
+	
+	void Setup();
+	void Release();
 	void Update();
 	void Render();
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
