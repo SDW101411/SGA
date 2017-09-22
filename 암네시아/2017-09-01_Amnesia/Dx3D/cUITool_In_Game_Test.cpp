@@ -2,12 +2,12 @@
 #include "cUITool_In_Game_Test.h"
 #include "cUI_In_Game.h"
 #include "IUI.h"
-#include "cXButton.h"
+#include "cMultiBtn.h"
 
 cUITool_In_Game_Test::cUITool_In_Game_Test()
 {
 	m_pUI = new cUI_In_Game;
-	m_pIUI = new cXButton;
+	m_pIUI = new cMultiBtn;
 }
 
 cUITool_In_Game_Test::~cUITool_In_Game_Test()

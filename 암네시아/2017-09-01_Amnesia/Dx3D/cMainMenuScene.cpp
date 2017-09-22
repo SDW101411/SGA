@@ -147,7 +147,8 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	}
 	else if (pSender->GetTag() == E_GAME_CLOSE)
 	{
-		pTextView->SetText("게임 종료");
+		//pTextView->SetText("게임 종료");
+		PostQuitMessage(0);
 	}
 	else if (pSender->GetTag() == E_BTN_SDW)
 	{

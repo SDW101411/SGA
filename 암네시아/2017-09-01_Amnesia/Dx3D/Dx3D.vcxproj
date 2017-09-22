@@ -148,7 +148,7 @@
     <ClInclude Include="cUIToolTestScene.h" />
     <ClInclude Include="cUITool_In_Game_Test.h" />
     <ClInclude Include="cUI_In_Game.h" />
-    <ClInclude Include="cXButton.h" />
+    <ClInclude Include="cMultiBtn.h" />
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
@@ -224,7 +224,7 @@
     <ClCompile Include="cUIToolTestScene.cpp" />
     <ClCompile Include="cUITool_In_Game_Test.cpp" />
     <ClCompile Include="cUI_In_Game.cpp" />
-    <ClCompile Include="cXButton.cpp" />
+    <ClCompile Include="cMultiBtn.cpp" />
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
