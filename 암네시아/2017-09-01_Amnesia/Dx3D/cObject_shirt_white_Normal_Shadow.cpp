@@ -10,8 +10,8 @@ cObject_shirt_white_Normal_Shadow::cObject_shirt_white_Normal_Shadow()
 	m_Specqural = LoadTexture("Test/shirt_white_spec.dds");
 	m_Efffect = LoadShader("Test/NormalMappingAndShadow.fx");
 
-	if (FAILED(g_pD3DDevice->CreateTexture(shadowMapSize, shadowMapSize, 1, D3DUSAGE_RENDERTARGET, D3DFMT_R32F, D3DPOOL_DEFAULT, &gpShadowRenderTarget, NULL)))return;
-	
+	//if (FAILED()return;
+	g_pD3DDevice->CreateTexture(shadowMapSize, shadowMapSize, 1, D3DUSAGE_RENDERTARGET, D3DFMT_R32F, D3DPOOL_DEFAULT, &gpShadowRenderTarget, NULL);
 	g_pD3DDevice->CreateDepthStencilSurface(
 		shadowMapSize,
 		shadowMapSize,
