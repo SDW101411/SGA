@@ -2,15 +2,15 @@
 
 #include "IUI.h"
 
-class cXButton : public IUI
+class cMultiBtn : public IUI
 {
 private:
 	cUIObject*		m_pUIRoot;
 	LPD3DXSPRITE	m_pSprite;
 
 public:
-	cXButton();
-	~cXButton();
+	cMultiBtn();
+	~cMultiBtn();
 
 public:
 	virtual void Update();

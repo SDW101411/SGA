@@ -363,7 +363,7 @@
     <ClInclude Include="cObject_shirt_white_Normal_Shadow.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="cXButton.h">
+    <ClInclude Include="cMultiBtn.h">
       <Filter>한나\UI정리</Filter>
     </ClInclude>
   </ItemGroup>
@@ -578,7 +578,7 @@
     <ClCompile Include="cObject_shirt_white_Normal_Shadow.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cXButton.cpp">
+    <ClCompile Include="cMultiBtn.cpp">
       <Filter>한나\UI정리</Filter>
     </ClCompile>
   </ItemGroup>

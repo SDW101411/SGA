@@ -123,7 +123,7 @@ cUI_In_Game::cUI_In_Game()
 	pButton->SetPosition(1094, 110);
 	pButton->SetScaling(1.0f, 1.0f);
 	pButton->SetDelegate(this);
-	pButton->SetTag(E_TINDER);
+	pButton->SetTag(ITEM_TINDER);
 	m_pUIRoot->AddChild(pButton);
 
 	pButton = new cUIButton;
@@ -156,16 +156,16 @@ cUI_In_Game::cUI_In_Game()
 	pButton->SetTag(E_RANTERNSHAPE);
 	m_pUIRoot->AddChild(pButton);
 
-	pButton = new cUIButton;			// 아이템 램프
-	pButton->SetTexture("UI/Item/lantern.tga",
-		"UI/Item/lantern.tga",
-		"UI/Item/lantern.tga");
-	pButton->SetPosition(440, 94);
-	pButton->SetScaling(1.2f, 1.2f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(ITEM_LAMP);
-	m_pUIRoot->AddChild(pButton);
-	m_itemList[0][0] = pButton;
+	//pButton = new cUIButton;			// 아이템 램프
+	//pButton->SetTexture("UI/Item/lantern.tga",
+	//	"UI/Item/lantern.tga",
+	//	"UI/Item/lantern.tga");
+	//pButton->SetPosition(440, 94);
+	//pButton->SetScaling(1.2f, 1.2f);
+	//pButton->SetDelegate(this);
+	//pButton->SetTag(ITEM_LAMP);
+	//m_pUIRoot->AddChild(pButton);
+	//m_itemList[0][0] = pButton;
 
 	//m_pItemOil = new cUIButton;			// 아이템 기름병
 	//m_pItemOil->SetTexture("UI/Item/potion_oil.tga",
@@ -178,8 +178,9 @@ cUI_In_Game::cUI_In_Game()
 	//m_pUIRoot->AddChild(m_pItemOil);
 	//m_itemList[0][1] = m_pItemOil;
 
+	CreateItem(ITEM_LAMP);
 	CreateItem(ITEM_OIL);
-	CreateItem(ITEM_HP);
+	//CreateItem(ITEM_HP);
 
 	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
 	pTextView->SetText("");
@@ -344,11 +345,22 @@ void cUI_In_Game::Update()
 		{
 			if (PtInRect(&m_OilRc, _ptMousePos) && m_curClickItem->GetTag() == ITEM_OIL)
 			{
-				m_fOilValue += 0.1f;
-				int x, y;
-				FindPostion(m_curItemRow, m_curItemCol, x, y);
-				m_curClickItem->SetPosition(x, y);
-				m_curClickItem = NULL;
+				if (!(m_fOilValue >= 0.5f))
+				{
+					DATABASE->Delete(ITEM_OIL);
+					m_fOilValue += 0.1f;
+					int x, y;
+					FindPostion(m_curItemRow, m_curItemCol, x, y);
+					m_curClickItem->SetPosition(x, y);
+					m_curClickItem = NULL;
+				}
+				else
+				{
+					int x, y;
+					FindPostion(m_curItemRow, m_curItemCol, x, y);
+					m_curClickItem->SetPosition(x, y);
+					m_curClickItem = NULL;
+				}
 			}
 			else
 			{
@@ -457,6 +469,11 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 		pTextView->SetText("기름");
 		pTextView_2->SetText("랜턴 연료.");
 	}
+	else if (pSender->GetTag() == ITEM_HP)
+	{
+		pTextView->SetText("아편");
+		pTextView_2->SetText("강장약은 건강 상태를 좋게 하고 부상을 치료한다.");
+	}
 }
 
 void cUI_In_Game::OnClick(cUIButton* pSender)
@@ -494,18 +511,22 @@ void cUI_In_Game::CreateItem(int tag)
 				case ITEM_TINDER:
 					DATABASE->Insert(ITEM_TINDER);
 					nCount = DATABASE->Load(ITEM_TINDER);
+					return;
 					break;
 				case ITEM_LAMP:
+					DATABASE->Insert(ITEM_LAMP);
 					break;
 				case ITEM_OIL:
 					RECT rc;
 					DATABASE->Insert(ITEM_OIL);
 					nCount = DATABASE->Load(ITEM_OIL);
-					m_pItemOil->GetRect(&rc);
+					//m_pItemOil->GetRect(&rc);
+					return;
 					break;
 				case ITEM_HP:
 					DATABASE->Insert(ITEM_HP);
 					nCount = DATABASE->Load(ITEM_HP);
+					return;
 					break;
 				}
 				char str[30];
@@ -535,9 +556,18 @@ void cUI_In_Game::CreateItem(int tag)
 
 	switch (tag)
 	{
-	case ITEM_TINDER:
-		break;
+	//case ITEM_TINDER:
+	//	break;
 	case ITEM_LAMP:
+		pObj->SetTexture("UI/Item/lantern.tga",
+			"UI/Item/lantern.tga",
+			"UI/Item/lantern.tga");
+		pObj->SetPosition(x, y);
+		pObj->SetScaling(1.2f, 1.2f);
+		pObj->SetDelegate(this);
+		pObj->SetTag(ITEM_LAMP);
+		m_pUIRoot->AddChild(pObj);
+		m_itemList[row][col] = pObj;
 		break;
 	case ITEM_OIL:
 		pObj->SetTexture("UI/Item/potion_oil.tga",
@@ -656,7 +686,11 @@ void cUI_In_Game::ValueCtr()
 	if (KEYMANAGER->isOnceKeyDown('R')) DATABASE->Delete(ITEM_TINDER);
 	if (KEYMANAGER->isOnceKeyDown('T')) DATABASE->Insert(ITEM_TINDER);
 	if (KEYMANAGER->isStayKeyDown('F')) m_fOilValue += 0.0001f;
-	if (KEYMANAGER->isStayKeyDown('V')) m_fOilValue -= 0.0001f;
+	if (KEYMANAGER->isStayKeyDown('V')) m_fOilValue -= 0.01f;//0.0001f;
+	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD1)) CreateItem(ITEM_HP);
+	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD2)) DATABASE->Delete(ITEM_HP);
+	if (KEYMANAGER->isOnceKeyDown('O')) CreateItem(ITEM_OIL);
+	if (KEYMANAGER->isOnceKeyDown('P')) DATABASE->Delete(ITEM_OIL);
 }
 
 void cUI_In_Game::FindPostion(IN int row, IN int col, OUT int & x, OUT int & y)
