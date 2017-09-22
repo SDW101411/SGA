@@ -3,6 +3,7 @@
 #include "cObject_Game.h"
 #include "cObject_shirt_white.h"
 #include "cObject_shirt_white_Normal.h"
+#include "cObject_shirt_white_Normal_Shadow.h"
 #include "cObject_bottle.h"
 #include "cPlayer.h"
 
@@ -36,8 +37,9 @@ cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	cObject_Vec.push_back(Test_3);
 	cObject_Vec.push_back(Test_4);
 
-
-
+	cObject_Game *Test_6 = new cObject_shirt_white_Normal_Shadow;
+	Test_6->Set_Anit1hing_Test(D3DXVECTOR3(10, 1, 10), 0, 0, 0, 1, 1, 1);
+	cObject_Vec.push_back(Test_6);
 	m_pPlayer = new cPlayer;
 }
 

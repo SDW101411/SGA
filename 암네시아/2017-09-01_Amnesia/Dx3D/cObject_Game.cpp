@@ -88,6 +88,35 @@ void cObject_Game::AnotherRander()
 	m_Efffect->End();
 }
 
+void cObject_Game::Shadow_Render()
+{
+	UINT numPasses = 0;
+	m_Efffect->Begin(&numPasses, NULL);
+	{
+		m_Efffect->BeginPass(0);
+		{
+			m_Mesh->DrawSubset(0);
+		}
+		m_Efffect->EndPass();
+
+		g_pD3DDevice->SetRenderTarget(0, pHWBackBuffer);
+		g_pD3DDevice->SetDepthStencilSurface(pHWDepthStencilBuffer);
+
+		SAFE_RELEASE(pHWBackBuffer);
+		SAFE_RELEASE(pHWDepthStencilBuffer);
+
+		m_Efffect->CommitChanges();
+
+		m_Efffect->BeginPass(1);
+
+		m_Mesh->DrawSubset(0);
+
+		m_Efffect->EndPass();
+	}
+	m_Efffect->End();
+
+}
+
 LPDIRECT3DTEXTURE9 cObject_Game::LoadTexture(const char * filename)
 {
 	LPDIRECT3DTEXTURE9 ret = NULL;
