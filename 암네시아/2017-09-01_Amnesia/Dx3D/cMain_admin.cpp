@@ -18,11 +18,11 @@ cMain_admin::cMain_admin()
 {
 	//SCENE_MANAGER->INSERT("MapToolScene", new cMapToolScene);
 	//SCENE_MANAGER->INSERT("1", new cScene_Test_1);
-	g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
-	//g_pSceneManager->INSERT("3", new cMainMenuScene);
-	//SCENE_MANAGER->INSERT("4", new cScene_Shader_Scene_Test);
+	//g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
+	g_pSceneManager->INSERT("3", new cMainMenuScene);
+	g_pSceneManager->INSERT("4", new cScene_Shader_Scene_Test);
 
-	g_pSceneManager->SceneChange("2");
+	g_pSceneManager->SceneChange("3");
 }
 
 
