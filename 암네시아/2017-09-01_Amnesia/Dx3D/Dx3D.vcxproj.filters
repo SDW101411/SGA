@@ -130,6 +130,12 @@
     <Filter Include="한나\UI정리">
       <UniqueIdentifier>{a5491387-8a75-4b1f-9c3b-abc491c2db89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\MapWall">
+      <UniqueIdentifier>{7c02fca7-f452-4e4c-b99a-9d130d7dcbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\MapMesh">
+      <UniqueIdentifier>{e4a5e530-5ee2-43ef-bcc8-b853f5403e2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -324,9 +330,6 @@
     <ClInclude Include="cMapObject.h">
       <Filter>영빈\MapObject</Filter>
     </ClInclude>
-    <ClInclude Include="cMapObjState.h">
-      <Filter>영빈\MapObject</Filter>
-    </ClInclude>
     <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
@@ -365,6 +368,12 @@
     </ClInclude>
     <ClInclude Include="cMultiBtn.h">
       <Filter>한나\UI정리</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapMesh.h">
+      <Filter>영빈\MapMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapWall.h">
+      <Filter>영빈\MapWall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -539,9 +548,6 @@
     <ClCompile Include="cMapObject.cpp">
       <Filter>영빈\MapObject</Filter>
     </ClCompile>
-    <ClCompile Include="cMapObjState.cpp">
-      <Filter>영빈\MapObject</Filter>
-    </ClCompile>
     <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\MapToolScene</Filter>
     </ClCompile>
@@ -580,6 +586,12 @@
     </ClCompile>
     <ClCompile Include="cMultiBtn.cpp">
       <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapMesh.cpp">
+      <Filter>영빈\MapMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapWall.cpp">
+      <Filter>영빈\MapWall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

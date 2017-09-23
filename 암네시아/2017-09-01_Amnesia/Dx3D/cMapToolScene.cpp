@@ -6,13 +6,16 @@
 cMapToolScene::cMapToolScene()
 	: m_pPickingArea(NULL)
 	, m_state(0)
+	, m_curRotation(0, 0, 0)
+	, m_curScale(1.275, 1.275, 1.275)
 {
 	m_pMapTool = new cMapTool;
-	m_pMapTool->SetUp(D3DXVECTOR3(0, 0, 0), 10, 10);
+	m_pMapTool->SetUp(D3DXVECTOR3(0, 0, 0), 50, 50);
+	m_pMapTool->SetCurrentTag(2);
 	m_ground = m_pMapTool->FindPickingGround();
 
 	ZeroMemory(&m_material, sizeof(D3DMATERIAL9));
-	m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f);
+	m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);
 	SetupPickingArea();
 }
 
@@ -28,14 +31,80 @@ void cMapToolScene::Update()
 {
 	if (KEYMANAGER->isOnceKeyDown('1'))m_state = MAPTOOL_STATE_DRAW_GRID;
 	if (KEYMANAGER->isOnceKeyDown('2'))m_state = MAPTOOL_STATE_DRAW_CUBE;
+	if (KEYMANAGER->isOnceKeyDown('3')) m_state = MAPTOOL_STATE_DELETE_MESH;
+
+	if (KEYMANAGER->isOnceKeyDown('E'))
+	{
+		m_curRotation.y += D3DX_PI * 0.5f;
+		if (m_curRotation.y >= D3DX_PI * 2) m_curRotation.y -= D3DX_PI * 2;
+	}
+	if (KEYMANAGER->isOnceKeyDown('Q'))
+	{
+		m_curRotation.y -= D3DX_PI * 0.5f;
+		if (m_curRotation.y < 0) m_curRotation.y += D3DX_PI * 2;
+	}
+
+	if (KEYMANAGER->isOnceKeyDown('Z'))
+	{
+		m_curScale.x -= 0.05f;
+		m_curScale.y -= 0.05f;
+		m_curScale.z -= 0.05f;
+	}
+	if (KEYMANAGER->isOnceKeyDown('X'))
+	{
+		m_curScale.x += 0.05f;
+		m_curScale.y += 0.05f;
+		m_curScale.z += 0.05f;
+	}
+
+	if (KEYMANAGER->isOnceKeyDown('C'))
+	{
+		m_pMapTool->FindPickingPosition(m_curWallPos, m_ground);
+		m_pMapTool->FindNearNode(m_curWallPos, m_curWallPos);
+	}
+	if (KEYMANAGER->isOnceKeyDown('V'))
+	{
+		D3DXVECTOR3 endPos;
+		m_pMapTool->FindPickingPosition(endPos, m_ground);
+		m_pMapTool->FindNearNode(endPos, endPos);
+		m_pMapTool->CreateWall(m_curWallPos, endPos);
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
+	{
+		m_pMapTool->SetCurrentTag(m_pMapTool->GetCurrentTag() - 1);
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_RIGHT))
+	{
+		m_pMapTool->SetCurrentTag(m_pMapTool->GetCurrentTag() + 1);
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_UP))
+	{
+		if (m_pMapTool->GetCurrentFloor() < 5) m_pMapTool->SetCurrentFloor(m_pMapTool->GetCurrentFloor() + 1);
+		SetupPickingArea();
+		for (int i = 0; i < m_ground.size(); i++)
+		{
+			m_ground[i].y = m_pMapTool->GetCurrentFloor();
+		}
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
+	{
+		if (m_pMapTool->GetCurrentFloor() > 0) m_pMapTool->SetCurrentFloor(m_pMapTool->GetCurrentFloor() - 1);
+		SetupPickingArea();
+		for (int i = 0; i < m_ground.size(); i++)
+		{
+			m_ground[i].y = m_pMapTool->GetCurrentFloor();
+		}
+	}
 
 	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON))
 	{
 		D3DXVECTOR3 pos;
 		if (m_pMapTool->FindPickingPosition(pos, m_ground))
 		{
-			if(m_state == MAPTOOL_STATE_DRAW_GRID) m_pMapTool->CreateNode(pos);
-			else m_pMapTool->CreateObject(0, pos);
+			if (m_state == MAPTOOL_STATE_DRAW_GRID) m_pMapTool->CreateNode(pos);
+			else if (m_state == MAPTOOL_STATE_DRAW_CUBE) m_pMapTool->CreateTile(pos, m_curRotation, m_curScale);
+			else if (m_state == MAPTOOL_STATE_DELETE_MESH) m_pMapTool->DeleteTile(pos);
 		}
 	}
 	SAFE_UPDATE(m_pMapTool);
@@ -44,6 +113,14 @@ void cMapToolScene::Update()
 void cMapToolScene::Render()
 {
 	RenderPickingArea();
+	if (KEYMANAGER->isStayKeyDown(VK_SPACE))
+	{
+		D3DXVECTOR3 pos;
+		if (m_pMapTool->FindPickingPosition(pos, m_ground))
+		{
+			m_pMapTool->RenderCurrentTag(pos, m_curRotation, m_curScale);
+		}
+	}
 	SAFE_RENDER(m_pMapTool);
 }
 
@@ -57,7 +134,7 @@ void cMapToolScene::SetupPickingArea()
 	m_pPickingArea->LockVertexBuffer(0, (VOID**)&vertex);
 	for (size_t i = 0; i < m_ground.size(); i++)
 	{
-		vertex[i] = ST_PN_VERTEX(m_ground[i], D3DXVECTOR3(0, 1, 0));
+		vertex[i] = ST_PN_VERTEX(D3DXVECTOR3(m_ground[i].x, m_pMapTool->GetCurrentFloor(), m_ground[i].z), D3DXVECTOR3(0, 1, 0));
 	}
 	m_pPickingArea->UnlockVertexBuffer();
 
