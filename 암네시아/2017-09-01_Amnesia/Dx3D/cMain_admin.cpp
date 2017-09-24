@@ -12,7 +12,7 @@
 		2017-09-02 Main_admin.
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
 		cMain_Game에서 가져온 값들 Update와 Render, MsgProc 
-		*/
+*/
 
 cMain_admin::cMain_admin()
 {
@@ -25,6 +25,16 @@ cMain_admin::cMain_admin()
 	g_pSceneManager->SceneChange("cMainMenuScene");
 
 	cMESH_MANAGER->INSERT("torch_static01","Test/torch_static01");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_DEFAULT",		"X_File/MapObjects/ceiling/arched");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_BROKEN",			"X_File/MapObjects/ceiling/arched_broken");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_NORMAL",			"X_File/MapObjects/ceiling/deafult2");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_WALL_WORN",				"X_File/MapObjects/wall/default_worn");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_PILLAR_DEFAULT",			"X_File/MapObjects/pillar/welder");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_PILLAR_FULL",			"X_File/MapObjects/pillar/welder_convex");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_FLOOR_DEFAULT",			"X_File/MapObjects/floor/deafult");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CONCAVE_WORN",			"X_File/MapObjects/ceiling/concave_worn");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_convex_short");
 }
 
 cMain_admin::~cMain_admin()
