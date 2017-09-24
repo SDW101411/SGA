@@ -39,6 +39,7 @@ void cMapToolScene::Update()
 	if (KEYMANAGER->isOnceKeyDown('1'))m_state = MAPTOOL_STATE_DRAW_GRID;
 	if (KEYMANAGER->isOnceKeyDown('2'))m_state = MAPTOOL_STATE_DRAW_CUBE;
 	if (KEYMANAGER->isOnceKeyDown('3')) m_state = MAPTOOL_STATE_DELETE_MESH;
+	if (KEYMANAGER->isOnceKeyDown('4')) m_pMapTool->LoadData();
 
 	if (KEYMANAGER->isOnceKeyDown('E'))
 	{

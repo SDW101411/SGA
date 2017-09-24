@@ -6,6 +6,7 @@
 #include "cMapObject.h"
 #include "cMapMesh.h"
 #include "cMapWall.h"
+#include "cMapLoader.h"
 
 cMapTool::cMapTool()
 	: m_curTag(0)
@@ -267,12 +268,19 @@ void cMapTool::SaveData()
 	fclose(fp);
 }
 
+void cMapTool::LoadData()
+{
+	cMapLoader loader;
+	m_tileList = loader.LoadToMapObject();
+}
+
 void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
 {
 	char str[1024];
 	fputs(name.c_str(), fp);
 	for each(auto p in pObj)
 	{
+		fputs("NEW\n", fp);
 		D3DXVECTOR3 pos = p->GetPosition();
 		D3DXVECTOR3 rot = p->GetRotation();
 		D3DXVECTOR3 scl = p->GetScale();
@@ -283,6 +291,8 @@ void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
 		sprintf(str, "%f %f %f\n", scl.x, scl.y, scl.z);
 		fputs(str, fp);
 	}
+
+	fputs("END\n", fp);
 }
 
 vector<D3DXVECTOR3> cMapTool::FindPickingGround()
