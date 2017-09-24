@@ -130,6 +130,9 @@
     <Filter Include="한나\UI정리">
       <UniqueIdentifier>{a5491387-8a75-4b1f-9c3b-abc491c2db89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\셰이더%28Test%29\cObject_X\불 오브젝트">
+      <UniqueIdentifier>{0b61d540-3c91-4d54-a66f-e1ef2d969214}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -360,11 +363,14 @@
     <ClInclude Include="IUI.h">
       <Filter>한나\UI정리</Filter>
     </ClInclude>
-    <ClInclude Include="cObject_shirt_white_Normal_Shadow.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cMultiBtn.h">
       <Filter>한나\UI정리</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject_shirt_white_Normal_Shadow.h">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject_Torch.h">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\불 오브젝트</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -575,11 +581,14 @@
     <ClCompile Include="IUI.cpp">
       <Filter>한나\UI정리</Filter>
     </ClCompile>
-    <ClCompile Include="cObject_shirt_white_Normal_Shadow.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cMultiBtn.cpp">
       <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_shirt_white_Normal_Shadow.cpp">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_Torch.cpp">
+      <Filter>동욱\셰이더%28Test%29\cObject_X\불 오브젝트</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

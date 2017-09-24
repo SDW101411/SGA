@@ -6,6 +6,7 @@
 #include "cObject_shirt_white_Normal_Shadow.h"
 #include "cObject_bottle.h"
 #include "cPlayer.h"
+#include "cObject_Torch.h"
 
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
@@ -38,10 +39,11 @@ void cScene_Shader_Scene_Test::Setup()
 		for (int j = 0; j < 3; j++)
 		{
 			cObject_Game *forTest = new cObject_shirt_white_Normal;
-			forTest->Set_Anit1hing_Test(D3DXVECTOR3(i * 2, 1, j * 2), 0, 0, 0, 1, 1, 1);
+			forTest->Set_Anit1hing_Test(D3DXVECTOR3(i * 2 + 3, 1, j * 2 + 3), 0, 0, 0, 1, 1, 1);
 			cObject_Vec.push_back(forTest);
 		}
 	}
+
 
 	cObject_Vec.push_back(Test);
 	cObject_Vec.push_back(Test_1);
@@ -50,9 +52,14 @@ void cScene_Shader_Scene_Test::Setup()
 	cObject_Vec.push_back(Test_4);
 
 	cObject_Game *Test_6 = new cObject_shirt_white_Normal_Shadow;
-	Test_6->Set_Anit1hing_Test(D3DXVECTOR3(10, 1, 10), 0, 0, 0, 1, 1, 1);
+	Test_6->Set_Anit1hing_Test(D3DXVECTOR3(0, 1, 0), 0, 0, 0, 5, 5, 5);
 	cObject_Vec.push_back(Test_6);
 	m_pPlayer = new cPlayer;
+
+
+	cObject_Game *Test_Torch = new cObject_Torch;
+	Test_Torch->Set_Anit1hing_Test(D3DXVECTOR3(1, 1, 1), 0, 0, 0, 1, 1, 1);
+	cObject_Vec.push_back(Test_Torch);
 }
 
 void cScene_Shader_Scene_Test::Release()

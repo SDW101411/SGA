@@ -13,10 +13,10 @@ public:
 
 	LPDIRECT3DTEXTURE9		gpShadowRenderTarget;
 	LPDIRECT3DSURFACE9		m_pShadowDepthStencil;
-	const int shadowMapSize = 2048;
-	LPDIRECT3DSURFACE9 pHWBackBuffer = NULL;
-	LPDIRECT3DSURFACE9 pHWDepthStencilBuffer = NULL;
-	LPDIRECT3DSURFACE9 pShadowSurface = NULL;
+	
+	//LPDIRECT3DSURFACE9 pHWBackBuffer = NULL;
+	//LPDIRECT3DSURFACE9 pHWDepthStencilBuffer = NULL;
+	//LPDIRECT3DSURFACE9 pShadowSurface = NULL;
 
 public:
 	cObject_Game();

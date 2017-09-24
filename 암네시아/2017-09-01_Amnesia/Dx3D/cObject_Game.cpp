@@ -99,11 +99,11 @@ void cObject_Game::Shadow_Render()
 		}
 		m_Efffect->EndPass();
 
-		g_pD3DDevice->SetRenderTarget(0, pHWBackBuffer);
-		g_pD3DDevice->SetDepthStencilSurface(pHWDepthStencilBuffer);
+		//g_pD3DDevice->SetRenderTarget(0, pHWBackBuffer);
+		//g_pD3DDevice->SetDepthStencilSurface(pHWDepthStencilBuffer);
 
-		SAFE_RELEASE(pHWBackBuffer);
-		SAFE_RELEASE(pHWDepthStencilBuffer);
+		//SAFE_RELEASE(pHWBackBuffer);
+		//SAFE_RELEASE(pHWDepthStencilBuffer);
 
 		m_Efffect->CommitChanges();
 

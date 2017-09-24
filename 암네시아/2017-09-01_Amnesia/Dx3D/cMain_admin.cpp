@@ -18,37 +18,9 @@ cMain_admin::cMain_admin()
 	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
-<<<<<<< .mine
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-	//g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
-<<<<<<< HEAD
-=======
-=======
-	//SCENE_MANAGER->INSERT("MapToolScene", new cMapToolScene);
-	//SCENE_MANAGER->INSERT("1", new cScene_Test_1);
-
-	//g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
-	/*g_pSceneManager->INSERT("3", new cMainMenuScene);
-	g_pSceneManager->INSERT("4", new cScene_Shader_Scene_Test);*/
-
 	g_pSceneManager->INSERT("2", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("3", new cMainMenuScene);
->>>>>>> .theirs
 	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
->>>>>>> dafb71557db0837db8fc103699c52e669c1b74ce
 
 	g_pSceneManager->SceneChange("cMainMenuScene");
 
