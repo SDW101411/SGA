@@ -10,13 +10,14 @@ protected:
 	D3DXMATRIX			m_matWorld;
 	D3DXMATRIX			m_matR;
 	float				m_fAngle;
-	SYNTHESIZE(ST_SIZE,	m_stSize, Size);
+	SYNTHESIZE(ST_SIZE, m_stSize, Size);
 	SYNTHESIZE(int, m_nTag, Tag);
 
 public:
 	cUIObject(void);
 	virtual ~cUIObject(void);
-	
+
+	virtual void Delete(int n);
 	virtual void AddChild(cUIObject* pChild);
 	virtual void Update();
 	virtual void Render(LPD3DXSPRITE pSprite);

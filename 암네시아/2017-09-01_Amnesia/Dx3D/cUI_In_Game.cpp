@@ -7,23 +7,21 @@
 
 enum
 {
-	E_BACKGROUND		= 211,
-	E_BORDER			= 212,
-	E_HEART				= 213,
-	E_HEART_UP			= 214,
-	E_BRAIN				= 215,
-	E_BRAIN_UP			= 216,
-	E_TINDER			= 217,
-	E_JOURNAL			= 218,
-	E_RANTERNSHAPE		= 219,
-	E_OIL				= 220,
+	E_BACKGROUND = 211,
+	E_BORDER = 212,
+	E_HEART = 213,
+	E_HEART_UP = 214,
+	E_BRAIN = 215,
+	E_BRAIN_UP = 216,
+	E_TINDER = 217,
+	E_JOURNAL = 218,
+	E_RANTERNSHAPE = 219,
+	E_OIL = 220,
 	E_TEXT_VIEW,
 	E_TEXT_VIEW_2,
 	E_TEXT_VIEW_3,
 	E_TEXT_MOUSEPOS,
-	E_TEXT_PTINRECT,
-	E_ROW_COL,
-	E_TEXT_ITEM_NUM,
+	E_TEXT_ITEM,
 	E_TEXT_TINDER_NUM,
 };
 
@@ -50,12 +48,6 @@ cUI_In_Game::cUI_In_Game()
 	pImageView->SetTag(E_BACKGROUND);
 	m_pUIRoot = pImageView;
 
-	/*pImageView = new cUIImageView;
-	pImageView->SetTexture("UI/tab_UI_border.png");
-	pImageView->SetScaling(0.75f, 0.65f);
-	pImageView->SetTag(E_BORDER);
-	m_pUIRoot->AddChild(pImageView);*/
-
 	m_pBorder = new cUITool;
 
 	pImageView = new cUIImageView;		// 인벤 그리드
@@ -74,9 +66,7 @@ cUI_In_Game::cUI_In_Game()
 
 	sprintf(m_szHeartState, "UI/inventory_health_%d.tga", m_nHeartHP);
 	cUIButton* pButton = new cUIButton;
-	pButton->SetTexture(m_szHeartState,
-		m_szHeartState,
-		m_szHeartState);
+	pButton->SetTexture(m_szHeartState, m_szHeartState, m_szHeartState);
 	pButton->SetPosition(244, 100);
 	pButton->SetScaling(1.1f, 1.1f);
 	pButton->SetDelegate(this);
@@ -84,103 +74,18 @@ cUI_In_Game::cUI_In_Game()
 	m_pUIRoot->AddChild(pButton);
 
 	sprintf(m_szHeartGlowState, "UI/inventory_health_glow_%d.tga", m_nHeartHP);
-	cUIButton* pButton_2 = new cUIButton;
-	pButton_2->SetTexture(m_szHeartState,
-		m_szHeartGlowState,
-		m_szHeartState);
-	pButton_2->SetPosition(244, 100);
-	pButton_2->SetScaling(1.1f, 1.1f);
-	pButton_2->SetDelegate(this);
-	pButton_2->SetTag(E_HEART_UP);
-	m_pUIRoot->AddChild(pButton_2);
+	BtnFunc(pButton, m_szHeartState, m_szHeartGlowState, 244, 100, 1.1f, 1.1f, E_HEART_UP);
 
 	sprintf(m_szBrainState, "UI/inventory_sanity_%d.tga", m_nBrainHP);
-	pButton = new cUIButton;
-	pButton->SetTexture(m_szBrainState,
-		m_szBrainState,
-		m_szBrainState);
-	pButton->SetPosition(254, 380);
-	pButton->SetScaling(1.1f, 1.1f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(E_BRAIN);
-	m_pUIRoot->AddChild(pButton);
+	BtnFunc(pButton, m_szBrainState, m_szBrainState, 254, 380, 1.1f, 1.1f, E_BRAIN);
 
 	sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_%d.tga", m_nBrainHP);
-	pButton = new cUIButton;
-	pButton->SetTexture(m_szBrainState,
-		m_szBrainGlowState,
-		m_szBrainState);
-	pButton->SetPosition(254, 380);
-	pButton->SetScaling(1.1f, 1.1f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(E_BRAIN_UP);
-	m_pUIRoot->AddChild(pButton);
+	BtnFunc(pButton, m_szBrainState, m_szBrainGlowState, 254, 380, 1.1f, 1.1f, E_BRAIN_UP);
 
-	pButton = new cUIButton;
-	pButton->SetTexture("UI/inventory_tinderboxes.tga",
-		"UI/inventory_tinderboxes.tga",
-		"UI/inventory_tinderboxes.tga");
-	pButton->SetPosition(1094, 110);
-	pButton->SetScaling(1.0f, 1.0f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(ITEM_TINDER);
-	m_pUIRoot->AddChild(pButton);
-
-	pButton = new cUIButton;
-	pButton->SetTexture("UI/inventory_journal.tga",
-		"UI/inventory_journal.tga",
-		"UI/inventory_journal.tga");
-	pButton->SetPosition(1070, 496);
-	pButton->SetScaling(1.1f, 1.1f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(E_JOURNAL);
-	m_pUIRoot->AddChild(pButton);
-
-	pButton = new cUIButton;			// 마우스 오버 시 노란 테두리 용
-	pButton->SetTexture("UI/inventory_journal.tga",
-		"UI/inventory_journal_mouse_over.tga",
-		"UI/inventory_journal.tga");
-	pButton->SetPosition(1070, 496);
-	pButton->SetScaling(1.1f, 1.1f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(E_JOURNAL);
-	m_pUIRoot->AddChild(pButton);
-
-	pButton = new cUIButton;			// 랜턴 기름 틀
-	pButton->SetTexture("UI/inventory_oil_fg.tga",
-		"UI/inventory_oil_fg.tga",
-		"UI/inventory_oil_fg.tga");
-	pButton->SetPosition(1088, 288);
-	pButton->SetScaling(1.0f, 1.0f);
-	pButton->SetDelegate(this);
-	pButton->SetTag(E_RANTERNSHAPE);
-	m_pUIRoot->AddChild(pButton);
-
-	//pButton = new cUIButton;			// 아이템 램프
-	//pButton->SetTexture("UI/Item/lantern.tga",
-	//	"UI/Item/lantern.tga",
-	//	"UI/Item/lantern.tga");
-	//pButton->SetPosition(440, 94);
-	//pButton->SetScaling(1.2f, 1.2f);
-	//pButton->SetDelegate(this);
-	//pButton->SetTag(ITEM_LAMP);
-	//m_pUIRoot->AddChild(pButton);
-	//m_itemList[0][0] = pButton;
-
-	//m_pItemOil = new cUIButton;			// 아이템 기름병
-	//m_pItemOil->SetTexture("UI/Item/potion_oil.tga",
-	//	"UI/Item/potion_oil.tga",
-	//	"UI/Item/potion_oil.tga");
-	//m_pItemOil->SetPosition(544, 94);
-	//m_pItemOil->SetScaling(1.2f, 1.2f);
-	//m_pItemOil->SetDelegate(this);
-	//m_pItemOil->SetTag(ITEM_OIL);
-	//m_pUIRoot->AddChild(m_pItemOil);
-	//m_itemList[0][1] = m_pItemOil;
-
-	CreateItem(ITEM_LAMP);
-	CreateItem(ITEM_OIL);
-	//CreateItem(ITEM_HP);
+	BtnFunc(pButton, "inventory_tinderboxes", "inventory_tinderboxes", 1094, 110, 1.0f, 1.0f, ITEM_TINDER);
+	BtnFunc(pButton, "inventory_journal", "inventory_journal", 1070, 496, 1.1f, 1.1f, E_JOURNAL);
+	BtnFunc(pButton, "inventory_journal", "inventory_journal_mouse_over", 1070, 496, 1.1f, 1.1f, E_JOURNAL); // 마우스 오버 시 노란 테두리 용
+	BtnFunc(pButton, "inventory_oil_fg", "inventory_oil_fg", 1088, 288, 1.0f, 1.0f, E_RANTERNSHAPE); // 랜턴 기름 틀
 
 	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
 	pTextView->SetText("");
@@ -189,73 +94,19 @@ cUI_In_Game::cUI_In_Game()
 	pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
 	pTextView->SetTag(E_TEXT_VIEW);
 	m_pUIRoot->AddChild(pTextView);
-	
-	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
-	pTextView->SetText("");
-	pTextView->SetSize(ST_SIZE(600, 100));
-	pTextView->SetPosition(440, 546);
-	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_VIEW_2);
-	m_pUIRoot->AddChild(pTextView);
+
+	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, "", 600, 100, 440, 546, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_VIEW_2);
 
 	char HP[20];
 	sprintf(HP, "%d %d", m_nHeartHP, m_nBrainHP);
-	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
-	pTextView->SetText(HP);
-	pTextView->SetSize(ST_SIZE(600, 100));
-	pTextView->SetPosition(300, 50);
-	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_VIEW_3);
-	m_pUIRoot->AddChild(pTextView);
+	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_VIEW_3);
 
 	char Mouse[20];
-	GetCursorPos(&_ptMousePos);
 	sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
-	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
-	pTextView->SetText(Mouse);
-	pTextView->SetSize(ST_SIZE(600, 100));
-	pTextView->SetPosition(50, 200);
-	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_MOUSEPOS);
-	m_pUIRoot->AddChild(pTextView);
-
-	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
-	pTextView->SetText("아직");
-	pTextView->SetSize(ST_SIZE(600, 100));
-	pTextView->SetPosition(50, 240);
-	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_PTINRECT);
-	m_pUIRoot->AddChild(pTextView);
-
-	char RowCol[20];
-	sprintf(RowCol, "%d, %d", m_nRow, m_nCol);
-	pTextView = new cUITextView(cFontManager::E_EXPLANATION);
-	pTextView->SetText(RowCol);
-	pTextView->SetSize(ST_SIZE(600, 100));
-	pTextView->SetPosition(50, 280);
-	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	pTextView->SetTag(E_ROW_COL);
-	m_pUIRoot->AddChild(pTextView);
-
-	DATABASE->Insert(ITEM_OIL);
-	char OilNum[20];
-	sprintf(OilNum, "x%d", DATABASE->Load(ITEM_OIL));
-	pTextView = new cUITextView(cFontManager::E_ITEM_VALUE);
-	pTextView->SetText(OilNum);
-	pTextView->SetSize(ST_SIZE(100, 100));
-	pTextView->SetPosition(594, 80);
-	pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_ITEM_NUM);
-	m_pUIRoot->AddChild(pTextView);
+	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, Mouse, 600, 100, 50, 300, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_MOUSEPOS);
 
 	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
-	pTextView = new cUITextView(cFontManager::E_NORMAL);
-	pTextView->SetText(m_szTinderNum);
-	pTextView->SetSize(ST_SIZE(40, 20));
-	pTextView->SetPosition(1102, 136);
-	pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_TINDER_NUM);
-	m_pUIRoot->AddChild(pTextView);
+	TextViewFunc(pTextView, cFontManager::E_NORMAL, m_szTinderNum, 40, 20, 1102, 136, DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK, E_TEXT_TINDER_NUM);
 }
 
 cUI_In_Game::~cUI_In_Game()
@@ -271,13 +122,10 @@ void cUI_In_Game::Update()
 	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_2);
 	cUITextView* pTextView_3 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_3);
 	cUITextView* pTextView_4 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_MOUSEPOS);
-	cUITextView* pTextView_5 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_PTINRECT);
-	cUITextView* pTextView_6 = (cUITextView*)m_pUIRoot->GetChildByTag(E_ROW_COL);
-	cUITextView* pTextView_7 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_ITEM_NUM);
 
 	if (pTextView) pTextView->SetText("");
 	if (pTextView_2) pTextView_2->SetText("");
-	
+
 	char HP[20];
 	sprintf(HP, "%d %d", m_nHeartHP, m_nBrainHP);
 	if (pTextView_3) pTextView_3->SetText(HP);
@@ -285,17 +133,6 @@ void cUI_In_Game::Update()
 	char Mouse[20];
 	sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
 	if (pTextView_4) pTextView_4->SetText(Mouse);
-
-	if (pTextView_5) pTextView_5->SetText("아직");
-
-	char RowCol[20];
-	sprintf(RowCol, "%d, %d", m_nRow, m_nCol);
-	if (pTextView_6) pTextView_6->SetText(RowCol);
-
-	char OilValue[20];
-	pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_ITEM_NUM);
-	sprintf(OilValue, "x %d", DATABASE->Load(ITEM_OIL));
-	if (pTextView_7) pTextView_7->SetText(OilValue);
 
 	pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_TINDER_NUM);
 	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
@@ -316,43 +153,51 @@ void cUI_In_Game::Update()
 	}
 
 	ValueCtr();
+	UpdateItemState();
 
-
-	if (PtInRect(&m_InventoryRc, _ptMousePos))
+	if (KEYMANAGER->isToggleKey(VK_TAB))
 	{
-		pTextView_5->SetText("인벤 위");
-		FindRowCol(m_nRow, m_nCol);
 	}
-
-	if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
+	else
 	{
-		if (PtInRect(&m_InventoryRc, _ptMousePos))
+		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
-			if (FindRowCol(m_curItemRow, m_curItemCol))
+			if (PtInRect(&m_InventoryRc, _ptMousePos))
 			{
-				if (m_itemList[m_curItemRow][m_curItemCol])
+				if (FindRowCol(m_curItemRow, m_curItemCol))
 				{
-					m_curClickItem = m_itemList[m_curItemRow][m_curItemCol];
+					if (m_itemList[m_curItemRow][m_curItemCol])
+					{
+						m_curClickItem = m_itemList[m_curItemRow][m_curItemCol];
+					}
 				}
 			}
 		}
-	}
-	if (m_curClickItem)
-	{
-		m_curClickItem->SetPosition(_ptMousePos.x, _ptMousePos.y);
-		if (pTextView_7) pTextView_7->SetText("");
-		if (KEYMANAGER->isOnceKeyUp(VK_LBUTTON))
+		if (m_curClickItem)
 		{
-			if (PtInRect(&m_OilRc, _ptMousePos) && m_curClickItem->GetTag() == ITEM_OIL)
+			m_curClickItem->SetPosition(_ptMousePos.x - 38, _ptMousePos.y - 30);
+			cUITextView* pText = (cUITextView*)m_curClickItem->GetChildByTag(E_TEXT_ITEM);
+			pText->SetText("");
+			if (KEYMANAGER->isOnceKeyUp(VK_LBUTTON))
 			{
-				if (!(m_fOilValue >= 0.5f))
+				if (PtInRect(&m_OilRc, _ptMousePos) && m_curClickItem->GetTag() == ITEM_OIL)
 				{
-					DATABASE->Delete(ITEM_OIL);
-					m_fOilValue += 0.1f;
-					int x, y;
-					FindPostion(m_curItemRow, m_curItemCol, x, y);
-					m_curClickItem->SetPosition(x, y);
-					m_curClickItem = NULL;
+					if (!(m_fOilValue >= 0.5f))
+					{
+						DATABASE->Delete(ITEM_OIL);
+						m_fOilValue += 0.1f;
+						int x, y;
+						FindPostion(m_curItemRow, m_curItemCol, x, y);
+						m_curClickItem->SetPosition(x, y);
+						m_curClickItem = NULL;
+					}
+					else
+					{
+						int x, y;
+						FindPostion(m_curItemRow, m_curItemCol, x, y);
+						m_curClickItem->SetPosition(x, y);
+						m_curClickItem = NULL;
+					}
 				}
 				else
 				{
@@ -362,23 +207,11 @@ void cUI_In_Game::Update()
 					m_curClickItem = NULL;
 				}
 			}
-			else
-			{
-				int x, y;
-				FindPostion(m_curItemRow, m_curItemCol, x, y);
-				m_curClickItem->SetPosition(x, y);
-				m_curClickItem = NULL;
-			}
 		}
-	}
 
- 	if (PtInRect(&m_OilRc, _ptMousePos))
-	{
-		pTextView_5->SetText("기름 위");
+		SAFE_UPDATE(m_pBorder);
+		SAFE_UPDATE(m_pUIRoot);
 	}
-
-	SAFE_UPDATE(m_pBorder);
-	SAFE_UPDATE(m_pUIRoot);
 }
 
 void cUI_In_Game::Render()
@@ -391,6 +224,33 @@ void cUI_In_Game::Render()
 		m_pUIRoot->Render(m_pSprite);
 		SAFE_RENDER(m_pBorder);
 	}
+}
+
+void cUI_In_Game::BtnFunc(cUIButton* pButton, char* szStr, char* szStrGlow, float x, float y, float width, float height, int tag)
+{
+	char str[40], strGlow[50];
+	sprintf(str, "UI/%s.tga", szStr);
+	sprintf(strGlow, "UI/%s.tga", szStrGlow);
+	pButton = new cUIButton;
+	pButton->SetTexture(str,
+		strGlow,
+		str);
+	pButton->SetPosition(x, y);
+	pButton->SetScaling(width, height);
+	pButton->SetDelegate(this);
+	pButton->SetTag(tag);
+	m_pUIRoot->AddChild(pButton);
+}
+
+void cUI_In_Game::TextViewFunc(cUITextView* pTextView, cFontManager::eFontType type, string szStr, float szWidth, float szHeight, float x, float y, DWORD var, int tag)
+{
+	pTextView = new cUITextView(type);
+	pTextView->SetText(szStr);
+	pTextView->SetSize(ST_SIZE(szWidth, szHeight));
+	pTextView->SetPosition(x, y);
+	pTextView->SetDrawTextFormat(var);
+	pTextView->SetTag(tag);
+	m_pUIRoot->AddChild(pTextView);
 }
 
 void cUI_In_Game::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -406,7 +266,7 @@ void cUI_In_Game::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 	case WM_MOUSEMOVE:
-	{	
+	{
 	}
 	break;
 	case WM_MOUSEWHEEL:
@@ -428,9 +288,9 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 		switch (HeartSate)
 		{
 		case PLAYER_HEART_100: pTextView_2->SetText("전체적으로 좋다.");				break;
-		case PLAYER_HEART_75 : pTextView_2->SetText("약간의 타박상이 있다.");			break;
-		case PLAYER_HEART_50 : pTextView_2->SetText("상처에서 출혈이 너무 심해.");	break;
-		case PLAYER_HEART_25 : pTextView_2->SetText("간신히 살아있다.");				break;
+		case PLAYER_HEART_75: pTextView_2->SetText("약간의 타박상이 있다.");			break;
+		case PLAYER_HEART_50: pTextView_2->SetText("상처에서 출혈이 너무 심해.");	break;
+		case PLAYER_HEART_25: pTextView_2->SetText("간신히 살아있다.");				break;
 		}
 	}
 	else if (pSender->GetTag() == E_BRAIN || pSender->GetTag() == E_BRAIN_UP)
@@ -439,12 +299,12 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 		switch (BrainSate)
 		{
 		case PLAYER_BRAIN_100: pTextView_2->SetText("깔끔하다.");					break;
-		case PLAYER_BRAIN_75 : pTextView_2->SetText("약간의 투통이 있다.");			break;
-		case PLAYER_BRAIN_50 : pTextView_2->SetText("제정신이 아니야, 손이 떨려.");	break;
-		case PLAYER_BRAIN_25 : pTextView_2->SetText("...");							break;
+		case PLAYER_BRAIN_75: pTextView_2->SetText("약간의 투통이 있다.");			break;
+		case PLAYER_BRAIN_50: pTextView_2->SetText("제정신이 아니야, 손이 떨려.");	break;
+		case PLAYER_BRAIN_25: pTextView_2->SetText("...");							break;
 		}
 	}
-	else if (pSender->GetTag() == E_TINDER)
+	else if (pSender->GetTag() == ITEM_TINDER)
 	{
 		pTextView->SetText("Tinderboxes");
 		pTextView_2->SetText("주변에 불이 붙는 곳에 점화 할 수 있다.");
@@ -478,21 +338,10 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 
 void cUI_In_Game::OnClick(cUIButton* pSender)
 {
-	//cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_PTINRECT);
-	//if (pTextView == NULL) return;
-
-	/*if (pSender->GetTag() == ITEM_OIL)
+	if (pSender->GetTag() == E_JOURNAL)
 	{
-		m_fOilValue += 0.1f;
-	}*/
-	/*else if (pSender->GetTag() == E_BRAIN)
-	{
-	pTextView->SetText("정신력\n\n깔끔하다");
+		g_pSceneManager->SceneChange("cUIJournalScene");
 	}
-	else if (pSender->GetTag() == E_TINDER)
-	{
-	pTextView->SetText("틴더");
-	}*/
 }
 
 void cUI_In_Game::CreateItem(int tag)
@@ -501,42 +350,32 @@ void cUI_In_Game::CreateItem(int tag)
 	{
 		for each(auto col in row.second)
 		{
-			if (col.second->GetTag() == tag)
+			if (col.second && col.second->GetTag() == tag)
 			{
-				cUITextView* pObj = (cUITextView*)col.second->GetChildByTag(E_TEXT_ITEM_NUM);
-				int nCount = 0;
-				
 				switch (tag)
 				{
 				case ITEM_TINDER:
 					DATABASE->Insert(ITEM_TINDER);
-					nCount = DATABASE->Load(ITEM_TINDER);
-					return;
 					break;
 				case ITEM_LAMP:
-					DATABASE->Insert(ITEM_LAMP);
+					//	DATABASE->Insert(ITEM_LAMP);
 					break;
 				case ITEM_OIL:
-					RECT rc;
 					DATABASE->Insert(ITEM_OIL);
-					nCount = DATABASE->Load(ITEM_OIL);
-					//m_pItemOil->GetRect(&rc);
-					return;
 					break;
 				case ITEM_HP:
 					DATABASE->Insert(ITEM_HP);
-					nCount = DATABASE->Load(ITEM_HP);
-					return;
+					break;
+				case ITEM_MENTAL:
+					DATABASE->Insert(ITEM_MENTAL);
 					break;
 				}
-				char str[30];
-				sprintf(str, "%d", nCount);
-				pObj->SetText(str);
 				return;
 			}
 		}
 	}
 
+	int ix = 46, iy = -6;
 	int row, col, x = -1, y;
 
 	for (int r = 0; r < 3; r++)
@@ -556,9 +395,8 @@ void cUI_In_Game::CreateItem(int tag)
 
 	switch (tag)
 	{
-	//case ITEM_TINDER:
-	//	break;
 	case ITEM_LAMP:
+	{
 		pObj->SetTexture("UI/Item/lantern.tga",
 			"UI/Item/lantern.tga",
 			"UI/Item/lantern.tga");
@@ -568,8 +406,19 @@ void cUI_In_Game::CreateItem(int tag)
 		pObj->SetTag(ITEM_LAMP);
 		m_pUIRoot->AddChild(pObj);
 		m_itemList[row][col] = pObj;
-		break;
+
+		DATABASE->Insert(ITEM_LAMP);
+		cUITextView* pTextView = new cUITextView(cFontManager::E_ITEM_VALUE);
+		pTextView->SetText("");
+		pTextView->SetSize(ST_SIZE(1, 100));
+		pTextView->SetPosition(ix, iy);
+		pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
+		pTextView->SetTag(E_TEXT_ITEM);
+		pObj->AddChild(pTextView);
+	}
+	break;
 	case ITEM_OIL:
+	{
 		pObj->SetTexture("UI/Item/potion_oil.tga",
 			"UI/Item/potion_oil.tga",
 			"UI/Item/potion_oil.tga");
@@ -579,8 +428,21 @@ void cUI_In_Game::CreateItem(int tag)
 		pObj->SetTag(ITEM_OIL);
 		m_pUIRoot->AddChild(pObj);
 		m_itemList[row][col] = pObj;
-		break;
+
+		char OilNum[20];
+		sprintf(OilNum, "x%d", DATABASE->Load(ITEM_OIL));
+		DATABASE->Insert(ITEM_OIL);
+		cUITextView* pTextView = new cUITextView(cFontManager::E_ITEM_VALUE);
+		pTextView->SetText(OilNum);
+		pTextView->SetSize(ST_SIZE(100, 100));
+		pTextView->SetPosition(ix, iy);
+		pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
+		pTextView->SetTag(E_TEXT_ITEM);
+		pObj->AddChild(pTextView);
+	}
+	break;
 	case ITEM_HP:
+	{
 		pObj->SetTexture("UI/Item/potion_health.tga",
 			"UI/Item/potion_health.tga",
 			"UI/Item/potion_health.tga");
@@ -590,11 +452,42 @@ void cUI_In_Game::CreateItem(int tag)
 		pObj->SetTag(ITEM_HP);
 		m_pUIRoot->AddChild(pObj);
 		m_itemList[row][col] = pObj;
-		break;
-	default:
+
+		char HpNum[20];
+		sprintf(HpNum, "x%d", DATABASE->Load(ITEM_HP));
+		DATABASE->Insert(ITEM_HP);
+		cUITextView* pTextView = new cUITextView(cFontManager::E_ITEM_VALUE);
+		pTextView->SetText(HpNum);
+		pTextView->SetSize(ST_SIZE(100, 100));
+		pTextView->SetPosition(ix, iy);
+		pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
+		pTextView->SetTag(E_TEXT_ITEM);
+		pObj->AddChild(pTextView);
+	}
+	break;
+	case ITEM_MENTAL:
+		pObj->SetTexture("UI/Item/potion_sanity.tga",
+			"UI/Item/potion_sanity.tga",
+			"UI/Item/potion_sanity.tga");
+		pObj->SetPosition(x, y);
+		pObj->SetScaling(1.2f, 1.2f);
+		pObj->SetDelegate(this);
+		pObj->SetTag(ITEM_MENTAL);
+		m_pUIRoot->AddChild(pObj);
+		m_itemList[row][col] = pObj;
+
+		char MentalNum[20];
+		sprintf(MentalNum, "x%d", DATABASE->Load(ITEM_MENTAL));
+		DATABASE->Insert(ITEM_MENTAL);
+		cUITextView* pTextView = new cUITextView(cFontManager::E_ITEM_VALUE);
+		pTextView->SetText(MentalNum);
+		pTextView->SetSize(ST_SIZE(100, 100));
+		pTextView->SetPosition(ix, iy);
+		pTextView->SetDrawTextFormat(/*DT_CENTER | DT_VCENTER | */DT_WORDBREAK);
+		pTextView->SetTag(E_TEXT_ITEM);
+		pObj->AddChild(pTextView);
 		break;
 	}
-	
 }
 
 void cUI_In_Game::HeartState(int heart)
@@ -691,6 +584,38 @@ void cUI_In_Game::ValueCtr()
 	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD2)) DATABASE->Delete(ITEM_HP);
 	if (KEYMANAGER->isOnceKeyDown('O')) CreateItem(ITEM_OIL);
 	if (KEYMANAGER->isOnceKeyDown('P')) DATABASE->Delete(ITEM_OIL);
+	if (KEYMANAGER->isOnceKeyDown('Y')) CreateItem(ITEM_LAMP);
+	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD4)) CreateItem(ITEM_MENTAL);
+	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD5)) DATABASE->Delete(ITEM_MENTAL);
+}
+
+void cUI_In_Game::UpdateItemState()
+{
+	for (int row = 0; row < 3; row++)
+	{
+		for (int col = 0; col < 6; col++)
+		{
+			if (m_itemList[row][col])
+			{
+				int nTag = m_itemList[row][col]->GetTag();
+				int nCount;
+				cUITextView* pText = (cUITextView*)m_itemList[row][col]->GetChildByTag(E_TEXT_ITEM);
+				if (pText)
+				{
+					nCount = DATABASE->Load(nTag);
+					if (nCount <= 0)
+					{
+						m_itemList[row][col] = NULL;
+						m_pUIRoot->Delete(nTag);
+						continue;
+					}
+					char str[30];
+					sprintf(str, "x%d", nCount);
+					pText->SetText(str);
+				}
+			}
+		}
+	}
 }
 
 void cUI_In_Game::FindPostion(IN int row, IN int col, OUT int & x, OUT int & y)

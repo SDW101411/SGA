@@ -21,7 +21,25 @@ cUIObject::~cUIObject(void)
 	}
 }
 
-void cUIObject::AddChild( cUIObject* pChild )
+void cUIObject::Delete(int n)
+{
+	cUIObject* pChild = GetChildByTag(n);
+	if (pChild)
+	{
+		vector<cUIObject*>::iterator it = m_vecChild.begin();
+		for (; it != m_vecChild.end(); it++)
+		{
+			if ((*it) == pChild)
+			{
+				it = m_vecChild.erase(it);
+				break;
+			}
+		}
+		SAFE_RELEASE(pChild);
+	}
+}
+
+void cUIObject::AddChild(cUIObject* pChild)
 {
 	pChild->m_pParent = this;
 	m_vecChild.push_back(pChild);
@@ -34,7 +52,7 @@ void cUIObject::Update()
 	m_matWorld *= m_matR;
 	m_matWorld._41 = m_vPosition.x;
 	m_matWorld._42 = m_vPosition.y;
-	if(m_pParent)
+	if (m_pParent)
 	{
 		m_matWorld._41 += m_pParent->m_matWorld._41;
 		m_matWorld._42 += m_pParent->m_matWorld._42;
@@ -46,7 +64,7 @@ void cUIObject::Update()
 	}
 }
 
-void cUIObject::Render( LPD3DXSPRITE pSprite )
+void cUIObject::Render(LPD3DXSPRITE pSprite)
 {
 	for each(auto p in m_vecChild)
 	{
@@ -54,7 +72,7 @@ void cUIObject::Render( LPD3DXSPRITE pSprite )
 	}
 }
 
-void cUIObject::SetPosition( float x, float y )
+void cUIObject::SetPosition(float x, float y)
 {
 	m_vPosition.x = x;
 	m_vPosition.y = y;
@@ -75,15 +93,15 @@ void cUIObject::SetRotationX(float x)
 
 void cUIObject::GetRect(RECT* pRect)
 {
-	if(!pRect) return;
+	if (!pRect) return;
 
-	pRect->left		= m_matWorld._41;
-	pRect->top		= m_matWorld._42;
-	pRect->right	= m_matWorld._41 + m_stSize.fWidth;
-	pRect->bottom	= m_matWorld._42 + m_stSize.fHeight;
+	pRect->left = m_matWorld._41;
+	pRect->top = m_matWorld._42;
+	pRect->right = m_matWorld._41 + m_stSize.fWidth;
+	pRect->bottom = m_matWorld._42 + m_stSize.fHeight;
 }
 
-cUIObject* cUIObject::GetChildByTag( int nTag )
+cUIObject* cUIObject::GetChildByTag(int nTag)
 {
 	if (m_nTag == nTag)
 	{

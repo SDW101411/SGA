@@ -3,6 +3,7 @@
 #include "IUI.h"
 
 class cUITool;
+class cUITextView;
 
 enum PLAYERSTATE
 {
@@ -15,6 +16,12 @@ enum PLAYERSTATE
 	PLAYER_BRAIN_50,
 	PLAYER_BRAIN_25,
 	PLAYER_DEATH,
+};
+
+enum UISTATE
+{
+	UI_MAIN,
+	UI_JOURNAL,
 };
 
 class cUI_In_Game : public IUI
@@ -38,6 +45,7 @@ private:
 	map<int, map<int, cUIObject*>>	m_itemList;
 	PLAYERSTATE						HeartSate;
 	PLAYERSTATE						BrainSate;
+	UISTATE							UIState;
 
 	RECT							m_InventoryRc;
 	RECT							m_OilRc;
@@ -51,6 +59,8 @@ public:
 public:
 	void Update();
 	void Render();
+	void BtnFunc(cUIButton* pButton, char* szStr, char* szStrGlow, float x, float y, float width, float height, int tag);
+	void TextViewFunc(cUITextView* pTextView, cFontManager::eFontType type, string szStr, float szWidth, float szHeight, float x, float y, DWORD var, int tag);
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	void OnMouse(cUIButton* pSender);
@@ -61,6 +71,8 @@ public:
 	void HeartState(int heart);
 	void BrainState(int brain);
 	void ValueCtr();
+
+	void UpdateItemState();
 
 	void FindPostion(IN int row, IN int col, OUT int& x, OUT int& y);
 	bool FindRowCol(OUT int& row, OUT int& col);

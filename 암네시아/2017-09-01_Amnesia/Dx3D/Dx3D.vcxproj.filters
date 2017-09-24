@@ -148,6 +148,9 @@
     <Filter Include="동욱\Test">
       <UniqueIdentifier>{5215c139-18ba-4657-a898-33c37f7f466e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\UIJournal">
+      <UniqueIdentifier>{a2b47d83-79c4-4674-9c04-aee2cef854fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -405,6 +408,12 @@
     <ClInclude Include="cObject_Shader_Scene_Test_2.h">
       <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClInclude>
+    <ClInclude Include="cUIJournal.h">
+      <Filter>한나\UIJournal</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIJournalScene.h">
+      <Filter>한나\UIJournal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -640,6 +649,12 @@
     </ClCompile>
     <ClCompile Include="cObject_Shader_Scene_Test_2.cpp">
       <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIJournal.cpp">
+      <Filter>한나\UIJournal</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIJournalScene.cpp">
+      <Filter>한나\UIJournal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
