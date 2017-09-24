@@ -145,6 +145,9 @@
     <Filter Include="영빈\MapLoader">
       <UniqueIdentifier>{afaa3604-1946-44ce-92c3-e76aa7d7665c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\Test">
+      <UniqueIdentifier>{5215c139-18ba-4657-a898-33c37f7f466e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -380,7 +383,8 @@
     </ClInclude>
     <ClInclude Include="cObject_Torch.h">
       <Filter>동욱\셰이더%28Test%29\cObject_X\불 오브젝트</Filter>
-    </ClInclude>    <ClInclude Include="cMapMesh.h">
+    </ClInclude>
+    <ClInclude Include="cMapMesh.h">
       <Filter>영빈\MapMesh</Filter>
     </ClInclude>
     <ClInclude Include="cMapWall.h">
@@ -391,6 +395,15 @@
     </ClInclude>
     <ClInclude Include="cMapLoader.h">
       <Filter>영빈\MapLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="cMesh_Manager.h">
+      <Filter>동욱\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject_Map.h">
+      <Filter>동욱\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject_Shader_Scene_Test_2.h">
+      <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -601,13 +614,13 @@
     <ClCompile Include="cMultiBtn.cpp">
       <Filter>한나\UI정리</Filter>
     </ClCompile>
-
     <ClCompile Include="cObject_shirt_white_Normal_Shadow.cpp">
       <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
     </ClCompile>
     <ClCompile Include="cObject_Torch.cpp">
       <Filter>동욱\셰이더%28Test%29\cObject_X\불 오브젝트</Filter>
-    </ClCompile>    <ClCompile Include="cMapMesh.cpp">
+    </ClCompile>
+    <ClCompile Include="cMapMesh.cpp">
       <Filter>영빈\MapMesh</Filter>
     </ClCompile>
     <ClCompile Include="cMapWall.cpp">
@@ -618,6 +631,15 @@
     </ClCompile>
     <ClCompile Include="cMapLoader.cpp">
       <Filter>영빈\MapLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="cMesh_Manager.cpp">
+      <Filter>동욱\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_Map.cpp">
+      <Filter>동욱\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_Shader_Scene_Test_2.cpp">
+      <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

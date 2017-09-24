@@ -74,6 +74,7 @@ public: virtual void Set##funName(varType var){\
 #define KEYMANAGER cKeyManager::getSingleton()
 #define SOUNDMANAGER cSoundManager::getSingleton()
 #define DATABASE cDatabase::getSingleton()
+#define cMESH_MANAGER cMesh_Manager::getSingleton()
 
 #define GRIDNODE_SIZE 1
 #define GRIDNODE_HALFSIZE (GRIDNODE_SIZE * 0.5f)
@@ -86,6 +87,15 @@ public: virtual void Set##funName(varType var){\
 // 6. Diffuse Color (DWORD)						: D3DFVF_DIFFUSE
 // 7. Specular Color (DWORD)                    : D3DFVF_SPECULAR
 // 8. Texture Coordinate Set 1 (float)          : D3DFVF_TEX0 - D3DFVF_TEX8
+
+struct Mesh_Manager_Tag
+{
+	LPD3DXMESH			m_Mesh;
+	LPDIRECT3DTEXTURE9	m_Texture;
+	LPDIRECT3DTEXTURE9	m_Normal;
+	LPDIRECT3DTEXTURE9	m_Specqural;
+};
+
 
 struct ST_PC_VERTEX
 {
@@ -182,6 +192,7 @@ struct ST_SIZE
 #include "cScene_Manager.h"
 #include "cSoundManager.h"
 #include "cDatabase.h"
+#include "cMesh_Manager.h"
 
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;
@@ -190,3 +201,8 @@ extern D3DXVECTOR3 cCameara_seting;
 extern D3DXVECTOR3 cLight_Seting;
 extern D3DXVECTOR3 cLight_Color_Seting;
 extern D3DXVECTOR3 cLight_Color_Seting_2;
+
+enum cMesh_Object_Tag
+{
+	WHITE_TAG
+};

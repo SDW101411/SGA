@@ -24,6 +24,9 @@ cMain_admin::cMain_admin()
 
 	g_pSceneManager->SceneChange("cMainMenuScene");
 
+
+	cMESH_MANAGER->INSERT("torch_static01","Test/torch_static01");
+
 }
 
 
