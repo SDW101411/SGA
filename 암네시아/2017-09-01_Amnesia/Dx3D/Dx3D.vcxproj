@@ -109,9 +109,12 @@
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMainMenuScene.h" />
     <ClInclude Include="cMain_admin.h" />
+    <ClInclude Include="cMapLoader.h" />
+    <ClInclude Include="cMapMesh.h" />
     <ClInclude Include="cMapObject.h" />
-    <ClInclude Include="cMapObjState.h" />
+    <ClInclude Include="cMapSaveBtn.h" />
     <ClInclude Include="cMapToolScene.h" />
+    <ClInclude Include="cMapWall.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectPool.h" />
@@ -186,9 +189,12 @@
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMainMenuScene.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
+    <ClCompile Include="cMapLoader.cpp" />
+    <ClCompile Include="cMapMesh.cpp" />
     <ClCompile Include="cMapObject.cpp" />
-    <ClCompile Include="cMapObjState.cpp" />
+    <ClCompile Include="cMapSaveBtn.cpp" />
     <ClCompile Include="cMapToolScene.cpp" />
+    <ClCompile Include="cMapWall.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectPool.cpp" />

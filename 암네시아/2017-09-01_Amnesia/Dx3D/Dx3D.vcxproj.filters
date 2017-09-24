@@ -133,6 +133,18 @@
     <Filter Include="동욱\셰이더%28Test%29\cObject_X\불 오브젝트">
       <UniqueIdentifier>{0b61d540-3c91-4d54-a66f-e1ef2d969214}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\MapWall">
+      <UniqueIdentifier>{7c02fca7-f452-4e4c-b99a-9d130d7dcbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\MapMesh">
+      <UniqueIdentifier>{e4a5e530-5ee2-43ef-bcc8-b853f5403e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\MapSave">
+      <UniqueIdentifier>{0ceaeefe-4bc6-48d8-9392-edf62cd6b6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\MapLoader">
+      <UniqueIdentifier>{afaa3604-1946-44ce-92c3-e76aa7d7665c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -327,9 +339,6 @@
     <ClInclude Include="cMapObject.h">
       <Filter>영빈\MapObject</Filter>
     </ClInclude>
-    <ClInclude Include="cMapObjState.h">
-      <Filter>영빈\MapObject</Filter>
-    </ClInclude>
     <ClInclude Include="cMapToolScene.h">
       <Filter>영빈\MapToolScene</Filter>
     </ClInclude>
@@ -371,6 +380,17 @@
     </ClInclude>
     <ClInclude Include="cObject_Torch.h">
       <Filter>동욱\셰이더%28Test%29\cObject_X\불 오브젝트</Filter>
+    </ClInclude>    <ClInclude Include="cMapMesh.h">
+      <Filter>영빈\MapMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapWall.h">
+      <Filter>영빈\MapWall</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapSaveBtn.h">
+      <Filter>영빈\MapSave</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapLoader.h">
+      <Filter>영빈\MapLoader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -545,9 +565,6 @@
     <ClCompile Include="cMapObject.cpp">
       <Filter>영빈\MapObject</Filter>
     </ClCompile>
-    <ClCompile Include="cMapObjState.cpp">
-      <Filter>영빈\MapObject</Filter>
-    </ClCompile>
     <ClCompile Include="cMapToolScene.cpp">
       <Filter>영빈\MapToolScene</Filter>
     </ClCompile>
@@ -584,11 +601,23 @@
     <ClCompile Include="cMultiBtn.cpp">
       <Filter>한나\UI정리</Filter>
     </ClCompile>
+
     <ClCompile Include="cObject_shirt_white_Normal_Shadow.cpp">
       <Filter>동욱\셰이더%28Test%29\cObject_X\옷</Filter>
     </ClCompile>
     <ClCompile Include="cObject_Torch.cpp">
       <Filter>동욱\셰이더%28Test%29\cObject_X\불 오브젝트</Filter>
+    </ClCompile>    <ClCompile Include="cMapMesh.cpp">
+      <Filter>영빈\MapMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapWall.cpp">
+      <Filter>영빈\MapWall</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapSaveBtn.cpp">
+      <Filter>영빈\MapSave</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapLoader.cpp">
+      <Filter>영빈\MapLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
