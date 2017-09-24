@@ -234,6 +234,57 @@ void cMapTool::RenderCurrentTag(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 sc
 	m_meshList[m_curTag]->Render(_pos, rot, scl);
 }
 
+void cMapTool::SaveData()
+{
+	FILE* fp = fopen("Data/MapData.txt", "w");
+	map<int, vector<cMapObject*>> objData;
+	for each(auto row in m_tileList)
+	{
+		for each(auto col in row.second)
+		{
+			if (col.second.size() > 0)
+			{
+				for each(auto p in col.second)
+				{
+					objData[p->GetTag()].push_back(p);
+				}
+			}
+		}
+	}
+
+	fputs("<MESH>\n", fp);
+	PutData("MAPMESH_TAG_CEILING_DEFAULT\n", fp, objData[MAPMESH_TAG_CEILING_DEFAULT]);
+	PutData("MAPMESH_TAG_CEILING_BROKEN\n", fp, objData[MAPMESH_TAG_CEILING_BROKEN]);
+	PutData("MAPMESH_TAG_CEILING_NORMAL\n", fp, objData[MAPMESH_TAG_CEILING_NORMAL]);
+	PutData("MAPMESH_TAG_WALL_WORN\n", fp, objData[MAPMESH_TAG_WALL_WORN]);
+	PutData("MAPMESH_TAG_PILLAR_DEFAULT\n", fp, objData[MAPMESH_TAG_PILLAR_DEFAULT]);
+	PutData("MAPMESH_TAG_PILLAR_FULL\n", fp, objData[MAPMESH_TAG_PILLAR_FULL]);
+	PutData("MAPMESH_TAG_FLOOR_DEFAULT\n", fp, objData[MAPMESH_TAG_FLOOR_DEFAULT]);
+	PutData("MAPMESH_TAG_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CONCAVE_WORN]);
+	PutData("MAPMESH_TAG_CORNER_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CORNER_CONCAVE_WORN]);
+	PutData("MAPMESH_TAG_CORNER_CONVER_SHORT\n", fp, objData[MAPMESH_TAG_CORNER_CONVER_SHORT]);
+
+	fclose(fp);
+}
+
+void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
+{
+	char str[1024];
+	fputs(name.c_str(), fp);
+	for each(auto p in pObj)
+	{
+		D3DXVECTOR3 pos = p->GetPosition();
+		D3DXVECTOR3 rot = p->GetRotation();
+		D3DXVECTOR3 scl = p->GetScale();
+		sprintf(str, "%f %f %f\n", pos.x, pos.y, pos.z);
+		fputs(str, fp);
+		sprintf(str, "%f %f %f\n", rot.x, rot.y, rot.z);
+		fputs(str, fp);
+		sprintf(str, "%f %f %f\n", scl.x, scl.y, scl.z);
+		fputs(str, fp);
+	}
+}
+
 vector<D3DXVECTOR3> cMapTool::FindPickingGround()
 {
 	D3DXVECTOR3 rightBottom = m_leftTop;

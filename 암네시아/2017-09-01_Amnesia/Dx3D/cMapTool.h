@@ -48,6 +48,9 @@ public:
 
 	void RenderCurrentTag(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scl);
 
+	void SaveData();
+	void PutData(string name, FILE* fp, vector<cMapObject*> pObj);
+
 	vector<D3DXVECTOR3> FindPickingGround();
 	bool FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground);
 	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
