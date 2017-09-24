@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cMapToolScene.h"
 #include "cMapTool.h"
+#include "cMapSaveBtn.h"
 
 
 cMapToolScene::cMapToolScene()
@@ -12,7 +13,12 @@ cMapToolScene::cMapToolScene()
 	m_pMapTool = new cMapTool;
 	m_pMapTool->SetUp(D3DXVECTOR3(0, 0, 0), 50, 50);
 	m_pMapTool->SetCurrentTag(2);
+
+	cMapSaveBtn* pBtn = new cMapSaveBtn;
+	pBtn->SetMapToolPointer(m_pMapTool);
+	m_pIUI = pBtn;
 	m_ground = m_pMapTool->FindPickingGround();
+
 
 	ZeroMemory(&m_material, sizeof(D3DMATERIAL9));
 	m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);
@@ -23,6 +29,7 @@ cMapToolScene::cMapToolScene()
 cMapToolScene::~cMapToolScene()
 {
 	SAFE_DELETE(m_pMapTool);
+	SAFE_DELETE(m_pIUI);
 
 	SAFE_RELEASE(m_pPickingArea);
 }
@@ -108,6 +115,7 @@ void cMapToolScene::Update()
 		}
 	}
 	SAFE_UPDATE(m_pMapTool);
+	SAFE_UPDATE(m_pIUI);
 }
 
 void cMapToolScene::Render()
@@ -122,6 +130,7 @@ void cMapToolScene::Render()
 		}
 	}
 	SAFE_RENDER(m_pMapTool);
+	SAFE_RENDER(m_pIUI);
 }
 
 void cMapToolScene::SetupPickingArea()
