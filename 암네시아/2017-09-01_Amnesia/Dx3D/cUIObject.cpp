@@ -21,24 +21,6 @@ cUIObject::~cUIObject(void)
 	}
 }
 
-void cUIObject::Delete(int n)
-{
-	cUIObject* pChild = GetChildByTag(n);
-	if (pChild)
-	{
-		vector<cUIObject*>::iterator it = m_vecChild.begin();
-		for (; it != m_vecChild.end(); it++)
-		{
-			if ((*it) == pChild)
-			{
-				it = m_vecChild.erase(it);
-				break;
-			}
-		}
-		SAFE_RELEASE(pChild);
-	}
-}
-
 void cUIObject::AddChild( cUIObject* pChild )
 {
 	pChild->m_pParent = this;

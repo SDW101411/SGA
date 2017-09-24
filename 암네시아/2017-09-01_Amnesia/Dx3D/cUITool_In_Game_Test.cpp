@@ -18,6 +18,7 @@ cUITool_In_Game_Test::~cUITool_In_Game_Test()
 
 void cUITool_In_Game_Test::Setup()
 {
+	
 }
 
 void cUITool_In_Game_Test::Release()

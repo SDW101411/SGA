@@ -135,7 +135,7 @@ Material lambert2 {
  0.000000;0.000000;0.000000;;
 
  TextureFilename {
-  "castlebase_tiledfloor.dds";
+  "castlebase_tiledfloor02.dds";
  }
 }
 
