@@ -109,6 +109,7 @@
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMainMenuScene.h" />
     <ClInclude Include="cMain_admin.h" />
+    <ClInclude Include="cMapLoader.h" />
     <ClInclude Include="cMapMesh.h" />
     <ClInclude Include="cMapObject.h" />
     <ClInclude Include="cMapSaveBtn.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMainMenuScene.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
+    <ClCompile Include="cMapLoader.cpp" />
     <ClCompile Include="cMapMesh.cpp" />
     <ClCompile Include="cMapObject.cpp" />
     <ClCompile Include="cMapSaveBtn.cpp" />

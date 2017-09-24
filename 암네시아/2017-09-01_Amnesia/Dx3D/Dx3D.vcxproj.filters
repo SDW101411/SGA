@@ -139,6 +139,9 @@
     <Filter Include="영빈\MapSave">
       <UniqueIdentifier>{0ceaeefe-4bc6-48d8-9392-edf62cd6b6e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\MapLoader">
+      <UniqueIdentifier>{afaa3604-1946-44ce-92c3-e76aa7d7665c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -381,6 +384,9 @@
     <ClInclude Include="cMapSaveBtn.h">
       <Filter>영빈\MapSave</Filter>
     </ClInclude>
+    <ClInclude Include="cMapLoader.h">
+      <Filter>영빈\MapLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -601,6 +607,9 @@
     </ClCompile>
     <ClCompile Include="cMapSaveBtn.cpp">
       <Filter>영빈\MapSave</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapLoader.cpp">
+      <Filter>영빈\MapLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
