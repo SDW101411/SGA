@@ -8,6 +8,7 @@ enum ITEM
 	ITEM_LAMP,
 	ITEM_OIL,
 	ITEM_HP,
+	ITEM_MENTAL,
 };
 
 class cDatabase : public singletonBase<cDatabase>
@@ -24,7 +25,5 @@ public:
 	void Delete(int key);
 	int Load(int key);
 	bool isHave(int key);
-	ITEM GetTag(int key);
-
 };
 

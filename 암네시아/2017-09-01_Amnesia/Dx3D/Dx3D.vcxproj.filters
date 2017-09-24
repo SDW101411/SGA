@@ -130,6 +130,9 @@
     <Filter Include="한나\UI정리">
       <UniqueIdentifier>{a5491387-8a75-4b1f-9c3b-abc491c2db89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\UIJournal">
+      <UniqueIdentifier>{1b2952fc-faab-401c-a408-7f93a4847ccf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -366,6 +369,12 @@
     <ClInclude Include="cMultiBtn.h">
       <Filter>한나\UI정리</Filter>
     </ClInclude>
+    <ClInclude Include="cUIJournal.h">
+      <Filter>한나\UIJournal</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIJournalScene.h">
+      <Filter>한나\UIJournal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -580,6 +589,12 @@
     </ClCompile>
     <ClCompile Include="cMultiBtn.cpp">
       <Filter>한나\UI정리</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIJournal.cpp">
+      <Filter>한나\UIJournal</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIJournalScene.cpp">
+      <Filter>한나\UIJournal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

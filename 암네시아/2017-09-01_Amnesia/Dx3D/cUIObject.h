@@ -17,6 +17,7 @@ public:
 	cUIObject(void);
 	virtual ~cUIObject(void);
 	
+	virtual void Delete(int n);
 	virtual void AddChild(cUIObject* pChild);
 	virtual void Update();
 	virtual void Render(LPD3DXSPRITE pSprite);

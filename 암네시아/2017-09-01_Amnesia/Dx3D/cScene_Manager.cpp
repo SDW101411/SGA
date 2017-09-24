@@ -32,6 +32,7 @@ void cScene_Manager::SceneChange(char * szName)
 
 void cScene_Manager::Destroy()
 {
+	m_pCurrentScene->Release();
 	for each(auto p in cScene_database)
 	{
 		SAFE_DELETE(p.second);
