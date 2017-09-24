@@ -2,11 +2,11 @@
 #include "cMapLoader.h"
 #include "cObject_Game.h"
 #include "cMapObject.h"
-#include "cMapMesh.h"
+#include "cObject_Map.h"
 
-vector<cObject_Game*> cMapLoader::LoadToObject_Game()
+vector<cObject_Map*> cMapLoader::LoadToObject_Game()
 {
-	vector<cObject_Game*> rtnObjList;
+	vector<cObject_Map*> rtnObjList;
 
 	m_fp = fopen("Data/MapData.txt", "r");
 
@@ -260,13 +260,12 @@ D3DXVECTOR3 cMapLoader::LoadScl()
 	return scl;
 }
 
-cObject_Game* cMapLoader::CreateObject_Game(int id)
+cObject_Map* cMapLoader::CreateObject_Game(cMesh_Object_Tag id)
 {
 	D3DXVECTOR3 pos = LoadPos();
 	D3DXVECTOR3 rot = LoadRot();
 	D3DXVECTOR3 scl = LoadScl();
-	cObject_Game* pObj = new cObject_Game;
-	pObj->Set_Anit1hing(pos, rot.x, rot.y, rot.z, scl.x, scl.y, scl.z);
+	cObject_Map* pObj = new cObject_Map(id, pos, rot, scl);
 	return pObj;
 }
 

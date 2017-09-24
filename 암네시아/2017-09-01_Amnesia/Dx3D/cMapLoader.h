@@ -14,6 +14,7 @@
 #define ID_MESH								("<MESH>")
 
 class cObject_Game;
+class cObject_Map;
 class cMapObject;
 
 class cMapLoader
@@ -22,7 +23,7 @@ private:
 	FILE* m_fp;
 	char m_szToken[1024];
 public:
-	vector<cObject_Game*> LoadToObject_Game();
+	vector<cObject_Map*> LoadToObject_Game();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 
 private:
@@ -33,6 +34,6 @@ private:
 	D3DXVECTOR3 LoadRot();
 	D3DXVECTOR3 LoadScl();
 
-	cObject_Game*	CreateObject_Game(int id);
+	cObject_Map*	CreateObject_Game(cMesh_Object_Tag id);
 	cMapObject*		CreateMapObject(int id);
 };
