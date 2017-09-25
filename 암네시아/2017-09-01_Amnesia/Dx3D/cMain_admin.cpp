@@ -34,7 +34,7 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_FLOOR_DEFAULT",			"X_File/MapObjects/floor/deafult");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CONCAVE_WORN",			"X_File/MapObjects/ceiling/concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
-	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_convex_short");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
 }
 
 cMain_admin::~cMain_admin()

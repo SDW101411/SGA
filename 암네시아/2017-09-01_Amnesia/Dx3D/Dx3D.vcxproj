@@ -121,6 +121,7 @@
     <ClInclude Include="cObjectPool.h" />
     <ClInclude Include="cObject_bottle.h" />
     <ClInclude Include="cObject_Game.h" />
+    <ClInclude Include="cObject_Light.h" />
     <ClInclude Include="cObject_Map.h" />
     <ClInclude Include="cObject_Shader_Scene_Test_2.h" />
     <ClInclude Include="cObject_shirt_white.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="cObjectPool.cpp" />
     <ClCompile Include="cObject_bottle.cpp" />
     <ClCompile Include="cObject_Game.cpp" />
+    <ClCompile Include="cObject_Light.cpp" />
     <ClCompile Include="cObject_Map.cpp" />
     <ClCompile Include="cObject_Shader_Scene_Test_2.cpp" />
     <ClCompile Include="cObject_shirt_white.cpp" />

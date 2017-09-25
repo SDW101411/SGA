@@ -414,6 +414,9 @@
     <ClInclude Include="cUIJournalScene.h">
       <Filter>한나\UIJournal</Filter>
     </ClInclude>
+    <ClInclude Include="cObject_Light.h">
+      <Filter>동욱\Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -655,6 +658,9 @@
     </ClCompile>
     <ClCompile Include="cUIJournalScene.cpp">
       <Filter>한나\UIJournal</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_Light.cpp">
+      <Filter>동욱\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
