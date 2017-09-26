@@ -31,6 +31,8 @@ public:
 
 	void CreateNode(D3DXVECTOR3 pos);
 	void CreateNode(int row, int col);
+	void DeleteNode(D3DXVECTOR3 pos);
+	void DeleteNode(int row, int col);
 	void DestroyNode();
 	void RenderNode();
 

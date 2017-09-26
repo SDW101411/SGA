@@ -10,6 +10,15 @@ cMapToolScene::cMapToolScene()
 	, m_curRotation(0, 0, 0)
 	, m_curScale(1.275, 1.275, 1.275)
 {
+}
+
+
+cMapToolScene::~cMapToolScene()
+{
+}
+
+void cMapToolScene::Setup()
+{
 	m_pMapTool = new cMapTool;
 	m_pMapTool->SetUp(D3DXVECTOR3(0, 0, 0), 50, 50);
 	m_pMapTool->SetCurrentTag(2);
@@ -25,8 +34,7 @@ cMapToolScene::cMapToolScene()
 	SetupPickingArea();
 }
 
-
-cMapToolScene::~cMapToolScene()
+void cMapToolScene::Release()
 {
 	SAFE_DELETE(m_pMapTool);
 	SAFE_DELETE(m_pIUI);
@@ -36,10 +44,15 @@ cMapToolScene::~cMapToolScene()
 
 void cMapToolScene::Update()
 {
-	if (KEYMANAGER->isOnceKeyDown('1'))m_state = MAPTOOL_STATE_DRAW_GRID;
-	if (KEYMANAGER->isOnceKeyDown('2'))m_state = MAPTOOL_STATE_DRAW_CUBE;
-	if (KEYMANAGER->isOnceKeyDown('3')) m_state = MAPTOOL_STATE_DELETE_MESH;
-	if (KEYMANAGER->isOnceKeyDown('4')) m_pMapTool->LoadData();
+	if (KEYMANAGER->isOnceKeyDown('1')) m_state = MAPTOOL_STATE_CREATE_GRID;
+	if (KEYMANAGER->isOnceKeyDown('2')) m_state = MAPTOOL_STATE_DELETE_GRID;
+	if (KEYMANAGER->isOnceKeyDown('3')) m_state = MAPTOOL_STATE_CREATE_MESH;
+	if (KEYMANAGER->isOnceKeyDown('4')) m_state = MAPTOOL_STATE_DELETE_MESH;
+	if (KEYMANAGER->isOnceKeyDown('5')) m_state = MAPTOOL_STATE_CREATE_WALL;
+	if (KEYMANAGER->isOnceKeyDown('6')) m_state = MAPTOOL_STATE_DELETE_WALL;
+	if (KEYMANAGER->isOnceKeyDown('7')) m_state = MAPTOOL_STATE_CREATE_GROUND;
+	if (KEYMANAGER->isOnceKeyDown('8')) m_state = MAPTOOL_STATE_DELETE_GROUND;
+	if (KEYMANAGER->isOnceKeyDown('9')) m_pMapTool->LoadData();
 
 	if (KEYMANAGER->isOnceKeyDown('E'))
 	{
@@ -67,15 +80,24 @@ void cMapToolScene::Update()
 
 	if (KEYMANAGER->isOnceKeyDown('C'))
 	{
-		m_pMapTool->FindPickingPosition(m_curWallPos, m_ground);
-		m_pMapTool->FindNearNode(m_curWallPos, m_curWallPos);
+		if (m_state == MAPTOOL_STATE_CREATE_WALL && m_pMapTool->FindPickingPosition(m_curPickikngPos, m_ground))
+			m_pMapTool->FindNearNode(m_curPickikngPos, m_curPickikngPos);
+		else if (m_state == MAPTOOL_STATE_CREATE_GROUND && m_pMapTool->FindPickingPosition(m_curPickikngPos, m_ground))
+			m_pMapTool->FindNearNode(m_curPickikngPos, m_curPickikngPos);
 	}
 	if (KEYMANAGER->isOnceKeyDown('V'))
 	{
-		D3DXVECTOR3 endPos;
-		m_pMapTool->FindPickingPosition(endPos, m_ground);
-		m_pMapTool->FindNearNode(endPos, endPos);
-		m_pMapTool->CreateWall(m_curWallPos, endPos);
+		D3DXVECTOR3 pos;
+		if (m_state == MAPTOOL_STATE_CREATE_WALL && m_pMapTool->FindPickingPosition(pos, m_ground))
+		{
+			m_pMapTool->FindNearNode(pos, pos);
+			m_pMapTool->CreateWall(m_curPickikngPos, pos);
+		}
+		else if (m_state == MAPTOOL_STATE_CREATE_GROUND && m_pMapTool->FindPickingPosition(pos, m_ground))
+		{
+			m_pMapTool->FindNearNode(pos, pos);
+			m_pMapTool->CreateGround(m_curPickikngPos, pos);
+		}
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
@@ -110,10 +132,13 @@ void cMapToolScene::Update()
 		D3DXVECTOR3 pos;
 		if (m_pMapTool->FindPickingPosition(pos, m_ground))
 		{
-			if (m_state == MAPTOOL_STATE_DRAW_GRID) m_pMapTool->CreateNode(pos);
-			else if (m_state == MAPTOOL_STATE_DRAW_CUBE) m_pMapTool->CreateTile(pos, m_curRotation, m_curScale);
+			if (m_state == MAPTOOL_STATE_CREATE_GRID) m_pMapTool->CreateNode(pos);
+			else if (m_state == MAPTOOL_STATE_DELETE_GRID) m_pMapTool->DeleteNode(pos);
+			else if (m_state == MAPTOOL_STATE_CREATE_MESH) m_pMapTool->CreateTile(pos, m_curRotation, m_curScale);
 			else if (m_state == MAPTOOL_STATE_DELETE_MESH) m_pMapTool->DeleteTile(pos);
 		}
+		else if (m_state == MAPTOOL_STATE_DELETE_WALL) m_pMapTool->DeleteWall();
+		else if (m_state == MAPTOOL_STATE_DELETE_GROUND) m_pMapTool->DeleteGround();
 	}
 	SAFE_UPDATE(m_pMapTool);
 	SAFE_UPDATE(m_pIUI);
@@ -122,7 +147,7 @@ void cMapToolScene::Update()
 void cMapToolScene::Render()
 {
 	RenderPickingArea();
-	if (KEYMANAGER->isStayKeyDown(VK_SPACE))
+	if (KEYMANAGER->isStayKeyDown(VK_SPACE) && m_state == MAPTOOL_STATE_CREATE_MESH || KEYMANAGER->isStayKeyDown(VK_SPACE) && m_state == MAPTOOL_STATE_DELETE_MESH)
 	{
 		D3DXVECTOR3 pos;
 		if (m_pMapTool->FindPickingPosition(pos, m_ground))
