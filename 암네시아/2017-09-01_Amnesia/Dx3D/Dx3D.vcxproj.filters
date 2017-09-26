@@ -151,6 +151,9 @@
     <Filter Include="한나\UIJournal">
       <UniqueIdentifier>{a2b47d83-79c4-4674-9c04-aee2cef854fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\Loading">
+      <UniqueIdentifier>{b00f8f67-002a-4e06-bdd4-792cfc12e788}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -417,6 +420,12 @@
     <ClInclude Include="cMapSurface.h">
       <Filter>영빈\MapWall</Filter>
     </ClInclude>
+    <ClInclude Include="cLoadingScene.h">
+      <Filter>한나\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="cLoadManager.h">
+      <Filter>한나\Loading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -661,6 +670,12 @@
     </ClCompile>
     <ClCompile Include="cMapSurface.cpp">
       <Filter>영빈\MapWall</Filter>
+    </ClCompile>
+    <ClCompile Include="cLoadingScene.cpp">
+      <Filter>한나\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="cLoadManager.cpp">
+      <Filter>한나\Loading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

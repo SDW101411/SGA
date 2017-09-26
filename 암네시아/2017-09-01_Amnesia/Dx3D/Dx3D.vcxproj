@@ -106,6 +106,8 @@
     <ClInclude Include="cHeightMap.h" />
     <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cLerp.h" />
+    <ClInclude Include="cLoadingScene.h" />
+    <ClInclude Include="cLoadManager.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMainMenuScene.h" />
     <ClInclude Include="cMain_admin.h" />
@@ -192,6 +194,8 @@
     <ClCompile Include="cHeightMap.cpp" />
     <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cLerp.cpp" />
+    <ClCompile Include="cLoadingScene.cpp" />
+    <ClCompile Include="cLoadManager.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMainMenuScene.cpp" />
     <ClCompile Include="cMain_admin.cpp" />

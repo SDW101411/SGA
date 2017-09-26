@@ -2,6 +2,8 @@
 #include "cDatabase.h"
 
 cDatabase::cDatabase()
+	: m_nHP(100)
+	, m_nMental(100)
 {
 }
 

@@ -4,6 +4,7 @@
 #include "cUITextView.h"
 #include "cUITool.h"
 #include "cUIGrid.h"
+#include "cUIJournal.h"
 
 enum
 {
@@ -33,13 +34,15 @@ cUI_In_Game::cUI_In_Game()
 	, m_szHeartGlowState("\0")
 	, m_szBrainState("\0")
 	, m_szTinderNum("\0")
-	, m_nHeartHP(100)
-	, m_nBrainHP(90)
 	, m_fOilValue(0.5f)
 	, m_pBorder(NULL)
 	, m_nRow(0)
 	, m_nCol(0)
+	, m_nState(UI_MAIN)
 {
+	m_nHeartHP = *DATABASE->GetHp();
+	m_nBrainHP = *DATABASE->GetMental();
+
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;
@@ -107,6 +110,8 @@ cUI_In_Game::cUI_In_Game()
 
 	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
 	TextViewFunc(pTextView, cFontManager::E_NORMAL, m_szTinderNum, 40, 20, 1102, 136, DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK, E_TEXT_TINDER_NUM);
+
+	m_pJournal = new cUIJournal(&m_nState);
 }
 
 cUI_In_Game::~cUI_In_Game()
@@ -209,8 +214,16 @@ void cUI_In_Game::Update()
 			}
 		}
 
-		SAFE_UPDATE(m_pBorder);
-		SAFE_UPDATE(m_pUIRoot);
+		switch (m_nState)
+		{
+		case UI_MAIN:
+			SAFE_UPDATE(m_pBorder);
+			SAFE_UPDATE(m_pUIRoot);
+			break;
+		case UI_JOURNAL:
+			SAFE_UPDATE(m_pJournal);
+			break;
+		}
 	}
 }
 
@@ -221,8 +234,16 @@ void cUI_In_Game::Render()
 	}
 	else
 	{
-		m_pUIRoot->Render(m_pSprite);
-		SAFE_RENDER(m_pBorder);
+		switch (m_nState)
+		{
+		case UI_MAIN:
+			m_pUIRoot->Render(m_pSprite);
+			SAFE_RENDER(m_pBorder);
+			break;
+		case UI_JOURNAL:
+			SAFE_RENDER(m_pJournal);
+			break;
+		}
 	}
 }
 
@@ -340,7 +361,8 @@ void cUI_In_Game::OnClick(cUIButton* pSender)
 {
 	if (pSender->GetTag() == E_JOURNAL)
 	{
-		g_pSceneManager->SceneChange("cUIJournalScene");
+		//g_pSceneManager->SceneChange("cUIJournalScene");
+		m_nState = UI_JOURNAL;
 	}
 }
 
@@ -568,8 +590,10 @@ void cUI_In_Game::ValueCtr()
 {
 	if (KEYMANAGER->isOnceKeyDown('Z'))
 	{
-		m_nHeartHP -= 5;
-		m_nBrainHP -= 5;
+		//m_nHeartHP -= 5;
+		//m_nBrainHP -= 5;
+		SetHurtHeart(5);
+		SetHurtBrain(5);
 	}
 	if (KEYMANAGER->isOnceKeyDown('X'))
 	{

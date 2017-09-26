@@ -8,6 +8,8 @@
 #include "cPlayer.h"
 #include "cObject_Torch.h"
 #include "cObject_Map.h"
+#include "cObject_Game.h"
+#include "cMapLoader.h"
 
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
@@ -20,14 +22,20 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 {
 	SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
-
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 }
 
 void cScene_Shader_Scene_Test::Setup()
 {
-	cObject_Map *Save = new cObject_Map(WHITE_TAG, D3DXVECTOR3(0,1,0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
-	cObject_Map_Vec.push_back(Save);
+	//cMapLoader loader;
+	//cObject_Map_Vec = loader.LoadToObject_Map();
+//	cObject_Map *Save = new cObject_Map(WHITE_TAG, D3DXVECTOR3(0,1,0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+//	cObject_Map_Vec.push_back(Save);
+	for (int i = 0; i < g_pLoadManager()->cObject_Map_Vec.size(); ++i)
+	{
+		cObject_Map_Vec.push_back(g_pLoadManager()->cObject_Map_Vec[i]);
+	}
+	g_pLoadManager()->cObject_Map_Vec.clear();
 	m_pPlayer = new cPlayer;
 	/*cObject_Game *Test = new cObject_shirt_white;
 	Test->Set_Anit1hing(D3DXVECTOR3(-5, 1, 0), 0, 0, 0, 1, 1, 1);

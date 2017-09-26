@@ -17,6 +17,10 @@ private:
 	map<int, int> m_mapData;
 
 public:
+	int m_nHP;
+	int m_nMental;
+
+public:
 	cDatabase();
 	~cDatabase();
 
@@ -25,5 +29,8 @@ public:
 	void Delete(int key);
 	int Load(int key);
 	bool isHave(int key);
+
+	int* GetHp() { return &m_nHP; }
+	int* GetMental() { return &m_nMental; }
 };
 

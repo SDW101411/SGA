@@ -5,12 +5,12 @@
 
 cUIJournalScene::cUIJournalScene()
 {
-	m_pUI = new cUIJournal;
+	//m_pUI = new cUIJournal;
 }
 
 cUIJournalScene::~cUIJournalScene()
 {
-	SAFE_DELETE(m_pUI);
+	//SAFE_DELETE(m_pUI);
 }
 
 void cUIJournalScene::Setup()
@@ -23,10 +23,10 @@ void cUIJournalScene::Release()
 
 void cUIJournalScene::Update()
 {
-	SAFE_UPDATE(m_pUI);
+	//SAFE_UPDATE(m_pUI);
 }
 
 void cUIJournalScene::Render()
 {
-	SAFE_RENDER(m_pUI);
+	//SAFE_RENDER(m_pUI);
 }
