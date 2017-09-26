@@ -254,10 +254,10 @@ void cMapTool::SaveData()
 		}
 	}
 
-	fputs("<LEFTTOP>", fp);
-	sprintf(str, "%f %f %f", m_leftTop.x, m_leftTop.y, m_leftTop.z);
+	fputs("<LEFTTOP>\n", fp);
+	sprintf(str, "%f %f %f\n", m_leftTop.x, m_leftTop.y, m_leftTop.z);
 	fputs(str, fp);
-	fputs("END", fp);
+	fputs("END\n", fp);
 
 	fputs("<MESH>\n", fp);
 	PutData("MAPMESH_TAG_CEILING_DEFAULT\n", fp, objData[MAPMESH_TAG_CEILING_DEFAULT]);
@@ -270,7 +270,7 @@ void cMapTool::SaveData()
 	PutData("MAPMESH_TAG_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CORNER_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONVER_SHORT\n", fp, objData[MAPMESH_TAG_CORNER_CONVER_SHORT]);
-	fputs("END\n", fp);	// ¸Þ½Ã ³¡
+	fputs("END\n", fp);
 
 	fclose(fp);
 }

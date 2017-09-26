@@ -1,6 +1,7 @@
 #pragma once
 
 #define ID_LTPOS							("<LEFTTOP>")
+#define ID_MESH								("<MESH>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -12,7 +13,6 @@
 #define ID_MAPMESH_TAG_FLOOR_DEFAULT		("MAPMESH_TAG_FLOOR_DEFAULT")
 #define ID_MAPMESH_TAG_CONCAVE_WORN			("MAPMESH_TAG_CONCAVE_WORN")
 #define ID_MAPMESH_TAG_CORNER_CONCAVE_WORN	("MAPMESH_TAG_CORNER_CONCAVE_WORN")
-#define ID_MESH								("<MESH>")
 
 class cObject_Game;
 class cObject_Map;
@@ -25,7 +25,7 @@ private:
 	char			m_szToken[1024];
 	D3DXVECTOR3		m_leftTop;
 public:
-	vector<cObject_Map*> LoadToObject_Game();
+	vector<cObject_Map*>					LoadToObject_Map();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 
 private:
@@ -36,7 +36,8 @@ private:
 	D3DXVECTOR3		LoadRot();
 	D3DXVECTOR3		LoadScl();
 
-	cObject_Map*	CreateObject_Game(cMesh_Object_Tag id);
+	cObject_Map*	CreateObject_Map(cMesh_Object_Tag id);
 	cMapObject*		CreateMapObject(int id);
 	void			PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList);
+	void			PushObject_Map(int id, vector<cObject_Map*>& rtnObjList);
 };

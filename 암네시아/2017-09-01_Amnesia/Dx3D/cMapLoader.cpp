@@ -4,92 +4,51 @@
 #include "cMapObject.h"
 #include "cObject_Map.h"
 
-vector<cObject_Map*> cMapLoader::LoadToObject_Game()
+vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 {
 	vector<cObject_Map*> rtnObjList;
 
 	m_fp = fopen("Data/MapData.txt", "r");
 
-	if (IsEqual(GetToken(), ID_MESH))
+	char* str;
+
+	while (!feof(m_fp))
 	{
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CEILING_DEFAULT))
+		str = GetToken();
+		if (IsEqual(str, ID_LTPOS))
 		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_CEILING_DEFAULT));
-			}
+			m_leftTop.x = GetFloat();
+			m_leftTop.y = GetFloat();
+			m_leftTop.z = GetFloat();
+			GetToken();
 		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CEILING_BROKEN))
+		else if (IsEqual(str, ID_MESH))
 		{
 			while (true)
 			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_CEILING_BROKEN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CEILING_NORMAL))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_CEILING_NORMAL));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_WALL_WORN))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_WALL_WORN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_PILLAR_DEFAULT))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_PILLAR_DEFAULT));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_PILLAR_FULL))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_PILLAR_FULL));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_FLOOR_DEFAULT))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_FLOOR_DEFAULT));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CONCAVE_WORN))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_CONCAVE_WORN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CORNER_CONCAVE_WORN))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_CORNER_CONCAVE_WORN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(CreateObject_Game(MAPMESH_TAG_CORNER_CONVER_SHORT));
+				str = GetToken();
+				if (IsEqual(str, ID_MAPMESH_TAG_CEILING_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_CEILING_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CEILING_BROKEN))
+					PushObject_Map(MAPMESH_TAG_CEILING_BROKEN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CEILING_NORMAL))
+					PushObject_Map(MAPMESH_TAG_CEILING_NORMAL, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_WALL_WORN))
+					PushObject_Map(MAPMESH_TAG_WALL_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_PILLAR_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_PILLAR_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_PILLAR_FULL))
+					PushObject_Map(MAPMESH_TAG_PILLAR_FULL, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_FLOOR_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_FLOOR_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CONCAVE_WORN))
+					PushObject_Map(MAPMESH_TAG_CONCAVE_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONCAVE_WORN))
+					PushObject_Map(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
+					PushObject_Map(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
+				else if (IsEqual(str, ID_END))
+					break;
 			}
 		}
 	}
@@ -219,7 +178,7 @@ D3DXVECTOR3 cMapLoader::LoadScl()
 	return scl;
 }
 
-cObject_Map* cMapLoader::CreateObject_Game(cMesh_Object_Tag id)
+cObject_Map* cMapLoader::CreateObject_Map(cMesh_Object_Tag id)
 {
 	D3DXVECTOR3 pos = LoadPos();
 	D3DXVECTOR3 rot = LoadRot();
@@ -244,5 +203,14 @@ void cMapLoader::PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& 
 	{
 		if (IsEqual(GetToken(), ID_END)) break;
 		pObjList[0][0].push_back(CreateMapObject(id));
+	}
+}
+
+void cMapLoader::PushObject_Map(int id, vector<cObject_Map*>& rtnObjList)
+{
+	while (true)
+	{
+		if (IsEqual(GetToken(), ID_END)) break;
+		rtnObjList.push_back(CreateObject_Map(MAPMESH_TAG_CEILING_DEFAULT));
 	}
 }
