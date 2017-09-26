@@ -10,15 +10,6 @@ cMapToolScene::cMapToolScene()
 	, m_curRotation(0, 0, 0)
 	, m_curScale(1.275, 1.275, 1.275)
 {
-}
-
-
-cMapToolScene::~cMapToolScene()
-{
-}
-
-void cMapToolScene::Setup()
-{
 	m_pMapTool = new cMapTool;
 	m_pMapTool->SetUp(D3DXVECTOR3(0, 0, 0), 50, 50);
 	m_pMapTool->SetCurrentTag(2);
@@ -34,7 +25,8 @@ void cMapToolScene::Setup()
 	SetupPickingArea();
 }
 
-void cMapToolScene::Release()
+
+cMapToolScene::~cMapToolScene()
 {
 	SAFE_DELETE(m_pMapTool);
 	SAFE_DELETE(m_pIUI);
