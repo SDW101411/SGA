@@ -19,12 +19,12 @@ cMainGame::~cMainGame(void)
 	SAFE_DELETE(m_pCrtCtrl);
 	SAFE_DELETE(m_pMain_admin);
 	g_pSceneManager->Destroy(); 
+	cMESH_MANAGER->Destroy();
 	g_pFontManager->Destroy();
 	g_pObjectPool->Destroy();
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pDeviceManager->Destroy();
-	cMESH_MANAGER->Destroy();
 }
 
 void cMainGame::Setup()

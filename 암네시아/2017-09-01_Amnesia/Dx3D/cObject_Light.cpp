@@ -12,46 +12,8 @@ cObject_Light::cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3
 	m_Pos = Pos;
 	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;
 	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;
-	switch (Name)
-	{
-	case WHITE_TAG:
-	{
-		cObject = cMESH_MANAGER->FIND("torch_static01");
-	}
-	break;
-	case MAPMESH_TAG_CEILING_DEFAULT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_DEFAULT");
-		break;
-	case MAPMESH_TAG_CEILING_BROKEN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_BROKEN");
-		break;
-	case MAPMESH_TAG_CEILING_NORMAL:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_NORMAL");
-		break;
-	case MAPMESH_TAG_WALL_WORN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_WALL_WORN");
-		break;
-	case MAPMESH_TAG_PILLAR_DEFAULT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_PILLAR_DEFAULT");
-		break;
-	case MAPMESH_TAG_PILLAR_FULL:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_PILLAR_FULL");
-		break;
-	case MAPMESH_TAG_FLOOR_DEFAULT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_FLOOR_DEFAULT");
-		break;
-	case MAPMESH_TAG_CONCAVE_WORN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CONCAVE_WORN");
-		break;
-	case MAPMESH_TAG_CORNER_CONCAVE_WORN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CORNER_CONCAVE_WORN");
-		break;
-	case MAPMESH_TAG_CORNER_CONVER_SHORT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CORNER_CONVER_SHORT");
-		break;
-	default:
-		break;
-	}
+
+	cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_TORCH_STATIC_01");
 }
 
 
@@ -67,28 +29,7 @@ void cObject_Light::Update()
 
 void cObject_Light::Render()
 {
-	D3DXMATRIXA16 matView, matProjection;
-	g_pD3DDevice->SetTransform(D3DTS_WORLD, &WorldReturn());
-	g_pD3DDevice->GetTransform(D3DTS_VIEW, &matView);
-	g_pD3DDevice->GetTransform(D3DTS_PROJECTION, &matProjection);
-	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
-
-	/*FLOAT Length = D3DXVec3Length(&(m_Pos - cCameara_seting));
-	m_Efffect->SetFloat("gLightLength", Length);*/
-
-	m_Normal_Effect->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
-	m_Normal_Effect->SetVector("gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
-	m_Normal_Effect->SetVector("gLightColor_1", &D3DXVECTOR4(cLight_Color_Seting_2.x, cLight_Color_Seting_2.y, cLight_Color_Seting_2.z, 1));
-	m_Normal_Effect->SetVector("gLightColor_2", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1));
-	m_Normal_Effect->SetVector("NormalMapping_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
-	m_Normal_Effect->SetMatrix("gWorldMatrix", &WorldReturn());
-	m_Normal_Effect->SetMatrix("gViewMatrix", &matView);
-	m_Normal_Effect->SetMatrix("gProjectionMatrix", &matProjection);
-	m_Normal_Effect->SetMatrix("gWorldViewProjectionMatrix", &(WorldReturn()*matView * matProjection));
-	m_Normal_Effect->SetTexture("DiffuseMap_Tex", cObject->m_Texture);
-	m_Normal_Effect->SetTexture("NormalMap_Tex", cObject->m_Normal);
-	m_Normal_Effect->SetTexture("SpecularMap_Tex", cObject->m_Specqural);
-
+	AnotherRander_1_4Light_Version();
 	AnotherRander();
 }
 
@@ -113,6 +54,56 @@ D3DXMATRIX cObject_Light::WorldReturn()
 
 
 	return Worldmat = Scalemat * Anglemat * Transmat;
+}
+
+void cObject_Light::AnotherRander_1_4Light_Version()
+{
+	D3DXMATRIXA16 matView, matProjection;
+	g_pD3DDevice->SetTransform(D3DTS_WORLD, &WorldReturn());
+	g_pD3DDevice->GetTransform(D3DTS_VIEW, &matView);
+	g_pD3DDevice->GetTransform(D3DTS_PROJECTION, &matProjection);
+	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
+
+	m_Normal_Effect->SetMatrix("gWorldMatrix", &WorldReturn());
+	m_Normal_Effect->SetMatrix("gWorldViewProjectionMatrix", &(WorldReturn()*matView * matProjection));
+
+	m_Normal_Effect->SetVector("gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
+	m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
+
+
+	m_Normal_Effect->SetVector("gWorldLightPosition_2", &D3DXVECTOR4(m_Pos.x, m_Pos.y, m_Pos.z, 1.0f));
+	m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_2", &D3DXVECTOR4(m_Pos.x, m_Pos.y, m_Pos.z, 1.0f));
+	m_Normal_Effect->SetBool("Light_2", m_Fire_On);
+	m_Normal_Effect->SetBool("Light_3", false);
+	m_Normal_Effect->SetBool("Light_4", false);
+
+	
+	/*if (m_Light_vec.size() > 1)
+	{
+		m_Normal_Effect->SetVector("gWorldLightPosition_3", &D3DXVECTOR4(m_Light_vec[1]->m_Pos.x, m_Light_vec[1]->m_Pos.y, m_Light_vec[1]->m_Pos.z, 1.0f));
+		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_3", &D3DXVECTOR4(m_Light_vec[1]->m_Pos.x, m_Light_vec[1]->m_Pos.y, m_Light_vec[1]->m_Pos.z, 1.0f));
+		m_Normal_Effect->SetBool("Light_2", m_Light_vec[1]->m_Fire_On);
+	}
+	if (m_Light_vec.size() > 2)
+	{
+		m_Normal_Effect->SetVector("gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
+		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
+		m_Normal_Effect->SetBool("Light_2", m_Light_vec[2]->m_Fire_On);
+	}*/
+	m_Normal_Effect->SetFloat("cLight_Length", 10.0f);
+
+
+
+	m_Normal_Effect->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
+	m_Normal_Effect->SetVector("gLightColor_1", &D3DXVECTOR4(cLight_Color_Seting_2.x, cLight_Color_Seting_2.y, cLight_Color_Seting_2.z, 1));
+	m_Normal_Effect->SetVector("gLightColor_2", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1));
+	m_Normal_Effect->SetVector("NormalMapping_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
+	m_Normal_Effect->SetMatrix("gWorldMatrix", &WorldReturn());
+	m_Normal_Effect->SetMatrix("gViewMatrix", &matView);
+	m_Normal_Effect->SetMatrix("gProjectionMatrix", &matProjection);
+	m_Normal_Effect->SetTexture("DiffuseMap_Tex", cObject->m_Texture);
+	m_Normal_Effect->SetTexture("NormalMap_Tex", cObject->m_Normal);
+	m_Normal_Effect->SetTexture("SpecularMap_Tex", cObject->m_Specqural);
 }
 void cObject_Light::AnotherRander()
 {
