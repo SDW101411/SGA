@@ -186,6 +186,7 @@ void cMapTool::CreateMesh()
 	CreateMesh(MAPMESH_TAG_CONCAVE_WORN);
 	CreateMesh(MAPMESH_TAG_CORNER_CONCAVE_WORN);
 	CreateMesh(MAPMESH_TAG_CORNER_CONVER_SHORT);
+	CreateMesh(MAPMESH_TAG_TORCH_STATIC_01);
 }
 
 void cMapTool::CreateMesh(int id)
@@ -305,6 +306,7 @@ void cMapTool::SaveData()
 	PutData("MAPMESH_TAG_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CORNER_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONVER_SHORT\n", fp, objData[MAPMESH_TAG_CORNER_CONVER_SHORT]);
+	PutData("MAPMESH_TAG_TORCH_STATIC_01\n", fp, objData[MAPMESH_TAG_TORCH_STATIC_01]);
 	fputs("END\n", fp);
 
 	fclose(fp);

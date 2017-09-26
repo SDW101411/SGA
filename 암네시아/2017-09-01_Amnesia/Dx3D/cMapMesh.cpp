@@ -59,6 +59,9 @@ void cMapMesh::Setup(int tag)
 		meshName = "X_File/static_objects/castlebase/ceiling/corner_convex_short.X";
 		textureName = "X_File/static_objects/castlebase/wall/castlebase_wall_worn.dds";
 		break;
+	case MAPMESH_TAG_TORCH_STATIC_01:
+		meshName = "X_File/MapObjects/torch/torch_static01.X";
+		textureName = "X_File/MapObjects/torch/torch_static01.dds";
 	}
 	m_pMesh = LoadMesh(meshName);
 	m_pTexture = LoadTexture(textureName);
