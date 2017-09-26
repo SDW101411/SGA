@@ -105,86 +105,45 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 
 	m_fp = fopen("Data/MapData.txt", "r");
 
-	if (IsEqual(GetToken(), ID_MESH))
+	char* str;
+
+	while (!feof(m_fp))
 	{
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CEILING_DEFAULT))
+		str = GetToken();
+		if (IsEqual(str, ID_LTPOS))
 		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_CEILING_DEFAULT));
-			}
+			m_leftTop.x = GetFloat();
+			m_leftTop.y = GetFloat();
+			m_leftTop.z = GetFloat();
+			GetToken();
 		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CEILING_BROKEN))
+		else if (IsEqual(str, ID_MESH))
 		{
 			while (true)
 			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_CEILING_BROKEN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CEILING_NORMAL))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_CEILING_NORMAL));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_WALL_WORN))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_WALL_WORN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_PILLAR_DEFAULT))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_PILLAR_DEFAULT));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_PILLAR_FULL))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_PILLAR_FULL));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_FLOOR_DEFAULT))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_FLOOR_DEFAULT));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CONCAVE_WORN))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_CONCAVE_WORN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CORNER_CONCAVE_WORN))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_CORNER_CONCAVE_WORN));
-			}
-		}
-		if (IsEqual(GetToken(), ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
-		{
-			while (true)
-			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList[0][0].push_back(CreateMapObject(MAPMESH_TAG_CORNER_CONVER_SHORT));
+				str = GetToken();
+				if (IsEqual(str, ID_MAPMESH_TAG_CEILING_DEFAULT))
+					PushMapObject(MAPMESH_TAG_CEILING_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CEILING_BROKEN))
+					PushMapObject(MAPMESH_TAG_CEILING_BROKEN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CEILING_NORMAL))
+					PushMapObject(MAPMESH_TAG_CEILING_NORMAL, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_WALL_WORN))
+					PushMapObject(MAPMESH_TAG_WALL_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_PILLAR_DEFAULT))
+					PushMapObject(MAPMESH_TAG_PILLAR_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_PILLAR_FULL))
+					PushMapObject(MAPMESH_TAG_PILLAR_FULL, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_FLOOR_DEFAULT))
+					PushMapObject(MAPMESH_TAG_FLOOR_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CONCAVE_WORN))
+					PushMapObject(MAPMESH_TAG_CONCAVE_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONCAVE_WORN))
+					PushMapObject(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
+					PushMapObject(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
+				else if (IsEqual(str, ID_END))
+					break;
 			}
 		}
 	}
@@ -277,4 +236,13 @@ cMapObject* cMapLoader::CreateMapObject(int id)
 	cMapObject* pObj = new cMapObject;
 	pObj->Setup(id, pos, rot, scl);
 	return pObj;
+}
+
+void cMapLoader::PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList)
+{
+	while (true)
+	{
+		if (IsEqual(GetToken(), ID_END)) break;
+		pObjList[0][0].push_back(CreateMapObject(id));
+	}
 }

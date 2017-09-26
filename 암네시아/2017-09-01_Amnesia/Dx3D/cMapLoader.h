@@ -1,5 +1,6 @@
 #pragma once
 
+#define ID_LTPOS							("<LEFTTOP>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -20,20 +21,22 @@ class cMapObject;
 class cMapLoader
 {
 private:
-	FILE* m_fp;
-	char m_szToken[1024];
+	FILE*			m_fp;
+	char			m_szToken[1024];
+	D3DXVECTOR3		m_leftTop;
 public:
 	vector<cObject_Map*> LoadToObject_Game();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 
 private:
-	char*		GetToken();
-	bool		IsEqual(char* str1, char* str2);
-	float		GetFloat();
-	D3DXVECTOR3 LoadPos();
-	D3DXVECTOR3 LoadRot();
-	D3DXVECTOR3 LoadScl();
+	char*			GetToken();
+	bool			IsEqual(char* str1, char* str2);
+	float			GetFloat();
+	D3DXVECTOR3		LoadPos();
+	D3DXVECTOR3		LoadRot();
+	D3DXVECTOR3		LoadScl();
 
 	cObject_Map*	CreateObject_Game(cMesh_Object_Tag id);
 	cMapObject*		CreateMapObject(int id);
+	void			PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList);
 };
