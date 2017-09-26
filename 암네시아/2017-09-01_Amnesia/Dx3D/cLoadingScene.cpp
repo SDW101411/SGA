@@ -12,8 +12,7 @@ void cLoadingScene::ThFunc1(LPVOID pParam)
 	pLoader = (cLoadingScene*)pParam;
 	cMapLoader Loader;
 	pLoader->cObject_Map_Vec = Loader.LoadToObject_Map();
-	cObject_Map *Save = new cObject_Map(WHITE_TAG, D3DXVECTOR3(0, 1, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
-	pLoader->cObject_Map_Vec.push_back(Save);
+	
 
 	EnterCriticalSection(&cs);
 	g_pLoadManager()->cObject_Map_Vec = pLoader->cObject_Map_Vec;
