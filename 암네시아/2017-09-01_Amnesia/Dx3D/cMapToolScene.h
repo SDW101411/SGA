@@ -32,8 +32,6 @@ private:
 public:
 	cMapToolScene();
 	virtual ~cMapToolScene();
-	virtual void Setup();
-	virtual void Release();
 	virtual void Update();
 	virtual void Render();
 
