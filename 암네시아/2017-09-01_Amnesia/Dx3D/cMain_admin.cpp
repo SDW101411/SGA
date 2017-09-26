@@ -24,7 +24,7 @@ cMain_admin::cMain_admin()
 
 	g_pSceneManager->SceneChange("cMainMenuScene");
 
-	cMESH_MANAGER->INSERT("torch_static01","Test/torch_static01");
+	//cMESH_MANAGER->INSERT("torch_static01","Test/torch_static01");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_DEFAULT",		"X_File/MapObjects/ceiling/arched");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_BROKEN",			"X_File/MapObjects/ceiling/arched_broken");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_NORMAL",			"X_File/MapObjects/ceiling/deafult2");
@@ -35,6 +35,7 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CONCAVE_WORN",			"X_File/MapObjects/ceiling/concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_TORCH_STATIC_01",		"X_File/MapObjects/torch/torch_static01");
 }
 
 cMain_admin::~cMain_admin()

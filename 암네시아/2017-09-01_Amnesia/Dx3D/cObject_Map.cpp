@@ -15,11 +15,6 @@ cObject_Map::cObject_Map(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rot
 	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;
 	switch (Name)
 	{
-	case WHITE_TAG:
-	{
-		cObject = cMESH_MANAGER->FIND("torch_static01");
-	}
-	break;
 	case MAPMESH_TAG_CEILING_DEFAULT:
 		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_DEFAULT");
 		break;
@@ -59,6 +54,11 @@ cObject_Map::cObject_Map(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rot
 cObject_Map::~cObject_Map()
 {
 	SAFE_DELETE(cObject);
+	SAFE_DELETE(m_Normal_Effect);
+	for each(auto p in m_Light_vec)
+	{
+		SAFE_DELETE(p);
+	}
 }
 
 void cObject_Map::Update()
@@ -142,13 +142,13 @@ void cObject_Map::AnotherRander_1_4Light_Version()
 	{
 		m_Normal_Effect->SetVector("gWorldLightPosition_3", &D3DXVECTOR4(m_Light_vec[1]->m_Pos.x, m_Light_vec[1]->m_Pos.y, m_Light_vec[1]->m_Pos.z, 1.0f));
 		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_3", &D3DXVECTOR4(m_Light_vec[1]->m_Pos.x, m_Light_vec[1]->m_Pos.y, m_Light_vec[1]->m_Pos.z, 1.0f));
-		m_Normal_Effect->SetBool("Light_2", m_Light_vec[1]->m_Fire_On);
+		m_Normal_Effect->SetBool("Light_3", m_Light_vec[1]->m_Fire_On);
 	}
 	if (m_Light_vec.size() > 2)
 	{
 		m_Normal_Effect->SetVector("gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
 		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
-		m_Normal_Effect->SetBool("Light_2", m_Light_vec[2]->m_Fire_On);
+		m_Normal_Effect->SetBool("Light_4", m_Light_vec[2]->m_Fire_On);
 	}
 	m_Normal_Effect->SetFloat("cLight_Length",10.0f);
 
@@ -180,4 +180,13 @@ void cObject_Map::AnotherRander_2()
 	}
 
 	m_Normal_Effect->End();
+}
+
+void cObject_Map::m_Light_Vec_Push(cObject_Light * save_Target)
+{
+	if (m_Light_vec.size() < 2)
+	{
+		m_Light_vec.push_back(save_Target);
+	}
+	
 }

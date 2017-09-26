@@ -18,7 +18,7 @@ cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 
 cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 {
-	SAFE_DELETE(m_pPlayer);
+	//SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
@@ -26,8 +26,8 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 
 void cScene_Shader_Scene_Test::Setup()
 {
-	cObject_Map *Save = new cObject_Map(WHITE_TAG, D3DXVECTOR3(0,1,0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
-	cObject_Map_Vec.push_back(Save);
+	//cObject_Map *Save = new cObject_Map(MAPMESH_TAG_TORCH_STATIC_01, D3DXVECTOR3(0,1,0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	//cObject_Map_Vec.push_back(Save);
 	m_pPlayer = new cPlayer;
 	/*cObject_Game *Test = new cObject_shirt_white;
 	Test->Set_Anit1hing(D3DXVECTOR3(-5, 1, 0), 0, 0, 0, 1, 1, 1);

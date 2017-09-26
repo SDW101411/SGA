@@ -17,6 +17,8 @@ public:
 	~cObject_Map();
 	void Update();
 	void Render();
+	void m_Light_Vec_Push(cObject_Light* save_Target);
+private:
 	D3DXMATRIX WorldReturn();
 	void AnotherRander_1();
 	void AnotherRander_1_4Light_Version();
