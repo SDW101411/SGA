@@ -119,6 +119,7 @@ cUI_In_Game::~cUI_In_Game()
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
 	SAFE_DELETE(m_pBorder);
+	SAFE_DELETE(m_pJournal);
 }
 
 void cUI_In_Game::Update()
