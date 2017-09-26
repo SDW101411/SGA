@@ -38,6 +38,7 @@ void cMapTool::Render()
 	RenderNode();
 	TileRender();
 	RenderWall();
+	RenderGround();
 }
 
 void cMapTool::CreateNode(D3DXVECTOR3 pos)
@@ -56,6 +57,19 @@ void cMapTool::CreateNode(int row, int col)
 	cGridNode* pNode = new cGridNode;
 	pNode->SetUp(pos);
 	m_nodeList[row][col] = pNode;
+}
+
+void cMapTool::DeleteNode(D3DXVECTOR3 pos)
+{
+	int row = abs((pos.x - m_leftTop.x + GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	int col = abs((pos.z - m_leftTop.z - GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	DeleteNode(row, col);
+}
+
+void cMapTool::DeleteNode(int row, int col)
+{
+	if (row < 0 || row >= m_rowMax || col < 0 || col >= m_colMax) return;
+	SAFE_DELETE(m_nodeList[row][col]);
 }
 
 void cMapTool::DestroyNode()

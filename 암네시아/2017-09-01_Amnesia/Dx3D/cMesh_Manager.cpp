@@ -33,6 +33,10 @@ void cMesh_Manager::Destroy()
 {
 	for each(auto p in cMesh_database)
 	{
+		SAFE_RELEASE(p.second->m_Mesh);
+		SAFE_RELEASE(p.second->m_Normal);
+		SAFE_RELEASE(p.second->m_Specqural);
+		SAFE_RELEASE(p.second->m_Texture);
 		SAFE_DELETE(p.second);
 	}
 }
