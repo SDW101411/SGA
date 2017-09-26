@@ -390,9 +390,6 @@
     <ClInclude Include="cMapMesh.h">
       <Filter>영빈\MapMesh</Filter>
     </ClInclude>
-    <ClInclude Include="cMapWall.h">
-      <Filter>영빈\MapWall</Filter>
-    </ClInclude>
     <ClInclude Include="cMapSaveBtn.h">
       <Filter>영빈\MapSave</Filter>
     </ClInclude>
@@ -416,6 +413,9 @@
     </ClInclude>
     <ClInclude Include="cObject_Light.h">
       <Filter>동욱\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapSurface.h">
+      <Filter>영빈\MapWall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -635,9 +635,6 @@
     <ClCompile Include="cMapMesh.cpp">
       <Filter>영빈\MapMesh</Filter>
     </ClCompile>
-    <ClCompile Include="cMapWall.cpp">
-      <Filter>영빈\MapWall</Filter>
-    </ClCompile>
     <ClCompile Include="cMapSaveBtn.cpp">
       <Filter>영빈\MapSave</Filter>
     </ClCompile>
@@ -661,6 +658,9 @@
     </ClCompile>
     <ClCompile Include="cObject_Light.cpp">
       <Filter>동욱\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapSurface.cpp">
+      <Filter>영빈\MapWall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

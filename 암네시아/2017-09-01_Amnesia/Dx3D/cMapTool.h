@@ -4,7 +4,7 @@ class cGridNode;
 class cAStar;
 class cMapObject;
 class cMapMesh;
-class cMapWall;
+class cMapSurface;
 
 class cMapTool
 {
@@ -18,7 +18,8 @@ private:
 	map<int, map<int, cGridNode*>>				m_nodeList;
 	map<int, map<int, vector<cMapObject*>>>		m_tileList;
 	map<int, cMapMesh*>							m_meshList;
-	vector<cMapWall>							m_pickingWall;
+	vector<cMapSurface>							m_wallSurface;
+	vector<cMapSurface>							m_groundSurface;
 
 public:
 	cMapTool();
@@ -43,8 +44,12 @@ public:
 	void DestroyMesh();
 
 	void CreateWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
-	void DeleteWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
+	void DeleteWall();
 	void RenderWall();
+
+	void CreateGround(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
+	void DeleteGround();
+	void RenderGround();
 
 	void RenderCurrentTag(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scl);
 

@@ -114,7 +114,7 @@
     <ClInclude Include="cMapObject.h" />
     <ClInclude Include="cMapSaveBtn.h" />
     <ClInclude Include="cMapToolScene.h" />
-    <ClInclude Include="cMapWall.h" />
+    <ClInclude Include="cMapSurface.h" />
     <ClInclude Include="cMesh_Manager.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
@@ -200,7 +200,7 @@
     <ClCompile Include="cMapObject.cpp" />
     <ClCompile Include="cMapSaveBtn.cpp" />
     <ClCompile Include="cMapToolScene.cpp" />
-    <ClCompile Include="cMapWall.cpp" />
+    <ClCompile Include="cMapSurface.cpp" />
     <ClCompile Include="cMesh_Manager.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />

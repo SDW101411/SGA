@@ -5,7 +5,7 @@
 #include "cRay.h"
 #include "cMapObject.h"
 #include "cMapMesh.h"
-#include "cMapWall.h"
+#include "cMapSurface.h"
 #include "cMapLoader.h"
 
 cMapTool::cMapTool()
@@ -191,36 +191,57 @@ void cMapTool::DestroyMesh()
 
 void cMapTool::CreateWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos)
 {
-	int sRow, sCol, eRow, eCol;
-	cMapWall wall;
-	FindRowCol(startPos, sRow, sCol);
-	FindRowCol(endPos, eRow, eCol);
-	wall.SetPosition(startPos, endPos, 5);
-	wall.SetRowCol(sRow, sCol, eRow, eCol);
-	m_pickingWall.push_back(wall);
+	cMapSurface wall;
+	wall.SetWall(startPos, endPos, 5);
+	m_wallSurface.push_back(wall);
 }
 
-void cMapTool::DeleteWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos)
+void cMapTool::DeleteWall()
 {
-	int sRow, sCol, eRow, eCol;
-	FindRowCol(startPos, sRow, sCol);
-	FindRowCol(endPos, eRow, eCol);
-	vector<cMapWall>::iterator it = m_pickingWall.begin();
-	for (; it != m_pickingWall.end(); it++)
+	vector<cMapSurface>::iterator it = m_wallSurface.begin();
+	for (; it != m_wallSurface.end(); it++)
 	{
-		if ((*it).IsSame(sRow, sCol, eRow, eCol))
+		if (FindPickingPosition(D3DXVECTOR3(0, 0, 0), (*it).GetSurface()))
 		{
-			m_pickingWall.erase(it);
-			return;
+			m_wallSurface.erase(it);
+			break;
 		}
 	}
 }
 
 void cMapTool::RenderWall()
 {
-	for each(auto p in m_pickingWall)
+	for each(auto p in m_wallSurface)
 	{
-		p.Render();
+		p.RenderSurface();
+	}
+}
+
+void cMapTool::CreateGround(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos)
+{
+	cMapSurface ground;
+	ground.SetGround(startPos, endPos);
+	m_groundSurface.push_back(ground);
+}
+
+void cMapTool::DeleteGround()
+{
+	vector<cMapSurface>::iterator it = m_groundSurface.begin();
+	for (; it != m_groundSurface.end(); it++)
+	{
+		if (FindPickingPosition(D3DXVECTOR3(0, 0, 0), (*it).GetSurface()))
+		{
+			m_groundSurface.erase(it);
+			break;
+		}
+	}
+}
+
+void cMapTool::RenderGround()
+{
+	for each(auto p in m_groundSurface)
+	{
+		p.RenderSurface();
 	}
 }
 
@@ -237,6 +258,7 @@ void cMapTool::RenderCurrentTag(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 sc
 
 void cMapTool::SaveData()
 {
+	char str[1024];
 	FILE* fp = fopen("Data/MapData.txt", "w");
 	map<int, vector<cMapObject*>> objData;
 	for each(auto row in m_tileList)
@@ -253,6 +275,11 @@ void cMapTool::SaveData()
 		}
 	}
 
+	fputs("<LEFTTOP>\n", fp);
+	sprintf(str, "%f %f %f\n", m_leftTop.x, m_leftTop.y, m_leftTop.z);
+	fputs(str, fp);
+	fputs("END\n", fp);
+
 	fputs("<MESH>\n", fp);
 	PutData("MAPMESH_TAG_CEILING_DEFAULT\n", fp, objData[MAPMESH_TAG_CEILING_DEFAULT]);
 	PutData("MAPMESH_TAG_CEILING_BROKEN\n", fp, objData[MAPMESH_TAG_CEILING_BROKEN]);
@@ -264,6 +291,7 @@ void cMapTool::SaveData()
 	PutData("MAPMESH_TAG_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONCAVE_WORN\n", fp, objData[MAPMESH_TAG_CORNER_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONVER_SHORT\n", fp, objData[MAPMESH_TAG_CORNER_CONVER_SHORT]);
+	fputs("END\n", fp);
 
 	fclose(fp);
 }
