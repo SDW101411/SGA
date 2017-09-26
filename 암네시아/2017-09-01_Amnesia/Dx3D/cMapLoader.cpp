@@ -15,7 +15,9 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 	while (!feof(m_fp))
 	{
 		str = GetToken();
-		if (IsEqual(str, ID_LTPOS))
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_LTPOS))
 		{
 			m_leftTop.x = GetFloat();
 			m_leftTop.y = GetFloat();
@@ -47,6 +49,8 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 					PushObject_Map(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
 				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
 					PushObject_Map(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
+					PushObject_Map(MAPMESH_TAG_TORCH_STATIC_01, rtnObjList);
 				else if (IsEqual(str, ID_END))
 					break;
 			}
@@ -69,7 +73,8 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 	while (!feof(m_fp))
 	{
 		str = GetToken();
-		if (IsEqual(str, ID_LTPOS))
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_LTPOS))
 		{
 			m_leftTop.x = GetFloat();
 			m_leftTop.y = GetFloat();
@@ -101,6 +106,8 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 					PushMapObject(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
 				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
 					PushMapObject(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
+					PushMapObject(MAPMESH_TAG_TORCH_STATIC_01, rtnObjList);
 				else if (IsEqual(str, ID_END))
 					break;
 			}
@@ -202,15 +209,19 @@ void cMapLoader::PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& 
 	while (true)
 	{
 		if (IsEqual(GetToken(), ID_END)) break;
-		pObjList[0][0].push_back(CreateMapObject(id));
+		cMapObject* pObj = CreateMapObject(id);
+		D3DXVECTOR3 pos = pObj->GetPosition();
+		int row = abs((pos.x - m_leftTop.x + GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+		int col = abs((pos.z - m_leftTop.z - GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+		pObjList[row][col].push_back(pObj);
 	}
 }
 
-void cMapLoader::PushObject_Map(int id, vector<cObject_Map*>& rtnObjList)
+void cMapLoader::PushObject_Map(cMesh_Object_Tag id, vector<cObject_Map*>& rtnObjList)
 {
 	while (true)
 	{
 		if (IsEqual(GetToken(), ID_END)) break;
-		rtnObjList.push_back(CreateObject_Map(MAPMESH_TAG_CEILING_DEFAULT));
+		rtnObjList.push_back(CreateObject_Map(id));
 	}
 }

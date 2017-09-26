@@ -173,12 +173,6 @@ void cMapToolScene::SetupPickingArea()
 	}
 	m_pPickingArea->UnlockIndexBuffer();
 
-	//DWORD* attribute;
-	//m_pPickingArea->LockAttributeBuffer(0, &attribute);
-	//attribute[0] = 0;
-	//attribute[1] = 0;
-	//m_pPickingArea->UnlockAttributeBuffer();
-
 	D3DXVECTOR3 leftTop = m_pMapTool->GetLeftTopPos();
 	D3DXMatrixTranslation(&m_matWorld, leftTop.x, -0.1f, leftTop.z);
 }

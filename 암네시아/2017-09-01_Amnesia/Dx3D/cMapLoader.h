@@ -13,6 +13,7 @@
 #define ID_MAPMESH_TAG_FLOOR_DEFAULT		("MAPMESH_TAG_FLOOR_DEFAULT")
 #define ID_MAPMESH_TAG_CONCAVE_WORN			("MAPMESH_TAG_CONCAVE_WORN")
 #define ID_MAPMESH_TAG_CORNER_CONCAVE_WORN	("MAPMESH_TAG_CORNER_CONCAVE_WORN")
+#define ID_MAPMESH_TAG_TORCH_STATIC_01		("MAPMESH_TAG_TORCH_STATIC_01")
 
 class cObject_Game;
 class cObject_Map;
@@ -39,5 +40,5 @@ private:
 	cObject_Map*	CreateObject_Map(cMesh_Object_Tag id);
 	cMapObject*		CreateMapObject(int id);
 	void			PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList);
-	void			PushObject_Map(int id, vector<cObject_Map*>& rtnObjList);
+	void			PushObject_Map(cMesh_Object_Tag id, vector<cObject_Map*>& rtnObjList);
 };
