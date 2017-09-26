@@ -11,10 +11,7 @@ void cLoadingScene::ThFunc1(LPVOID pParam)
 	cLoadingScene* pLoader;
 	pLoader = (cLoadingScene*)pParam;
 	cMapLoader Loader;
-	pLoader->cObject_Map_Vec = Loader.LoadToObject_Map();
-	
-
-	EnterCriticalSection(&cs);
+	pLoader->cObject_Map_Vec = Loader.LoadToObject_Map();	EnterCriticalSection(&cs);
 	g_pLoadManager()->cObject_Map_Vec = pLoader->cObject_Map_Vec;
 	g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
 	LeaveCriticalSection(&cs);

@@ -20,7 +20,7 @@ cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 
 cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 {
-	SAFE_DELETE(m_pPlayer);
+	//SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 }
