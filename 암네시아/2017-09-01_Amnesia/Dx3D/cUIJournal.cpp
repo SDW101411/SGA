@@ -2,6 +2,7 @@
 #include "cUIJournal.h"
 #include "cUIImageView.h"
 #include "cUITextView.h"
+#include "cUI_In_Game.h"
 
 enum
 {
@@ -13,9 +14,10 @@ enum
 	E_TEXT,
 };
 
-cUIJournal::cUIJournal()
+cUIJournal::cUIJournal(int* state)
 	: m_pUIRoot(NULL)
 	, m_pSprite(NULL)
+	, m_pState(state)
 {
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
@@ -93,7 +95,7 @@ void cUIJournal::OnMouse(cUIButton* pSender)
 {
 }
 
-void cUIJournal::OnClick(cUIButton * pSender)
+void cUIJournal::OnClick(cUIButton* pSender)
 {
 	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT);
 	if (pTextView == NULL) return;
@@ -112,6 +114,7 @@ void cUIJournal::OnClick(cUIButton * pSender)
 	}
 	else if (pSender->GetTag() == E_RETURN)
 	{
-		g_pSceneManager->SceneChange("cUITool_In_Game_Test");
+		//g_pSceneManager->SceneChange("cUITool_In_Game_Test");
+		*m_pState = UI_MAIN;
 	}
 }

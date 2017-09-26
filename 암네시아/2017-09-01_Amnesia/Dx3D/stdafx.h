@@ -193,6 +193,7 @@ struct ST_SIZE
 #include "cSoundManager.h"
 #include "cDatabase.h"
 #include "cMesh_Manager.h"
+#include "cLoadManager.h"
 
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;

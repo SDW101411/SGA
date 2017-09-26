@@ -7,9 +7,10 @@ class cUIJournal : public IUI
 private:
 	cUIObject*						m_pUIRoot;
 	LPD3DXSPRITE					m_pSprite;
+	int*							m_pState;
 
 public:
-	cUIJournal();
+	cUIJournal(int* state);
 	~cUIJournal();
 
 public:

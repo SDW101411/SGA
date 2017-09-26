@@ -4,6 +4,7 @@
 
 class cUITool;
 class cUITextView;
+class cUIJournal;
 
 enum PLAYERSTATE
 {
@@ -34,6 +35,7 @@ private:
 	int								m_nBrainHP;
 	int								m_nRow, m_nCol;
 	int								m_curItemRow, m_curItemCol;
+	int								m_nState;
 	float							m_fOilValue;
 	char							m_szTinderNum[20];
 	char							m_szHeartState[64];
@@ -51,6 +53,7 @@ private:
 	RECT							m_OilRc;
 
 	cUIButton*						m_pItemOil;
+	cUIJournal*						m_pJournal;
 
 public:
 	cUI_In_Game();
@@ -70,6 +73,10 @@ public:
 
 	void HeartState(int heart);
 	void BrainState(int brain);
+
+	void SetHurtHeart(int value) { m_nHeartHP -= value; }
+	void SetHurtBrain(int value) { m_nBrainHP -= value; }
+
 	void ValueCtr();
 
 	void UpdateItemState();
