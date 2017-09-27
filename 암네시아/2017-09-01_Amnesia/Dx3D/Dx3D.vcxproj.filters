@@ -163,6 +163,12 @@
     <Filter Include="동욱\라이트%28TEST%29\횃불 오브젝트">
       <UniqueIdentifier>{8cb223af-a41e-4be2-b303-bb87bc1c996c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\파티클">
+      <UniqueIdentifier>{ed01a91d-f0c4-4619-8b7d-42aa2c1b59ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\파티클\Fire">
+      <UniqueIdentifier>{4fd6c902-46d9-4351-a912-f3638c0ed1e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -438,6 +444,12 @@
     <ClInclude Include="cScene_Light.h">
       <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
     </ClInclude>
+    <ClInclude Include="cParticle.h">
+      <Filter>동욱\파티클</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticle_Fire.h">
+      <Filter>동욱\파티클\Fire</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -691,6 +703,12 @@
     </ClCompile>
     <ClCompile Include="cScene_Light.cpp">
       <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticle.cpp">
+      <Filter>동욱\파티클</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticle_Fire.cpp">
+      <Filter>동욱\파티클\Fire</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

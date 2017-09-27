@@ -7,6 +7,7 @@ class cTextureManager
 private:
 	map<string, LPDIRECT3DTEXTURE9> m_mapTexture;
 	map<string, D3DXIMAGE_INFO>		m_mapImageInfo;
+	//map<string, >
 
 private:
 	SINGLETON(cTextureManager);

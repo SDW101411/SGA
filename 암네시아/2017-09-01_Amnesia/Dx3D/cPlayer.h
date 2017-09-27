@@ -22,6 +22,8 @@ private:
 	cPlayer_Animation_Index			m_pPlayer_Animation_Index;
 	float Save_ANI;
 
+	void*							Target_Vector;
+
 public:
 	cPlayer();
 	~cPlayer();

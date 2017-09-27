@@ -10,6 +10,7 @@
 #include "cObject_Map.h"
 #include "cMapLoader.h"
 #include "cObject_Light.h"
+#include "cParticle_Fire.h"
 
 
 cScene_Light::cScene_Light()
@@ -21,6 +22,8 @@ cScene_Light::~cScene_Light()
 {
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Light_Vec)SAFE_DELETE(p);
+
+	
 }
 
 void cScene_Light::Setup()
@@ -56,6 +59,8 @@ void cScene_Light::Setup()
 	cObject_Map_Vec.push_back(Save_M_2);
 	cObject_Map_Vec.push_back(Save_M_3);
 	cObject_Map_Vec.push_back(Save_M_4);
+
+	Test_Particle = new cParticle_Fire;
 }
 
 void cScene_Light::Release()
@@ -63,6 +68,8 @@ void cScene_Light::Release()
 	SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Light_Vec)SAFE_DELETE(p);
+	SAFE_DELETE(Test_Particle);
+
 }
 
 void cScene_Light::Update()
@@ -70,6 +77,7 @@ void cScene_Light::Update()
 	SAFE_UPDATE(m_pPlayer);
 	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
 	for each(auto p in cObject_Light_Vec)SAFE_UPDATE(p);
+	Test_Particle->Update();
 }
 
 void cScene_Light::Render()
@@ -77,6 +85,7 @@ void cScene_Light::Render()
 	SAFE_RENDER(m_pPlayer);
 	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
 	for each(auto p in cObject_Light_Vec)SAFE_RENDER(p);
+	Test_Particle->Render();
 }
 
 void cScene_Light::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
