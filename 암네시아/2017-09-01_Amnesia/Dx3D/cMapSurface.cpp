@@ -48,3 +48,9 @@ vector<D3DXVECTOR3> cMapSurface::GetSurface()
 {
 	return m_surface;
 }
+
+void cMapSurface::PushSurface(vector<D3DXVECTOR3>& vecSurface)
+{
+	for each(auto p in m_surface)
+		vecSurface.push_back(p);
+}

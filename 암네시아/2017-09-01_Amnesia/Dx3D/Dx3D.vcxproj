@@ -139,6 +139,7 @@
     <ClInclude Include="cScene.h" />
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSceneUI.h" />
+    <ClInclude Include="cScene_Light.h" />
     <ClInclude Include="cScene_Manager.h" />
     <ClInclude Include="cScene_Shader_Scene_Test.h" />
     <ClInclude Include="cScene_Test_1.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="cScene.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSceneUI.cpp" />
+    <ClCompile Include="cScene_Light.cpp" />
     <ClCompile Include="cScene_Manager.cpp" />
     <ClCompile Include="cScene_Shader_Scene_Test.cpp" />
     <ClCompile Include="cScene_Test_1.cpp" />

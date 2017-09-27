@@ -17,4 +17,5 @@ public:
 	void RenderSurface();
 
 	vector<D3DXVECTOR3> GetSurface();
+	void PushSurface(vector<D3DXVECTOR3>& vecSurface);
 };

@@ -7,7 +7,7 @@ class cObject_Map
 private:
 	Mesh_Manager_Tag*		cObject;
 	LPD3DXEFFECT			m_Normal_Effect;
-	D3DXVECTOR3				m_Pos;
+	SYNTHESIZE(D3DXVECTOR3, m_Pos, Position);
 	float					m_ScaleX, m_ScaleY, m_ScaleZ;
 	float					m_AngleX, m_AngleY, m_AngleZ;
 	vector<cObject_Light*>	m_Light_vec;

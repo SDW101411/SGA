@@ -1,20 +1,20 @@
 #pragma once
 #include "cScene.h"
 
-class cObject_Game;
+
+
 class cObject_Map;
 class cObject_Light;
 
-class cScene_Shader_Scene_Test : public cScene
+class cScene_Light : public cScene
 {
 private:
-	vector<cObject_Game*> cObject_Vec;
 	vector<cObject_Map*> cObject_Map_Vec;
-	vector<cObject_Light*> cObject_Light_vec;
+	vector<cObject_Light*> cObject_Light_Vec;
 public:
-	cScene_Shader_Scene_Test();
-	~cScene_Shader_Scene_Test();
-	
+	cScene_Light();
+	~cScene_Light();
+
 	void Setup();
 	void Release();
 	void Update();

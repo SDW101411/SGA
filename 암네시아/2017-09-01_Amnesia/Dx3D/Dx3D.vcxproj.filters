@@ -154,6 +154,15 @@
     <Filter Include="한나\Loading">
       <UniqueIdentifier>{b00f8f67-002a-4e06-bdd4-792cfc12e788}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\라이트%28TEST%29">
+      <UniqueIdentifier>{be93e92f-9c74-4e85-a477-ee2a9c262e49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\라이트%28TEST%29\라이트 씬">
+      <UniqueIdentifier>{df083290-49c6-42ee-9fc2-b6ee72a1babd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\라이트%28TEST%29\횃불 오브젝트">
+      <UniqueIdentifier>{8cb223af-a41e-4be2-b303-bb87bc1c996c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -423,6 +432,9 @@
     <ClInclude Include="cLoadManager.h">
       <Filter>한나\Loading</Filter>
     </ClInclude>
+    <ClInclude Include="cScene_Light.h">
+      <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -670,6 +682,9 @@
     </ClCompile>
     <ClCompile Include="cLoadManager.cpp">
       <Filter>한나\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene_Light.cpp">
+      <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -202,6 +202,7 @@ extern D3DXVECTOR3 cCameara_seting;
 extern D3DXVECTOR3 cLight_Seting;
 extern D3DXVECTOR3 cLight_Color_Seting;
 extern D3DXVECTOR3 cLight_Color_Seting_2;
+extern D3DXVECTOR3 cLight_Color_Seting_3;
 
 enum cMesh_Object_Tag
 {
