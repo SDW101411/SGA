@@ -16,7 +16,7 @@
 
 cMain_admin::cMain_admin()
 {
-	//g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
+	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
 	g_pSceneManager->INSERT("cUIJournalScene", new cUIJournalScene);

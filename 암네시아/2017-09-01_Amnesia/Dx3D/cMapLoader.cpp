@@ -3,6 +3,7 @@
 #include "cObject_Game.h"
 #include "cMapObject.h"
 #include "cObject_Map.h"
+#include "cObject_Light.h"
 
 vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 {
@@ -60,6 +61,34 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 	fclose(m_fp);
 
 	return rtnObjList;
+}
+
+vector<cObject_Light*> cMapLoader::LoadToObject_Light()
+{
+	vector<cObject_Light*> rtnObj;
+
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_LIGHT))
+		{
+			while (true)
+			{
+				if (IsEqual(GetToken(), ID_END)) break;
+				rtnObj.push_back(CreateObject_Light());
+			}
+		}
+	}
+
+	fclose(m_fp);
+
+	return rtnObj;
 }
 
 map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
@@ -158,50 +187,39 @@ float cMapLoader::GetFloat()
 	return (float)atof(GetToken());
 }
 
-D3DXVECTOR3 cMapLoader::LoadPos()
+D3DXVECTOR3 cMapLoader::LoadVec3()
 {
-	D3DXVECTOR3 pos;
-	pos.x = GetFloat();
-	pos.y = GetFloat();
-	pos.z = GetFloat();
-	return pos;
-}
-
-D3DXVECTOR3 cMapLoader::LoadRot()
-{
-	D3DXVECTOR3 rot;
-	rot.x = GetFloat();
-	rot.y = GetFloat();
-	rot.z = GetFloat();
-	return rot;
-}
-
-D3DXVECTOR3 cMapLoader::LoadScl()
-{
-	D3DXVECTOR3 scl;
-	scl.x = GetFloat();
-	scl.y = GetFloat();
-	scl.z = GetFloat();
-	return scl;
+	D3DXVECTOR3 vec;
+	vec.x = GetFloat();
+	vec.y = GetFloat();
+	vec.z = GetFloat();
+	return vec;
 }
 
 cObject_Map* cMapLoader::CreateObject_Map(cMesh_Object_Tag id)
 {
-	D3DXVECTOR3 pos = LoadPos();
-	D3DXVECTOR3 rot = LoadRot();
-	D3DXVECTOR3 scl = LoadScl();
+	D3DXVECTOR3 pos = LoadVec3();
+	D3DXVECTOR3 rot = LoadVec3();
+	D3DXVECTOR3 scl = LoadVec3();
 	cObject_Map* pObj = new cObject_Map(id, pos, rot, scl);
 	return pObj;
 }
 
 cMapObject* cMapLoader::CreateMapObject(int id)
 {
-	D3DXVECTOR3 pos = LoadPos();
-	D3DXVECTOR3 rot = LoadRot();
-	D3DXVECTOR3 scl = LoadScl();
+	D3DXVECTOR3 pos = LoadVec3();
+	D3DXVECTOR3 rot = LoadVec3();
+	D3DXVECTOR3 scl = LoadVec3();
 	cMapObject* pObj = new cMapObject;
 	pObj->Setup(id, pos, rot, scl);
 	return pObj;
+}
+
+cObject_Light* cMapLoader::CreateObject_Light()
+{
+	D3DXVECTOR3 pos = LoadVec3();
+	cObject_Light* pLight = new cObject_Light(ID_MAPMESH_TAG_TORCH_STATIC_01, pos, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	return pLight;
 }
 
 void cMapLoader::PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList)
