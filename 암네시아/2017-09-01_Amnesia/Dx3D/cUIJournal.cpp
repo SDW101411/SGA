@@ -118,3 +118,7 @@ void cUIJournal::OnClick(cUIButton* pSender)
 		*m_pState = UI_MAIN;
 	}
 }
+
+void cUIJournal::OnRightClick(cUIButton * pSender)
+{
+}

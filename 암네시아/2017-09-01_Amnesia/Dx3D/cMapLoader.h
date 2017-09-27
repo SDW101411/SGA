@@ -2,6 +2,7 @@
 
 #define ID_LTPOS							("<LEFTTOP>")
 #define ID_MESH								("<MESH>")
+#define ID_SURFACE							("<SURFACE>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -18,6 +19,7 @@
 class cObject_Game;
 class cObject_Map;
 class cMapObject;
+class cObject_Light;
 
 class cMapLoader
 {
@@ -27,18 +29,24 @@ private:
 	D3DXVECTOR3		m_leftTop;
 public:
 	vector<cObject_Map*>					LoadToObject_Map();
+	vector<cObject_Light*>					LoadToObject_Light();
+	vector<D3DXVECTOR3>						LoadToGroundSurface();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
+
+	void									PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap);
 
 private:
 	char*			GetToken();
 	bool			IsEqual(char* str1, char* str2);
 	float			GetFloat();
-	D3DXVECTOR3		LoadPos();
-	D3DXVECTOR3		LoadRot();
-	D3DXVECTOR3		LoadScl();
+	D3DXVECTOR3		LoadVec3();
 
 	cObject_Map*	CreateObject_Map(cMesh_Object_Tag id);
 	cMapObject*		CreateMapObject(int id);
+	cObject_Light*	CreateObject_Light();
 	void			PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList);
 	void			PushObject_Map(cMesh_Object_Tag id, vector<cObject_Map*>& rtnObjList);
+	void			PushLight(vector<cObject_Light*>& lightPos);
+
+	float			GetDistance(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2);
 };

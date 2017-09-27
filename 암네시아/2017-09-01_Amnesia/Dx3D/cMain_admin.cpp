@@ -7,7 +7,7 @@
 #include "cScene_Shader_Scene_Test.h"
 #include "cMainMenuScene.h"
 #include "cUITool_In_Game_Test.h"	// °ÔÀÓ UI - LEE
-#include "cUIJournalScene.h"
+#include "cLoadingScene.h"
 #include "cScene_Light.h"
 /*
 		2017-09-02 Main_admin.
@@ -17,13 +17,14 @@
 
 cMain_admin::cMain_admin()
 {
-	//g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
+	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
+	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);
 	g_pSceneManager->INSERT("cScene_Light", new cScene_Light);
-	//g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
+	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
 
-	//g_pSceneManager->SceneChange("cMainMenuScene");
+	g_pSceneManager->SceneChange("cMainMenuScene");
 
 
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_DEFAULT",		"X_File/MapObjects/ceiling/arched");
@@ -40,7 +41,7 @@ cMain_admin::cMain_admin()
 	
 	
 	
-	g_pSceneManager->SceneChange("cScene_Light");
+	//g_pSceneManager->SceneChange("cScene_Light");
 }
 
 cMain_admin::~cMain_admin()

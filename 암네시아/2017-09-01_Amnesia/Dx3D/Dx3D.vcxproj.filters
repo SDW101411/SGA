@@ -426,9 +426,6 @@
     <ClInclude Include="cUIJournal.h">
       <Filter>한나\UIJournal</Filter>
     </ClInclude>
-    <ClInclude Include="cUIJournalScene.h">
-      <Filter>한나\UIJournal</Filter>
-    </ClInclude>
     <ClInclude Include="cObject_Light.h">
       <Filter>동욱\Test</Filter>
     </ClInclude>
@@ -684,9 +681,6 @@
       <Filter>동욱\셰이더%28Test%29\Scene%28Test%29</Filter>
     </ClCompile>
     <ClCompile Include="cUIJournal.cpp">
-      <Filter>한나\UIJournal</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIJournalScene.cpp">
       <Filter>한나\UIJournal</Filter>
     </ClCompile>
     <ClCompile Include="cObject_Light.cpp">

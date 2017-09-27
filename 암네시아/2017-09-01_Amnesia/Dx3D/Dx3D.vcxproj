@@ -155,7 +155,6 @@
     <ClInclude Include="cUIGrid.h" />
     <ClInclude Include="cUIImageView.h" />
     <ClInclude Include="cUIJournal.h" />
-    <ClInclude Include="cUIJournalScene.h" />
     <ClInclude Include="cUIManager.h" />
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
@@ -246,7 +245,6 @@
     <ClCompile Include="cUIGrid.cpp" />
     <ClCompile Include="cUIImageView.cpp" />
     <ClCompile Include="cUIJournal.cpp" />
-    <ClCompile Include="cUIJournalScene.cpp" />
     <ClCompile Include="cUIManager.cpp" />
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />

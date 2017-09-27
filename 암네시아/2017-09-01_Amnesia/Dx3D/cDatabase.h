@@ -20,6 +20,8 @@ public:
 	int m_nHP;
 	int m_nMental;
 
+	//vector<cObject_Light*> m_vecLight;
+
 public:
 	cDatabase();
 	~cDatabase();
