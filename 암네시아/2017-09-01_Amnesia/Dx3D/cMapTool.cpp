@@ -37,7 +37,6 @@ void cMapTool::Render()
 {
 	RenderNode();
 	TileRender();
-	RenderWall();
 	RenderGround();
 }
 
@@ -204,34 +203,6 @@ void cMapTool::DestroyMesh()
 	}
 }
 
-void cMapTool::CreateWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos)
-{
-	cMapSurface wall;
-	wall.SetWall(startPos, endPos, 5);
-	m_wallSurface.push_back(wall);
-}
-
-void cMapTool::DeleteWall()
-{
-	vector<cMapSurface>::iterator it = m_wallSurface.begin();
-	for (; it != m_wallSurface.end(); it++)
-	{
-		if (FindPickingPosition(D3DXVECTOR3(0, 0, 0), (*it).GetSurface()))
-		{
-			m_wallSurface.erase(it);
-			break;
-		}
-	}
-}
-
-void cMapTool::RenderWall()
-{
-	for each(auto p in m_wallSurface)
-	{
-		p.RenderSurface();
-	}
-}
-
 void cMapTool::CreateGround(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos)
 {
 	cMapSurface ground;
@@ -309,6 +280,10 @@ void cMapTool::SaveData()
 	PutData("MAPMESH_TAG_TORCH_STATIC_01\n",		fp, objData[MAPMESH_TAG_TORCH_STATIC_01]);
 	fputs("END\n", fp);
 
+	fputs("<SURFACE>\n", fp);
+	PutSurface(fp);
+	fputs("END\n", fp);
+
 	fclose(fp);
 }
 
@@ -334,6 +309,22 @@ void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
 		fputs(str, fp);
 		sprintf(str, "%f %f %f\n", scl.x, scl.y, scl.z);
 		fputs(str, fp);
+	}
+	fputs("END\n", fp);
+}
+
+void cMapTool::PutSurface(FILE* fp)
+{
+	char str[1024];
+	for each(auto p in m_groundSurface)
+	{
+		vector<D3DXVECTOR3> vecList = p.GetSurface();
+		for each(auto vec in vecList)
+		{
+			fputs("NEW\n", fp);
+			sprintf(str, "%f %f %f\n", vec.x, vec.y, vec.z);
+			fputs(str, fp);
+		}
 	}
 	fputs("END\n", fp);
 }

@@ -95,6 +95,34 @@ vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 	return lightPos;
 }
 
+vector<D3DXVECTOR3> cMapLoader::LoadToGroundSurface()
+{
+	vector<D3DXVECTOR3> rtnObjList;
+
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_SURFACE))
+		{
+			while (true)
+			{
+				if (IsEqual(GetToken(), ID_END)) break;
+				rtnObjList.push_back(LoadVec3());
+			}
+		}
+	}
+
+	fclose(m_fp);
+
+	return rtnObjList;
+}
+
 map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 {
 	map<int, map<int, vector<cMapObject*>>> rtnObjList;

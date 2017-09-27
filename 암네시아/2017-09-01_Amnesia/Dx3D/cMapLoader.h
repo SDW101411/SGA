@@ -2,6 +2,7 @@
 
 #define ID_LTPOS							("<LEFTTOP>")
 #define ID_MESH								("<MESH>")
+#define ID_SURFACE							("<SURFACE>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -29,6 +30,7 @@ private:
 public:
 	vector<cObject_Map*>					LoadToObject_Map();
 	vector<cObject_Light*>					LoadToObject_Light();
+	vector<D3DXVECTOR3>						LoadToGroundSurface();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 
 	void									PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap);
