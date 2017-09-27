@@ -27,10 +27,10 @@ void cScene_Light::Setup()
 {
 	m_pPlayer = new cPlayer;
 
-	cObject_Light *Save_1 = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01,D3DXVECTOR3(3,1,3), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Light *Save_1 = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01,D3DXVECTOR3(3,1,3), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1), D3DXVECTOR3(0, 0, 0));
 	Save_1->m_Fire_On = true;
 
-	cObject_Light *Save_2 = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, D3DXVECTOR3(-3, 1, -3), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Light *Save_2 = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, D3DXVECTOR3(-3, 1, -3), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1), D3DXVECTOR3(0, 0, 0));
 	Save_2->m_Fire_On = true;
 
 	cObject_Map *Save_M_1 = new cObject_Map(MAPMESH_TAG_PILLAR_FULL, D3DXVECTOR3(0.5, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
