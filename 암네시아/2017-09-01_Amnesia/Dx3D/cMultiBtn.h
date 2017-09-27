@@ -19,5 +19,6 @@ public:
 
 	virtual void OnMouse(cUIButton* pSender);
 	virtual void OnClick(cUIButton* pSender);
+	virtual void OnRightClick(cUIButton* pSender);
 };
 

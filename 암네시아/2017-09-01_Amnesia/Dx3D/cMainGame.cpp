@@ -126,32 +126,14 @@ void cMainGame::SetLight()
 
 void cMainGame::OnMouse(cUIButton* pSender)
 {
-	//	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
-	/*if(pTextView == NULL) return;
-
-	if (pSender->GetTag() == E_CONFIRM_BUTTON)
-	{
-	pTextView->SetText("위 버튼 눌림");
-	}
-	else if (pSender->GetTag() == E_CANCEL_BUTTON)
-	{
-	pTextView->SetText("아래 버튼 눌림");
-	}*/
 }
 
 
 void cMainGame::OnClick( cUIButton* pSender )
 {
-	//	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
-	/*if(pTextView == NULL) return;
-	
-	if (pSender->GetTag() == E_CONFIRM_BUTTON)
-	{
-		pTextView->SetText("위 버튼 눌림");
-	}
-	else if (pSender->GetTag() == E_CANCEL_BUTTON)
-	{
-		pTextView->SetText("아래 버튼 눌림");
-	}*/
+}
+
+void cMainGame::OnRightClick(cUIButton* pSender)
+{
 }
 

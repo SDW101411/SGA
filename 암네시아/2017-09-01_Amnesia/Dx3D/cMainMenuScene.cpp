@@ -21,7 +21,7 @@ cMainMenuScene::cMainMenuScene()
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;
-	pImageView->SetTexture("UI/menu_gamma.tga");
+	pImageView->SetTexture("UI/tab_UI_bg2.png");
 	pImageView->SetScaling(6.48f, 5.1f);
 	pImageView->SetTag(E_GAME_BACKGROUND);
 	m_pUIRoot = pImageView;
@@ -141,10 +141,15 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	}
 	else if (pSender->GetTag() == E_BTN_SDW)
 	{
-		g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
+		//g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
+		g_pSceneManager->SceneChange("cLoadingScene");
 	}
 	else if (pSender->GetTag() == E_BTN_NGYB)
 	{
 		g_pSceneManager->SceneChange("cMapToolScene");
 	}
+}
+
+void cMainMenuScene::OnRightClick(cUIButton * pSender)
+{
 }

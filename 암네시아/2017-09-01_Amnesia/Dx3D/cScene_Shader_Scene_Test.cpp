@@ -31,6 +31,7 @@ void cScene_Shader_Scene_Test::Setup()
 	//cObject_Map_Vec = loader.LoadToObject_Map();
 //	cObject_Map *Save = new cObject_Map(WHITE_TAG, D3DXVECTOR3(0,1,0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 //	cObject_Map_Vec.push_back(Save);
+	
 	for (int i = 0; i < g_pLoadManager()->cObject_Map_Vec.size(); ++i)
 	{
 		cObject_Map_Vec.push_back(g_pLoadManager()->cObject_Map_Vec[i]);
