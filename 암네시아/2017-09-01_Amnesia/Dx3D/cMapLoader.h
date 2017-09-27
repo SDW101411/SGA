@@ -31,6 +31,8 @@ public:
 	vector<cObject_Light*>					LoadToObject_Light();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 
+	void									PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap);
+
 private:
 	char*			GetToken();
 	bool			IsEqual(char* str1, char* str2);
@@ -43,4 +45,6 @@ private:
 	void			PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList);
 	void			PushObject_Map(cMesh_Object_Tag id, vector<cObject_Map*>& rtnObjList);
 	void			PushLight(vector<cObject_Light*>& lightPos);
+
+	float			GetDistance(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2);
 };

@@ -152,6 +152,18 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 	return rtnObjList;
 }
 
+void cMapLoader::PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap)
+{
+	for each(auto map in objMap)
+	{
+		for each(auto light in objLight)
+		{
+			if (GetDistance(light->m_lightPos, map->GetPosition()) < 12)
+				map->m_Light_Vec_Push(light);
+		}
+	}
+}
+
 char * cMapLoader::GetToken()
 {
 	bool isQuote = false;
@@ -264,4 +276,10 @@ void cMapLoader::PushLight(vector<cObject_Light*>& lightPos)
 		if (IsEqual(GetToken(), ID_END)) break;
 		lightPos.push_back(CreateObject_Light());
 	}
+}
+
+float cMapLoader::GetDistance(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2)
+{
+	D3DXVECTOR3 dist = pos1 - pos2;
+	return sqrtf(dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
 }
