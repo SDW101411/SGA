@@ -58,7 +58,6 @@ public:
 	void SaveData();
 	void LoadData();
 	void PutData(string name, FILE* fp, vector<cMapObject*> pObj);
-	void PutLight(FILE*fp, vector<cMapObject*> pObj);
 
 	vector<D3DXVECTOR3> FindPickingGround();
 	bool FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground);

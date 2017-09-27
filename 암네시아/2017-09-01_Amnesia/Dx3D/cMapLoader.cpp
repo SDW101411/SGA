@@ -65,7 +65,7 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 
 vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 {
-	vector<cObject_Light*> rtnObj;
+	vector<cObject_Light*> lightPos;
 
 	m_fp = fopen("Data/MapData.txt", "r");
 
@@ -76,19 +76,23 @@ vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 		str = GetToken();
 
 		if (str == NULL) continue;
-		else if (IsEqual(str, ID_LIGHT))
+		else if (IsEqual(str, ID_MESH))
 		{
 			while (true)
 			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObj.push_back(CreateObject_Light());
+				str = GetToken();
+				if (str == NULL) continue;
+				else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
+				{
+					PushLight(lightPos);
+				}
 			}
 		}
 	}
 
 	fclose(m_fp);
 
-	return rtnObj;
+	return lightPos;
 }
 
 map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
@@ -218,7 +222,16 @@ cMapObject* cMapLoader::CreateMapObject(int id)
 cObject_Light* cMapLoader::CreateObject_Light()
 {
 	D3DXVECTOR3 pos = LoadVec3();
-	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	D3DXVECTOR3 rot = LoadVec3();
+	D3DXVECTOR3 scl = LoadVec3();
+	D3DXVECTOR3 lightPos, dir;
+	D3DXMATRIX	matRX, matRY, matRZ, matR;
+	D3DXMatrixRotationX(&matRX, rot.x);
+	D3DXMatrixRotationY(&matRY, rot.y);
+	D3DXMatrixRotationZ(&matRZ, rot.z);
+	matR = matRX * matRY * matRZ;
+	D3DXVec3TransformCoord(&dir, &D3DXVECTOR3(0, 1, -1), &matR);
+	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, rot, scl, pos + dir);
 	return pLight;
 }
 
@@ -241,5 +254,14 @@ void cMapLoader::PushObject_Map(cMesh_Object_Tag id, vector<cObject_Map*>& rtnOb
 	{
 		if (IsEqual(GetToken(), ID_END)) break;
 		rtnObjList.push_back(CreateObject_Map(id));
+	}
+}
+
+void cMapLoader::PushLight(vector<cObject_Light*>& lightPos)
+{
+	while (true)
+	{
+		if (IsEqual(GetToken(), ID_END)) break;
+		lightPos.push_back(CreateObject_Light());
 	}
 }

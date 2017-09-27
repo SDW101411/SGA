@@ -2,7 +2,6 @@
 
 #define ID_LTPOS							("<LEFTTOP>")
 #define ID_MESH								("<MESH>")
-#define ID_LIGHT							("<LIGHT>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -43,4 +42,5 @@ private:
 	cObject_Light*	CreateObject_Light();
 	void			PushMapObject(int id, map<int, map<int, vector<cMapObject*>>>& pObjList);
 	void			PushObject_Map(cMesh_Object_Tag id, vector<cObject_Map*>& rtnObjList);
+	void			PushLight(vector<cObject_Light*>& lightPos);
 };

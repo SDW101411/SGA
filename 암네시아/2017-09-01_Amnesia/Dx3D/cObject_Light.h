@@ -3,6 +3,7 @@ class cObject_Light
 {
 public:
 	D3DXVECTOR3			m_Pos;
+	D3DXVECTOR3			m_lightPos;
 	bool				m_Fire_On;
 private:
 	Mesh_Manager_Tag*	cObject;
@@ -12,7 +13,7 @@ private:
 	cObject_Light*		ItMe;
 public:
 	cObject_Light();
-	cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare);
+	cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare, D3DXVECTOR3 lightPos);
 	~cObject_Light();
 
 	void Update();

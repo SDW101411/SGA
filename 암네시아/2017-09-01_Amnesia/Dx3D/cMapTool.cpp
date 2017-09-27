@@ -309,10 +309,6 @@ void cMapTool::SaveData()
 	PutData("MAPMESH_TAG_TORCH_STATIC_01\n",		fp, objData[MAPMESH_TAG_TORCH_STATIC_01]);
 	fputs("END\n", fp);
 
-	fputs("<LIGHT>\n", fp);
-	PutLight(fp, objData[MAPMESH_TAG_TORCH_STATIC_01]);
-	fputs("END\n", fp);
-
 	fclose(fp);
 }
 
@@ -339,29 +335,6 @@ void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
 		sprintf(str, "%f %f %f\n", scl.x, scl.y, scl.z);
 		fputs(str, fp);
 	}
-	fputs("END\n", fp);
-}
-
-void cMapTool::PutLight(FILE*fp, vector<cMapObject*> pObj)
-{
-	char str[1024];
-	for each(auto p in pObj)
-	{
-		fputs("NEW\n", fp);
-		D3DXVECTOR3 pos = p->GetPosition();
-		D3DXVECTOR3 rot = p->GetRotation();
-		D3DXVECTOR3 dir = D3DXVECTOR3(0, 1, -1);
-		D3DXMATRIX rotX, rotY, rotZ, matR;
-		D3DXMatrixRotationX(&rotX, rot.x);
-		D3DXMatrixRotationY(&rotY, rot.y);
-		D3DXMatrixRotationZ(&rotZ, rot.z);
-		matR = rotX * rotY * rotZ;
-		D3DXVec3TransformCoord(&dir, &dir, &matR);
-		pos += dir;
-		sprintf(str, "%f %f %f\n", pos.x, pos.y, pos.z);
-		fputs(str, fp);
-	}
-
 	fputs("END\n", fp);
 }
 
