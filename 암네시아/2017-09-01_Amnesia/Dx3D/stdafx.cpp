@@ -11,3 +11,4 @@ D3DXVECTOR3 cCameara_seting = D3DXVECTOR3(0.0f,0.0f,0.0f);
 D3DXVECTOR3 cLight_Seting = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 D3DXVECTOR3 cLight_Color_Seting = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 D3DXVECTOR3 cLight_Color_Seting_2 = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+D3DXVECTOR3 cLight_Color_Seting_3 = D3DXVECTOR3(1.0f, 0.8f, 0.0f);
