@@ -23,7 +23,7 @@ cMain_admin::cMain_admin()
 	g_pSceneManager->INSERT("cScene_Light", new cScene_Light);
 	//g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
 
-	//g_pSceneManager->SceneChange("cMainMenuScene");
+	g_pSceneManager->SceneChange("cMainMenuScene");
 
 
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CEILING_DEFAULT",		"X_File/MapObjects/ceiling/arched");
@@ -40,7 +40,7 @@ cMain_admin::cMain_admin()
 	
 	
 	
-	g_pSceneManager->SceneChange("cScene_Light");
+	//g_pSceneManager->SceneChange("cScene_Light");
 }
 
 cMain_admin::~cMain_admin()

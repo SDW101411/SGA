@@ -218,7 +218,7 @@ cMapObject* cMapLoader::CreateMapObject(int id)
 cObject_Light* cMapLoader::CreateObject_Light()
 {
 	D3DXVECTOR3 pos = LoadVec3();
-	cObject_Light* pLight = new cObject_Light(ID_MAPMESH_TAG_TORCH_STATIC_01, pos, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 	return pLight;
 }
 
