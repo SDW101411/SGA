@@ -13,8 +13,15 @@ void cLoadingScene::ThFunc1(LPVOID pParam)
 	pLoader = (cLoadingScene*)pParam;
 	cMapLoader Loader;
 	pLoader->cObject_Map_Vec = Loader.LoadToObject_Map();
+	//pLoader->cObject_Light_vec = Loader.LoadToObject_Light();
 	
 	EnterCriticalSection(&cs);
+
+	//for (int i = 0; i < g_pLoadManager()->cObject_Map_Vec.size(); ++i)
+	//{
+	//	cObject_Map_Vec.push_back(g_pLoadManager()->cObject_Map_Vec[i]);
+	//}
+
 	g_pLoadManager()->cObject_Map_Vec = pLoader->cObject_Map_Vec;
 	g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
 	LeaveCriticalSection(&cs);

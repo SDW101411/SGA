@@ -8,7 +8,6 @@
 #include "cPlayer.h"
 #include "cObject_Torch.h"
 #include "cObject_Map.h"
-#include "cObject_Game.h"
 #include "cMapLoader.h"
 
 
