@@ -8,7 +8,9 @@ cObject_Light::cObject_Light()
 
 cObject_Light::cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare, D3DXVECTOR3 lightPos)
 {
-	m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx");
+	/*m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Light_4")*/;
+
+	m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light");
 	m_Pos = Pos;
 	m_lightPos = lightPos;
 	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;

@@ -22,8 +22,7 @@ cMain_admin::cMain_admin()
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
 	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);
 	g_pSceneManager->INSERT("cScene_Light", new cScene_Light);
-	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Light);
-
+	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
 	g_pSceneManager->SceneChange("cMainMenuScene");
 
 
@@ -38,6 +37,8 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_TORCH_STATIC_01",		"X_File/MapObjects/torch/torch_static01");
+
+	cMESH_MANAGER->INSERT_SHADER("Shader_Light", cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx"));
 	
 	
 	
