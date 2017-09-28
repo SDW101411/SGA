@@ -43,6 +43,9 @@ cUI_In_Game::cUI_In_Game()
 	m_nHeartHP = *DATABASE->GetHp();
 	m_nBrainHP = *DATABASE->GetMental();
 
+//	SOUNDMANAGER->addSound("15_event_elevator", "15_event_elevator.mp3", true, true);
+//	SOUNDMANAGER->addSound("ui_use_oil", "ui_use_oil.mp3", false, false);
+
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;
@@ -112,6 +115,8 @@ cUI_In_Game::cUI_In_Game()
 	TextViewFunc(pTextView, cFontManager::E_NORMAL, m_szTinderNum, 40, 20, 1102, 136, DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK, E_TEXT_TINDER_NUM);
 
 	m_pJournal = new cUIJournal(&m_nState);
+
+	//SOUNDMANAGER->play("15_event_elevator");
 }
 
 cUI_In_Game::~cUI_In_Game()
@@ -190,6 +195,7 @@ void cUI_In_Game::Update()
 				{
 					if (!(m_fOilValue >= 0.5f))
 					{
+						SOUNDMANAGER->play("ui_use_oil");
 						DATABASE->Delete(ITEM_OIL);
 						m_fOilValue += 0.1f;
 						int x, y;
@@ -226,6 +232,8 @@ void cUI_In_Game::Update()
 			break;
 		}
 	}
+
+	//SOUNDMANAGER->update();
 }
 
 void cUI_In_Game::Render()
