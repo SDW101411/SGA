@@ -18,7 +18,9 @@ cUITool_In_Game_Test::~cUITool_In_Game_Test()
 
 void cUITool_In_Game_Test::Setup()
 {
-	
+	SOUNDMANAGER->addSound("15_event_elevator", "Sound/15_event_elevator.ogg", true, true);
+	SOUNDMANAGER->addSound("ui_use_oil", "Sound/ui_use_oil.ogg", false, false);
+	//SOUNDMANAGER->play("15_event_elevator");
 }
 
 void cUITool_In_Game_Test::Release()

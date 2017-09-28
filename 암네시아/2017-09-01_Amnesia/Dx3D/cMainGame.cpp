@@ -10,6 +10,7 @@ cMainGame::cMainGame(void)
 	, m_pCamera(NULL)
 	, m_pCrtCtrl(NULL)
 {
+	SOUNDMANAGER->init();
 }
 
 cMainGame::~cMainGame(void)
@@ -46,6 +47,7 @@ void cMainGame::Setup()
 void cMainGame::Update()
 {
 	g_pTimeManager->Update();
+	SOUNDMANAGER->update();
 
 	SAFE_UPDATE(m_pCrtCtrl);
 	cLight_Seting = *m_pCrtCtrl->GetPosition();
