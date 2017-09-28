@@ -13,7 +13,7 @@
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 {
-	
+	m_pPlayer = NULL;
 }
 
 
@@ -28,15 +28,13 @@ void cScene_Shader_Scene_Test::Setup()
 {
 	//cMapLoader loader;
 	//cObject_Map_Vec = loader.LoadToObject_Map();
-//	cObject_Map *Save = new cObject_Map(WHITE_TAG, D3DXVECTOR3(0,1,0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
-//	cObject_Map_Vec.push_back(Save);
 	
-	for (int i = 0; i < g_pLoadManager()->cObject_Map_Vec.size(); ++i)
-	{
-		cObject_Map_Vec.push_back(g_pLoadManager()->cObject_Map_Vec[i]);
-	}
-	g_pLoadManager()->cObject_Map_Vec.clear();
 	m_pPlayer = new cPlayer;
+	for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
+	{
+		cObject_Map_Vec.push_back(g_pLoadManager()->GetObject_Map_Vec()[i]);
+	}
+	g_pLoadManager()->GetObject_Map_Vec().clear();
 	/*cObject_Game *Test = new cObject_shirt_white;
 	Test->Set_Anit1hing(D3DXVECTOR3(-5, 1, 0), 0, 0, 0, 1, 1, 1);
 	cObject_Game *Test_1 = new cObject_shirt_white_Normal;
@@ -57,6 +55,7 @@ void cScene_Shader_Scene_Test::Setup()
 			cObject_Vec.push_back(forTest);
 		}
 	}
+
 
 
 	cObject_Vec.push_back(Test);
@@ -106,5 +105,5 @@ void cScene_Shader_Scene_Test::Render()
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	m_pPlayer->MsgProc(hWnd, message, wParam, lParam);
+	if(m_pPlayer) m_pPlayer->MsgProc(hWnd, message, wParam, lParam);
 }

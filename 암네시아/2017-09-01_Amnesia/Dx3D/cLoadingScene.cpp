@@ -9,28 +9,19 @@ CRITICAL_SECTION cs;
 
 void cLoadingScene::ThFunc1(LPVOID pParam)
 {
-	cLoadingScene* pLoader;
-	pLoader = (cLoadingScene*)pParam;
+	//EnterCriticalSection(&cs);
+	cLoadingScene* pLoader = (cLoadingScene*)pParam;
 	cMapLoader Loader;
-	pLoader->cObject_Map_Vec = Loader.LoadToObject_Map();
-	//pLoader->cObject_Light_vec = Loader.LoadToObject_Light();
-	
-	EnterCriticalSection(&cs);
-
-	//for (int i = 0; i < g_pLoadManager()->cObject_Map_Vec.size(); ++i)
-	//{
-	//	cObject_Map_Vec.push_back(g_pLoadManager()->cObject_Map_Vec[i]);
-	//}
-
-	g_pLoadManager()->cObject_Map_Vec = pLoader->cObject_Map_Vec;
-	g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
-	LeaveCriticalSection(&cs);
+	g_pLoadManager()->SetObject_Map_Vec(Loader.LoadToObject_Map());
+	pLoader->m_bClear = true;
+	//LeaveCriticalSection(&cs);
 }
 
 cLoadingScene::cLoadingScene()
 	: m_pSprite(NULL)
 	, m_pUIRoot(NULL)
 {
+	m_bClear = FALSE;
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;
@@ -63,18 +54,28 @@ void cLoadingScene::Setup()
 	DWORD dwThID;
 	InitializeCriticalSection(&cs);
 	CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ThFunc1, this, NULL/*CREATE_SUSPENDED*/, &dwThID));
+
+	//cMapLoader Loader;
+	//g_pLoadManager()->cObject_Map_Vec = Loader.LoadToObject_Map();
+	//Clear = true;
 }
 
 void cLoadingScene::Release()
 {
 	//for each(auto p in cObject_Map_Vec) SAFE_DELETE(p);
 	//cObject_Map_Vec.clear();
-	
+	SAFE_RELEASE(m_pSprite);
+	SAFE_RELEASE(m_pUIRoot);
 }
 
 void cLoadingScene::Update()
 {
 	SAFE_UPDATE(m_pUIRoot);
+
+	if (m_bClear)
+	{
+		g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
+	}
 }
 
 void cLoadingScene::Render()
