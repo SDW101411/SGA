@@ -22,7 +22,7 @@ private:
 	cPlayer_Animation_Index			m_pPlayer_Animation_Index;
 	float Save_ANI;
 
-	void*							Target_Vector;
+	void*							m_Light_Vector;
 
 public:
 	cPlayer();
@@ -37,5 +37,8 @@ private:
 	void Animation_Change();
 	void Animation_Change_Set(cPlayer_Animation_Index Set_Type);
 	void Animation_Change_Set(cPlayer_Animation_Index Set_Type, float *SaveTarget);
+
+public:
+	void set_m_Light_Vector(void* Vector);
 };
 

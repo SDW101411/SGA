@@ -135,4 +135,10 @@ void cPlayer::Animation_Change_Set(cPlayer_Animation_Index Set_Type, float * Sav
 	m_pPlayer_Animation_Index = Set_Type;
 }
 
+void cPlayer::set_m_Light_Vector(void * Vector)
+{
+	m_Light_Vector = Vector;
+}
+
+
 

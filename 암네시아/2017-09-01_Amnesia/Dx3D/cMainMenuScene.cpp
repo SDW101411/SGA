@@ -141,8 +141,8 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	}
 	else if (pSender->GetTag() == E_BTN_SDW)
 	{
-		//g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
-		g_pSceneManager->SceneChange("cLoadingScene");
+		g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
+		//g_pSceneManager->SceneChange("cLoadingScene");
 	}
 	else if (pSender->GetTag() == E_BTN_NGYB)
 	{

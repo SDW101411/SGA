@@ -8,6 +8,13 @@ cParticle_Fire::cParticle_Fire()
 	Seting_Smoke_Ver();
 }
 
+cParticle_Fire::cParticle_Fire(D3DXVECTOR3 *Target)
+{
+	Seting_Fire_Ver();
+	Seting_Smoke_Ver();
+	pos_xyz = Target;
+}
+
 void cParticle_Fire::Seting_Fire_Ver()
 {
 	m_Particle_Vec.resize(300);
@@ -224,6 +231,7 @@ void cParticle_Fire::Render()
 
 	D3DXMATRIXA16 matWorld;
 	D3DXMatrixIdentity(&matWorld);
+	D3DXMatrixTranslation(&matWorld, pos_xyz->x, pos_xyz->y, pos_xyz->z);
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &matWorld);
 
 	g_pD3DDevice->SetTexture(0, NULL);
