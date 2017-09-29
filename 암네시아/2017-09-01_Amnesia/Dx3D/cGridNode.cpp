@@ -8,11 +8,10 @@ cGridNode::cGridNode()
 	, m_g(0.0f)
 	, m_h(0.0f)
 	, m_f(0.0f)
-	, m_isObstacle(false)
 {
 	D3DXMatrixIdentity(&m_matWorld);
 	ZeroMemory(&m_material, sizeof(D3DMATERIAL9));
-	SetColor(GRIDNODE_COLOR_DEFAULT);
+	m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0, 0, 1, 1);
 }
 
 cGridNode::~cGridNode()
@@ -66,18 +65,8 @@ void cGridNode::Render()
 	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 }
 
-void cGridNode::SetColor(GRIDNODE_COLOR value)
+void cGridNode::SetClean()
 {
-	switch (value)
-	{
-	case GRIDNODE_COLOR_DEFAULT:
-		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f);
-		break;
-	case GRIDNODE_COLOR_PICK:
-		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
-		break;
-	case GRIDNODE_COLOR_OBSTACLE:
-		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f);
-		break;
-	}
+	m_isClose = false;
+	m_isOpen = false;
 }

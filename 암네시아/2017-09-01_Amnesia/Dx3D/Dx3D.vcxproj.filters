@@ -169,6 +169,9 @@
     <Filter Include="동욱\파티클\Fire">
       <UniqueIdentifier>{4fd6c902-46d9-4351-a912-f3638c0ed1e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\AStarScene">
+      <UniqueIdentifier>{d38e6304-9b14-4f9e-951a-d6665fee244a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -447,6 +450,9 @@
     <ClInclude Include="cParticle_Fire.h">
       <Filter>동욱\파티클\Fire</Filter>
     </ClInclude>
+    <ClInclude Include="cAStarScene.h">
+      <Filter>영빈\AStarScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -703,6 +709,9 @@
     </ClCompile>
     <ClCompile Include="cParticle_Fire.cpp">
       <Filter>동욱\파티클\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="cAStarScene.cpp">
+      <Filter>영빈\AStarScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

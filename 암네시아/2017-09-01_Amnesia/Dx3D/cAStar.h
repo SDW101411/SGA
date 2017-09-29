@@ -18,6 +18,10 @@ private:
 	int								m_curRow;
 	int								m_curCol;
 
+private:
+	SYNTHESIZE(bool, m_isClear, IsClear);
+	SYNTHESIZE(vector<cGridNode*>, m_nodeData, NodeData);
+
 public:
 	cAStar();
 	~cAStar();
@@ -28,4 +32,6 @@ public:
 
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);
 	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
+
+	static void SetNodeCleanFunc(LPVOID param);
 };

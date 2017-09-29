@@ -1,12 +1,5 @@
 #pragma once
 
-enum GRIDNODE_COLOR
-{
-	GRIDNODE_COLOR_DEFAULT,
-	GRIDNODE_COLOR_PICK,
-	GRIDNODE_COLOR_OBSTACLE,
-};
-
 class cGridNode
 {
 private:
@@ -23,7 +16,6 @@ private:
 	SYNTHESIZE(float, m_h, H);
 	SYNTHESIZE(float, m_f, F);
 
-	SYNTHESIZE(bool, m_isObstacle, IsObstacle);
 	SYNTHESIZE(bool, m_isClose, IsClose);
 	SYNTHESIZE(bool, m_isOpen, IsOpen);
 public:
@@ -33,5 +25,5 @@ public:
 	void SetUp(D3DXVECTOR3 pos);
 	void Render();
 
-	void SetColor(GRIDNODE_COLOR value);
+	void SetClean();
 };

@@ -7,6 +7,14 @@
 cAStar::cAStar()
 {
 	cMapLoader loader;
+	m_nodeList = loader.LoadToGridNode();
+	for each(auto f in m_nodeList)
+	{
+		for each(auto s in f.second)
+		{
+			m_nodeData.push_back(s.second);
+		}
+	}
 }
 
 cAStar::~cAStar()
@@ -63,6 +71,8 @@ void cAStar::AddCloseList(IN cGridNode* pNode, OUT vector<cGridNode*> openList, 
 
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 {
+	list<D3DXVECTOR3> rtnPath;
+	if (!m_isClear) return rtnPath;
 	vector<cGridNode*> OpenList;
 	vector<cGridNode*> CloseList;
 	return list<D3DXVECTOR3>();
@@ -74,4 +84,16 @@ bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
 	col = abs((pos.z - m_leftTop.z - GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
 	if (row < 0 || col < 0) return false;
 	return true;
+}
+
+void cAStar::SetNodeCleanFunc(LPVOID param)
+{
+	cAStar* pThis = (cAStar*)param;
+
+	for each(auto p in pThis->GetNodeData())
+	{
+		p->SetClean();
+	}
+
+	pThis->SetIsClear(true);
 }
