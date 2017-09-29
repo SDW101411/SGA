@@ -293,14 +293,15 @@ cObject_Light* cMapLoader::CreateObject_Light()
 	D3DXVECTOR3 pos = LoadVec3();
 	D3DXVECTOR3 rot = LoadVec3();
 	D3DXVECTOR3 scl = LoadVec3();
-	D3DXVECTOR3 lightPos, dir;
+	D3DXVECTOR3 lightPos, lightPos, particlePos;
 	D3DXMATRIX	matRX, matRY, matRZ, matR;
 	D3DXMatrixRotationX(&matRX, rot.x);
 	D3DXMatrixRotationY(&matRY, rot.y);
 	D3DXMatrixRotationZ(&matRZ, rot.z);
 	matR = matRX * matRY * matRZ;
-	D3DXVec3TransformCoord(&dir, &D3DXVECTOR3(0, 1, -1), &matR);
-	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, rot, scl, pos + dir);
+	D3DXVec3TransformCoord(&lightPos, &D3DXVECTOR3(0, 0.9, -0.65), &matR);
+	D3DXVec3TransformCoord(&particlePos, &D3DXVECTOR3(0, 1, -1), &matR);
+	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, rot, scl, particlePos, lightPos);
 	return pLight;
 }
 
