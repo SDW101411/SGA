@@ -54,6 +54,7 @@ public:
 	void LoadData();
 	void PutData(string name, FILE* fp, vector<cMapObject*> pObj);
 	void PutSurface(FILE* fp);
+	void PutGridNode(FILE* fp);
 
 	vector<D3DXVECTOR3> FindPickingGround();
 	bool FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground);

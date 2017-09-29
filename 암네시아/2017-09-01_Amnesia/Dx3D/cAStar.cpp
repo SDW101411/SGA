@@ -1,9 +1,12 @@
 #include "stdafx.h"
 #include "cAStar.h"
 #include "cGridNode.h"
+#include "cMapLoader.h"
+#include "cMapTool.h"
 
 cAStar::cAStar()
 {
+	cMapLoader loader;
 }
 
 cAStar::~cAStar()
@@ -19,57 +22,17 @@ cAStar::~cAStar()
 	}
 }
 
-void cAStar::SetUp(D3DXVECTOR3 leftTop, int row, int col)
-{
-	m_leftTopPos = leftTop;
-	m_rowMax = row;
-	m_colMax = col;
-}
-
 void cAStar::Render()
 {
-	for (int row = 0; row < m_rowMax; row++)
+	map<int, map<int, cGridNode*>>::iterator first = m_nodeList.begin();
+	for (; first != m_nodeList.end(); first++)
 	{
-		for (int col = 0; col < m_colMax; col++)
+		map<int, cGridNode*>::iterator second = (*first).second.begin();
+		for (; second != (*first).second.end(); second++)
 		{
-			SAFE_RENDER(m_nodeList[row][col]);
+			SAFE_RENDER((*second).second);
 		}
 	}
-}
-
-void cAStar::CreateNode(D3DXVECTOR3 pos, int row, int col)
-{
-	cGridNode* pNode = new cGridNode;
-	pNode->SetUp(pos);
-	m_nodeList[row][col] = pNode;
-}
-
-void cAStar::CreateNode(D3DXVECTOR3 pos)
-{
-	cGridNode* pNode = new cGridNode;
-	pNode->SetUp(pos);
-	int row = abs((pos.x - m_leftTopPos.x) / GRIDNODE_SIZE);
-	int col = abs((pos.z - m_leftTopPos.z) / GRIDNODE_SIZE);
-	m_nodeList[row][col] = pNode;
-}
-
-void cAStar::CreateNode(int row, int col)
-{
-	D3DXVECTOR3 pos = m_leftTopPos;
-	pos.x += row * GRIDNODE_SIZE;
-	pos.z -= col * GRIDNODE_SIZE;
-	CreateNode(pos, row, col);
-}
-
-bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
-{
-	int rtnRow = (pos.x - m_leftTopPos.x) / GRIDNODE_SIZE;
-	int rtnCol = m_colMax - (pos.z - m_leftTopPos.z) / GRIDNODE_SIZE;
-	row = rtnRow;
-	col = rtnCol;
-
-	if (rtnRow >= m_rowMax || rtnCol >= m_colMax || rtnRow < 0 || rtnCol < 0) return false;
-	return true;
 }
 
 void cAStar::AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList)
@@ -96,9 +59,6 @@ void cAStar::AddCloseList(IN cGridNode* pNode, OUT vector<cGridNode*> openList, 
 			break;
 		}
 	}
-
-	pNode->SetIsOpen(false);
-	pNode->SetIsClose(true);
 }
 
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
@@ -106,4 +66,12 @@ list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 	vector<cGridNode*> OpenList;
 	vector<cGridNode*> CloseList;
 	return list<D3DXVECTOR3>();
+}
+
+bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
+{
+	row = abs((pos.x - m_leftTop.x + GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	col = abs((pos.z - m_leftTop.z - GRIDNODE_HALFSIZE) / GRIDNODE_SIZE);
+	if (row < 0 || col < 0) return false;
+	return true;
 }

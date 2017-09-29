@@ -284,6 +284,10 @@ void cMapTool::SaveData()
 	PutSurface(fp);
 	fputs("END\n", fp);
 
+	fputs("<GRIDNODE>\n", fp);
+	PutGridNode(fp);
+	fputs("END\n", fp);
+
 	fclose(fp);
 }
 
@@ -324,6 +328,27 @@ void cMapTool::PutSurface(FILE* fp)
 			fputs("NEW\n", fp);
 			sprintf(str, "%f %f %f\n", vec.x, vec.y, vec.z);
 			fputs(str, fp);
+		}
+	}
+	fputs("END\n", fp);
+}
+
+void cMapTool::PutGridNode(FILE* fp)
+{
+	char str[1024];
+	for each(auto f in m_nodeList)
+	{
+		for each(auto s in f.second)
+		{
+			if (s.second)
+			{
+				fputs("NEW\n", fp);
+				D3DXVECTOR3 pos = s.second->GetPosition();
+				sprintf(str, "%f %f %f\n", pos.x, pos.y, pos.z);
+				fputs(str, fp);
+				sprintf(str, "%d %d\n", f.first, s.first);
+				fputs(str, fp);
+			}
 		}
 	}
 	fputs("END\n", fp);

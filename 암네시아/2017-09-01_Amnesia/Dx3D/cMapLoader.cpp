@@ -4,6 +4,7 @@
 #include "cMapObject.h"
 #include "cObject_Map.h"
 #include "cObject_Light.h"
+#include "cGridNode.h"
 
 vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 {
@@ -86,6 +87,8 @@ vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 				{
 					PushLight(lightPos);
 				}
+				else if (IsEqual(str, ID_END))
+					break;
 			}
 		}
 	}
@@ -180,6 +183,27 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 	return rtnObjList;
 }
 
+map<int, map<int, cGridNode*>> cMapLoader::LoadToGridNode()
+{
+	map<int, map<int, cGridNode*>> rtnGrid;
+
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_GRIDNODE)) PushGridNode(rtnGrid);
+	}
+
+	fclose(m_fp);
+
+	return rtnGrid;
+}
+
 void cMapLoader::PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap)
 {
 	for each(auto map in objMap)
@@ -229,6 +253,11 @@ bool cMapLoader::IsEqual(char * str1, char * str2)
 float cMapLoader::GetFloat()
 {
 	return (float)atof(GetToken());
+}
+
+int cMapLoader::GetInt()
+{
+	return (int)atoi(GetToken());
 }
 
 D3DXVECTOR3 cMapLoader::LoadVec3()
@@ -303,6 +332,20 @@ void cMapLoader::PushLight(vector<cObject_Light*>& lightPos)
 	{
 		if (IsEqual(GetToken(), ID_END)) break;
 		lightPos.push_back(CreateObject_Light());
+	}
+}
+
+void cMapLoader::PushGridNode(map<int, map<int, cGridNode*>>& nodeList)
+{
+	char* str;
+	while (true)
+	{
+		str = GetToken();
+		if (IsEqual(str, ID_END)) break;
+		D3DXVECTOR3 pos = LoadVec3();
+		cGridNode* pNode = new cGridNode();
+		pNode->SetUp(pos);
+		nodeList[GetInt()][GetInt()] = pNode;
 	}
 }
 
