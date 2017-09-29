@@ -4,6 +4,8 @@
 #define ID_MESH								("<MESH>")
 #define ID_SURFACE							("<SURFACE>")
 #define ID_GRIDNODE							("<GRIDNODE>")
+#define ID_WALL								("<WALL>")
+#define ID_GROUND							("<GROUND>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -22,6 +24,7 @@ class cObject_Map;
 class cMapObject;
 class cObject_Light;
 class cGridNode;
+class cMapSurface;
 
 class cMapLoader
 {
@@ -33,6 +36,7 @@ public:
 	vector<cObject_Map*>					LoadToObject_Map();
 	vector<cObject_Light*>					LoadToObject_Light();
 	vector<D3DXVECTOR3>						LoadToGroundSurface();
+	vector<D3DXVECTOR3>						LoadToWallSurface();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 	map<int, map<int, cGridNode*>>			LoadToGridNode();
 

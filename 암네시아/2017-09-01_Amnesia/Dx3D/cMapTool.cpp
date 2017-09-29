@@ -349,6 +349,19 @@ void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
 void cMapTool::PutSurface(FILE* fp)
 {
 	char str[1024];
+	fputs("<WALL>\n", fp);
+	for each(auto p in m_wallSurface)
+	{
+		vector<D3DXVECTOR3> vecList = p.GetSurface();
+		for each(auto vec in vecList)
+		{
+			fputs("NEW\n", fp);
+			sprintf(str, "%f %f %f\n", vec.x, vec.y, vec.z);
+			fputs(str, fp);
+		}
+	}
+	fputs("END\n", fp);
+	fputs("<GROUND>\n", fp);
 	for each(auto p in m_groundSurface)
 	{
 		vector<D3DXVECTOR3> vecList = p.GetSurface();

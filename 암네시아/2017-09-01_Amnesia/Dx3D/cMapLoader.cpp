@@ -51,8 +51,6 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 					PushObject_Map(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
 				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
 					PushObject_Map(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
-				//else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
-				//	PushObject_Map(MAPMESH_TAG_TORCH_STATIC_01, rtnObjList);
 				else if (IsEqual(str, ID_END))
 					break;
 			}
@@ -115,8 +113,56 @@ vector<D3DXVECTOR3> cMapLoader::LoadToGroundSurface()
 		{
 			while (true)
 			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(LoadVec3());
+				str = GetToken();
+				if (str == NULL) continue;
+				else if (IsEqual(str, ID_GROUND))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+						rtnObjList.push_back(LoadVec3());
+					}
+				}
+				else if (IsEqual(str, ID_END))
+					break;
+			}
+		}
+	}
+
+	fclose(m_fp);
+
+	return rtnObjList;
+}
+
+vector<D3DXVECTOR3> cMapLoader::LoadToWallSurface()
+{
+	vector<D3DXVECTOR3> rtnObjList;
+
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_SURFACE))
+		{
+			while (true)
+			{
+				str = GetToken();
+				if (str == NULL) continue;
+				else if (IsEqual(str, ID_WALL))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+						rtnObjList.push_back(LoadVec3());
+					}
+				}
+				else if (IsEqual(str, ID_END))
+					break;
 			}
 		}
 	}
