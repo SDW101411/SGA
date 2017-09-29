@@ -75,3 +75,7 @@ void cMultiBtn::OnClick(cUIButton * pSender)
 		// ÀúÀå¿ë
 	}
 }
+
+void cMultiBtn::OnRightClick(cUIButton * pSender)
+{
+}

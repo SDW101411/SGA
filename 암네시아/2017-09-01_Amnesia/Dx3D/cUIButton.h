@@ -7,6 +7,7 @@ class iButtonDelegate
 public:
 	virtual void OnMouse(cUIButton* pSender) PURE;
 	virtual void OnClick(cUIButton* pSender) PURE;
+	virtual void OnRightClick(cUIButton* pSender) PURE;
 };
 
 class cUIButton : public cUIObject
@@ -18,6 +19,7 @@ protected:
 		E_MOUSEOVER,
 		E_SELECTED,
 		E_STATUS_COUNT,
+		E_RBUTTON,
 	};
 
 	eButtonStatus	m_eButtonStatus;

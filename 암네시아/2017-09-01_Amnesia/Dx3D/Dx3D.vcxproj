@@ -132,6 +132,8 @@
     <ClInclude Include="cObject_Torch.h" />
     <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cObjMap.h" />
+    <ClInclude Include="cParticle.h" />
+    <ClInclude Include="cParticle_Fire.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cPlayer_Ctrl.h" />
     <ClInclude Include="cPyramid.h" />
@@ -153,7 +155,6 @@
     <ClInclude Include="cUIGrid.h" />
     <ClInclude Include="cUIImageView.h" />
     <ClInclude Include="cUIJournal.h" />
-    <ClInclude Include="cUIJournalScene.h" />
     <ClInclude Include="cUIManager.h" />
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
@@ -221,6 +222,8 @@
     <ClCompile Include="cObject_Torch.cpp" />
     <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cObjMap.cpp" />
+    <ClCompile Include="cParticle.cpp" />
+    <ClCompile Include="cParticle_Fire.cpp" />
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cPlayer_Ctrl.cpp" />
     <ClCompile Include="cPyramid.cpp" />
@@ -242,7 +245,6 @@
     <ClCompile Include="cUIGrid.cpp" />
     <ClCompile Include="cUIImageView.cpp" />
     <ClCompile Include="cUIJournal.cpp" />
-    <ClCompile Include="cUIJournalScene.cpp" />
     <ClCompile Include="cUIManager.cpp" />
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />

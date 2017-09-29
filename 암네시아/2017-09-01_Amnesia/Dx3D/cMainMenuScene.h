@@ -25,5 +25,6 @@ public:
 
 	void OnMouse(cUIButton* pSender);
 	void OnClick(cUIButton* pSender);
+	void OnRightClick(cUIButton* pSender);
 };
 

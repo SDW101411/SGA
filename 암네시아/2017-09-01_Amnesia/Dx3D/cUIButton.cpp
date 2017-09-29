@@ -36,12 +36,30 @@ void cUIButton::Update()
 	if (PtInRect(&rc, ptMouse))
 	{
 		if (GetKeyState(VK_LBUTTON) & 0x8000)
-		//if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
 			if (m_eButtonStatus == E_MOUSEOVER)
 			{
 				m_eButtonStatus = E_SELECTED;
 			}
+		}
+		else if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+		{
+			if (m_eButtonStatus == E_MOUSEOVER)
+			{
+				m_eButtonStatus = E_RBUTTON;
+			}
+		}
+		else if (KEYMANAGER->isOnceKeyUp(VK_RBUTTON))
+		{
+			if (m_eButtonStatus == E_RBUTTON)
+			{
+				if (m_pDelegate) m_pDelegate->OnRightClick(this);
+			}
+			else if (m_eButtonStatus == E_MOUSEOVER)
+			{
+				if (m_pDelegate) m_pDelegate->OnRightClick(this);
+			}
+			m_eButtonStatus = E_MOUSEOVER;
 		}
 		else
 		{
@@ -57,6 +75,7 @@ void cUIButton::Update()
 
 			m_eButtonStatus = E_MOUSEOVER;
 		}
+		
 	}
 	else
 	{

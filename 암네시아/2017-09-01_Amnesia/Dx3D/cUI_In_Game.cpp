@@ -18,9 +18,9 @@ enum
 	E_JOURNAL = 218,
 	E_RANTERNSHAPE = 219,
 	E_OIL = 220,
-	E_TEXT_VIEW,
-	E_TEXT_VIEW_2,
-	E_TEXT_VIEW_3,
+	E_TEXT_TITLE,
+	E_TEXT_EXPLANATION,
+	E_TEXT_HEART_BRAIN_HP,
 	E_TEXT_MOUSEPOS,
 	E_TEXT_ITEM,
 	E_TEXT_TINDER_NUM,
@@ -42,6 +42,9 @@ cUI_In_Game::cUI_In_Game()
 {
 	m_nHeartHP = *DATABASE->GetHp();
 	m_nBrainHP = *DATABASE->GetMental();
+
+//	SOUNDMANAGER->addSound("15_event_elevator", "15_event_elevator.mp3", true, true);
+//	SOUNDMANAGER->addSound("ui_use_oil", "ui_use_oil.mp3", false, false);
 
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
@@ -95,14 +98,14 @@ cUI_In_Game::cUI_In_Game()
 	pTextView->SetSize(ST_SIZE(312, 100));
 	pTextView->SetPosition(566, 494);
 	pTextView->SetDrawTextFormat(DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK);
-	pTextView->SetTag(E_TEXT_VIEW);
+	pTextView->SetTag(E_TEXT_TITLE);
 	m_pUIRoot->AddChild(pTextView);
 
-	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, "", 600, 100, 440, 546, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_VIEW_2);
+	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, "", 600, 100, 440, 546, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_EXPLANATION);
 
 	char HP[20];
 	sprintf(HP, "%d %d", m_nHeartHP, m_nBrainHP);
-	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_VIEW_3);
+	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_HEART_BRAIN_HP);
 
 	char Mouse[20];
 	sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
@@ -112,6 +115,8 @@ cUI_In_Game::cUI_In_Game()
 	TextViewFunc(pTextView, cFontManager::E_NORMAL, m_szTinderNum, 40, 20, 1102, 136, DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK, E_TEXT_TINDER_NUM);
 
 	m_pJournal = new cUIJournal(&m_nState);
+
+	//SOUNDMANAGER->play("15_event_elevator");
 }
 
 cUI_In_Game::~cUI_In_Game()
@@ -124,9 +129,9 @@ cUI_In_Game::~cUI_In_Game()
 
 void cUI_In_Game::Update()
 {
-	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
-	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_2);
-	cUITextView* pTextView_3 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_3);
+	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_TITLE);
+	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_EXPLANATION);
+	cUITextView* pTextView_3 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_HEART_BRAIN_HP);
 	cUITextView* pTextView_4 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_MOUSEPOS);
 
 	if (pTextView) pTextView->SetText("");
@@ -190,6 +195,7 @@ void cUI_In_Game::Update()
 				{
 					if (!(m_fOilValue >= 0.5f))
 					{
+						SOUNDMANAGER->play("ui_use_oil");
 						DATABASE->Delete(ITEM_OIL);
 						m_fOilValue += 0.1f;
 						int x, y;
@@ -226,6 +232,8 @@ void cUI_In_Game::Update()
 			break;
 		}
 	}
+
+	//SOUNDMANAGER->update();
 }
 
 void cUI_In_Game::Render()
@@ -300,8 +308,8 @@ void cUI_In_Game::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void cUI_In_Game::OnMouse(cUIButton* pSender)
 {
-	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
-	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW_2);
+	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_TITLE);
+	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_EXPLANATION);
 	if (pTextView == NULL) return;
 
 	if (pSender->GetTag() == E_HEART || pSender->GetTag() == E_HEART_UP)
@@ -364,6 +372,34 @@ void cUI_In_Game::OnClick(cUIButton* pSender)
 	{
 		//g_pSceneManager->SceneChange("cUIJournalScene");
 		m_nState = UI_JOURNAL;
+	}
+	/*else if (pSender->GetTag() == ITEM_HP)
+	{
+		if (m_nHeartHP < 100 && DATABASE->Load(ITEM_HP) > 0)
+		{
+			m_nHeartHP += 10;
+			DATABASE->Delete(ITEM_HP);
+		}
+	}*/
+}
+
+void cUI_In_Game::OnRightClick(cUIButton * pSender)
+{
+	if (pSender->GetTag() == ITEM_HP)
+	{
+		if (m_nHeartHP < 100 && DATABASE->Load(ITEM_HP) > 0)
+		{
+			m_nHeartHP += 10;
+			DATABASE->Delete(ITEM_HP);
+		}
+	}
+	else if (pSender->GetTag() == ITEM_MENTAL)
+	{
+		if (m_nBrainHP < 100 && DATABASE->Load(ITEM_MENTAL) > 0)
+		{
+			m_nBrainHP += 10;
+			DATABASE->Delete(ITEM_MENTAL);
+		}
 	}
 }
 
