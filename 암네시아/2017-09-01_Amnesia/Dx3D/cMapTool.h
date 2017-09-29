@@ -18,6 +18,7 @@ private:
 	map<int, map<int, cGridNode*>>				m_nodeList;
 	map<int, map<int, vector<cMapObject*>>>		m_tileList;
 	map<int, cMapMesh*>							m_meshList;
+	vector<cMapSurface>							m_wallSurface;
 	vector<cMapSurface>							m_groundSurface;
 
 public:
@@ -43,6 +44,10 @@ public:
 	void CreateMesh();
 	void CreateMesh(int id);
 	void DestroyMesh();
+
+	void CreateWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
+	void DeleteWall();
+	void RenderWall();
 
 	void CreateGround(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
 	void DeleteGround();

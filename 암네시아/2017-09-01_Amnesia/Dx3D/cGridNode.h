@@ -24,6 +24,8 @@ private:
 	SYNTHESIZE(float, m_f, F);
 
 	SYNTHESIZE(bool, m_isObstacle, IsObstacle);
+	SYNTHESIZE(bool, m_isClose, IsClose);
+	SYNTHESIZE(bool, m_isOpen, IsOpen);
 public:
 	cGridNode();
 	~cGridNode();

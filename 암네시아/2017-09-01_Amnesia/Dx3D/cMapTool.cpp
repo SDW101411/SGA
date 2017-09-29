@@ -37,6 +37,7 @@ void cMapTool::Render()
 {
 	RenderNode();
 	TileRender();
+	RenderWall();
 	RenderGround();
 }
 
@@ -200,6 +201,34 @@ void cMapTool::DestroyMesh()
 	for each(auto p in m_meshList)
 	{
 		SAFE_DELETE(p.second);
+	}
+}
+
+void cMapTool::CreateWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos)
+{
+	cMapSurface wall;
+	wall.SetWall(startPos, endPos, 5);
+	m_wallSurface.push_back(wall);
+}
+
+void cMapTool::DeleteWall()
+{
+	vector<cMapSurface>::iterator it = m_wallSurface.begin();
+	for (; it != m_wallSurface.end(); it++)
+	{
+		if (FindPickingPosition(D3DXVECTOR3(0, 0, 0), (*it).GetSurface()))
+		{
+			m_wallSurface.erase(it);
+			break;
+		}
+	}
+}
+
+void cMapTool::RenderWall()
+{
+	for each(auto p in m_wallSurface)
+	{
+		p.RenderSurface();
 	}
 }
 
