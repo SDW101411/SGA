@@ -8,6 +8,8 @@ cAStar::cAStar()
 {
 	cMapLoader loader;
 	m_nodeList = loader.LoadToGridNode();
+	InitializeCriticalSection(&m_cs);
+
 	for each(auto f in m_nodeList)
 	{
 		for each(auto s in f.second)
@@ -28,6 +30,8 @@ cAStar::~cAStar()
 			SAFE_DELETE((*col).second);
 		}
 	}
+
+	DeleteCriticalSection(&m_cs);
 }
 
 void cAStar::Render()
@@ -43,38 +47,14 @@ void cAStar::Render()
 	}
 }
 
-void cAStar::AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList)
-{
-	int centerRow = 0;
-	int centerCol = 0;
-	if (FindRowCol(pos, centerRow, centerCol))	// 가운데 노드가 존재할경우
-	{
-		DWORD state = 0;
-	}
-}
-
-void cAStar::AddCloseList(IN cGridNode* pNode, OUT vector<cGridNode*> openList, OUT vector<cGridNode*> closeList)
-{
-	if (pNode == NULL) return;
-
-	vector<cGridNode*>::iterator it = openList.begin();
-
-	for (; it != openList.end(); it++)
-	{
-		if ((*it) == pNode)
-		{
-			openList.erase(it);
-			break;
-		}
-	}
-}
-
 list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 {
 	list<D3DXVECTOR3> rtnPath;
 	if (!m_isClear) return rtnPath;
 	vector<cGridNode*> OpenList;
 	vector<cGridNode*> CloseList;
+	CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)SetNodeCleanFunc, this, NULL/*CREATE_SUSPENDED*/, &m_dwThID));
+
 	return list<D3DXVECTOR3>();
 }
 

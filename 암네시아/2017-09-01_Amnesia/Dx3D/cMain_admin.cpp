@@ -9,6 +9,7 @@
 #include "cUITool_In_Game_Test.h"	// 게임 UI - LEE
 #include "cLoadingScene.h"
 #include "cScene_Light.h"
+#include "cAStarScene.h"
 /*
 		2017-09-02 Main_admin.
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
@@ -18,6 +19,7 @@
 cMain_admin::cMain_admin()
 {
 	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
+	g_pSceneManager->INSERT("cAStarScene", new cAStarScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
 	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);

@@ -17,6 +17,4 @@ public:
 	virtual void Release();
 	virtual void Update();
 	virtual void Render();
-
-	static void CleanNodeFunc(LPCVOID param);
 };

@@ -16,7 +16,11 @@ private:
 	map<int, map<int, cGridNode*>>	m_nodeList;
 	D3DXVECTOR3						m_leftTop;
 	int								m_curRow;
-	int								m_curCol;
+	int								m_curCol; 
+
+
+	CRITICAL_SECTION				m_cs;
+	DWORD							m_dwThID;
 
 private:
 	SYNTHESIZE(bool, m_isClear, IsClear);
@@ -27,10 +31,8 @@ public:
 	~cAStar();
 	void Render();
 
-	void AddNearNode(IN D3DXVECTOR3 pos, OUT vector<cGridNode> openList);
-	void AddCloseList(IN cGridNode* pNode, OUT vector<cGridNode*> openList, OUT vector<cGridNode*> closeList);
-
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);
+
 	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
 
 	static void SetNodeCleanFunc(LPVOID param);
