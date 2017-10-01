@@ -26,7 +26,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 {
 	SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
-	//for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
+	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 	//for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
@@ -37,22 +37,19 @@ void cScene_Shader_Scene_Test::Setup()
 	//cMapLoader loader;
 	//cObject_Map_Vec = loader.LoadToObject_Map();
 	//cObject_Light_vec = loader.LoadToObject_Light();
-
-	//cMapLoader loader;
-	//cObject_Map_Vec = loader.LoadToObject_Map();
 	
 	m_pPlayer = new cPlayer;
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
-	//for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
-	//{
-	//	cObject_Map_Vec.push_back(g_pLoadManager()->GetObject_Map_Vec()[i]);
-	//}
+	for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
+	{
+		cObject_Map_Vec.push_back(g_pLoadManager()->GetObject_Map_Vec()[i]);
+	}
 
-	/*for (int i = 0; i < g_pLoadManager()->GetObject_Light_Vec().size(); ++i)
+	for (int i = 0; i < g_pLoadManager()->GetObject_Light_Vec().size(); ++i)
 	{
 		cObject_Light_vec.push_back(g_pLoadManager()->GetObject_Light_Vec()[i]);
-	}*/
+	}
 
 	D3DXVECTOR3 lightPos, Light_Position, Particle_Position;
 	D3DXMATRIX	matRX, matRY, matRZ, matR;
@@ -128,17 +125,17 @@ void cScene_Shader_Scene_Test::Update()
 	SAFE_UPDATE(m_pDamegeImpact);
 	for each(auto p in cObject_Vec)SAFE_UPDATE(p);
 
-
+	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
 }
 
 void cScene_Shader_Scene_Test::Render()
 {
-	
+	SAFE_RENDER(m_pPlayer);
 	SAFE_RENDER(m_pUI_In_Game);
 	SAFE_RENDER(m_pDamegeImpact);
 	for each(auto p in cObject_Vec)SAFE_RENDER(p);
 
-
+	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
 
 }
 
