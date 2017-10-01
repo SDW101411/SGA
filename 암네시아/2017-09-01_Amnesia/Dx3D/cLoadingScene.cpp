@@ -11,9 +11,7 @@ void cLoadingScene::ThFunc1(LPVOID pParam)
 {
 	//EnterCriticalSection(&cs);
 	cLoadingScene* pLoader = (cLoadingScene*)pParam;
-	//cMapLoader Loader;
-	//g_pLoadManager()->SetObject_Map_Vec(Loader.LoadToObject_Map());
-	//g_pLoadManager()->SetObject_Light_Vec(Loader.LoadToObject_Light());
+	g_pLoadManager()->SetObject_Light_Vec(Loader.LoadToObject_Light());
 	pLoader->m_bClear = true;
 	//LeaveCriticalSection(&cs);
 }

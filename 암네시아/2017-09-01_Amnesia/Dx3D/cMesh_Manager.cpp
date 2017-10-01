@@ -29,6 +29,16 @@ Mesh_Manager_Tag * cMesh_Manager::FIND(char * szName)
 	return cMesh_database.find(szName)->second;
 }
 
+void cMesh_Manager::INSERT_SHADER(char * szName, void * shader)
+{
+	cShader_database[szName] = shader;
+}
+
+void * cMesh_Manager::FIND_SHADER(char * szName)
+{
+	return cShader_database.find(szName)->second;
+}
+
 void cMesh_Manager::Destroy()
 {
 	for each(auto p in cMesh_database)
@@ -37,6 +47,11 @@ void cMesh_Manager::Destroy()
 		SAFE_RELEASE(p.second->m_Normal);
 		SAFE_RELEASE(p.second->m_Specqural);
 		SAFE_RELEASE(p.second->m_Texture);
+		SAFE_DELETE(p.second);
+	}
+
+	for each(auto p in cShader_database)
+	{
 		SAFE_DELETE(p.second);
 	}
 }

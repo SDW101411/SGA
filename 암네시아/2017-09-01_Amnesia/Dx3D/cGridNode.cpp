@@ -2,27 +2,20 @@
 #include "cGridNode.h"
 
 cGridNode::cGridNode()
-	: m_pSphere(NULL)
-	, m_pBox(NULL)
-	, m_pGrid(NULL)
+	: m_pGrid(NULL)
 	, m_pParent(NULL)
 	, m_pos(0.0f, 0.0f, 0.0f)
 	, m_g(0.0f)
 	, m_h(0.0f)
 	, m_f(0.0f)
-	, m_isOpen(false)
-	, m_isClose(false)
-	, m_isObstacle(false)
 {
 	D3DXMatrixIdentity(&m_matWorld);
 	ZeroMemory(&m_material, sizeof(D3DMATERIAL9));
-	SetColor(GRIDNODE_COLOR_DEFAULT);
+	m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0, 0, 1, 1);
 }
 
 cGridNode::~cGridNode()
 {
-	SAFE_RELEASE(m_pSphere);
-	SAFE_RELEASE(m_pBox);
 	SAFE_RELEASE(m_pGrid);
 }
 
@@ -30,9 +23,6 @@ void cGridNode::SetUp(D3DXVECTOR3 pos)
 {
 	m_pos = pos;
 	D3DXMatrixTranslation(&m_matWorld, pos.x, pos.y, pos.z);
-	D3DXCreateSphere(g_pD3DDevice, 0.2f, 10, 10, &m_pSphere, NULL);
-	D3DXCreateBox(g_pD3DDevice, 1.0f, 1.0f, 1.0f, &m_pBox, NULL);
-
 	D3DXCreateMeshFVF(2, 4, D3DXMESH_MANAGED, ST_PN_VERTEX::FVF, g_pD3DDevice, &m_pGrid);
 
 	ST_PN_VERTEX* vertex;
@@ -68,47 +58,15 @@ void cGridNode::SetUp(D3DXVECTOR3 pos)
 void cGridNode::Render()
 {
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
+	g_pD3DDevice->SetTexture(0, NULL);
 	g_pD3DDevice->SetMaterial(&m_material);
 	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 	m_pGrid->DrawSubset(0);
 	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
-	if (m_isObstacle) m_pBox->DrawSubset(0);
 }
 
-void cGridNode::SphereRender()
+void cGridNode::SetClean()
 {
-	m_pSphere->DrawSubset(0);
-}
-
-void cGridNode::CleanUp()
-{
-	m_pParent = NULL;
-	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	m_g = 0.0f;
-	m_h = 0.0f;
-	m_f = 0.0f;
-	m_isOpen = false;
 	m_isClose = false;
-	SetColor(GRIDNODE_COLOR_DEFAULT);
-}
-
-void cGridNode::SetColor(int value)
-{
-	switch (value)
-	{
-	case GRIDNODE_COLOR_DEFAULT:
-		if (m_isObstacle) SetColor(GRIDNODE_COLOR_OBSTACLE);
-		else m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f);
-		break;
-	case GRIDNODE_COLOR_PICK:
-		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
-		break;
-	case GRIDNODE_COLOR_OBSTACLE:
-		if (m_isObstacle) m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f);
-		else SetColor(GRIDNODE_COLOR_DEFAULT);
-		break;
-	default:
-		SetColor(GRIDNODE_COLOR_DEFAULT);
-		break;
-	}
+	m_isOpen = false;
 }

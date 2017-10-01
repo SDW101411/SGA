@@ -163,6 +163,15 @@
     <Filter Include="동욱\라이트%28TEST%29\횃불 오브젝트">
       <UniqueIdentifier>{8cb223af-a41e-4be2-b303-bb87bc1c996c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\파티클">
+      <UniqueIdentifier>{ed01a91d-f0c4-4619-8b7d-42aa2c1b59ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="동욱\파티클\Fire">
+      <UniqueIdentifier>{4fd6c902-46d9-4351-a912-f3638c0ed1e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\AStarScene">
+      <UniqueIdentifier>{d38e6304-9b14-4f9e-951a-d6665fee244a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="한나\DamegeImpact">
       <UniqueIdentifier>{8057fe7e-20d5-4e6c-875d-8fe697976639}</UniqueIdentifier>
     </Filter>
@@ -444,6 +453,15 @@
     <ClInclude Include="cScene_Light.h">
       <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
     </ClInclude>
+    <ClInclude Include="cParticle.h">
+      <Filter>동욱\파티클</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticle_Fire.h">
+      <Filter>동욱\파티클\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="cAStarScene.h">
+      <Filter>영빈\AStarScene</Filter>
+    </ClInclude>
     <ClInclude Include="cDamegeImpact.h">
       <Filter>한나\DamegeImpact</Filter>
     </ClInclude>
@@ -709,6 +727,15 @@
     </ClCompile>
     <ClCompile Include="cScene_Light.cpp">
       <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticle.cpp">
+      <Filter>동욱\파티클</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticle_Fire.cpp">
+      <Filter>동욱\파티클\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="cAStarScene.cpp">
+      <Filter>영빈\AStarScene</Filter>
     </ClCompile>
     <ClCompile Include="cDamegeImpact.cpp">
       <Filter>한나\DamegeImpact</Filter>

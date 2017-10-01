@@ -9,7 +9,8 @@ cObject_Map::cObject_Map()
 
 cObject_Map::cObject_Map(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare)
 {
-	//m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx");
+	m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx");
+	//m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light");
 	m_Pos = Pos;
 	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;
 	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;

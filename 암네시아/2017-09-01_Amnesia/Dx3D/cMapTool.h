@@ -18,6 +18,7 @@ private:
 	map<int, map<int, cGridNode*>>				m_nodeList;
 	map<int, map<int, vector<cMapObject*>>>		m_tileList;
 	map<int, cMapMesh*>							m_meshList;
+	vector<cMapSurface>							m_wallSurface;
 	vector<cMapSurface>							m_groundSurface;
 
 public:
@@ -44,6 +45,10 @@ public:
 	void CreateMesh(int id);
 	void DestroyMesh();
 
+	void CreateWall(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
+	void DeleteWall();
+	void RenderWall();
+
 	void CreateGround(D3DXVECTOR3 startPos, D3DXVECTOR3 endPos);
 	void DeleteGround();
 	void RenderGround();
@@ -54,6 +59,7 @@ public:
 	void LoadData();
 	void PutData(string name, FILE* fp, vector<cMapObject*> pObj);
 	void PutSurface(FILE* fp);
+	void PutGridNode(FILE* fp);
 
 	vector<D3DXVECTOR3> FindPickingGround();
 	bool FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground);

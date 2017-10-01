@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "cObject_Light.h"
+#include "cParticle_Fire.h"
 
 
 cObject_Light::cObject_Light()
@@ -8,30 +9,56 @@ cObject_Light::cObject_Light()
 
 cObject_Light::cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare, D3DXVECTOR3 lightPos)
 {
-	m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx");
+	/*m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Light_4")*/;
+
+	m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light");
 	m_Pos = Pos;
-	m_lightPos = lightPos;
+	m_lightPos = lightPos + Pos;
 	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;
 	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;
 
 	cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_TORCH_STATIC_01");
+
+	//m_pParticle_Fire = new cParticle_Fire;
+	m_pParticle_Fire = new cParticle_Fire(&m_lightPos);
 }
 
+cObject_Light::cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare, D3DXVECTOR3 particle_position, D3DXVECTOR3 Light_Position )
+{
+	/*m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Light_4")*/;
+
+	m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light");
+	m_Pos = Pos;
+
+
+	m_ParticlePosition = particle_position + Pos;
+	m_LightPosition = Light_Position + Pos;
+
+	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;
+	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;
+
+	cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_TORCH_STATIC_01");
+
+	//m_pParticle_Fire = new cParticle_Fire;
+	m_pParticle_Fire = new cParticle_Fire(&m_ParticlePosition);
+}
 
 cObject_Light::~cObject_Light()
 {
 	SAFE_DELETE(cObject);
+	SAFE_DELETE(m_pParticle_Fire);
 }
 
 void cObject_Light::Update()
 {
-
+	m_pParticle_Fire->Update();
 }
 
 void cObject_Light::Render()
 {
 	AnotherRander_1_4Light_Version();
 	AnotherRander();
+	if(m_Fire_On)m_pParticle_Fire->Render();
 }
 
 
@@ -72,8 +99,8 @@ void cObject_Light::AnotherRander_1_4Light_Version()
 	m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
 
 
-	m_Normal_Effect->SetVector("gWorldLightPosition_2", &D3DXVECTOR4(m_Pos.x, m_Pos.y, m_Pos.z, 1.0f));
-	m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_2", &D3DXVECTOR4(m_Pos.x, m_Pos.y, m_Pos.z, 1.0f));
+	m_Normal_Effect->SetVector("gWorldLightPosition_2", &D3DXVECTOR4(m_LightPosition.x, m_LightPosition.y, m_LightPosition.z, 1.0f));
+	m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_2", &D3DXVECTOR4(m_LightPosition.x, m_LightPosition.y, m_LightPosition.z, 1.0f));
 	m_Normal_Effect->SetBool("Light_2", m_Fire_On);
 	m_Normal_Effect->SetBool("Light_3", false);
 	m_Normal_Effect->SetBool("Light_4", false);

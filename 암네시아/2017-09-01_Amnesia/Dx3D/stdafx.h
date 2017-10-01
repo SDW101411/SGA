@@ -221,3 +221,18 @@ enum cMesh_Object_Tag
 	MAPMESH_TAG_CORNER_CONVER_SHORT,
 	MAPMESH_TAG_TORCH_STATIC_01,
 };
+
+struct Particle_Data
+{
+	D3DXVECTOR3 p;
+	D3DCOLOR	c;
+	D3DXVECTOR3 m_Pos;
+	D3DXVECTOR3 m_Rot;
+	D3DXVECTOR3 m_Scale;
+	string		m_Tex_Name;
+	float		m_Alpha;
+	int			m_Delta;
+
+
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
+};

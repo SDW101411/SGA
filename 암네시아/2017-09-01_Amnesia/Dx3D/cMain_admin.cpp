@@ -9,6 +9,7 @@
 #include "cUITool_In_Game_Test.h"	// °ÔÀÓ UI - LEE
 #include "cLoadingScene.h"
 #include "cScene_Light.h"
+#include "cAStarScene.h"
 #include "cDamegeImpact.h"
 #include "cCursorStatus.h"
 #include "cMouseCursor.h"
@@ -21,6 +22,7 @@
 cMain_admin::cMain_admin()
 {
 	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
+	g_pSceneManager->INSERT("cAStarScene", new cAStarScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
 	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);
@@ -43,6 +45,8 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_TORCH_STATIC_01",		"X_File/MapObjects/torch/torch_static01");
+
+	cMESH_MANAGER->INSERT_SHADER("Shader_Light", cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx"));
 	
 	g_pSoundTrack->Insert();
 
