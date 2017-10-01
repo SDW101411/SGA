@@ -163,6 +163,15 @@
     <Filter Include="동욱\라이트%28TEST%29\횃불 오브젝트">
       <UniqueIdentifier>{8cb223af-a41e-4be2-b303-bb87bc1c996c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="한나\DamegeImpact">
+      <UniqueIdentifier>{8057fe7e-20d5-4e6c-875d-8fe697976639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\SoundTrack">
+      <UniqueIdentifier>{4a186083-d2ba-4808-91ab-b7eef970f046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\CursorStatus">
+      <UniqueIdentifier>{a9d37593-3cab-4387-877d-416382fb5c82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -435,6 +444,21 @@
     <ClInclude Include="cScene_Light.h">
       <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
     </ClInclude>
+    <ClInclude Include="cDamegeImpact.h">
+      <Filter>한나\DamegeImpact</Filter>
+    </ClInclude>
+    <ClInclude Include="randomFunction.h">
+      <Filter>한나\DamegeImpact</Filter>
+    </ClInclude>
+    <ClInclude Include="cCursorStatus.h">
+      <Filter>한나\CursorStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="cSoundTrack.h">
+      <Filter>한나\SoundTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="cMouseCursor.h">
+      <Filter>한나\CursorStatus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -685,6 +709,18 @@
     </ClCompile>
     <ClCompile Include="cScene_Light.cpp">
       <Filter>동욱\라이트%28TEST%29\라이트 씬</Filter>
+    </ClCompile>
+    <ClCompile Include="cDamegeImpact.cpp">
+      <Filter>한나\DamegeImpact</Filter>
+    </ClCompile>
+    <ClCompile Include="cCursorStatus.cpp">
+      <Filter>한나\CursorStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="cSoundTrack.cpp">
+      <Filter>한나\SoundTrack</Filter>
+    </ClCompile>
+    <ClCompile Include="cMouseCursor.cpp">
+      <Filter>한나\CursorStatus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

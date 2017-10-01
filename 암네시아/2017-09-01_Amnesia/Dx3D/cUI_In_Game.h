@@ -31,12 +31,12 @@ private:
 	cUIObject*						m_pUIRoot;
 	cUIObject*						m_curClickItem;
 	LPD3DXSPRITE					m_pSprite;
-	int								m_nHeartHP;
-	int								m_nBrainHP;
+	SYNTHESIZE(float, m_fOilValue, OilValue);
+	//int								m_nHeartHP;
+	//int								m_nBrainHP;
 	int								m_nRow, m_nCol;
 	int								m_curItemRow, m_curItemCol;
 	int								m_nState;
-	float							m_fOilValue;
 	char							m_szTinderNum[20];
 	char							m_szHeartState[64];
 	char							m_szHeartGlowState[64];
@@ -74,9 +74,6 @@ public:
 
 	void HeartState(int heart);
 	void BrainState(int brain);
-
-	void SetHurtHeart(int value) { m_nHeartHP -= value; }
-	void SetHurtBrain(int value) { m_nBrainHP -= value; }
 
 	void ValueCtr();
 

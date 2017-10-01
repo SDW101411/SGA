@@ -16,6 +16,8 @@ public:
 	~cMainMenuScene();
 
 public:
+	void Setup();
+	void Release();
 	void Update();
 	void Render();
 	void BtnFunc(cUIButton* pButton, char* szStr, char* szStrGlow, float x, float y, float width, float height, int tag);

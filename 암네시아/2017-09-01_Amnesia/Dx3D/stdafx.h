@@ -75,6 +75,7 @@ public: virtual void Set##funName(varType var){\
 #define SOUNDMANAGER cSoundManager::getSingleton()
 #define DATABASE cDatabase::getSingleton()
 #define cMESH_MANAGER cMesh_Manager::getSingleton()
+#define RND randomFunction::getSingleton()
 
 #define GRIDNODE_SIZE 1
 #define GRIDNODE_HALFSIZE (GRIDNODE_SIZE * 0.5f)
@@ -194,6 +195,8 @@ struct ST_SIZE
 #include "cDatabase.h"
 #include "cMesh_Manager.h"
 #include "cLoadManager.h"
+#include "randomFunction.h"
+#include "cSoundTrack.h"
 
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;

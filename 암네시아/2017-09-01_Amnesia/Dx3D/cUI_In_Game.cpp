@@ -40,8 +40,9 @@ cUI_In_Game::cUI_In_Game()
 	, m_nCol(0)
 	, m_nState(UI_MAIN)
 {
-	m_nHeartHP = *DATABASE->GetHp();
-	m_nBrainHP = *DATABASE->GetMental();
+	//m_nHeartHP = *DATABASE->GetHp();
+	//m_nBrainHP = *DATABASE->GetMental();
+	//m_fOilValue = DATABASE->GetOilValue();
 
 //	SOUNDMANAGER->addSound("15_event_elevator", "15_event_elevator.mp3", true, true);
 //	SOUNDMANAGER->addSound("ui_use_oil", "ui_use_oil.mp3", false, false);
@@ -65,12 +66,12 @@ cUI_In_Game::cUI_In_Game()
 	pImageView = new cUIImageView;		// 기름 이미지
 	pImageView->SetTexture("UI/inventory_oil_liquid.tga");
 	pImageView->SetPosition(1138, 390);
-	pImageView->SetScaling(0.5f, m_fOilValue);
+	pImageView->SetScaling(0.5f, DATABASE->GetOilValue());
 	pImageView->SetRotationX(D3DX_PI);
 	pImageView->SetTag(E_OIL);
 	m_pUIRoot->AddChild(pImageView);
 
-	sprintf(m_szHeartState, "UI/inventory_health_%d.tga", m_nHeartHP);
+	sprintf(m_szHeartState, "UI/inventory_health_%d.tga", DATABASE->GetHp());
 	cUIButton* pButton = new cUIButton;
 	pButton->SetTexture(m_szHeartState, m_szHeartState, m_szHeartState);
 	pButton->SetPosition(244, 100);
@@ -79,13 +80,13 @@ cUI_In_Game::cUI_In_Game()
 	pButton->SetTag(E_HEART);
 	m_pUIRoot->AddChild(pButton);
 
-	sprintf(m_szHeartGlowState, "UI/inventory_health_glow_%d.tga", m_nHeartHP);
+	sprintf(m_szHeartGlowState, "UI/inventory_health_glow_%d.tga", DATABASE->GetHp());
 	BtnFunc(pButton, m_szHeartState, m_szHeartGlowState, 244, 100, 1.1f, 1.1f, E_HEART_UP);
 
-	sprintf(m_szBrainState, "UI/inventory_sanity_%d.tga", m_nBrainHP);
+	sprintf(m_szBrainState, "UI/inventory_sanity_%d.tga", DATABASE->GetMental());
 	BtnFunc(pButton, m_szBrainState, m_szBrainState, 254, 380, 1.1f, 1.1f, E_BRAIN);
 
-	sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_%d.tga", m_nBrainHP);
+	sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_%d.tga", DATABASE->GetMental());
 	BtnFunc(pButton, m_szBrainState, m_szBrainGlowState, 254, 380, 1.1f, 1.1f, E_BRAIN_UP);
 
 	BtnFunc(pButton, "inventory_tinderboxes", "inventory_tinderboxes", 1094, 110, 1.0f, 1.0f, ITEM_TINDER);
@@ -104,7 +105,7 @@ cUI_In_Game::cUI_In_Game()
 	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, "", 600, 100, 440, 546, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_EXPLANATION);
 
 	char HP[20];
-	sprintf(HP, "%d %d", m_nHeartHP, m_nBrainHP);
+	sprintf(HP, "%d %d", DATABASE->GetHp(), DATABASE->GetMental());
 	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_HEART_BRAIN_HP);
 
 	char Mouse[20];
@@ -115,8 +116,6 @@ cUI_In_Game::cUI_In_Game()
 	TextViewFunc(pTextView, cFontManager::E_NORMAL, m_szTinderNum, 40, 20, 1102, 136, DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK, E_TEXT_TINDER_NUM);
 
 	m_pJournal = new cUIJournal(&m_nState);
-
-	//SOUNDMANAGER->play("15_event_elevator");
 }
 
 cUI_In_Game::~cUI_In_Game()
@@ -138,7 +137,7 @@ void cUI_In_Game::Update()
 	if (pTextView_2) pTextView_2->SetText("");
 
 	char HP[20];
-	sprintf(HP, "%d %d", m_nHeartHP, m_nBrainHP);
+	sprintf(HP, "%d %d", DATABASE->GetHp(), DATABASE->GetMental());
 	if (pTextView_3) pTextView_3->SetText(HP);
 
 	char Mouse[20];
@@ -149,8 +148,8 @@ void cUI_In_Game::Update()
 	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
 	pTextView->SetText(m_szTinderNum);
 
-	HeartState(m_nHeartHP);
-	BrainState(m_nBrainHP);
+	HeartState(DATABASE->GetHp());
+	BrainState(DATABASE->GetMental());
 
 	SetRect(&m_InventoryRc, 430, 66, 1011, 432);
 	SetRect(&m_OilRc, 1046, 261, 1188, 425);
@@ -158,9 +157,9 @@ void cUI_In_Game::Update()
 	cUIButton* pButton = (cUIButton*)m_pUIRoot->GetChildByTag(E_OIL);
 	if (pButton)
 	{
-		if (m_fOilValue >= 0.5f) m_fOilValue = 0.5f;
-		else if (m_fOilValue <= 0.0f) m_fOilValue = 0.0f;
-		pButton->SetScaling(0.5f, m_fOilValue);
+		if (DATABASE->GetOilValue() >= 0.5f) DATABASE->SetOilValue(0.5f);// m_fOilValue = 0.5f;
+		else if (DATABASE->GetOilValue() <= 0.0f) DATABASE->SetOilValue(0.0f);// m_fOilValue = 0.0f;
+		pButton->SetScaling(0.5f, DATABASE->GetOilValue());
 	}
 
 	ValueCtr();
@@ -193,11 +192,11 @@ void cUI_In_Game::Update()
 			{
 				if (PtInRect(&m_OilRc, _ptMousePos) && m_curClickItem->GetTag() == ITEM_OIL)
 				{
-					if (!(m_fOilValue >= 0.5f))
+					if (!(DATABASE->GetOilValue() >= 0.5f))
 					{
 						SOUNDMANAGER->play("ui_use_oil");
 						DATABASE->Delete(ITEM_OIL);
-						m_fOilValue += 0.1f;
+						DATABASE->AddOilValue(0.1f);
 						int x, y;
 						FindPostion(m_curItemRow, m_curItemCol, x, y);
 						m_curClickItem->SetPosition(x, y);
@@ -232,8 +231,6 @@ void cUI_In_Game::Update()
 			break;
 		}
 	}
-
-	//SOUNDMANAGER->update();
 }
 
 void cUI_In_Game::Render()
@@ -370,6 +367,7 @@ void cUI_In_Game::OnClick(cUIButton* pSender)
 {
 	if (pSender->GetTag() == E_JOURNAL)
 	{
+		SOUNDMANAGER->play("journal_open");
 		//g_pSceneManager->SceneChange("cUIJournalScene");
 		m_nState = UI_JOURNAL;
 	}
@@ -383,21 +381,22 @@ void cUI_In_Game::OnClick(cUIButton* pSender)
 	}*/
 }
 
-void cUI_In_Game::OnRightClick(cUIButton * pSender)
+void cUI_In_Game::OnRightClick(cUIButton* pSender)
 {
 	if (pSender->GetTag() == ITEM_HP)
 	{
-		if (m_nHeartHP < 100 && DATABASE->Load(ITEM_HP) > 0)
+		if (DATABASE->GetHp() < 100 && DATABASE->Load(ITEM_HP) > 0)
 		{
-			m_nHeartHP += 10;
+			SOUNDMANAGER->play("ui_use_health");
+			DATABASE->SetHp(DATABASE->GetHp() + 10);
 			DATABASE->Delete(ITEM_HP);
 		}
 	}
 	else if (pSender->GetTag() == ITEM_MENTAL)
 	{
-		if (m_nBrainHP < 100 && DATABASE->Load(ITEM_MENTAL) > 0)
+		if (DATABASE->GetMental() < 100 && DATABASE->Load(ITEM_MENTAL) > 0)
 		{
-			m_nBrainHP += 10;
+			DATABASE->SetMental(DATABASE->GetMental() + 10);
 			DATABASE->Delete(ITEM_MENTAL);
 		}
 	}
@@ -502,7 +501,7 @@ void cUI_In_Game::CreateItem(int tag)
 	break;
 	case ITEM_HP:
 	{
-		pObj->SetTexture("UI/Item/potion_health.tga",
+		pObj->SetHpTexture("UI/Item/potion_health.tga",
 			"UI/Item/potion_health.tga",
 			"UI/Item/potion_health.tga");
 		pObj->SetPosition(x, y);
@@ -525,7 +524,7 @@ void cUI_In_Game::CreateItem(int tag)
 	}
 	break;
 	case ITEM_MENTAL:
-		pObj->SetTexture("UI/Item/potion_sanity.tga",
+		pObj->SetHpTexture("UI/Item/potion_sanity.tga",
 			"UI/Item/potion_sanity.tga",
 			"UI/Item/potion_sanity.tga");
 		pObj->SetPosition(x, y);
@@ -551,17 +550,17 @@ void cUI_In_Game::CreateItem(int tag)
 
 void cUI_In_Game::HeartState(int heart)
 {
-	m_nHeartHP = heart;
-	if (m_nHeartHP >= 100) HeartSate = PLAYER_HEART_100;
-	else if (m_nHeartHP >= 75 && m_nHeartHP <= 99) HeartSate = PLAYER_HEART_75;
-	else if (m_nHeartHP >= 50 && m_nHeartHP <= 74) HeartSate = PLAYER_HEART_50;
-	else if (m_nHeartHP >   0 && m_nHeartHP <= 49) HeartSate = PLAYER_HEART_25;
-	else if (m_nHeartHP <= 0) HeartSate = PLAYER_DEATH;
+	DATABASE->SetHp(heart);
+	if (DATABASE->GetHp() >= 100) HeartSate = PLAYER_HEART_100;
+	else if (DATABASE->GetHp() >= 75 && DATABASE->GetHp() <= 99) HeartSate = PLAYER_HEART_75;
+	else if (DATABASE->GetHp() >= 50 && DATABASE->GetHp() <= 74) HeartSate = PLAYER_HEART_50;
+	else if (DATABASE->GetHp() >   0 && DATABASE->GetHp() <= 49) HeartSate = PLAYER_HEART_25;
+	else if (DATABASE->GetHp() <= 0) HeartSate = PLAYER_DEATH;
 
 	switch (HeartSate)
 	{
 	case PLAYER_HEART_100:
-		m_nHeartHP = 100;
+		DATABASE->SetHp(100);
 		sprintf(m_szHeartState, "UI/inventory_health_100.tga");
 		sprintf(m_szHeartGlowState, "UI/inventory_health_glow_100.tga");
 		break;
@@ -577,7 +576,7 @@ void cUI_In_Game::HeartState(int heart)
 		sprintf(m_szHeartState, "UI/inventory_health_25.tga");
 		sprintf(m_szHeartGlowState, "UI/inventory_health_glow_25.tga");
 		break;
-	case PLAYER_DEATH: m_nHeartHP = 0; break;
+	case PLAYER_DEATH: DATABASE->SetHp(0); break;
 	}
 
 	cUIButton* pButton = (cUIButton*)m_pUIRoot->GetChildByTag(E_HEART);
@@ -588,17 +587,17 @@ void cUI_In_Game::HeartState(int heart)
 
 void cUI_In_Game::BrainState(int brain)
 {
-	m_nBrainHP = brain;
-	if (m_nBrainHP >= 100) BrainSate = PLAYER_BRAIN_100;
-	else if (m_nBrainHP >= 75 && m_nBrainHP <= 99) BrainSate = PLAYER_BRAIN_75;
-	else if (m_nBrainHP >= 50 && m_nBrainHP <= 74) BrainSate = PLAYER_BRAIN_50;
-	else if (m_nBrainHP >   0 && m_nBrainHP <= 49) BrainSate = PLAYER_BRAIN_25;
-	else if (m_nBrainHP <= 0) BrainSate = PLAYER_DEATH;
+	DATABASE->SetMental(brain);
+	if (DATABASE->GetMental() >= 100) BrainSate = PLAYER_BRAIN_100;
+	else if (DATABASE->GetMental() >= 75 && DATABASE->GetMental() <= 99) BrainSate = PLAYER_BRAIN_75;
+	else if (DATABASE->GetMental() >= 50 && DATABASE->GetMental() <= 74) BrainSate = PLAYER_BRAIN_50;
+	else if (DATABASE->GetMental() >   0 && DATABASE->GetMental() <= 49) BrainSate = PLAYER_BRAIN_25;
+	else if (DATABASE->GetMental() <= 0) BrainSate = PLAYER_DEATH;
 
 	switch (BrainSate)
 	{
 	case PLAYER_BRAIN_100:
-		m_nBrainHP = 100;
+		DATABASE->SetMental(100);
 		sprintf(m_szBrainState, "UI/inventory_sanity_100.tga");
 		sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_100.tga");
 		break;
@@ -614,7 +613,7 @@ void cUI_In_Game::BrainState(int brain)
 		sprintf(m_szBrainState, "UI/inventory_sanity_25.tga");
 		sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_25.tga");
 		break;
-	case PLAYER_DEATH: m_nBrainHP = 0; break;
+	case PLAYER_DEATH: DATABASE->SetMental(0); break;
 	}
 
 	cUIButton* pButton = (cUIButton*)m_pUIRoot->GetChildByTag(E_BRAIN);
@@ -627,20 +626,18 @@ void cUI_In_Game::ValueCtr()
 {
 	if (KEYMANAGER->isOnceKeyDown('Z'))
 	{
-		//m_nHeartHP -= 5;
-		//m_nBrainHP -= 5;
-		SetHurtHeart(5);
-		SetHurtBrain(5);
+		DATABASE->SetHp(DATABASE->GetHp() - 5);
+		DATABASE->SetMental(DATABASE->GetMental() - 5);
 	}
 	if (KEYMANAGER->isOnceKeyDown('X'))
 	{
-		m_nHeartHP += 5;
-		m_nBrainHP += 5;
+		DATABASE->SetHp(DATABASE->GetHp() + 5);
+		DATABASE->SetMental(DATABASE->GetMental() + 5);
 	}
 	if (KEYMANAGER->isOnceKeyDown('R')) DATABASE->Delete(ITEM_TINDER);
 	if (KEYMANAGER->isOnceKeyDown('T')) DATABASE->Insert(ITEM_TINDER);
-	if (KEYMANAGER->isStayKeyDown('F')) m_fOilValue += 0.0001f;
-	if (KEYMANAGER->isStayKeyDown('V')) m_fOilValue -= 0.01f;//0.0001f;
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD9)) DATABASE->SetOilValue(DATABASE->GetOilValue() + 0.001f);
+	if (KEYMANAGER->isStayKeyDown(VK_NUMPAD6)) DATABASE->SetOilValue(DATABASE->GetOilValue() - 0.001f);//0.0001f;
 	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD1)) CreateItem(ITEM_HP);
 	if (KEYMANAGER->isOnceKeyDown(VK_NUMPAD2)) DATABASE->Delete(ITEM_HP);
 	if (KEYMANAGER->isOnceKeyDown('O')) CreateItem(ITEM_OIL);

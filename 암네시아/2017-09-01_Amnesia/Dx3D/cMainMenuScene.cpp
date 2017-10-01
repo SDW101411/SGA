@@ -65,6 +65,16 @@ cMainMenuScene::~cMainMenuScene()
 	SAFE_RELEASE(m_pUIRoot);
 }
 
+void cMainMenuScene::Setup()
+{
+	SOUNDMANAGER->play("game_menu");
+}
+
+void cMainMenuScene::Release()
+{
+	SOUNDMANAGER->pause("game_menu");
+}
+
 void cMainMenuScene::Update()
 {
 	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
@@ -150,6 +160,6 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	}
 }
 
-void cMainMenuScene::OnRightClick(cUIButton * pSender)
+void cMainMenuScene::OnRightClick(cUIButton* pSender)
 {
 }

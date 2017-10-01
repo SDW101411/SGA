@@ -18,8 +18,8 @@ protected:
 		E_NORMAL,
 		E_MOUSEOVER,
 		E_SELECTED,
-		E_STATUS_COUNT,
 		E_RBUTTON,
+		E_STATUS_COUNT,
 	};
 
 	eButtonStatus	m_eButtonStatus;
@@ -31,6 +31,7 @@ public:
 	virtual ~cUIButton(void);
 
 	virtual void SetTexture(string sNor, string sOvr, string sSel);
+	virtual void SetHpTexture(string sNor, string sOvr, string sSel);
 
 	// cUIObject override
 	virtual void Update() override;
