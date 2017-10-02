@@ -43,6 +43,7 @@ void cMapToolScene::Update()
 	if (KEYMANAGER->isOnceKeyDown('5')) m_state = MAPTOOL_STATE_SET_WALL;
 	if (KEYMANAGER->isOnceKeyDown('6')) m_state = MAPTOOL_STATE_SET_GROUND;
 	if (KEYMANAGER->isOnceKeyDown('7')) m_pMapTool->LoadData();
+	if (KEYMANAGER->isOnceKeyDown('8')) g_pSceneManager->SceneChange("cAStarScene");
 
 	if (KEYMANAGER->isOnceKeyDown('E'))
 	{

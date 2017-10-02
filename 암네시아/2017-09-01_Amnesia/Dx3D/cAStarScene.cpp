@@ -24,6 +24,10 @@ void cAStarScene::Release()
 
 void cAStarScene::Update()
 {
+	if (KEYMANAGER->isOnceKeyDown('1'))
+	{
+		m_pAStar->FindPath(D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(5, 0, 0));
+	}
 }
 
 void cAStarScene::Render()

@@ -15,6 +15,10 @@ private:
 	SYNTHESIZE(float, m_g, G);
 	SYNTHESIZE(float, m_h, H);
 	SYNTHESIZE(float, m_f, F);
+	float temp;
+
+	SYNTHESIZE(int, m_row, Row);
+	SYNTHESIZE(int, m_col, Col);
 
 	SYNTHESIZE(bool, m_isClose, IsClose);
 	SYNTHESIZE(bool, m_isOpen, IsOpen);
@@ -22,8 +26,13 @@ public:
 	cGridNode();
 	~cGridNode();
 
-	void SetUp(D3DXVECTOR3 pos);
+	void SetUp(D3DXVECTOR3 pos, int row, int col);
 	void Render();
 
 	void SetClean();
+
+	void SetColorYellow()
+	{
+		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(1, 1, 0, 1);
+	}
 };

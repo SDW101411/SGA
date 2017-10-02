@@ -4,6 +4,8 @@
 cGridNode::cGridNode()
 	: m_pGrid(NULL)
 	, m_pParent(NULL)
+	, m_isOpen(false)
+	, m_isClose(false)
 	, m_pos(0.0f, 0.0f, 0.0f)
 	, m_g(0.0f)
 	, m_h(0.0f)
@@ -19,9 +21,11 @@ cGridNode::~cGridNode()
 	SAFE_RELEASE(m_pGrid);
 }
 
-void cGridNode::SetUp(D3DXVECTOR3 pos)
+void cGridNode::SetUp(D3DXVECTOR3 pos, int row, int col)
 {
 	m_pos = pos;
+	m_row = row;
+	m_col = col;
 	D3DXMatrixTranslation(&m_matWorld, pos.x, pos.y, pos.z);
 	D3DXCreateMeshFVF(2, 4, D3DXMESH_MANAGED, ST_PN_VERTEX::FVF, g_pD3DDevice, &m_pGrid);
 
@@ -67,6 +71,9 @@ void cGridNode::Render()
 
 void cGridNode::SetClean()
 {
+	m_g = 0.0f;
+	m_h = 0.0f;
+	m_f = 0.0f;
 	m_isClose = false;
 	m_isOpen = false;
 }

@@ -55,7 +55,7 @@ void cMapTool::CreateNode(int row, int col)
 	pos.x += row * GRIDNODE_SIZE;
 	pos.z -= col * GRIDNODE_SIZE;
 	cGridNode* pNode = new cGridNode;
-	pNode->SetUp(pos);
+	pNode->SetUp(pos, row, col);
 	m_nodeList[row][col] = pNode;
 }
 
