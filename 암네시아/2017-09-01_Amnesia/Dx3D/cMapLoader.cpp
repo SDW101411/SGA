@@ -115,6 +115,13 @@ vector<D3DXVECTOR3> cMapLoader::LoadToGroundSurface()
 			{
 				str = GetToken();
 				if (str == NULL) continue;
+				else if (IsEqual(str, ID_WALL))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+					}
+				}
 				else if (IsEqual(str, ID_GROUND))
 				{
 					while (true)

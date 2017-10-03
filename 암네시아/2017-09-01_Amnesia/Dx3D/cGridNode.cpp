@@ -76,4 +76,11 @@ void cGridNode::SetClean()
 	m_f = 0.0f;
 	m_isClose = false;
 	m_isOpen = false;
+
+
+
+
+
+
+	//SetColorDefault();
 }

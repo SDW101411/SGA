@@ -30,14 +30,6 @@ cAStar::cAStar()
 	m_distList[GRIDNODE_DIR_LEFT	| GRIDNODE_DIR_DOWN] = sqrt(2.0f);
 	m_distList[GRIDNODE_DIR_RIGHT	| GRIDNODE_DIR_UP] = sqrt(2.0f);
 	m_distList[GRIDNODE_DIR_RIGHT	| GRIDNODE_DIR_DOWN] = sqrt(2.0f);
-
-	for each(auto f in m_nodeList)
-	{
-		for each(auto s in f.second)
-		{
-			m_nodeData.push_back(s.second);
-		}
-	}
 }
 
 cAStar::~cAStar()
@@ -76,6 +68,8 @@ list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 	cGridNode* pStartNode = FindNode(start);
 	cGridNode* pDestNode = FindNode(end);
 
+	if (pStartNode == NULL || pDestNode == NULL) return rtnPath;
+
 	pStartNode->SetG(0.0f);
 	pStartNode->SetH(CalcHeuristic(pStartNode, pDestNode));
 	pStartNode->SetF(pStartNode->GetG() + pStartNode->GetH());
@@ -87,6 +81,8 @@ list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 		cGridNode* pMinFNode = MinFNodeAtOpenList();
 		if (pMinFNode == NULL)
 		{
+			CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)SetNodeCleanFunc, this, NULL/*CREATE_SUSPENDED*/, &m_dwThID));
+			m_isClear = false;
 			return rtnPath;
 		}
 
@@ -107,7 +103,9 @@ list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 		pCurNode = pCurNode->GetParent();
 	}
 
+
 	CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)SetNodeCleanFunc, this, NULL/*CREATE_SUSPENDED*/, &m_dwThID));
+	m_isClear = false;
 
 	return rtnPath;
 }
@@ -116,6 +114,7 @@ void cAStar::AddOpenList(cGridNode* pNode)
 {
 	pNode->SetIsOpen(true);
 	m_openList.insert(pNode);
+	m_usingNode.push_back(pNode);
 }
 
 void cAStar::AddCloseList(cGridNode* pNode)
@@ -153,29 +152,31 @@ cGridNode* cAStar::GetAdjNode(cGridNode* pExtNode, GRIDNODE_DIR e)
 
 	if (e & GRIDNODE_DIR_LEFT)
 	{
-		if (pExtNode->GetRow() - 1 < 0) return NULL;
-		if (m_nodeList.find(pExtNode->GetRow() - 1)->second.find(pExtNode->GetCol())->second) nAdjRow -= 1;
+		if (m_nodeList[pExtNode->GetRow() - 1][pExtNode->GetCol()]) nAdjRow -= 1;
 		else return NULL;
 	}
 	else if (e & GRIDNODE_DIR_RIGHT)
 	{
-		if (m_nodeList.find(pExtNode->GetRow() + 1)->second.find(pExtNode->GetCol())->second) nAdjRow += 1;
+		if (m_nodeList[pExtNode->GetRow() + 1][pExtNode->GetCol()]) nAdjRow += 1;
 		else return NULL;
 	}
 
 	if (e & GRIDNODE_DIR_UP)
 	{
-		if (pExtNode->GetCol() - 1 < 0) return NULL;
-		if (m_nodeList.find(pExtNode->GetRow())->second.find(pExtNode->GetCol() - 1)->second) nAdjCol -= 1;
+		if (m_nodeList[pExtNode->GetRow()][pExtNode->GetCol() - 1]) nAdjCol -= 1;
 		else return NULL;
 	}
 	else if (e & GRIDNODE_DIR_DOWN)
 	{
-		if (m_nodeList.find(pExtNode->GetRow())->second.find(pExtNode->GetCol() + 1)->second) nAdjCol += 1;
+		if (m_nodeList[pExtNode->GetRow()][pExtNode->GetCol() + 1]) nAdjCol += 1;
 		else return NULL;
 	}
 
-	if (m_nodeList[nAdjRow][nAdjCol]->GetIsClose()) return NULL;
+		if(m_nodeList[nAdjRow][nAdjCol])
+	{
+		if (m_nodeList[nAdjRow][nAdjCol]->GetIsClose()) return NULL;
+	}
+	else return NULL;
 
 	return m_nodeList[nAdjRow][nAdjCol];
 }
@@ -219,7 +220,6 @@ cGridNode* cAStar::FindNode(D3DXVECTOR3 pos)
 	int row, col;
 	if (FindRowCol(pos, row, col))
 	{
-		if(m_nodeList.find(row)->second.find(col)->second) 
 		return m_nodeList[row][col];
 	}
 	return NULL;
@@ -233,16 +233,23 @@ bool cAStar::FindRowCol(IN D3DXVECTOR3 pos, OUT int & row, OUT int & col)
 	return true;
 }
 
+void cAStar::SetNodeClear()
+{
+	for each(auto f in m_usingNode)
+	{
+		if (f) f->SetClean();
+	}
+
+	m_usingNode.clear();
+}
+
 void cAStar::SetNodeCleanFunc(LPVOID param)
 {
 	cAStar* pThis = (cAStar*)param;
 
 	pThis->ClearOpenList();
 
-	for each(auto p in pThis->GetNodeData())
-	{
-		p->SetClean();
-	}
+	pThis->SetNodeClear();
 
 	pThis->SetIsClear(true);
 }

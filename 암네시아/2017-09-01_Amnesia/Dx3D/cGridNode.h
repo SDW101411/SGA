@@ -35,4 +35,9 @@ public:
 	{
 		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(1, 1, 0, 1);
 	}
+
+	void SetColorDefault()
+	{
+		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0, 0, 1, 1);
+	}
 };

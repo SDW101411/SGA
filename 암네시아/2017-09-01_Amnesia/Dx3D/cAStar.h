@@ -18,6 +18,7 @@ private:
 private:
 	map<int, map<int, cGridNode*>>	m_nodeList;
 	set<cGridNode*>					m_openList;
+	vector<cGridNode*>				m_usingNode;
 	vector<GRIDNODE_DIR>			m_dirList;
 	map<GRIDNODE_DIR, float>		m_distList;
 	D3DXVECTOR3						m_leftTop;
@@ -30,7 +31,6 @@ private:
 
 private:
 	SYNTHESIZE(bool, m_isClear, IsClear);
-	SYNTHESIZE(vector<cGridNode*>, m_nodeData, NodeData);
 
 public:
 	cAStar();
@@ -50,6 +50,8 @@ public:
 
 	cGridNode* FindNode(D3DXVECTOR3 pos);
 	bool FindRowCol(IN D3DXVECTOR3 pos, OUT int& row, OUT int& col);
+
+	void SetNodeClear();
 
 	static void SetNodeCleanFunc(LPVOID param);
 };
