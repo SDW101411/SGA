@@ -121,6 +121,7 @@
     <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMapSurface.h" />
     <ClInclude Include="cMesh_Manager.h" />
+    <ClInclude Include="cMonster.h" />
     <ClInclude Include="cMouseCursor.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="cMapToolScene.cpp" />
     <ClCompile Include="cMapSurface.cpp" />
     <ClCompile Include="cMesh_Manager.cpp" />
+    <ClCompile Include="cMonster.cpp" />
     <ClCompile Include="cMouseCursor.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />

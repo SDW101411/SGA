@@ -181,6 +181,9 @@
     <Filter Include="한나\CursorStatus">
       <UniqueIdentifier>{a9d37593-3cab-4387-877d-416382fb5c82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\cMonster">
+      <UniqueIdentifier>{3526b7ae-f762-48da-834f-780ff597fe06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -477,6 +480,9 @@
     <ClInclude Include="cMouseCursor.h">
       <Filter>한나\CursorStatus</Filter>
     </ClInclude>
+    <ClInclude Include="cMonster.h">
+      <Filter>영빈\cMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -748,6 +754,9 @@
     </ClCompile>
     <ClCompile Include="cMouseCursor.cpp">
       <Filter>한나\CursorStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonster.cpp">
+      <Filter>영빈\cMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

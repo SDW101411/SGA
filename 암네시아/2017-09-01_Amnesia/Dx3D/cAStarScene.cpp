@@ -4,6 +4,7 @@
 #include "cMapLoader.h"
 #include "cGridNode.h"
 #include "cRay.h"
+#include "cMonster.h"
 
 cAStarScene::cAStarScene()
 	: m_pAStar(NULL)
@@ -16,6 +17,7 @@ cAStarScene::~cAStarScene()
 
 void cAStarScene::Setup()
 {
+	m_pMonster = new cMonster();
 	m_pAStar = new cAStar();
 	cMapLoader loader;
 	m_surface = loader.LoadToGroundSurface();
@@ -25,6 +27,7 @@ void cAStarScene::Setup()
 void cAStarScene::Release()
 {
 	SAFE_DELETE(m_pAStar);
+	SAFE_DELETE(m_pMonster);
 }
 
 void cAStarScene::Update()
@@ -46,11 +49,13 @@ void cAStarScene::Update()
 			m_isSafe = false;
 		}
 	}
+	SAFE_UPDATE(m_pMonster);
 }
 
 void cAStarScene::Render()
 {
 	SAFE_RENDER(m_pAStar);
+	SAFE_RENDER(m_pMonster);
 }
 
 bool cAStarScene::FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground)
