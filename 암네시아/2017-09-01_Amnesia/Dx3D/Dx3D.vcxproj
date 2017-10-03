@@ -154,6 +154,7 @@
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cSoundTrack.h" />
+    <ClInclude Include="cStateMachine.h" />
     <ClInclude Include="cTabUI.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
+    <ClInclude Include="iState.h" />
     <ClInclude Include="IUI.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />

@@ -13,10 +13,14 @@ cMonster::~cMonster()
 
 void cMonster::Update()
 {
-	m_pMesh->SetPosition(D3DXVECTOR3(0, 0, 0));
+	D3DXMATRIX scale, rotY;
+	D3DXMatrixScaling(&scale, 1.275f, 1.275f, 1.275f);
+	D3DXMatrixRotationY(&rotY, D3DX_PI - m_angle);
+	m_matWorld = scale * rotY;
+	m_pMesh->SetPosition(m_pos);
 }
 
 void cMonster::Render()
 {
-	m_pMesh->UpdateAndRender();
+	m_pMesh->UpdateAndRender(m_matWorld);
 }

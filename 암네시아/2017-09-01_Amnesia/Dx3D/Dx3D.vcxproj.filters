@@ -181,8 +181,14 @@
     <Filter Include="한나\CursorStatus">
       <UniqueIdentifier>{a9d37593-3cab-4387-877d-416382fb5c82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="영빈\cMonster">
+    <Filter Include="영빈\Monster">
       <UniqueIdentifier>{3526b7ae-f762-48da-834f-780ff597fe06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI">
+      <UniqueIdentifier>{392c5203-1d7b-49bb-b8e4-49b3a44b9b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine">
+      <UniqueIdentifier>{98e1c216-0fd2-4202-b285-d1acf8ed9930}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -481,7 +487,13 @@
       <Filter>한나\CursorStatus</Filter>
     </ClInclude>
     <ClInclude Include="cMonster.h">
-      <Filter>영빈\cMonster</Filter>
+      <Filter>영빈\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="iState.h">
+      <Filter>영빈\Monster\AI\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMachine.h">
+      <Filter>영빈\Monster\AI\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -756,7 +768,7 @@
       <Filter>한나\CursorStatus</Filter>
     </ClCompile>
     <ClCompile Include="cMonster.cpp">
-      <Filter>영빈\cMonster</Filter>
+      <Filter>영빈\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
