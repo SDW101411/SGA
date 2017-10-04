@@ -5,14 +5,18 @@
 #include "cGridNode.h"
 #include "cRay.h"
 #include "cMonster.h"
+#include "cAStarBtn.h"
 
 cAStarScene::cAStarScene()
 	: m_pAStar(NULL)
 {
+	cAStarBtn* pBtn = new cAStarBtn;
+	m_pIUI = pBtn;
 }
 
 cAStarScene::~cAStarScene()
 {
+	SAFE_DELETE(m_pIUI);
 }
 
 void cAStarScene::Setup()
@@ -50,12 +54,14 @@ void cAStarScene::Update()
 		}
 	}
 	SAFE_UPDATE(m_pMonster);
+	SAFE_UPDATE(m_pIUI);
 }
 
 void cAStarScene::Render()
 {
 	SAFE_RENDER(m_pAStar);
 	SAFE_RENDER(m_pMonster);
+	SAFE_RENDER(m_pIUI);
 }
 
 bool cAStarScene::FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground)

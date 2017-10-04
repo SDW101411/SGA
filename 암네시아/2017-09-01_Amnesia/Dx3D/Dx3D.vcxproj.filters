@@ -190,6 +190,12 @@
     <Filter Include="영빈\Monster\AI\StateMachine">
       <UniqueIdentifier>{98e1c216-0fd2-4202-b285-d1acf8ed9930}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State">
+      <UniqueIdentifier>{a5304a78-dd84-4d5c-b44e-2d457f4bb370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\AStarScene\AStarBtn">
+      <UniqueIdentifier>{30dbd7b7-a5a3-4421-9a42-1d0b11abb91d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -495,6 +501,9 @@
     <ClInclude Include="cStateMachine.h">
       <Filter>영빈\Monster\AI\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="cAStarBtn.h">
+      <Filter>영빈\AStarScene\AStarBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -769,6 +778,12 @@
     </ClCompile>
     <ClCompile Include="cMonster.cpp">
       <Filter>영빈\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMachine.cpp">
+      <Filter>영빈\Monster\AI\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="cAStarBtn.cpp">
+      <Filter>영빈\AStarScene\AStarBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

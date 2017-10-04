@@ -1,11 +1,14 @@
 #pragma once
 
-template<typename T>
+class cMonster;
+
 class iState
 {
+protected:
+	cMonster* pThis;
 public:
-	virtual void Setup(T character) = 0;
-	virtual void Release(T character) = 0;
+	virtual void Setup() = 0;
+	virtual void Release() = 0;
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 };

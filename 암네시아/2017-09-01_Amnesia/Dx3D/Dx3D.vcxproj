@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asciitok.h" />
+    <ClInclude Include="cAStarBtn.h" />
     <ClInclude Include="cAStarScene.h" />
     <ClInclude Include="cAction.h" />
     <ClInclude Include="cActionMove.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cAStarBtn.cpp" />
     <ClCompile Include="cAStarScene.cpp" />
     <ClCompile Include="cAction.cpp" />
     <ClCompile Include="cActionMove.cpp" />
@@ -253,6 +255,7 @@
     <ClCompile Include="cSkinnedMeshManager.cpp" />
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cSoundTrack.cpp" />
+    <ClCompile Include="cStateMachine.cpp" />
     <ClCompile Include="cTabUI.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
