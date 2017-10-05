@@ -156,7 +156,7 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	}
 	else if (pSender->GetTag() == E_BTN_NGYB)
 	{
-		g_pSceneManager->SceneChange("cMapToolScene");
+		g_pSceneManager->SceneChange("cAStarScene");
 	}
 }
 

@@ -115,6 +115,13 @@ vector<D3DXVECTOR3> cMapLoader::LoadToGroundSurface()
 			{
 				str = GetToken();
 				if (str == NULL) continue;
+				else if (IsEqual(str, ID_WALL))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+					}
+				}
 				else if (IsEqual(str, ID_GROUND))
 				{
 					while (true)
@@ -248,6 +255,26 @@ map<int, map<int, cGridNode*>> cMapLoader::LoadToGridNode()
 	fclose(m_fp);
 
 	return rtnGrid;
+}
+
+D3DXVECTOR3 cMapLoader::LoadToLeftTop()
+{
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_LTPOS))
+		{
+			D3DXVECTOR3 vec = LoadVec3();
+			fclose(m_fp);
+			return vec;
+		}
+	}
 }
 
 void cMapLoader::PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap)
@@ -390,9 +417,11 @@ void cMapLoader::PushGridNode(map<int, map<int, cGridNode*>>& nodeList)
 		str = GetToken();
 		if (IsEqual(str, ID_END)) break;
 		D3DXVECTOR3 pos = LoadVec3();
+		int row = GetInt();
+		int col = GetInt();
 		cGridNode* pNode = new cGridNode();
-		pNode->SetUp(pos);
-		nodeList[GetInt()][GetInt()] = pNode;
+		pNode->SetUp(pos, row, col);
+		nodeList[row][col] = pNode;
 	}
 }
 

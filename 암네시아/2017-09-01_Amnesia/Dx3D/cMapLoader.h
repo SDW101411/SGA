@@ -39,6 +39,7 @@ public:
 	vector<D3DXVECTOR3>						LoadToWallSurface();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 	map<int, map<int, cGridNode*>>			LoadToGridNode();
+	D3DXVECTOR3								LoadToLeftTop();
 
 	void									PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap);
 
