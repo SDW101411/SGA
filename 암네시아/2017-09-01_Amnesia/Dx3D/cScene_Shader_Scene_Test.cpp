@@ -27,7 +27,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 	SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
-	//for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
+	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
 }
@@ -68,8 +68,8 @@ void cScene_Shader_Scene_Test::Setup()
 	
 	cObject_Light_vec.push_back(Save_1);
 
-	//g_pLoadManager()->GetObject_Map_Vec().clear();
-	//g_pLoadManager()->GetObject_Light_Vec().clear();
+	g_pLoadManager()->GetObject_Map_Vec().clear();
+	g_pLoadManager()->GetObject_Light_Vec().clear();
 	/*cObject_Game *Test = new cObject_shirt_white;
 	Test->Set_Anit1hing(D3DXVECTOR3(-5, 1, 0), 0, 0, 0, 1, 1, 1);
 	cObject_Game *Test_1 = new cObject_shirt_white_Normal;
@@ -116,27 +116,31 @@ void cScene_Shader_Scene_Test::Release()
 
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 
+	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
 }
 
 void cScene_Shader_Scene_Test::Update()
 {
 	SAFE_UPDATE(m_pPlayer);
-	SAFE_UPDATE(m_pUI_In_Game);
-	SAFE_UPDATE(m_pDamegeImpact);
 	for each(auto p in cObject_Vec)SAFE_UPDATE(p);
 
 	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
+
+	for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
+	SAFE_UPDATE(m_pDamegeImpact);
+	SAFE_UPDATE(m_pUI_In_Game);
 }
 
 void cScene_Shader_Scene_Test::Render()
 {
 	SAFE_RENDER(m_pPlayer);
-	SAFE_RENDER(m_pUI_In_Game);
-	SAFE_RENDER(m_pDamegeImpact);
 	for each(auto p in cObject_Vec)SAFE_RENDER(p);
 
 	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
 
+	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
+	SAFE_RENDER(m_pUI_In_Game);
+	SAFE_RENDER(m_pDamegeImpact);
 }
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

@@ -21,6 +21,8 @@
 
 cMain_admin::cMain_admin()
 {
+	g_pSoundTrack->Insert();
+	
 	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
 	g_pSceneManager->INSERT("cAStarScene", new cAStarScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
@@ -48,8 +50,6 @@ cMain_admin::cMain_admin()
 
 	cMESH_MANAGER->INSERT_SHADER("Shader_Light", cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx"));
 	
-	g_pSoundTrack->Insert();
-
 	//g_pSceneManager->SceneChange("cScene_Light");
 
 	m_pMouseCursor = new cMouseCursor;
