@@ -47,15 +47,9 @@ void cScene_Shader_Scene_Test::Setup()
 	m_pPlayer = new cPlayer(this);
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
-	for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
-	{
-		cObject_Map_Vec.push_back(g_pLoadManager()->GetObject_Map_Vec()[i]);
-	}
 
-	for (int i = 0; i < g_pLoadManager()->GetObject_Light_Vec().size(); ++i)
-	{
-		cObject_Light_vec.push_back(g_pLoadManager()->GetObject_Light_Vec()[i]);
-	}
+	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
+	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
 
 	g_pLoadManager()->GetObject_Map_Vec().clear();
 	g_pLoadManager()->GetObject_Light_Vec().clear();
