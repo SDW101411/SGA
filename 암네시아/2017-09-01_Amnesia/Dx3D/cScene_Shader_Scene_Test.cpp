@@ -9,6 +9,7 @@
 #include "cObject_Torch.h"
 #include "cObject_Map.h"
 #include "cObject_Light.h"
+#include "cObject_Item.h"
 #include "cMapLoader.h"
 #include "cDamegeImpact.h"
 #include "cUI_In_Game.h"
@@ -28,22 +29,38 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
+	for each(auto p in cObject_Item_vec)SAFE_DELETE(p);
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
 }
 
 void cScene_Shader_Scene_Test::Setup()
 {
+
+
+
+
 	//cMapLoader loader;
 	//cObject_Map_Vec = loader.LoadToObject_Map();
 	//cObject_Light_vec = loader.LoadToObject_Light();
-	
-	m_pPlayer = new cPlayer;
+//<<<<<<< HEAD
+	m_pPlayer = new cPlayer(this);
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 
 	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
 	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
+
+	g_pLoadManager()->GetObject_Map_Vec().clear();
+	g_pLoadManager()->GetObject_Light_Vec().clear();
+	/*for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
+=======
+	m_pPlayer = new cPlayer;
+	m_pUI_In_Game = new cUI_In_Game;
+	m_pDamegeImpact = new cDamegeImpact;
+	for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
+>>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
+	
 
 	D3DXVECTOR3 lightPos, Light_Position, Particle_Position;
 	D3DXMATRIX	matRX, matRY, matRZ, matR;
@@ -62,8 +79,32 @@ void cScene_Shader_Scene_Test::Setup()
 	
 	cObject_Light_vec.push_back(Save_1);
 
+<<<<<<< HEAD
+
+	
+
+	cObject_Item *Save_Item_1 = new cObject_Item(ITEMMESH_TAG_POTION_OIL, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_1);
+
+	cObject_Item *Save_Item_2 = new cObject_Item(ITEMMESH_TAG_POTION_TINDERBOX, D3DXVECTOR3(1, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_2);
+
+	cObject_Item *Save_Item_3 = new cObject_Item(ITEMMESH_TAG_POTION_HEALTH, D3DXVECTOR3(2, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_3);
+
+	cObject_Item *Save_Item_4 = new cObject_Item(ITEMMESH_TAG_POTION_SANITY, D3DXVECTOR3(3, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_4);
+
+	//g_pLoadManager()->GetObject_Map_Vec().clear();
+	//g_pLoadManager()->GetObject_Light_Vec().clear();
+=======
 	g_pLoadManager()->GetObject_Map_Vec().clear();
 	g_pLoadManager()->GetObject_Light_Vec().clear();
+>>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
 	/*cObject_Game *Test = new cObject_shirt_white;
 	Test->Set_Anit1hing(D3DXVECTOR3(-5, 1, 0), 0, 0, 0, 1, 1, 1);
 	cObject_Game *Test_1 = new cObject_shirt_white_Normal;
@@ -111,6 +152,8 @@ void cScene_Shader_Scene_Test::Release()
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
+
+	for each(auto p in cObject_Item_vec)SAFE_DELETE(p);
 }
 
 void cScene_Shader_Scene_Test::Update()
@@ -121,6 +164,8 @@ void cScene_Shader_Scene_Test::Update()
 	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
+
+	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
 	SAFE_UPDATE(m_pDamegeImpact);
 	SAFE_UPDATE(m_pUI_In_Game);
 }
@@ -133,6 +178,10 @@ void cScene_Shader_Scene_Test::Render()
 	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
+
+	for each(auto p in cObject_Item_vec)SAFE_RENDER(p);
+
+	SAFE_RENDER(m_pPlayer);
 	SAFE_RENDER(m_pUI_In_Game);
 	SAFE_RENDER(m_pDamegeImpact);
 }
