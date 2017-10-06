@@ -9,15 +9,11 @@
 #include "cObject_Torch.h"
 #include "cObject_Map.h"
 #include "cObject_Light.h"
-#include "cMapLoader.h"
-<<<<<<< HEAD
 #include "cObject_Item.h"
-
-=======
+#include "cMapLoader.h"
 #include "cDamegeImpact.h"
 #include "cUI_In_Game.h"
 #include "cCursorStatus.h"
->>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
@@ -33,25 +29,26 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
+	for each(auto p in cObject_Item_vec)SAFE_DELETE(p);
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
 }
 
 void cScene_Shader_Scene_Test::Setup()
 {
+
+
+
+
 	//cMapLoader loader;
 	//cObject_Map_Vec = loader.LoadToObject_Map();
 	//cObject_Light_vec = loader.LoadToObject_Light();
 	
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	m_pPlayer = new cPlayer(this);
-	/*for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
-=======
-	m_pPlayer = new cPlayer;
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 	for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
->>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
 	{
 		cObject_Map_Vec.push_back(g_pLoadManager()->GetObject_Map_Vec()[i]);
 	}
@@ -60,6 +57,17 @@ void cScene_Shader_Scene_Test::Setup()
 	{
 		cObject_Light_vec.push_back(g_pLoadManager()->GetObject_Light_Vec()[i]);
 	}
+
+	g_pLoadManager()->GetObject_Map_Vec().clear();
+	g_pLoadManager()->GetObject_Light_Vec().clear();
+	/*for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
+=======
+	m_pPlayer = new cPlayer;
+	m_pUI_In_Game = new cUI_In_Game;
+	m_pDamegeImpact = new cDamegeImpact;
+	for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
+>>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
+	
 
 	D3DXVECTOR3 lightPos, Light_Position, Particle_Position;
 	D3DXMATRIX	matRX, matRY, matRZ, matR;
@@ -163,13 +171,10 @@ void cScene_Shader_Scene_Test::Update()
 	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
-<<<<<<< HEAD
 
 	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
-=======
 	SAFE_UPDATE(m_pDamegeImpact);
 	SAFE_UPDATE(m_pUI_In_Game);
->>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
 }
 
 void cScene_Shader_Scene_Test::Render()
@@ -180,15 +185,12 @@ void cScene_Shader_Scene_Test::Render()
 	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
-<<<<<<< HEAD
 
 	for each(auto p in cObject_Item_vec)SAFE_RENDER(p);
 
 	SAFE_RENDER(m_pPlayer);
-=======
 	SAFE_RENDER(m_pUI_In_Game);
 	SAFE_RENDER(m_pDamegeImpact);
->>>>>>> 0cff4a77d546dc449eb389c6aa0db8854e255bf2
 }
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

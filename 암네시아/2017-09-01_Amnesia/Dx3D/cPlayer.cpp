@@ -7,6 +7,7 @@
 #include "cScene_Shader_Scene_Test.h"
 #include "cRay.h"
 #include "cObject_Item.h"
+#include "cScene.h"
 
 
 
