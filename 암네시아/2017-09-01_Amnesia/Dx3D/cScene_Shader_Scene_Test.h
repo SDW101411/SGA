@@ -4,13 +4,16 @@
 class cObject_Game;
 class cObject_Map;
 class cObject_Light;
+class cObject_Item;
 
 class cScene_Shader_Scene_Test : public cScene
 {
-private:
-	vector<cObject_Game*> cObject_Vec;
-	vector<cObject_Map*> cObject_Map_Vec;
-	vector<cObject_Light*> cObject_Light_vec;
+public:
+	vector<cObject_Game*>		cObject_Vec;
+	vector<cObject_Map*>		cObject_Map_Vec;
+	vector<cObject_Light*>		cObject_Light_vec;
+	vector<cObject_Item*>		cObject_Item_vec;
+
 public:
 	cScene_Shader_Scene_Test();
 	~cScene_Shader_Scene_Test();

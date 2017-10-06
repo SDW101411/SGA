@@ -169,6 +169,9 @@
     <Filter Include="동욱\파티클\Fire">
       <UniqueIdentifier>{4fd6c902-46d9-4351-a912-f3638c0ed1e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="동욱\아이템오브젝트%28Item%29">
+      <UniqueIdentifier>{4d248e48-eac5-4b48-85de-f5205c6e93d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -426,9 +429,6 @@
     <ClInclude Include="cUIJournal.h">
       <Filter>한나\UIJournal</Filter>
     </ClInclude>
-    <ClInclude Include="cObject_Light.h">
-      <Filter>동욱\Test</Filter>
-    </ClInclude>
     <ClInclude Include="cMapSurface.h">
       <Filter>영빈\MapWall</Filter>
     </ClInclude>
@@ -446,6 +446,15 @@
     </ClInclude>
     <ClInclude Include="cParticle_Fire.h">
       <Filter>동욱\파티클\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject_Light.h">
+      <Filter>동욱\라이트%28TEST%29\횃불 오브젝트</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject_Item.h">
+      <Filter>동욱\아이템오브젝트%28Item%29</Filter>
+    </ClInclude>
+    <ClInclude Include="cScene_Item.h">
+      <Filter>동욱\아이템오브젝트%28Item%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -683,9 +692,6 @@
     <ClCompile Include="cUIJournal.cpp">
       <Filter>한나\UIJournal</Filter>
     </ClCompile>
-    <ClCompile Include="cObject_Light.cpp">
-      <Filter>동욱\Test</Filter>
-    </ClCompile>
     <ClCompile Include="cMapSurface.cpp">
       <Filter>영빈\MapWall</Filter>
     </ClCompile>
@@ -703,6 +709,15 @@
     </ClCompile>
     <ClCompile Include="cParticle_Fire.cpp">
       <Filter>동욱\파티클\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_Light.cpp">
+      <Filter>동욱\라이트%28TEST%29\횃불 오브젝트</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject_Item.cpp">
+      <Filter>동욱\아이템오브젝트%28Item%29</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene_Item.cpp">
+      <Filter>동욱\아이템오브젝트%28Item%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

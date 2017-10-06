@@ -23,3 +23,7 @@ void cParticle::Update()
 void cParticle::Render()
 {
 }
+
+void cParticle::Fire_Start_OnOff()
+{
+}

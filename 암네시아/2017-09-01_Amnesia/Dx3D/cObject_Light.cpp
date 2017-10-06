@@ -9,8 +9,6 @@ cObject_Light::cObject_Light()
 
 cObject_Light::cObject_Light(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare, D3DXVECTOR3 lightPos)
 {
-	/*m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Light_4")*/;
-
 	m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light");
 	m_Pos = Pos;
 	m_lightPos = lightPos + Pos;
@@ -154,4 +152,8 @@ void cObject_Light::AnotherRander()
 void cObject_Light::SetFire(bool Save)
 {
 	m_Fire_On = Save;
+	if (m_Fire_On)
+	{
+		m_pParticle_Fire->Fire_Start_OnOff();
+	}
 }

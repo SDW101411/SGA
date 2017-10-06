@@ -1,58 +1,51 @@
 #include "stdafx.h"
-#include "cObject_Map.h"
+#include "cObject_Item.h"
 #include "cObject_Light.h"
 
 
-cObject_Map::cObject_Map()
+cObject_Item::cObject_Item()
 {
 }
 
-cObject_Map::cObject_Map(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare)
+cObject_Item::cObject_Item(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rotate, D3DXVECTOR3 Scare)
 {
-	m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx");
-	//m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light");
+	m_Normal_Effect = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light_OutLine");
 	m_Pos = Pos;
 	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;
 	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;
+	m_OutLine_On = false;
+
 	switch (Name)
 	{
-	case MAPMESH_TAG_CEILING_DEFAULT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_DEFAULT");
+	case ITEMMESH_TAG_POTION_OIL:
+	{
+		cObject = cMESH_MANAGER->FIND("ITEMMESH_TAG_POTION_OIL");
+		Item_Tag = ITEMMESH_TAG_POTION_OIL;
+	}
 		break;
-	case MAPMESH_TAG_CEILING_BROKEN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_BROKEN");
-		break;
-	case MAPMESH_TAG_CEILING_NORMAL:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CEILING_NORMAL");
-		break;
-	case MAPMESH_TAG_WALL_WORN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_WALL_WORN");
-		break;
-	case MAPMESH_TAG_PILLAR_DEFAULT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_PILLAR_DEFAULT");
-		break;
-	case MAPMESH_TAG_PILLAR_FULL:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_PILLAR_FULL");
-		break;
-	case MAPMESH_TAG_FLOOR_DEFAULT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_FLOOR_DEFAULT");
-		break;
-	case MAPMESH_TAG_CONCAVE_WORN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CONCAVE_WORN");
-		break;
-	case MAPMESH_TAG_CORNER_CONCAVE_WORN:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CORNER_CONCAVE_WORN");
-		break;
-	case MAPMESH_TAG_CORNER_CONVER_SHORT:
-		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CORNER_CONVER_SHORT");
-		break;
-	default:
-		break;
+	case ITEMMESH_TAG_POTION_TINDERBOX:
+	{
+		cObject = cMESH_MANAGER->FIND("ITEMMESH_TAG_POTION_TINDERBOX");
+		Item_Tag = ITEMMESH_TAG_POTION_TINDERBOX;
+	}
+	break;
+	case ITEMMESH_TAG_POTION_HEALTH:
+	{
+		cObject = cMESH_MANAGER->FIND("ITEMMESH_TAG_POTION_HEALTH");
+		Item_Tag = ITEMMESH_TAG_POTION_HEALTH;
+	}
+	break;
+	case ITEMMESH_TAG_POTION_SANITY:
+	{
+		cObject = cMESH_MANAGER->FIND("ITEMMESH_TAG_POTION_SANITY");
+		Item_Tag = ITEMMESH_TAG_POTION_SANITY;
+	}
+	break;
 	}
 }
 
 
-cObject_Map::~cObject_Map()
+cObject_Item::~cObject_Item()
 {
 	SAFE_DELETE(cObject);
 	SAFE_DELETE(m_Normal_Effect);
@@ -62,19 +55,17 @@ cObject_Map::~cObject_Map()
 	}
 }
 
-void cObject_Map::Update()
+void cObject_Item::Update()
 {
-
 }
 
-void cObject_Map::Render()
+void cObject_Item::Render()
 {
-	AnotherRander_1_4Light_Version();
-	AnotherRander_2();
+	AnotherRander_1_4Light_Version_Out_Line();
+	AnotherRander();
 }
 
-
-D3DXMATRIX cObject_Map::WorldReturn()
+D3DXMATRIX cObject_Item::WorldReturn()
 {
 	D3DXMATRIX Worldmat, Transmat, Anglemat, Scalemat;
 	D3DXMATRIX xMat, yMat, zMat;
@@ -95,40 +86,16 @@ D3DXMATRIX cObject_Map::WorldReturn()
 
 	return Worldmat = Scalemat * Anglemat * Transmat;
 }
-void cObject_Map::AnotherRander_1()
-{
 
-	D3DXMATRIXA16 matView, matProjection;
-	g_pD3DDevice->SetTransform(D3DTS_WORLD, &WorldReturn());
-	g_pD3DDevice->GetTransform(D3DTS_VIEW, &matView);
-	g_pD3DDevice->GetTransform(D3DTS_PROJECTION, &matProjection);
-	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
-
-	/*FLOAT Length = D3DXVec3Length(&(m_Pos - cCameara_seting));
-	m_Efffect->SetFloat("gLightLength", Length);*/
-
-
-	m_Normal_Effect->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
-	m_Normal_Effect->SetVector("gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
-	m_Normal_Effect->SetVector("gLightColor_1", &D3DXVECTOR4(cLight_Color_Seting_2.x, cLight_Color_Seting_2.y, cLight_Color_Seting_2.z, 1));
-	m_Normal_Effect->SetVector("gLightColor_2", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1));
-	m_Normal_Effect->SetVector("gLightColor_3", &D3DXVECTOR4(cLight_Color_Seting_3.x, cLight_Color_Seting_3.y, cLight_Color_Seting_3.z, 1));
-	m_Normal_Effect->SetVector("NormalMapping_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
-	m_Normal_Effect->SetMatrix("gWorldMatrix", &WorldReturn());
-	m_Normal_Effect->SetMatrix("gViewMatrix", &matView);
-	m_Normal_Effect->SetMatrix("gProjectionMatrix", &matProjection);
-	m_Normal_Effect->SetMatrix("gWorldViewProjectionMatrix", &(WorldReturn()*matView * matProjection));
-	m_Normal_Effect->SetTexture("DiffuseMap_Tex", cObject->m_Texture);
-	m_Normal_Effect->SetTexture("NormalMap_Tex", cObject->m_Normal);
-	m_Normal_Effect->SetTexture("SpecularMap_Tex", cObject->m_Specqural);
-}
-void cObject_Map::AnotherRander_1_4Light_Version()
+void cObject_Item::AnotherRander_1_4Light_Version_Out_Line()
 {
 	D3DXMATRIXA16 matView, matProjection;
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &WorldReturn());
 	g_pD3DDevice->GetTransform(D3DTS_VIEW, &matView);
 	g_pD3DDevice->GetTransform(D3DTS_PROJECTION, &matProjection);
 	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
+
+
 
 	m_Normal_Effect->SetMatrix("gWorldMatrix", &WorldReturn());
 	m_Normal_Effect->SetMatrix("gWorldViewProjectionMatrix", &(WorldReturn()*matView * matProjection));
@@ -154,10 +121,10 @@ void cObject_Map::AnotherRander_1_4Light_Version()
 		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
 		m_Normal_Effect->SetBool("Light_4", m_Light_vec[2]->m_Fire_On);
 	}
-	m_Normal_Effect->SetFloat("cLight_Length",10.0f);
+	m_Normal_Effect->SetFloat("cLight_Length", 10.0f);
 
-
-
+	
+	m_Normal_Effect->SetBool("OutLine_On_Off", m_OutLine_On);
 	m_Normal_Effect->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
 	m_Normal_Effect->SetVector("gLightColor_1", &D3DXVECTOR4(cLight_Color_Seting_2.x, cLight_Color_Seting_2.y, cLight_Color_Seting_2.z, 1));
 	m_Normal_Effect->SetVector("gLightColor_2", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1));
@@ -165,12 +132,14 @@ void cObject_Map::AnotherRander_1_4Light_Version()
 	m_Normal_Effect->SetVector("NormalMapping_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
 	m_Normal_Effect->SetMatrix("gWorldMatrix", &WorldReturn());
 	m_Normal_Effect->SetMatrix("gViewMatrix", &matView);
+	m_Normal_Effect->SetMatrix("gVPmatrix", &(matView*matProjection));
 	m_Normal_Effect->SetMatrix("gProjectionMatrix", &matProjection);
 	m_Normal_Effect->SetTexture("DiffuseMap_Tex", cObject->m_Texture);
 	m_Normal_Effect->SetTexture("NormalMap_Tex", cObject->m_Normal);
 	m_Normal_Effect->SetTexture("SpecularMap_Tex", cObject->m_Specqural);
 }
-void cObject_Map::AnotherRander_2()
+
+void cObject_Item::AnotherRander()
 {
 	UINT numPasses = 0;
 	m_Normal_Effect->Begin(&numPasses, NULL);
@@ -185,13 +154,4 @@ void cObject_Map::AnotherRander_2()
 	}
 
 	m_Normal_Effect->End();
-}
-
-void cObject_Map::m_Light_Vec_Push(cObject_Light * save_Target)
-{
-	if (m_Light_vec.size() < 2)
-	{
-		m_Light_vec.push_back(save_Target);
-	}
-	
 }

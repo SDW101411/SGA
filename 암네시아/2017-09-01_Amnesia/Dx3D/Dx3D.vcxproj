@@ -123,6 +123,7 @@
     <ClInclude Include="cObjectPool.h" />
     <ClInclude Include="cObject_bottle.h" />
     <ClInclude Include="cObject_Game.h" />
+    <ClInclude Include="cObject_Item.h" />
     <ClInclude Include="cObject_Light.h" />
     <ClInclude Include="cObject_Map.h" />
     <ClInclude Include="cObject_Shader_Scene_Test_2.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="cScene.h" />
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSceneUI.h" />
+    <ClInclude Include="cScene_Item.h" />
     <ClInclude Include="cScene_Light.h" />
     <ClInclude Include="cScene_Manager.h" />
     <ClInclude Include="cScene_Shader_Scene_Test.h" />
@@ -213,6 +215,7 @@
     <ClCompile Include="cObjectPool.cpp" />
     <ClCompile Include="cObject_bottle.cpp" />
     <ClCompile Include="cObject_Game.cpp" />
+    <ClCompile Include="cObject_Item.cpp" />
     <ClCompile Include="cObject_Light.cpp" />
     <ClCompile Include="cObject_Map.cpp" />
     <ClCompile Include="cObject_Shader_Scene_Test_2.cpp" />
@@ -231,6 +234,7 @@
     <ClCompile Include="cScene.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSceneUI.cpp" />
+    <ClCompile Include="cScene_Item.cpp" />
     <ClCompile Include="cScene_Light.cpp" />
     <ClCompile Include="cScene_Manager.cpp" />
     <ClCompile Include="cScene_Shader_Scene_Test.cpp" />

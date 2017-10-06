@@ -10,6 +10,7 @@
 #include "cObject_Map.h"
 #include "cObject_Light.h"
 #include "cMapLoader.h"
+#include "cObject_Item.h"
 
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
@@ -34,7 +35,7 @@ void cScene_Shader_Scene_Test::Setup()
 	//cMapLoader loader;
 	//cObject_Map_Vec = loader.LoadToObject_Map();
 	
-	m_pPlayer = new cPlayer;
+	m_pPlayer = new cPlayer(this);
 	/*for (int i = 0; i < g_pLoadManager()->GetObject_Map_Vec().size(); ++i)
 	{
 		cObject_Map_Vec.push_back(g_pLoadManager()->GetObject_Map_Vec()[i]);
@@ -61,6 +62,25 @@ void cScene_Shader_Scene_Test::Setup()
 
 	
 	cObject_Light_vec.push_back(Save_1);
+
+
+	
+
+	cObject_Item *Save_Item_1 = new cObject_Item(ITEMMESH_TAG_POTION_OIL, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_1);
+
+	cObject_Item *Save_Item_2 = new cObject_Item(ITEMMESH_TAG_POTION_TINDERBOX, D3DXVECTOR3(1, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_2);
+
+	cObject_Item *Save_Item_3 = new cObject_Item(ITEMMESH_TAG_POTION_HEALTH, D3DXVECTOR3(2, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_3);
+
+	cObject_Item *Save_Item_4 = new cObject_Item(ITEMMESH_TAG_POTION_SANITY, D3DXVECTOR3(3, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_4);
 
 	//g_pLoadManager()->GetObject_Map_Vec().clear();
 	//g_pLoadManager()->GetObject_Light_Vec().clear();
@@ -112,6 +132,8 @@ void cScene_Shader_Scene_Test::Release()
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
+
+	for each(auto p in cObject_Item_vec)SAFE_DELETE(p);
 }
 
 void cScene_Shader_Scene_Test::Update()
@@ -122,6 +144,8 @@ void cScene_Shader_Scene_Test::Update()
 	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
+
+	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
 }
 
 void cScene_Shader_Scene_Test::Render()
@@ -132,6 +156,8 @@ void cScene_Shader_Scene_Test::Render()
 	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
 
 	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
+
+	for each(auto p in cObject_Item_vec)SAFE_RENDER(p);
 
 	SAFE_RENDER(m_pPlayer);
 }

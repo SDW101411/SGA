@@ -25,7 +25,7 @@ cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save, float UpY)
 	: m_fAngleX(0.0f)
 	, m_fAngleY(0.0f)
 	, m_isLButtonDown(false)
-	, m_Speed(0.1f)
+	, m_Speed(0.05f)
 	, m_pTarget(NULL)
 	, check(0.0f)
 	, fx(0.0f)
@@ -45,8 +45,8 @@ cPlayer_Ctrl::~cPlayer_Ctrl()
 
 void cPlayer_Ctrl::Update()
 {
-	cPlayer_cCamera_Update();
 	cPlayer_cMove_Update();
+	cPlayer_cCamera_Update();
 
 	cCameara_seting = m_Camera;
 }
@@ -78,6 +78,9 @@ void cPlayer_Ctrl::cPlayer_cCamera_Update()
 	m_World = matView;
 
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
+
+
+	
 
 }
 
@@ -137,7 +140,7 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	D3DXVec3Normalize(&Direction, &Direction);
 
 	
-	static float Speed = 0.02f;
+	static float Speed = 0.01f;
 
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
@@ -155,7 +158,7 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 		check += Speed * -1;
 	}
 
-	if (check >= m_UpY/3)
+	if (check >= m_UpY/6)
 	{
 		Speed *= -1;
 	}
