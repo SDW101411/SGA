@@ -13,6 +13,7 @@ void cSoundTrack::Insert()
 {
 	SOUNDMANAGER->addSound("15_event_elevator", "15_event_elevator.ogg", true, true);
 	SOUNDMANAGER->addSound("game_menu", "game_menu.ogg", true, true);
+	SOUNDMANAGER->addSound("dan_brute", "dan_brute.ogg", true, true);
 	SOUNDMANAGER->addSound("ui_use_oil", "ui_use_oil.ogg", false, false);
 	SOUNDMANAGER->addSound("ui_use_health", "ui_use_health.ogg", false, false);
 	SOUNDMANAGER->addSound("journal_open", "journal_open.ogg", false, false);

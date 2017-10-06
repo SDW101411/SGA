@@ -100,6 +100,7 @@ D3DXMATRIX cObject_Map::WorldReturn()
 }
 void cObject_Map::AnotherRander_1()
 {
+
 	D3DXMATRIXA16 matView, matProjection;
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &WorldReturn());
 	g_pD3DDevice->GetTransform(D3DTS_VIEW, &matView);
@@ -108,6 +109,7 @@ void cObject_Map::AnotherRander_1()
 
 	/*FLOAT Length = D3DXVec3Length(&(m_Pos - cCameara_seting));
 	m_Efffect->SetFloat("gLightLength", Length);*/
+
 
 	m_Normal_Effect->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
 	m_Normal_Effect->SetVector("gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));

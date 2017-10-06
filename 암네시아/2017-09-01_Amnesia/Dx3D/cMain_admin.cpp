@@ -21,6 +21,8 @@
 
 cMain_admin::cMain_admin()
 {
+	g_pSoundTrack->Insert();
+	
 	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
 	g_pSceneManager->INSERT("cAStarScene", new cAStarScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
@@ -46,11 +48,24 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_TORCH_STATIC_01",		"X_File/MapObjects/torch/torch_static01");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_BARREL_DEFAULT",			"X_File/MapObjects/barrel/barrel01");
+	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_OIL",			"X_File/entities/potion_oil/potion_oil");
+	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_TINDERBOX",		"X_File/entities/tinderbox/tinderbox");
+	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_HEALTH",			"X_File/entities/potion_health/potion_health");
+	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_SANITY",			"X_File/entities/potion_sanity/potion_sanity");
+	cMESH_MANAGER->INSERT("PLAYERMESH_TAG_LANTERN",				"X_File/entities/lantern/hand_lantern");
+	
+	
+	
+	/*ITEMMESH_TAG_POTION_OIL,
+	ITEMMESH_TAG_POTION_TINDERBOX,
+	ITEMMESH_TAG_POTION_HEALTH,
+	ITEMMESH_TAG_POTION_SANITY,*/
 
 	cMESH_MANAGER->INSERT_SHADER("Shader_Light", cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx"));
-	
-	g_pSoundTrack->Insert();
+	cMESH_MANAGER->INSERT_SHADER("Shader_Light_OutLine", cMESH_MANAGER->LoadShader("Test/Nomal_4Light_OutLine.fx"));
+	cMESH_MANAGER->INSERT_SHADER("Shader_Lantern", cMESH_MANAGER->LoadShader("Test/Lantern.fx"));
 
+	
 	//g_pSceneManager->SceneChange("cScene_Light");
 
 	m_pMouseCursor = new cMouseCursor;

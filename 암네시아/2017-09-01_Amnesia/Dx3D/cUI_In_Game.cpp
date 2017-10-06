@@ -44,9 +44,6 @@ cUI_In_Game::cUI_In_Game()
 	//m_nBrainHP = *DATABASE->GetMental();
 	//m_fOilValue = DATABASE->GetOilValue();
 
-//	SOUNDMANAGER->addSound("15_event_elevator", "15_event_elevator.mp3", true, true);
-//	SOUNDMANAGER->addSound("ui_use_oil", "ui_use_oil.mp3", false, false);
-
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;

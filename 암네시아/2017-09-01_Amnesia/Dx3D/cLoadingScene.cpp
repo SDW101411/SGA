@@ -52,6 +52,7 @@ cLoadingScene::~cLoadingScene()
 
 void cLoadingScene::Setup()
 {
+	SOUNDMANAGER->play("dan_brute");
 	DWORD dwThID;
 	InitializeCriticalSection(&cs);
 	CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ThFunc1, this, NULL/*CREATE_SUSPENDED*/, &dwThID));
@@ -63,6 +64,7 @@ void cLoadingScene::Release()
 	//cObject_Map_Vec.clear();
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
+	SOUNDMANAGER->pause("dan_brute");
 }
 
 void cLoadingScene::Update()
