@@ -51,6 +51,8 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 					PushObject_Map(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
 				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
 					PushObject_Map(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_BARREL_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_BARREL_DEFAULT, rtnObjList);
 				else if (IsEqual(str, ID_END))
 					break;
 			}
@@ -225,6 +227,8 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 					PushMapObject(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
 				else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
 					PushMapObject(MAPMESH_TAG_TORCH_STATIC_01, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_BARREL_DEFAULT))
+					PushMapObject(MAPMESH_TAG_BARREL_DEFAULT, rtnObjList);
 				else if (IsEqual(str, ID_END))
 					break;
 			}

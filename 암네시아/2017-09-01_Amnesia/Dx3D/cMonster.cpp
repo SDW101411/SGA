@@ -5,7 +5,7 @@
 
 cMonster::cMonster()
 {
-	m_pMesh = new cSkinnedMesh("X_File/entities/enemy/servant_brute/", "servant_brute.X");
+	m_pMesh = new cSkinnedMesh("X_File/entities/enemy/servant_brute/", "run.X");
 	m_pMachine = new cStateMachine(this);
 	m_pos = D3DXVECTOR3(0, 0, 0);
 }

@@ -45,6 +45,7 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_TORCH_STATIC_01",		"X_File/MapObjects/torch/torch_static01");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_BARREL_DEFAULT",			"X_File/MapObjects/barrel/barrel01");
 
 	cMESH_MANAGER->INSERT_SHADER("Shader_Light", cMESH_MANAGER->LoadShader("Test/Normal_Light_4_Version.fx"));
 	

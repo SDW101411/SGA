@@ -37,7 +37,6 @@ void cScene_Shader_Scene_Test::Setup()
 	//cMapLoader loader;
 	//cObject_Map_Vec = loader.LoadToObject_Map();
 	//cObject_Light_vec = loader.LoadToObject_Light();
-	
 	m_pPlayer = new cPlayer;
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;

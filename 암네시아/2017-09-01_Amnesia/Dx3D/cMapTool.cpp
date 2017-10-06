@@ -112,6 +112,11 @@ void cMapTool::CreateTile(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scl)
 	_pos.x += row * GRIDNODE_SIZE;
 	_pos.y = m_curFloor;
 	_pos.z -= col * GRIDNODE_SIZE;
+	if (m_curTag == MAPMESH_TAG_CORNER_CONVER_SHORT)
+	{
+		_pos.x += 0.5f;
+		_pos.z += 0.5f;
+	}
 	cMapObject* obj = new cMapObject;
 	obj->Setup(m_curTag, _pos, rot, scl);
 	obj->SetFloor(m_curFloor);
@@ -187,6 +192,7 @@ void cMapTool::CreateMesh()
 	CreateMesh(MAPMESH_TAG_CORNER_CONCAVE_WORN);
 	CreateMesh(MAPMESH_TAG_CORNER_CONVER_SHORT);
 	CreateMesh(MAPMESH_TAG_TORCH_STATIC_01);
+	CreateMesh(MAPMESH_TAG_BARREL_DEFAULT);
 }
 
 void cMapTool::CreateMesh(int id)
@@ -307,6 +313,7 @@ void cMapTool::SaveData()
 	PutData("MAPMESH_TAG_CORNER_CONCAVE_WORN\n",	fp, objData[MAPMESH_TAG_CORNER_CONCAVE_WORN]);
 	PutData("MAPMESH_TAG_CORNER_CONVER_SHORT\n",	fp, objData[MAPMESH_TAG_CORNER_CONVER_SHORT]);
 	PutData("MAPMESH_TAG_TORCH_STATIC_01\n",		fp, objData[MAPMESH_TAG_TORCH_STATIC_01]);
+	PutData("MAPMESH_TAG_BARREL_DEFAULT\n",			fp, objData[MAPMESH_TAG_BARREL_DEFAULT]);
 	fputs("END\n", fp);
 
 	fputs("<SURFACE>\n", fp);
@@ -324,6 +331,7 @@ void cMapTool::LoadData()
 {
 	cMapLoader loader;
 	m_tileList = loader.LoadToMapObject();
+	m_nodeList = loader.LoadToGridNode();
 }
 
 void cMapTool::PutData(string name, FILE* fp, vector<cMapObject*> pObj)
