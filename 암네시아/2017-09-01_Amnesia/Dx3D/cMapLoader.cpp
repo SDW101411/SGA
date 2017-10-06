@@ -81,14 +81,11 @@ vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 		{
 			while (true)
 			{
-				str = GetToken();
-				if (str == NULL) continue;
-				else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
+				if (IsEqual(GetToken(), ID_MAPMESH_TAG_TORCH_STATIC_01))
 				{
 					PushLight(lightPos);
-				}
-				else if (IsEqual(str, ID_END))
 					break;
+				}
 			}
 		}
 	}
