@@ -9,6 +9,10 @@
 #include "cUITool_In_Game_Test.h"	// 게임 UI - LEE
 #include "cLoadingScene.h"
 #include "cScene_Light.h"
+#include "cAStarScene.h"
+#include "cDamegeImpact.h"
+#include "cCursorStatus.h"
+#include "cMouseCursor.h"
 /*
 		2017-09-02 Main_admin.
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
@@ -17,12 +21,18 @@
 
 cMain_admin::cMain_admin()
 {
+	g_pSoundTrack->Insert();
+	
 	g_pSceneManager->INSERT("cMapToolScene", new cMapToolScene);
+	g_pSceneManager->INSERT("cAStarScene", new cAStarScene);
 	g_pSceneManager->INSERT("cUITool_In_Game_Test", new cUITool_In_Game_Test);
 	g_pSceneManager->INSERT("cMainMenuScene", new cMainMenuScene);
 	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);
 	g_pSceneManager->INSERT("cScene_Light", new cScene_Light);
+	g_pSceneManager->INSERT("cDamegeImpact", new cDamegeImpact);
+	g_pSceneManager->INSERT("cCursorStatus", new cCursorStatus);
 	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
+
 	g_pSceneManager->SceneChange("cMainMenuScene");
 
 
@@ -55,23 +65,26 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT_SHADER("Shader_Lantern", cMESH_MANAGER->LoadShader("Test/Lantern.fx"));
 
 	
-	
-	
 	//g_pSceneManager->SceneChange("cScene_Light");
+
+	m_pMouseCursor = new cMouseCursor;
 }
 
 cMain_admin::~cMain_admin()
 {
+	SAFE_DELETE(m_pMouseCursor);
 }
 
 void cMain_admin::Update()
 {
 	g_pSceneManager->Update();
+	SAFE_UPDATE(m_pMouseCursor);
 }
 
 void cMain_admin::Render()
 {
 	g_pSceneManager->Render();
+	SAFE_RENDER(m_pMouseCursor);
 }
 
 void cMain_admin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

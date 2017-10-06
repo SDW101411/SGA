@@ -4,6 +4,7 @@
 #include "cMapObject.h"
 #include "cObject_Map.h"
 #include "cObject_Light.h"
+#include "cGridNode.h"
 
 vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 {
@@ -50,8 +51,6 @@ vector<cObject_Map*> cMapLoader::LoadToObject_Map()
 					PushObject_Map(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
 				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
 					PushObject_Map(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
-				else if (IsEqual(str, ID_MAPMESH_TAG_TORCH_STATIC_01))
-					PushObject_Map(MAPMESH_TAG_TORCH_STATIC_01, rtnObjList);
 				else if (IsEqual(str, ID_END))
 					break;
 			}
@@ -86,6 +85,8 @@ vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 				{
 					PushLight(lightPos);
 				}
+				else if (IsEqual(str, ID_END))
+					break;
 			}
 		}
 	}
@@ -112,8 +113,63 @@ vector<D3DXVECTOR3> cMapLoader::LoadToGroundSurface()
 		{
 			while (true)
 			{
-				if (IsEqual(GetToken(), ID_END)) break;
-				rtnObjList.push_back(LoadVec3());
+				str = GetToken();
+				if (str == NULL) continue;
+				else if (IsEqual(str, ID_WALL))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+					}
+				}
+				else if (IsEqual(str, ID_GROUND))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+						rtnObjList.push_back(LoadVec3());
+					}
+				}
+				else if (IsEqual(str, ID_END))
+					break;
+			}
+		}
+	}
+
+	fclose(m_fp);
+
+	return rtnObjList;
+}
+
+vector<D3DXVECTOR3> cMapLoader::LoadToWallSurface()
+{
+	vector<D3DXVECTOR3> rtnObjList;
+
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_SURFACE))
+		{
+			while (true)
+			{
+				str = GetToken();
+				if (str == NULL) continue;
+				else if (IsEqual(str, ID_WALL))
+				{
+					while (true)
+					{
+						if (IsEqual(GetToken(), ID_END)) break;
+						rtnObjList.push_back(LoadVec3());
+					}
+				}
+				else if (IsEqual(str, ID_END))
+					break;
 			}
 		}
 	}
@@ -180,6 +236,47 @@ map<int, map<int, vector<cMapObject*>>> cMapLoader::LoadToMapObject()
 	return rtnObjList;
 }
 
+map<int, map<int, cGridNode*>> cMapLoader::LoadToGridNode()
+{
+	map<int, map<int, cGridNode*>> rtnGrid;
+
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_GRIDNODE)) PushGridNode(rtnGrid);
+	}
+
+	fclose(m_fp);
+
+	return rtnGrid;
+}
+
+D3DXVECTOR3 cMapLoader::LoadToLeftTop()
+{
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_LTPOS))
+		{
+			D3DXVECTOR3 vec = LoadVec3();
+			fclose(m_fp);
+			return vec;
+		}
+	}
+}
+
 void cMapLoader::PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap)
 {
 	for each(auto map in objMap)
@@ -231,6 +328,11 @@ float cMapLoader::GetFloat()
 	return (float)atof(GetToken());
 }
 
+int cMapLoader::GetInt()
+{
+	return (int)atoi(GetToken());
+}
+
 D3DXVECTOR3 cMapLoader::LoadVec3()
 {
 	D3DXVECTOR3 vec;
@@ -264,14 +366,15 @@ cObject_Light* cMapLoader::CreateObject_Light()
 	D3DXVECTOR3 pos = LoadVec3();
 	D3DXVECTOR3 rot = LoadVec3();
 	D3DXVECTOR3 scl = LoadVec3();
-	D3DXVECTOR3 lightPos, dir;
+	D3DXVECTOR3 lightPos, particlePos;
 	D3DXMATRIX	matRX, matRY, matRZ, matR;
 	D3DXMatrixRotationX(&matRX, rot.x);
 	D3DXMatrixRotationY(&matRY, rot.y);
 	D3DXMatrixRotationZ(&matRZ, rot.z);
 	matR = matRX * matRY * matRZ;
-	D3DXVec3TransformCoord(&dir, &D3DXVECTOR3(0, 1, -1), &matR);
-	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, rot, scl, pos + dir);
+	D3DXVec3TransformCoord(&lightPos, &D3DXVECTOR3(0, 0.9, -0.65), &matR);
+	D3DXVec3TransformCoord(&particlePos, &D3DXVECTOR3(0, 1, -1), &matR);
+	cObject_Light* pLight = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, pos, rot, scl, particlePos, lightPos);
 	return pLight;
 }
 
@@ -303,6 +406,22 @@ void cMapLoader::PushLight(vector<cObject_Light*>& lightPos)
 	{
 		if (IsEqual(GetToken(), ID_END)) break;
 		lightPos.push_back(CreateObject_Light());
+	}
+}
+
+void cMapLoader::PushGridNode(map<int, map<int, cGridNode*>>& nodeList)
+{
+	char* str;
+	while (true)
+	{
+		str = GetToken();
+		if (IsEqual(str, ID_END)) break;
+		D3DXVECTOR3 pos = LoadVec3();
+		int row = GetInt();
+		int col = GetInt();
+		cGridNode* pNode = new cGridNode();
+		pNode->SetUp(pos, row, col);
+		nodeList[row][col] = pNode;
 	}
 }
 

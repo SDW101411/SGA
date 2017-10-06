@@ -83,6 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asciitok.h" />
+    <ClInclude Include="cAStarBtn.h" />
+    <ClInclude Include="cAStarScene.h" />
     <ClInclude Include="cAction.h" />
     <ClInclude Include="cActionMove.h" />
     <ClInclude Include="cActionRepeat.h" />
@@ -90,6 +92,8 @@
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cAseLoader.h" />
     <ClInclude Include="cAStar.h" />
+    <ClInclude Include="cCursorStatus.h" />
+    <ClInclude Include="cDamegeImpact.h" />
     <ClInclude Include="cDatabase.h" />
     <ClInclude Include="cGridNode.h" />
     <ClInclude Include="cAutoReleasePool.h" />
@@ -118,6 +122,8 @@
     <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMapSurface.h" />
     <ClInclude Include="cMesh_Manager.h" />
+    <ClInclude Include="cMonster.h" />
+    <ClInclude Include="cMouseCursor.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectPool.h" />
@@ -150,6 +156,8 @@
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSoundManager.h" />
+    <ClInclude Include="cSoundTrack.h" />
+    <ClInclude Include="cStateMachine.h" />
     <ClInclude Include="cTabUI.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
@@ -168,13 +176,17 @@
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
+    <ClInclude Include="iState.h" />
     <ClInclude Include="IUI.h" />
+    <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="singletonBase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cAStarBtn.cpp" />
+    <ClCompile Include="cAStarScene.cpp" />
     <ClCompile Include="cAction.cpp" />
     <ClCompile Include="cActionMove.cpp" />
     <ClCompile Include="cActionRepeat.cpp" />
@@ -182,6 +194,8 @@
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cAseLoader.cpp" />
     <ClCompile Include="cAStar.cpp" />
+    <ClCompile Include="cCursorStatus.cpp" />
+    <ClCompile Include="cDamegeImpact.cpp" />
     <ClCompile Include="cDatabase.cpp" />
     <ClCompile Include="cGridNode.cpp" />
     <ClCompile Include="cAutoReleasePool.cpp" />
@@ -210,6 +224,8 @@
     <ClCompile Include="cMapToolScene.cpp" />
     <ClCompile Include="cMapSurface.cpp" />
     <ClCompile Include="cMesh_Manager.cpp" />
+    <ClCompile Include="cMonster.cpp" />
+    <ClCompile Include="cMouseCursor.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectPool.cpp" />
@@ -242,6 +258,8 @@
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
     <ClCompile Include="cSoundManager.cpp" />
+    <ClCompile Include="cSoundTrack.cpp" />
+    <ClCompile Include="cStateMachine.cpp" />
     <ClCompile Include="cTabUI.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />

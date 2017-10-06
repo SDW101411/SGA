@@ -24,6 +24,18 @@ void cUIButton::SetTexture( string sNor, string sOvr, string sSel )
 	m_stSize.fHeight = stImageInfo.Height;
 }
 
+void cUIButton::SetHpTexture(string sNor, string sOvr, string sSel)
+{
+	m_aTexture[E_NORMAL] = sNor;
+	m_aTexture[E_MOUSEOVER] = sOvr;
+	m_aTexture[E_RBUTTON] = sSel;
+
+	D3DXIMAGE_INFO stImageInfo;
+	g_pTextureManager->GetTextureEx(sNor, &stImageInfo);
+	m_stSize.fWidth = stImageInfo.Width;
+	m_stSize.fHeight = stImageInfo.Height;
+}
+
 void cUIButton::Update()
 {
 	RECT rc;

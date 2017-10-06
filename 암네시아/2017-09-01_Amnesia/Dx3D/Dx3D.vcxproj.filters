@@ -172,6 +172,33 @@
     <Filter Include="동욱\아이템오브젝트%28Item%29">
       <UniqueIdentifier>{4d248e48-eac5-4b48-85de-f5205c6e93d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\AStarScene">
+      <UniqueIdentifier>{d38e6304-9b14-4f9e-951a-d6665fee244a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\DamegeImpact">
+      <UniqueIdentifier>{8057fe7e-20d5-4e6c-875d-8fe697976639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\SoundTrack">
+      <UniqueIdentifier>{4a186083-d2ba-4808-91ab-b7eef970f046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="한나\CursorStatus">
+      <UniqueIdentifier>{a9d37593-3cab-4387-877d-416382fb5c82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster">
+      <UniqueIdentifier>{3526b7ae-f762-48da-834f-780ff597fe06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI">
+      <UniqueIdentifier>{392c5203-1d7b-49bb-b8e4-49b3a44b9b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine">
+      <UniqueIdentifier>{98e1c216-0fd2-4202-b285-d1acf8ed9930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State">
+      <UniqueIdentifier>{a5304a78-dd84-4d5c-b44e-2d457f4bb370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\AStarScene\AStarBtn">
+      <UniqueIdentifier>{30dbd7b7-a5a3-4421-9a42-1d0b11abb91d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -429,6 +456,9 @@
     <ClInclude Include="cUIJournal.h">
       <Filter>한나\UIJournal</Filter>
     </ClInclude>
+    <ClInclude Include="cObject_Light.h">
+      <Filter>동욱\Test</Filter>
+    </ClInclude>
     <ClInclude Include="cMapSurface.h">
       <Filter>영빈\MapWall</Filter>
     </ClInclude>
@@ -455,6 +485,36 @@
     </ClInclude>
     <ClInclude Include="cScene_Item.h">
       <Filter>동욱\아이템오브젝트%28Item%29</Filter>
+    </ClInclude>
+    <ClInclude Include="cAStarScene.h">
+      <Filter>영빈\AStarScene</Filter>
+    </ClInclude>
+    <ClInclude Include="cDamegeImpact.h">
+      <Filter>한나\DamegeImpact</Filter>
+    </ClInclude>
+    <ClInclude Include="randomFunction.h">
+      <Filter>한나\DamegeImpact</Filter>
+    </ClInclude>
+    <ClInclude Include="cCursorStatus.h">
+      <Filter>한나\CursorStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="cSoundTrack.h">
+      <Filter>한나\SoundTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="cMouseCursor.h">
+      <Filter>한나\CursorStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonster.h">
+      <Filter>영빈\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="iState.h">
+      <Filter>영빈\Monster\AI\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMachine.h">
+      <Filter>영빈\Monster\AI\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="cAStarBtn.h">
+      <Filter>영빈\AStarScene\AStarBtn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -692,6 +752,9 @@
     <ClCompile Include="cUIJournal.cpp">
       <Filter>한나\UIJournal</Filter>
     </ClCompile>
+    <ClCompile Include="cObject_Light.cpp">
+      <Filter>동욱\Test</Filter>
+    </ClCompile>
     <ClCompile Include="cMapSurface.cpp">
       <Filter>영빈\MapWall</Filter>
     </ClCompile>
@@ -718,6 +781,31 @@
     </ClCompile>
     <ClCompile Include="cScene_Item.cpp">
       <Filter>동욱\아이템오브젝트%28Item%29</Filter>
+    </ClCompile>
+
+    <ClCompile Include="cAStarScene.cpp">
+      <Filter>영빈\AStarScene</Filter>
+    </ClCompile>
+    <ClCompile Include="cDamegeImpact.cpp">
+      <Filter>한나\DamegeImpact</Filter>
+    </ClCompile>
+    <ClCompile Include="cCursorStatus.cpp">
+      <Filter>한나\CursorStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="cSoundTrack.cpp">
+      <Filter>한나\SoundTrack</Filter>
+    </ClCompile>
+    <ClCompile Include="cMouseCursor.cpp">
+      <Filter>한나\CursorStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonster.cpp">
+      <Filter>영빈\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMachine.cpp">
+      <Filter>영빈\Monster\AI\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="cAStarBtn.cpp">
+      <Filter>영빈\AStarScene\AStarBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -114,6 +114,7 @@ void cUIJournal::OnClick(cUIButton* pSender)
 	}
 	else if (pSender->GetTag() == E_RETURN)
 	{
+		SOUNDMANAGER->play("journal_close");
 		//g_pSceneManager->SceneChange("cUITool_In_Game_Test");
 		*m_pState = UI_MAIN;
 	}

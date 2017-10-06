@@ -1,17 +1,8 @@
 #pragma once
 
-enum GRIDNODE_COLOR
-{
-	GRIDNODE_COLOR_DEFAULT,
-	GRIDNODE_COLOR_PICK,
-	GRIDNODE_COLOR_OBSTACLE,
-};
-
 class cGridNode
 {
 private:
-	LPD3DXMESH				m_pSphere;
-	LPD3DXMESH				m_pBox;
 	ID3DXMesh*				m_pGrid;
 
 	D3DXMATRIX				m_matWorld;
@@ -24,18 +15,29 @@ private:
 	SYNTHESIZE(float, m_g, G);
 	SYNTHESIZE(float, m_h, H);
 	SYNTHESIZE(float, m_f, F);
+	float temp;
 
-	SYNTHESIZE(bool, m_isOpen, IsOpen);
+	SYNTHESIZE(int, m_row, Row);
+	SYNTHESIZE(int, m_col, Col);
+
 	SYNTHESIZE(bool, m_isClose, IsClose);
-	SYNTHESIZE(bool, m_isObstacle, IsObstacle);
+	SYNTHESIZE(bool, m_isOpen, IsOpen);
 public:
 	cGridNode();
 	~cGridNode();
 
-	void SetUp(D3DXVECTOR3 pos);
+	void SetUp(D3DXVECTOR3 pos, int row, int col);
 	void Render();
-	void SphereRender();
 
-	void CleanUp();
-	void SetColor(int value);
+	void SetClean();
+
+	void SetColorYellow()
+	{
+		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(1, 1, 0, 1);
+	}
+
+	void SetColorDefault()
+	{
+		m_material.Ambient = m_material.Diffuse = m_material.Specular = D3DXCOLOR(0, 0, 1, 1);
+	}
 };

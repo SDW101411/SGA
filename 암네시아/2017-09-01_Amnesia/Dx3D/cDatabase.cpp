@@ -4,6 +4,7 @@
 cDatabase::cDatabase()
 	: m_nHP(100)
 	, m_nMental(100)
+	, m_fOilValue(0.5f)
 {
 }
 

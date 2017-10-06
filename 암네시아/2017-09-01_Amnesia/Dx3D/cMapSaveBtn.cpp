@@ -17,7 +17,7 @@ void cMapSaveBtn::OnClick(cUIButton * pSender)
 {
 	if (pSender->GetTag() == E_XBUTTON)
 	{
-		g_pSceneManager->SceneChange("cMainMenuScene");
+		g_pSceneManager->SceneChange("cAStarScene");
 	}
 	if (pSender->GetTag() == E_SAVEBTN)
 	{

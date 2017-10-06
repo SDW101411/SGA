@@ -13,7 +13,7 @@ void cLoadingScene::ThFunc1(LPVOID pParam)
 	cLoadingScene* pLoader = (cLoadingScene*)pParam;
 	cMapLoader Loader;
 	g_pLoadManager()->SetObject_Map_Vec(Loader.LoadToObject_Map());
-	//g_pLoadManager()->SetObject_Light_Vec(Loader.LoadToObject_Light());
+	g_pLoadManager()->SetObject_Light_Vec(Loader.LoadToObject_Light());
 	pLoader->m_bClear = true;
 	//LeaveCriticalSection(&cs);
 }
@@ -52,13 +52,10 @@ cLoadingScene::~cLoadingScene()
 
 void cLoadingScene::Setup()
 {
+	SOUNDMANAGER->play("dan_brute");
 	DWORD dwThID;
 	InitializeCriticalSection(&cs);
 	CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ThFunc1, this, NULL/*CREATE_SUSPENDED*/, &dwThID));
-
-	//cMapLoader Loader;
-	//g_pLoadManager()->cObject_Map_Vec = Loader.LoadToObject_Map();
-	//Clear = true;
 }
 
 void cLoadingScene::Release()
@@ -67,6 +64,7 @@ void cLoadingScene::Release()
 	//cObject_Map_Vec.clear();
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
+	SOUNDMANAGER->pause("dan_brute");
 }
 
 void cLoadingScene::Update()

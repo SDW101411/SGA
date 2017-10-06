@@ -65,6 +65,16 @@ cMainMenuScene::~cMainMenuScene()
 	SAFE_RELEASE(m_pUIRoot);
 }
 
+void cMainMenuScene::Setup()
+{
+	SOUNDMANAGER->play("game_menu");
+}
+
+void cMainMenuScene::Release()
+{
+	SOUNDMANAGER->pause("game_menu");
+}
+
 void cMainMenuScene::Update()
 {
 	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
@@ -141,15 +151,15 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	}
 	else if (pSender->GetTag() == E_BTN_SDW)
 	{
-		g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
-		//g_pSceneManager->SceneChange("cLoadingScene");
+		//g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
+		g_pSceneManager->SceneChange("cLoadingScene");
 	}
 	else if (pSender->GetTag() == E_BTN_NGYB)
 	{
-		g_pSceneManager->SceneChange("cMapToolScene");
+		g_pSceneManager->SceneChange("cAStarScene");
 	}
 }
 
-void cMainMenuScene::OnRightClick(cUIButton * pSender)
+void cMainMenuScene::OnRightClick(cUIButton* pSender)
 {
 }

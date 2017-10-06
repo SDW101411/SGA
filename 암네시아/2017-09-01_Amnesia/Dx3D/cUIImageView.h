@@ -4,6 +4,7 @@ class cUIImageView : public cUIObject
 {
 private:
 	string	m_sTexture;
+	SYNTHESIZE(int, m_nAlpha, AlphaValue);
 
 public:
 	cUIImageView(void);

@@ -108,6 +108,7 @@ void cMainGame::MsgProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 	case WM_DESTROY:	//종료 메시지
 		PostQuitMessage(0);
 		//return 0;
+		break;
 	}
 	if (m_pMain_admin)
 		m_pMain_admin->MsgProc(hWnd, message, wParam, lParam);
