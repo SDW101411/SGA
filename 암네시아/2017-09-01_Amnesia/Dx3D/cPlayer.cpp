@@ -457,4 +457,9 @@ D3DXVECTOR3 cPlayer::Get_cPlayer_Pos()
 	return *m_pPlayerCtrl->Get_m_Pos();
 }
 
+D3DXVECTOR3 * cPlayer::Get_p_cPlayer_Pos()
+{
+	return m_pPlayerCtrl->Get_m_Pos();
+}
+
 
