@@ -278,14 +278,76 @@ D3DXVECTOR3 cMapLoader::LoadToLeftTop()
 	}
 }
 
+D3DXVECTOR3 cMapLoader::LoadToPlayerPosition()
+{
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_PLAYERPOS))
+		{
+			D3DXVECTOR3 vec = LoadVec3();
+			fclose(m_fp);
+			return vec;
+		}
+	}
+}
+
+D3DXVECTOR3 cMapLoader::LoadToMonsterPosition1()
+{
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_MONSTERPOS1))
+		{
+			D3DXVECTOR3 vec = LoadVec3();
+			fclose(m_fp);
+			return vec;
+		}
+	}
+}
+
+D3DXVECTOR3 cMapLoader::LoadToMonsterPosition2()
+{
+	m_fp = fopen("Data/MapData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_MONSTERPOS2))
+		{
+			D3DXVECTOR3 vec = LoadVec3();
+			fclose(m_fp);
+			return vec;
+		}
+	}
+}
+
 void cMapLoader::PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap)
 {
 	for each(auto map in objMap)
 	{
 		for each(auto light in objLight)
 		{
-			if (GetDistance(light->m_lightPos, map->GetPosition()) < 12)
+			if (GetDistance(light->m_Pos, map->GetPosition()) < 12)
+			{
 				map->m_Light_Vec_Push(light);
+			}
 		}
 	}
 }

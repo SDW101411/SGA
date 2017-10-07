@@ -1,6 +1,8 @@
 #pragma once
 #include <set>
 
+#define g_pASTAR cAStar::GetInstance()
+
 class cGridNode;
 
 class cAStar
@@ -31,10 +33,10 @@ private:
 
 private:
 	SYNTHESIZE(bool, m_isClear, IsClear);
-
+	SINGLETON(cAStar);
 public:
-	cAStar();
-	~cAStar();
+	void Destroy();
+
 	void Render();
 
 	list<D3DXVECTOR3> FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end);

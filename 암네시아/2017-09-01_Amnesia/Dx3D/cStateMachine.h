@@ -5,9 +5,12 @@ class cMonster;
 
 enum
 {
-	MON_MOVEAROUND,
-	MON_RUNTOPLAYER,
-	MON_LOOKAROUND,
+	MON_STATE_WAIT,
+	MON_STATE_MOVE_MONPOS1,
+	MON_STATE_MOVE_MONPOS2,
+	MON_STATE_RUNTOPLAYER,
+	MON_STATE_ATTACK,
+	MON_STATE_MISSEDPLAYER,
 };
 typedef int MONSTER_STATE;
 
@@ -22,7 +25,7 @@ public:
 	~cStateMachine();
 
 	void AddState(MONSTER_STATE id, iState* pState);
-	void SetState();
+	void SetState(MONSTER_STATE state);
 	void ChanteState(MONSTER_STATE ID);
 	void Update();
 	void Render();

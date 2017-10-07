@@ -21,6 +21,10 @@ private:
 	vector<cMapSurface>							m_wallSurface;
 	vector<cMapSurface>							m_groundSurface;
 
+	SYNTHESIZE(D3DXVECTOR3, m_playerPos, PlayerPosition);
+	SYNTHESIZE(D3DXVECTOR3, m_monsterPos1, MonsterPosition1);
+	SYNTHESIZE(D3DXVECTOR3, m_monsterPos2, MonsterPosition2);
+
 public:
 	cMapTool();
 	~cMapTool();

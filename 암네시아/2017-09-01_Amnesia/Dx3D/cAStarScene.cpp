@@ -8,7 +8,6 @@
 #include "cAStarBtn.h"
 
 cAStarScene::cAStarScene()
-	: m_pAStar(NULL)
 {
 	cAStarBtn* pBtn = new cAStarBtn;
 	m_pIUI = pBtn;
@@ -22,7 +21,6 @@ cAStarScene::~cAStarScene()
 void cAStarScene::Setup()
 {
 	m_pMonster = new cMonster();
-	m_pAStar = new cAStar();
 	cMapLoader loader;
 	m_surface = loader.LoadToGroundSurface();
 	m_isSafe = false;
@@ -30,7 +28,6 @@ void cAStarScene::Setup()
 
 void cAStarScene::Release()
 {
-	SAFE_DELETE(m_pAStar);
 	SAFE_DELETE(m_pMonster);
 }
 
@@ -49,7 +46,7 @@ void cAStarScene::Update()
 		D3DXVECTOR3 pos;
 		if (FindPickingPosition(pos, m_surface) && m_isSafe)
 		{
-			m_pAStar->FindPath(m_pos, pos);
+			g_pASTAR->FindPath(m_pos, pos);
 			m_isSafe = false;
 		}
 	}
@@ -59,7 +56,7 @@ void cAStarScene::Update()
 
 void cAStarScene::Render()
 {
-	SAFE_RENDER(m_pAStar);
+	SAFE_RENDER(g_pASTAR);
 	SAFE_RENDER(m_pMonster);
 	SAFE_RENDER(m_pIUI);
 }

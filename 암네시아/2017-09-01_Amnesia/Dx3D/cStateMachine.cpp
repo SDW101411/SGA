@@ -3,11 +3,20 @@
 #include "iState.h"
 #include "cMonster.h"
 
+#include "cStateWait.h"
+#include "cStateMoveToPos1.h"
+#include "cStateMoveToPos2.h"
+
 cStateMachine::cStateMachine(cMonster* pMonster)
 	: m_pMonster(NULL)
 	, m_pCurState(NULL)
 {
 	m_pMonster = pMonster;
+	AddState(MON_STATE_WAIT, new cStateWait(pMonster));
+	AddState(MON_STATE_MOVE_MONPOS1, new cStateMoveToPos1(pMonster));
+	AddState(MON_STATE_MOVE_MONPOS2, new cStateMoveToPos2(pMonster));
+
+	SetState(MON_STATE_WAIT);
 }
 
 cStateMachine::~cStateMachine()
@@ -24,9 +33,12 @@ void cStateMachine::AddState(MONSTER_STATE id, iState* pState)
 	m_stateList[id] = pState;
 }
 
-void cStateMachine::SetState()
+void cStateMachine::SetState(MONSTER_STATE state)
 {
-
+	assert(m_stateList.find(state)->second && "해당 상태가 Add되지 않았습니다 (cStateMachine)");
+	if(m_pCurState) m_pCurState->Release();
+	m_pCurState = m_stateList[state];
+	m_pCurState->Setup();
 }
 
 void cStateMachine::ChanteState(MONSTER_STATE ID)

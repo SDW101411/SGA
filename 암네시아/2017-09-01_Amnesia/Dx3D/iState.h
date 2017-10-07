@@ -5,7 +5,7 @@ class cMonster;
 class iState
 {
 protected:
-	cMonster* pThis;
+	cMonster* m_pThis;
 public:
 	virtual void Setup() = 0;
 	virtual void Release() = 0;

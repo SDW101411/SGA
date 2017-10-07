@@ -208,6 +208,7 @@ struct ST_RHWT_VERTEX
 #include "cLoadManager.h"
 #include "randomFunction.h"
 #include "cSoundTrack.h"
+#include "cAStar.h"
 #include "cUtil.h"
 
 class iObject;

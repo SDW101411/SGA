@@ -27,6 +27,7 @@ cMainGame::~cMainGame(void)
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pDeviceManager->Destroy();
+	g_pASTAR->Destroy();
 }
 
 void cMainGame::Setup()
