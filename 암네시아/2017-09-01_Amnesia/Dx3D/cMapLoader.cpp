@@ -344,8 +344,10 @@ void cMapLoader::PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cOb
 	{
 		for each(auto light in objLight)
 		{
-			if (GetDistance(light->m_lightPos, map->GetPosition()) < 12)
+			if (GetDistance(light->m_Pos, map->GetPosition()) < 12)
+			{
 				map->m_Light_Vec_Push(light);
+			}
 		}
 	}
 }
