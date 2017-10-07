@@ -197,6 +197,7 @@ struct ST_SIZE
 #include "cLoadManager.h"
 #include "randomFunction.h"
 #include "cSoundTrack.h"
+#include "cAStar.h"
 
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;

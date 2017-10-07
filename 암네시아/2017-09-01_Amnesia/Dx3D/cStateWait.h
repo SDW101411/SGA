@@ -1,12 +1,15 @@
 #pragma once
 #include "iState.h"
 
-class cStateMoveToPos1 : public iState
+#define MAX_WAITTIME 1.0f
+
+class cStateWait : public iState
 {
-private:
+protected:
+	float m_waitTime;
 public:
-	cStateMoveToPos1(cMonster* pThis);
-	~cStateMoveToPos1();
+	cStateWait(cMonster* pThis);
+	~cStateWait();
 
 	virtual void Setup() override;
 	virtual void Release() override;

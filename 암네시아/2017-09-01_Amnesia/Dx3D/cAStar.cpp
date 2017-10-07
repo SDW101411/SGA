@@ -13,6 +13,8 @@ cAStar::cAStar()
 	m_nodeList = loader.LoadToGridNode();
 	InitializeCriticalSection(&m_cs);
 
+	m_isClear = true;
+
 	m_dirList.push_back(GRIDNODE_DIR_LEFT);
 	m_dirList.push_back(GRIDNODE_DIR_RIGHT);
 	m_dirList.push_back(GRIDNODE_DIR_UP);
@@ -33,6 +35,10 @@ cAStar::cAStar()
 }
 
 cAStar::~cAStar()
+{
+}
+
+void cAStar::Destroy()
 {
 	map<int, map<int, cGridNode*>>::iterator row = m_nodeList.begin();
 	for (; row != m_nodeList.end(); row++)
@@ -103,6 +109,7 @@ list<D3DXVECTOR3> cAStar::FindPath(D3DXVECTOR3 start, D3DXVECTOR3 end)
 		pCurNode = pCurNode->GetParent();
 	}
 
+	m_usingNode;
 
 	CloseHandle(CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)SetNodeCleanFunc, this, NULL/*CREATE_SUSPENDED*/, &m_dwThID));
 	m_isClear = false;

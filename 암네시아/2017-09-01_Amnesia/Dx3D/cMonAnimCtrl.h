@@ -19,8 +19,6 @@ protected:
 	SYNTHESIZE(D3DXVECTOR3, m_pos, Position);
 	cSkinnedMesh* m_pCurMesh;
 
-	list<D3DXVECTOR3> m_;
-
 	map<MON_ANIM, cSkinnedMesh*> m_meshList;
 public:
 	cMonAnimCtrl();
