@@ -13,6 +13,7 @@ protected:
 	D3DXMATRIX			m_matWorld;
 	cStateMachine*		m_pMachine;
 	cMonAnimCtrl*		m_pMonAnim;
+	D3DXVECTOR3*		m_pPlayerPos;
 	list<D3DXVECTOR3>	m_route;
 
 protected:
@@ -33,6 +34,9 @@ public:
 	void MoveRoute(float speed);
 
 	inline int GetRouteSize() { return m_route.size(); }
+
+	inline D3DXVECTOR3 GetPlayerPos() { return *m_pPlayerPos; }
+	inline void SetPlayerPos(D3DXVECTOR3* pos) { m_pPlayerPos = pos; }
 
 protected:
 	float GetDistance(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2);
