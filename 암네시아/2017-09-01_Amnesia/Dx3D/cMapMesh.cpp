@@ -62,6 +62,11 @@ void cMapMesh::Setup(int tag)
 	case MAPMESH_TAG_TORCH_STATIC_01:
 		meshName = "X_File/MapObjects/torch/torch_static01.X";
 		textureName = "X_File/MapObjects/torch/torch_static01.dds";
+		break;
+	case MAPMESH_TAG_BARREL_DEFAULT:
+		meshName = "X_File/MapObjects/barrel/barrel01.X";
+		textureName = "X_File/MapObjects/barrel/barrel01.dds";
+		break;
 	}
 	m_pMesh = LoadMesh(meshName);
 	m_pTexture = LoadTexture(textureName);

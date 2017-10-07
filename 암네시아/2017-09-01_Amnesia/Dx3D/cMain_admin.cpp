@@ -47,6 +47,7 @@ cMain_admin::cMain_admin()
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONCAVE_WORN",	"X_File/MapObjects/ceiling/corner_concave_worn");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_CORNER_CONVER_SHORT",	"X_File/MapObjects/ceiling/corner_concave_short");
 	cMESH_MANAGER->INSERT("MAPMESH_TAG_TORCH_STATIC_01",		"X_File/MapObjects/torch/torch_static01");
+	cMESH_MANAGER->INSERT("MAPMESH_TAG_BARREL_DEFAULT",			"X_File/MapObjects/barrel/barrel01");
 	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_OIL",			"X_File/entities/potion_oil/potion_oil");
 	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_TINDERBOX",		"X_File/entities/tinderbox/tinderbox");
 	cMESH_MANAGER->INSERT("ITEMMESH_TAG_POTION_HEALTH",			"X_File/entities/potion_health/potion_health");

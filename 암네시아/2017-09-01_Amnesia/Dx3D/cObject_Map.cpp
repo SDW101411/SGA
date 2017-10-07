@@ -46,6 +46,9 @@ cObject_Map::cObject_Map(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 Rot
 	case MAPMESH_TAG_CORNER_CONVER_SHORT:
 		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_CORNER_CONVER_SHORT");
 		break;
+	case MAPMESH_TAG_BARREL_DEFAULT:
+		cObject = cMESH_MANAGER->FIND("MAPMESH_TAG_BARREL_DEFAULT");
+		break;
 	default:
 		break;
 	}
