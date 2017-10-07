@@ -86,6 +86,8 @@ private:
 
 private:
 	void Lantern_Rander();
+public:
+	D3DXVECTOR3 Get_cPlayer_Pos();
 
 };
 

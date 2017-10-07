@@ -516,6 +516,12 @@
     <ClInclude Include="cAStarBtn.h">
       <Filter>영빈\AStarScene\AStarBtn</Filter>
     </ClInclude>
+    <ClInclude Include="c_Gaussian.h">
+      <Filter>동욱</Filter>
+    </ClInclude>
+    <ClInclude Include="cUtil.h">
+      <Filter>선생님\Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -782,7 +788,6 @@
     <ClCompile Include="cScene_Item.cpp">
       <Filter>동욱\아이템오브젝트%28Item%29</Filter>
     </ClCompile>
-
     <ClCompile Include="cAStarScene.cpp">
       <Filter>영빈\AStarScene</Filter>
     </ClCompile>
@@ -806,6 +811,12 @@
     </ClCompile>
     <ClCompile Include="cAStarBtn.cpp">
       <Filter>영빈\AStarScene\AStarBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="c_Gaussian.cpp">
+      <Filter>동욱</Filter>
+    </ClCompile>
+    <ClCompile Include="cUtil.cpp">
+      <Filter>선생님\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

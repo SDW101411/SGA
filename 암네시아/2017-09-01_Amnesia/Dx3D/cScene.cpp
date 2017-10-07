@@ -30,6 +30,10 @@ void cScene::Render()
 {
 }
 
+void cScene::Render_UI_Render()
+{
+}
+
 void cScene::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 }

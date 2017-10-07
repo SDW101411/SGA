@@ -452,4 +452,9 @@ void cPlayer::Lantern_Rander()
 	m_Lantern.m_Normal_Effect->End();
 }
 
+D3DXVECTOR3 cPlayer::Get_cPlayer_Pos()
+{
+	return *m_pPlayerCtrl->Get_m_Pos();
+}
+
 

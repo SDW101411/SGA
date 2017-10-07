@@ -264,6 +264,14 @@ void cUIToolTestScene::Render()
 	}
 }
 
+void cUIToolTestScene::Render_UI_Render()
+{
+	if (KEYMANAGER->isToggleKey(VK_TAB))
+	{
+		m_pUIRoot->Render(m_pSprite);
+	}
+}
+
 void cUIToolTestScene::OnMouse(cUIButton* pSender)
 {
 	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
