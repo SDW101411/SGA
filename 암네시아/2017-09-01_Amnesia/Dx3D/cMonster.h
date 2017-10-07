@@ -2,13 +2,14 @@
 
 class cSkinnedMesh;
 class cStateMachine;
+class cMonAnimCtrl;
 
 class cMonster
 {
 private:
 	D3DXMATRIX		m_matWorld;
-	cSkinnedMesh*	m_pMesh;
 	cStateMachine*	m_pMachine;
+	cMonAnimCtrl*	m_pMonAnim;
 private:
 	SYNTHESIZE(D3DXVECTOR3, m_pos, Position);
 	SYNTHESIZE(float, m_angle, Angle);
@@ -19,4 +20,6 @@ public:
 
 	void Update();
 	void Render();
+
+	void SetAnim(int tag);
 };

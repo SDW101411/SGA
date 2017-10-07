@@ -199,6 +199,12 @@
     <Filter Include="영빈\AStarScene\AStarBtn">
       <UniqueIdentifier>{30dbd7b7-a5a3-4421-9a42-1d0b11abb91d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State\MoveTo">
+      <UniqueIdentifier>{6c543aba-de47-4224-9158-61709f42d86f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\MonsterAnimController">
+      <UniqueIdentifier>{7b59ea52-6a7b-434c-8d90-ec68e41b5090}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -516,6 +522,15 @@
     <ClInclude Include="cAStarBtn.h">
       <Filter>영빈\AStarScene\AStarBtn</Filter>
     </ClInclude>
+    <ClInclude Include="cStateMoveToPos1.h">
+      <Filter>영빈\Monster\AI\StateMachine\State\MoveTo</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMoveToPos2.h">
+      <Filter>영빈\Monster\AI\StateMachine\State\MoveTo</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonAnimCtrl.h">
+      <Filter>영빈\Monster\MonsterAnimController</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -782,7 +797,6 @@
     <ClCompile Include="cScene_Item.cpp">
       <Filter>동욱\아이템오브젝트%28Item%29</Filter>
     </ClCompile>
-
     <ClCompile Include="cAStarScene.cpp">
       <Filter>영빈\AStarScene</Filter>
     </ClCompile>
@@ -806,6 +820,15 @@
     </ClCompile>
     <ClCompile Include="cAStarBtn.cpp">
       <Filter>영빈\AStarScene\AStarBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMoveToPos1.cpp">
+      <Filter>영빈\Monster\AI\StateMachine\State\MoveTo</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMoveToPos2.cpp">
+      <Filter>영빈\Monster\AI\StateMachine\State\MoveTo</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonAnimCtrl.cpp">
+      <Filter>영빈\Monster\MonsterAnimController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

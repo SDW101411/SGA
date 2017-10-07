@@ -357,3 +357,8 @@ void cSkinnedMesh::Anireset()
 	m_pAnimController->SetTrackPosition(0, 0.0f);
 }
 
+void cSkinnedMesh::AniTrackReset(int index)
+{
+	m_pAnimController->SetTrackPosition(index, 0.5f);
+}
+
