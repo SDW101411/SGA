@@ -55,18 +55,18 @@ void cMapToolScene::Update()
 		if (m_curRotation.y < 0) m_curRotation.y += D3DX_PI * 2;
 	}
 
-	if (KEYMANAGER->isOnceKeyDown('Z'))
-	{
-		m_curScale.x -= 0.05f;
-		m_curScale.y -= 0.05f;
-		m_curScale.z -= 0.05f;
-	}
-	if (KEYMANAGER->isOnceKeyDown('X'))
-	{
-		m_curScale.x += 0.05f;
-		m_curScale.y += 0.05f;
-		m_curScale.z += 0.05f;
-	}
+	//if (KEYMANAGER->isOnceKeyDown('Z'))
+	//{
+	//	m_curScale.x -= 0.05f;
+	//	m_curScale.y -= 0.05f;
+	//	m_curScale.z -= 0.05f;
+	//}
+	//if (KEYMANAGER->isOnceKeyDown('X'))
+	//{
+	//	m_curScale.x += 0.05f;
+	//	m_curScale.y += 0.05f;
+	//	m_curScale.z += 0.05f;
+	//}
 
 	if (KEYMANAGER->isOnceKeyDown('C'))
 	{
@@ -92,6 +92,25 @@ void cMapToolScene::Update()
 				m_pMapTool->CreateGround(m_curPickikngPos, pos);
 			}
 		}
+	}
+
+	if (KEYMANAGER->isOnceKeyDown('U'))
+	{
+		D3DXVECTOR3 pos;
+		if (m_pMapTool->FindPickingPosition(pos, m_ground))
+			m_pMapTool->SetPlayerPosition(pos);
+	}
+	if (KEYMANAGER->isOnceKeyDown('I'))
+	{
+		D3DXVECTOR3 pos;
+		if (m_pMapTool->FindPickingPosition(pos, m_ground))
+			m_pMapTool->SetMonsterPosition1(pos);
+	}
+	if (KEYMANAGER->isOnceKeyDown('O'))
+	{
+		D3DXVECTOR3 pos;
+		if (m_pMapTool->FindPickingPosition(pos, m_ground))
+			m_pMapTool->SetMonsterPosition2(pos);
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(VK_LEFT))

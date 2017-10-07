@@ -6,6 +6,9 @@
 #define ID_GRIDNODE							("<GRIDNODE>")
 #define ID_WALL								("<WALL>")
 #define ID_GROUND							("<GROUND>")
+#define ID_PLAYERPOS						("<PLAYER>")
+#define ID_MONSTERPOS1						("<MON1>")
+#define ID_MONSTERPOS2						("<MON2>")
 #define ID_END								("END")
 #define ID_MAPMESH_TAG_CEILING_DEFAULT		("MAPMESH_TAG_CEILING_DEFAULT")
 #define ID_MAPMESH_TAG_CEILING_BROKEN		("MAPMESH_TAG_CEILING_BROKEN")
@@ -41,6 +44,9 @@ public:
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();
 	map<int, map<int, cGridNode*>>			LoadToGridNode();
 	D3DXVECTOR3								LoadToLeftTop();
+	D3DXVECTOR3								LoadToPlayerPosition();
+	D3DXVECTOR3								LoadToMonsterPosition1();
+	D3DXVECTOR3								LoadToMonsterPosition2();
 
 	void									PushNearLight(IN vector<cObject_Light*> objLight, IN vector<cObject_Map*>& objMap);
 
