@@ -25,6 +25,11 @@ void cMonAnimCtrl::SetAnimation(MON_ANIM tag)
 	m_pCurMesh->SetPosition(D3DXVECTOR3(0, 0, 0));
 }
 
+float cMonAnimCtrl::GetAnimationTime()
+{
+	return m_pCurMesh->Get_Return_ANIM_Time();
+}
+
 void cMonAnimCtrl::Render()
 {
 	if (m_pCurMesh) m_pCurMesh->UpdateAndRender(m_matWorld);

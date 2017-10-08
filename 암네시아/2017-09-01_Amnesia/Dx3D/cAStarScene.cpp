@@ -24,6 +24,7 @@ cAStarScene::~cAStarScene()
 void cAStarScene::Setup()
 {
 	m_pMonster = new cMonster();
+	m_pMonster->SetPlayerPos(&m_pos);
 	cMapLoader loader;
 	m_surface = loader.LoadToGroundSurface();
 	m_pos = loader.LoadToPlayerPosition();

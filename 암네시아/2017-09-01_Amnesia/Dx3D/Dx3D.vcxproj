@@ -160,9 +160,13 @@
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cSoundTrack.h" />
+    <ClInclude Include="cStateAttack.h" />
+    <ClInclude Include="cStateLookPlayer.h" />
     <ClInclude Include="cStateMachine.h" />
+    <ClInclude Include="cStateMissedPlayer.h" />
     <ClInclude Include="cStateMoveToPos1.h" />
     <ClInclude Include="cStateMoveToPos2.h" />
+    <ClInclude Include="cStateRunToPlayer.h" />
     <ClInclude Include="cStateWait.h" />
     <ClInclude Include="cTabUI.h" />
     <ClInclude Include="cTextureManager.h" />
@@ -222,6 +226,8 @@
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cLoadingScene.cpp" />
     <ClCompile Include="cLoadManager.cpp" />
+    <ClCompile Include="cStateAttack.cpp" />
+    <ClCompile Include="cStateLookPlayer.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMainMenuScene.cpp" />
     <ClCompile Include="cMain_admin.cpp" />
@@ -269,8 +275,10 @@
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cSoundTrack.cpp" />
     <ClCompile Include="cStateMachine.cpp" />
+    <ClCompile Include="cStateMissedPlayer.cpp" />
     <ClCompile Include="cStateMoveToPos1.cpp" />
     <ClCompile Include="cStateMoveToPos2.cpp" />
+    <ClCompile Include="cStateRunToPlayer.cpp" />
     <ClCompile Include="cStateWait.cpp" />
     <ClCompile Include="cTabUI.cpp" />
     <ClCompile Include="cTextureManager.cpp" />

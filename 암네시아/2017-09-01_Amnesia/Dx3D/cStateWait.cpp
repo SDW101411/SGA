@@ -33,8 +33,16 @@ void cStateWait::Update()
 		D3DXVECTOR3 pos1 = m_pThis->GetPosition();
 		D3DXVECTOR3 pos2 = loader.LoadToMonsterPosition1();
 		D3DXVECTOR3 dist = pos1 - pos2;
-		if (dist.x * dist.x + dist.z * dist.z < 5.0f) m_pThis->SetState(MON_STATE_MOVE_MONPOS2);
-		else m_pThis->SetState(MON_STATE_MOVE_MONPOS1);
+		if (dist.x * dist.x + dist.z * dist.z < 5.0f)
+			m_pThis->SetState(MON_STATE_MOVE_MONPOS2);
+		else 
+			m_pThis->SetState(MON_STATE_MOVE_MONPOS1);
+		return;
+	}
+	if (m_pThis->IsMeetPlayer())
+	{
+		m_pThis->SetState(MON_STATE_LOOKPLAYER);
+		return;
 	}
 }
 

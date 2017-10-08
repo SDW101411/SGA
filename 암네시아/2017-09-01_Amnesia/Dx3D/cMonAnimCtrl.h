@@ -24,6 +24,7 @@ public:
 	cMonAnimCtrl();
 	~cMonAnimCtrl();
 	void SetAnimation(MON_ANIM tag);
+	float GetAnimationTime();
 
 	void Render();
 };
