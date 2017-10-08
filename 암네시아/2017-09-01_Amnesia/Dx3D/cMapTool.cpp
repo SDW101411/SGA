@@ -324,6 +324,19 @@ void cMapTool::SaveData()
 	PutGridNode(fp);
 	fputs("END\n", fp);
 
+	fputs("<PLAYER>\n", fp);
+	sprintf(str, "%f %f %f\n", m_playerPos.x, m_playerPos.y, m_playerPos.z);
+	fputs(str, fp);
+	fputs("END\n", fp);
+	fputs("<MON1>\n", fp);
+	sprintf(str, "%f %f %f\n", m_monsterPos1.x, m_monsterPos1.y, m_monsterPos1.z);
+	fputs(str, fp);
+	fputs("END\n", fp);
+	fputs("<MON2>\n", fp);
+	sprintf(str, "%f %f %f\n", m_monsterPos2.x, m_monsterPos2.y, m_monsterPos2.z);
+	fputs(str, fp);
+	fputs("END\n", fp);
+
 	fclose(fp);
 }
 

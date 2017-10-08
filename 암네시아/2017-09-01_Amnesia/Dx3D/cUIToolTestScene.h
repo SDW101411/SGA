@@ -29,6 +29,7 @@ public:
 
 	void Update();
 	void Render();
+	void Render_UI_Render();
 
 	virtual void OnMouse(cUIButton* pSender) override;
 	virtual void OnClick(cUIButton* pSender) override;

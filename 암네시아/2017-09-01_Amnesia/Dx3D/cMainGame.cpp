@@ -4,6 +4,7 @@
 #include "cGrid.h"
 #include "cCrtCtrl.h"
 #include "cMain_admin.h"
+#include "c_Gaussian.h"
 
 cMainGame::cMainGame(void)
 	: m_pGrid(NULL)
@@ -26,6 +27,7 @@ cMainGame::~cMainGame(void)
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pDeviceManager->Destroy();
+	g_pASTAR->Destroy();
 }
 
 void cMainGame::Setup()
@@ -41,6 +43,9 @@ void cMainGame::Setup()
 	
 	m_pMain_admin = new cMain_admin;
 
+	
+	m_pGaussian = new c_Gaussian();
+	m_pGaussian->c_Gaussian_setup();
 	SetLight();
 }
 
@@ -48,6 +53,15 @@ void cMainGame::Update()
 {
 	g_pTimeManager->Update();
 	SOUNDMANAGER->update();
+
+	if (KEYMANAGER->isOnceKeyDown('G'))
+	{
+
+		if (c_Gaussian_On)
+			c_Gaussian_On = false;
+		else
+			c_Gaussian_On = true;
+	}
 
 	SAFE_UPDATE(m_pCrtCtrl);
 	cLight_Seting = *m_pCrtCtrl->GetPosition();
@@ -60,22 +74,51 @@ void cMainGame::Update()
 
 void cMainGame::Render()
 {
+	/*g_pD3DDevice->BeginScene();
+
 	g_pD3DDevice->Clear(NULL,
 		NULL,
 		D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
 		D3DCOLOR_XRGB(100, 100, 100),
-		1.0f, 0);
+		1.0f, 0);*/
+	LPDIRECT3DSURFACE9 pHWBackBuffer;
+	LPDIRECT3DSURFACE9 pHWDepthStencilBuffer;
+	LPDIRECT3DSURFACE9 pTempSurface;
+	if (c_Gaussian_On)
+	{
+		m_pGaussian->Render_Start(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+	}
+	else
+	{
+		g_pD3DDevice->BeginScene();
+		g_pD3DDevice->Clear(NULL,
+			NULL,
+			D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
+			D3DCOLOR_XRGB(100, 100, 100),
+			1.0f, 0);
 
-	g_pD3DDevice->BeginScene();
-
+	}
 	SAFE_RENDER(m_pGrid);
 	SAFE_RENDER(m_pMain_admin);
 
+	if (c_Gaussian_On)
+	{
+		m_pGaussian->Render_End(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+	}
 	g_pTimeManager->Render();
-	
+	if (m_pMain_admin)m_pMain_admin->Render_UI_Render();
+
 	g_pD3DDevice->EndScene();
 
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);
+
+	if (c_Gaussian_On)
+	{
+		SAFE_RELEASE(pTempSurface);
+		SAFE_RELEASE(pHWBackBuffer);
+		SAFE_RELEASE(pHWDepthStencilBuffer);
+	}
+	
 }
 
 

@@ -20,6 +20,7 @@ public:
 	void Release();
 	void Update();
 	void Render();
+	void Render_UI_Render();
 	void BtnFunc(cUIButton* pButton, char* szStr, char* szStrGlow, float x, float y, float width, float height, int tag);
 	void TextViewFunc(cUITextView* pTextView, string szStr, float x, float y, int tag);
 

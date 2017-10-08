@@ -16,6 +16,8 @@ public:
 	virtual void Release();
 	virtual void Update();
 	virtual void Render();
+	virtual void Render_UI_Render();
 	virtual void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
 };
 

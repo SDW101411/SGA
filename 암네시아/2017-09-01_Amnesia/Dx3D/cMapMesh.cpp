@@ -40,8 +40,8 @@ void cMapMesh::Setup(int tag)
 		textureName = "X_File/static_objects/castlebase/wall/castlebase_wall.dds";
 		break;
 	case MAPMESH_TAG_PILLAR_FULL:
-		meshName = "X_File/static_objects/castlebase/wall/welder_convex.X";
-		textureName = "X_File/static_objects/castlebase/wall/castlebase_wall_welder_convex.dds";
+		meshName = "X_File/MapObjects/pillar/welder_convex.X";
+		textureName = "X_File/MapObjects/pillar/welder_convex.dds";
 		break;
 	case MAPMESH_TAG_FLOOR_DEFAULT:
 		meshName = "X_File/static_objects/castlebase/floor/deafult.X";

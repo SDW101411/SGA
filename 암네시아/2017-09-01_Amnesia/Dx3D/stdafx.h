@@ -177,6 +177,17 @@ struct ST_SIZE
 	ST_SIZE(float _w, float _h) : fWidth(_w), fHeight(_h) {}
 };
 
+struct ST_RHWT_VERTEX
+{
+	D3DXVECTOR4 p;
+	D3DXVECTOR2	t;
+
+	ST_RHWT_VERTEX() : p(0, 0, 0, 0), t(0, 0) {}
+	ST_RHWT_VERTEX(D3DXVECTOR4 _p, D3DXVECTOR2 _t) : p(_p), t(_t) {}
+
+	enum { FVF = D3DFVF_XYZRHW | D3DFVF_TEX1 };
+};
+
 #include "cObject.h"
 #include "cUIObject.h"
 #include "cObjectPool.h"
@@ -197,6 +208,8 @@ struct ST_SIZE
 #include "cLoadManager.h"
 #include "randomFunction.h"
 #include "cSoundTrack.h"
+#include "cAStar.h"
+#include "cUtil.h"
 
 class iObject;
 typedef vector<iObject*> Scene_oBject_List;
@@ -242,3 +255,5 @@ struct Particle_Data
 
 	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
 };
+
+extern bool c_Gaussian_On;

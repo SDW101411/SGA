@@ -27,7 +27,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -47,6 +47,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,6 +124,7 @@
     <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMapSurface.h" />
     <ClInclude Include="cMesh_Manager.h" />
+    <ClInclude Include="cMonAnimCtrl.h" />
     <ClInclude Include="cMonster.h" />
     <ClInclude Include="cMouseCursor.h" />
     <ClInclude Include="cMtlTex.h" />
@@ -158,6 +161,9 @@
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cSoundTrack.h" />
     <ClInclude Include="cStateMachine.h" />
+    <ClInclude Include="cStateMoveToPos1.h" />
+    <ClInclude Include="cStateMoveToPos2.h" />
+    <ClInclude Include="cStateWait.h" />
     <ClInclude Include="cTabUI.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
@@ -173,6 +179,8 @@
     <ClInclude Include="cUITool_In_Game_Test.h" />
     <ClInclude Include="cUI_In_Game.h" />
     <ClInclude Include="cMultiBtn.h" />
+    <ClInclude Include="cUtil.h" />
+    <ClInclude Include="c_Gaussian.h" />
     <ClInclude Include="Dx3D.h" />
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
@@ -224,6 +232,7 @@
     <ClCompile Include="cMapToolScene.cpp" />
     <ClCompile Include="cMapSurface.cpp" />
     <ClCompile Include="cMesh_Manager.cpp" />
+    <ClCompile Include="cMonAnimCtrl.cpp" />
     <ClCompile Include="cMonster.cpp" />
     <ClCompile Include="cMouseCursor.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
@@ -260,6 +269,9 @@
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cSoundTrack.cpp" />
     <ClCompile Include="cStateMachine.cpp" />
+    <ClCompile Include="cStateMoveToPos1.cpp" />
+    <ClCompile Include="cStateMoveToPos2.cpp" />
+    <ClCompile Include="cStateWait.cpp" />
     <ClCompile Include="cTabUI.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
@@ -275,6 +287,8 @@
     <ClCompile Include="cUITool_In_Game_Test.cpp" />
     <ClCompile Include="cUI_In_Game.cpp" />
     <ClCompile Include="cMultiBtn.cpp" />
+    <ClCompile Include="cUtil.cpp" />
+    <ClCompile Include="c_Gaussian.cpp" />
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />

@@ -31,6 +31,7 @@ public:
 
 	float Get_Return_ANIM_Time();
 	void Anireset();
+	void AniTrackReset(int index = 0);
 
 private:
 	cSkinnedMesh();

@@ -5,6 +5,7 @@ class cGrid;
 class cCamera;
 class cCrtCtrl;
 class cMain_admin;
+class c_Gaussian;
 
 class cMainGame : public iButtonDelegate
 {
@@ -13,7 +14,7 @@ private:
 	cCamera*		m_pCamera;
 	cCrtCtrl*		m_pCrtCtrl;
 	cMain_admin*	m_pMain_admin;
-
+	c_Gaussian*		m_pGaussian;
 public:
 	cMainGame(void);
 	~cMainGame(void);

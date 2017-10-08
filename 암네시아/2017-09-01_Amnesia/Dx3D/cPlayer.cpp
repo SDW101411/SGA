@@ -125,38 +125,6 @@ void cPlayer::Update()
 	if(m_PTarget_Mesh)Animation_Change();
 	cLight_Object_Picking_Update();
 	cObject_Item_OutLine_Update();
-
-	if (KEYMANAGER->isStayKeyDown('I'))
-	{
-		x += 0.01f;
-	}
-	if (KEYMANAGER->isStayKeyDown('O'))
-	{
-		y += 0.01f;
-	}
-	if (KEYMANAGER->isStayKeyDown('P'))
-	{
-		z += 0.01f;
-	}
-	if (KEYMANAGER->isStayKeyDown('K'))
-	{
-		k += 0.001f;
-	}
-	if (KEYMANAGER->isStayKeyDown('L'))
-	{
-		l += 0.001f;
-	}
-	if (KEYMANAGER->isStayKeyDown('H'))
-	{
-		k -= 0.001f;
-	}
-	if (KEYMANAGER->isStayKeyDown('J'))
-	{
-		l -= 0.001f;
-	}
-
-
-	int D = 0;
 }
 
 void cPlayer::Render()
@@ -486,6 +454,16 @@ void cPlayer::Lantern_Rander()
 		m_Lantern.m_Normal_Effect->EndPass();
 	}
 	m_Lantern.m_Normal_Effect->End();
+}
+
+D3DXVECTOR3 cPlayer::Get_cPlayer_Pos()
+{
+	return *m_pPlayerCtrl->Get_m_Pos();
+}
+
+D3DXVECTOR3 * cPlayer::Get_p_cPlayer_Pos()
+{
+	return m_pPlayerCtrl->Get_m_Pos();
 }
 
 
