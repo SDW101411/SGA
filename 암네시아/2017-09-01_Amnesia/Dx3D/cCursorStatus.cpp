@@ -52,6 +52,11 @@ void cCursorStatus::Update()
 
 void cCursorStatus::Render()
 {
+	
+}
+
+void cCursorStatus::RenderUI()
+{
 	m_pUIRoot->Render(m_pSprite);
 }
 

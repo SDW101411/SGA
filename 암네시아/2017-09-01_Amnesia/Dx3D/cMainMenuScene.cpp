@@ -88,7 +88,7 @@ void cMainMenuScene::Render()
 	
 }
 
-void cMainMenuScene::Render_UI_Render()
+void cMainMenuScene::RenderUI()
 {
 	if (m_pUIRoot) m_pUIRoot->Render(m_pSprite);
 }
