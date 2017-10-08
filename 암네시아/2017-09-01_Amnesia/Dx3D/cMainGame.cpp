@@ -54,6 +54,15 @@ void cMainGame::Update()
 	g_pTimeManager->Update();
 	SOUNDMANAGER->update();
 
+	if (KEYMANAGER->isOnceKeyDown('G'))
+	{
+
+		if (c_Gaussian_On)
+			c_Gaussian_On = false;
+		else
+			c_Gaussian_On = true;
+	}
+
 	SAFE_UPDATE(m_pCrtCtrl);
 	cLight_Seting = *m_pCrtCtrl->GetPosition();
 	SAFE_UPDATE(m_pCamera);
@@ -75,13 +84,27 @@ void cMainGame::Render()
 	LPDIRECT3DSURFACE9 pHWBackBuffer;
 	LPDIRECT3DSURFACE9 pHWDepthStencilBuffer;
 	LPDIRECT3DSURFACE9 pTempSurface;
-	m_pGaussian->Render_Start(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+	if (c_Gaussian_On)
+	{
+		m_pGaussian->Render_Start(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+	}
+	else
+	{
+		g_pD3DDevice->BeginScene();
+		g_pD3DDevice->Clear(NULL,
+			NULL,
+			D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
+			D3DCOLOR_XRGB(100, 100, 100),
+			1.0f, 0);
 
-
+	}
 	SAFE_RENDER(m_pGrid);
 	SAFE_RENDER(m_pMain_admin);
 
-	m_pGaussian->Render_End(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+	if (c_Gaussian_On)
+	{
+		m_pGaussian->Render_End(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+	}
 	g_pTimeManager->Render();
 	if (m_pMain_admin)m_pMain_admin->Render_UI_Render();
 
@@ -89,9 +112,13 @@ void cMainGame::Render()
 
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);
 
-	SAFE_RELEASE(pTempSurface);
-	SAFE_RELEASE(pHWBackBuffer);
-	SAFE_RELEASE(pHWDepthStencilBuffer);
+	if (c_Gaussian_On)
+	{
+		SAFE_RELEASE(pTempSurface);
+		SAFE_RELEASE(pHWBackBuffer);
+		SAFE_RELEASE(pHWDepthStencilBuffer);
+	}
+	
 }
 
 

@@ -255,3 +255,5 @@ struct Particle_Data
 
 	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
 };
+
+extern bool c_Gaussian_On;
