@@ -170,10 +170,11 @@ void cPlayer::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void cPlayer::Animation_Change()
 {
 	bool KeyCheck = false;
-	if (KEYMANAGER->isStayKeyDown('F'))
+	if (KEYMANAGER->isStayKeyDown('F') && DATABASE->GetOilValue() > 0)
 	{
 		if (m_pPlayer_Animation_Index == cPlayer_Animation_HAND)
 		{
+			SOUNDMANAGER->play("ui_lantern_on");
 			Animation_Change_Set(cPlayer_Animation_HAND_UP, &Save_ANI);
 		}
 		if (m_pPlayer_Animation_Index == cPlayer_Animation_HAND_UP)
@@ -187,13 +188,16 @@ void cPlayer::Animation_Change()
 				
 		if (m_pPlayer_Animation_Index == cPlayer_Animation_HAND_UP || m_pPlayer_Animation_Index == cPlayer_Animation_HAND_STAY)
 		{
+			DATABASE->SetOilValue(DATABASE->GetOilValue() - 0.001f);
+			if (DATABASE->GetOilValue() <= 0) SOUNDMANAGER->play("ui_lantern_off");
 			KeyCheck = true;
 			if (cLight_Color_Seting.x < 0.8f) cLight_Color_Seting.x += 0.04f;
 			if (cLight_Color_Seting.y < 0.6f) cLight_Color_Seting.y += 0.04f;
 		}
 	}
-	if (KEYMANAGER->isOnceKeyUp('F'))
+	if (KEYMANAGER->isOnceKeyUp('F') || DATABASE->GetOilValue() < 0.0f)
 	{
+		SOUNDMANAGER->play("ui_lantern_off");
 		Animation_Change_Set(cPlayer_Animation_HAND_DOWN, &Save_ANI);
 	}
 
