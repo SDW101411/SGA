@@ -6,16 +6,19 @@
 #include "cRay.h"
 #include "cMonster.h"
 #include "cAStarBtn.h"
+#include "cSkinnedMesh.h"
 
 cAStarScene::cAStarScene()
 {
 	cAStarBtn* pBtn = new cAStarBtn;
 	m_pIUI = pBtn;
+	m_pMesh = new cSkinnedMesh("Monster/", "idle.X");
 }
 
 cAStarScene::~cAStarScene()
 {
 	SAFE_DELETE(m_pIUI);
+	SAFE_DELETE(m_pMesh);
 }
 
 void cAStarScene::Setup()
@@ -23,7 +26,8 @@ void cAStarScene::Setup()
 	m_pMonster = new cMonster();
 	cMapLoader loader;
 	m_surface = loader.LoadToGroundSurface();
-	m_isSafe = false;
+	m_pos = loader.LoadToPlayerPosition();
+	m_pMesh->SetPosition(D3DXVECTOR3(0, 0, 0));
 }
 
 void cAStarScene::Release()
@@ -33,23 +37,10 @@ void cAStarScene::Release()
 
 void cAStarScene::Update()
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
-	{
-		if (FindPickingPosition(m_pos, m_surface))
-		{
-			m_isSafe = true;
-		}
-		else m_isSafe = false;
-	}
-	if (KEYMANAGER->isOnceKeyDown('1'))
-	{
-		D3DXVECTOR3 pos;
-		if (FindPickingPosition(pos, m_surface) && m_isSafe)
-		{
-			g_pASTAR->FindPath(m_pos, pos);
-			m_isSafe = false;
-		}
-	}
+	if (KEYMANAGER->isStayKeyDown(VK_LEFT)) m_pos.x -= 0.05f;
+	if (KEYMANAGER->isStayKeyDown(VK_RIGHT)) m_pos.x += 0.05f;
+	if (KEYMANAGER->isStayKeyDown(VK_UP)) m_pos.z += 0.05f;
+	if (KEYMANAGER->isStayKeyDown(VK_DOWN)) m_pos.z -= 0.05f;
 	SAFE_UPDATE(m_pMonster);
 	SAFE_UPDATE(m_pIUI);
 }
@@ -59,6 +50,9 @@ void cAStarScene::Render()
 	SAFE_RENDER(g_pASTAR);
 	SAFE_RENDER(m_pMonster);
 	SAFE_RENDER(m_pIUI);
+	D3DXMATRIX tran;
+	D3DXMatrixTranslation(&tran, m_pos.x, m_pos.y, m_pos.z);
+	if (m_pMesh) m_pMesh->UpdateAndRender(tran);
 }
 
 bool cAStarScene::FindPickingPosition(OUT D3DXVECTOR3& pos, vector<D3DXVECTOR3> ground)

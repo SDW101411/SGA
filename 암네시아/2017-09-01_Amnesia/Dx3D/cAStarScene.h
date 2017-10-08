@@ -3,14 +3,17 @@
 
 class cGridNode;
 class cMonster;
+class cSkinnedMesh;
 
 class cAStarScene : public cScene
 {
 private:
 	cMonster*	m_pMonster;
 	vector<D3DXVECTOR3> m_surface;
+	vector<D3DXVECTOR3> m_wallSurface;
+
 	D3DXVECTOR3 m_pos;
-	bool		m_isSafe;
+	cSkinnedMesh* m_pMesh;
 
 public:
 	cAStarScene();
