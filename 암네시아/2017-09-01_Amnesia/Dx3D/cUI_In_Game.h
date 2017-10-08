@@ -62,6 +62,7 @@ public:
 public:
 	void Update();
 	void Render();
+	void RenderUI();
 	void BtnFunc(cUIButton* pButton, char* szStr, char* szStrGlow, float x, float y, float width, float height, int tag);
 	void TextViewFunc(cUITextView* pTextView, cFontManager::eFontType type, string szStr, float szWidth, float szHeight, float x, float y, DWORD var, int tag);
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

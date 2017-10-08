@@ -23,5 +23,6 @@ public:
 	void Release();
 	void Update();
 	void Render();
+	void RenderUI();
 };
 

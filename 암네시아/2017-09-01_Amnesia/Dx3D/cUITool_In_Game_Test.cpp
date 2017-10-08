@@ -18,14 +18,7 @@ cUITool_In_Game_Test::~cUITool_In_Game_Test()
 
 void cUITool_In_Game_Test::Setup()
 {
-	//SOUNDMANAGER->addSound("15_event_elevator", "15_event_elevator.ogg", true, true);
-	//SOUNDMANAGER->addSound("ui_use_oil", "ui_use_oil.ogg", false, false);
-	//SOUNDMANAGER->addSound("ui_use_health", "ui_use_health.ogg", false, false);
-	//SOUNDMANAGER->addSound("journal_open", "journal_open.ogg", false, false);
-	//SOUNDMANAGER->addSound("journal_close", "journal_close.ogg", false, false);
-
 	SOUNDMANAGER->play("15_event_elevator");
-
 }
 
 void cUITool_In_Game_Test::Release()
@@ -40,6 +33,10 @@ void cUITool_In_Game_Test::Update()
 }
 
 void cUITool_In_Game_Test::Render()
+{
+}
+
+void cUITool_In_Game_Test::RenderUI()
 {
 	SAFE_RENDER(m_pUI);
 	SAFE_RENDER(m_pIUI);

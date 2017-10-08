@@ -105,8 +105,8 @@ void cMainGame::Render()
 	{
 		m_pGaussian->Render_End(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
 	}
+	if (m_pMain_admin)m_pMain_admin->RenderUI();
 	g_pTimeManager->Render();
-	if (m_pMain_admin)m_pMain_admin->Render_UI_Render();
 
 	g_pD3DDevice->EndScene();
 
@@ -173,7 +173,6 @@ void cMainGame::SetLight()
 void cMainGame::OnMouse(cUIButton* pSender)
 {
 }
-
 
 void cMainGame::OnClick( cUIButton* pSender )
 {

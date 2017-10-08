@@ -24,6 +24,7 @@ public:
 
 	void Update();
 	void Render();
+	void RenderUI();
 	void CursorStatus(int tag);
 };
 
