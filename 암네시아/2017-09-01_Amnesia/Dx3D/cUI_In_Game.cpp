@@ -237,16 +237,21 @@ void cUI_In_Game::Render()
 	}
 	else
 	{
-		switch (m_nState)
-		{
-		case UI_MAIN:
-			m_pUIRoot->Render(m_pSprite);
-			SAFE_RENDER(m_pBorder);
-			break;
-		case UI_JOURNAL:
-			SAFE_RENDER(m_pJournal);
-			break;
-		}
+		RenderUI();
+	}
+}
+
+void cUI_In_Game::RenderUI()
+{
+	switch (m_nState)
+	{
+	case UI_MAIN:
+		m_pUIRoot->Render(m_pSprite);
+		SAFE_RENDER(m_pBorder);
+		break;
+	case UI_JOURNAL:
+		SAFE_RENDER(m_pJournal);
+		break;
 	}
 }
 

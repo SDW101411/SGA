@@ -56,11 +56,17 @@ void cMainGame::Update()
 
 	if (KEYMANAGER->isOnceKeyDown('G'))
 	{
+		if (c_Gaussian_On) c_Gaussian_On = false;
+		else c_Gaussian_On = true;
+	}
 
-		if (c_Gaussian_On)
-			c_Gaussian_On = false;
-		else
-			c_Gaussian_On = true;
+	if (KEYMANAGER->isStayKeyDown('N'))
+	{
+		Wave_float += 0.0001f;
+	}
+	if (KEYMANAGER->isStayKeyDown('M'))
+	{
+		Wave_float -= 0.0001f;
 	}
 
 	SAFE_UPDATE(m_pCrtCtrl);
@@ -84,6 +90,10 @@ void cMainGame::Render()
 	LPDIRECT3DSURFACE9 pHWBackBuffer;
 	LPDIRECT3DSURFACE9 pHWDepthStencilBuffer;
 	LPDIRECT3DSURFACE9 pTempSurface;
+
+	LPDIRECT3DSURFACE9 pHWBackBuffer_2;
+	LPDIRECT3DSURFACE9 pHWDepthStencilBuffer_2;
+	LPDIRECT3DSURFACE9 pTempSurface_2;
 	if (c_Gaussian_On)
 	{
 		m_pGaussian->Render_Start(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
@@ -103,10 +113,10 @@ void cMainGame::Render()
 
 	if (c_Gaussian_On)
 	{
-		m_pGaussian->Render_End(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface);
+		m_pGaussian->Render_End(pHWBackBuffer, pHWDepthStencilBuffer, pTempSurface, pHWBackBuffer_2, pHWDepthStencilBuffer_2, pTempSurface_2);
 	}
+	if (m_pMain_admin)m_pMain_admin->RenderUI();
 	g_pTimeManager->Render();
-	if (m_pMain_admin)m_pMain_admin->Render_UI_Render();
 
 	g_pD3DDevice->EndScene();
 
@@ -117,6 +127,9 @@ void cMainGame::Render()
 		SAFE_RELEASE(pTempSurface);
 		SAFE_RELEASE(pHWBackBuffer);
 		SAFE_RELEASE(pHWDepthStencilBuffer);
+		//SAFE_RELEASE(pTempSurface_2);
+		//SAFE_RELEASE(pHWBackBuffer_2);
+		//SAFE_RELEASE(pHWDepthStencilBuffer_2);
 	}
 	
 }
@@ -173,7 +186,6 @@ void cMainGame::SetLight()
 void cMainGame::OnMouse(cUIButton* pSender)
 {
 }
-
 
 void cMainGame::OnClick( cUIButton* pSender )
 {

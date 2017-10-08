@@ -79,5 +79,10 @@ void cLoadingScene::Update()
 
 void cLoadingScene::Render()
 {
+	
+}
+
+void cLoadingScene::RenderUI()
+{
 	m_pUIRoot->Render(m_pSprite);
 }

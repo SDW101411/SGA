@@ -50,7 +50,7 @@ void cScene_Manager::Render()
 
 void cScene_Manager::Render_UI()
 {
-	if (m_pCurrentScene) m_pCurrentScene->Render_UI_Render();
+	if (m_pCurrentScene) m_pCurrentScene->RenderUI();
 }
 
 void cScene_Manager::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

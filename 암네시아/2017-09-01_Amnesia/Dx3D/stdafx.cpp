@@ -13,4 +13,5 @@ D3DXVECTOR3 cLight_Color_Seting = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 D3DXVECTOR3 cLight_Color_Seting_2 = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 D3DXVECTOR3 cLight_Color_Seting_3 = D3DXVECTOR3(1.0f, 0.8f, 0.0f);
 
-bool c_Gaussian_On = false;
+bool c_Gaussian_On = true;
+float Wave_float = 0.000f;

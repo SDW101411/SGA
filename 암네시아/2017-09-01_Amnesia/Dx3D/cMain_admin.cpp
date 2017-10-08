@@ -88,7 +88,7 @@ void cMain_admin::Render()
 	
 }
 
-void cMain_admin::Render_UI_Render()
+void cMain_admin::RenderUI()
 {
 	g_pSceneManager->Render_UI();
 	SAFE_RENDER(m_pMouseCursor);

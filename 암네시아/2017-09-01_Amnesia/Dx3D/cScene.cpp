@@ -6,12 +6,10 @@
 cScene::cScene()
 	:UI_On(false)
 {
-	
 }
 
 cScene::~cScene()
 {
-	
 }
 
 void cScene::Setup()
@@ -30,7 +28,7 @@ void cScene::Render()
 {
 }
 
-void cScene::Render_UI_Render()
+void cScene::RenderUI()
 {
 }
 
