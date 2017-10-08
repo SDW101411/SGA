@@ -6,6 +6,10 @@
 #include "cStateWait.h"
 #include "cStateMoveToPos1.h"
 #include "cStateMoveToPos2.h"
+#include "cStateLookPlayer.h"
+#include "cStateRunToPlayer.h"
+#include "cStateMissedPlayer.h"
+#include "cStateAttack.h"
 
 cStateMachine::cStateMachine(cMonster* pMonster)
 	: m_pMonster(NULL)
@@ -15,6 +19,10 @@ cStateMachine::cStateMachine(cMonster* pMonster)
 	AddState(MON_STATE_WAIT, new cStateWait(pMonster));
 	AddState(MON_STATE_MOVE_MONPOS1, new cStateMoveToPos1(pMonster));
 	AddState(MON_STATE_MOVE_MONPOS2, new cStateMoveToPos2(pMonster));
+	AddState(MON_STATE_LOOKPLAYER, new cStateLookPlayer(pMonster));
+	AddState(MON_STATE_RUNTOPLAYER, new cStateRunToPlayer(pMonster));
+	AddState(MON_STATE_MISSEDPLAYER, new cStateMissedPlayer(pMonster));
+	AddState(MON_STATE_ATTACK, new cStateAttack(pMonster));
 
 	SetState(MON_STATE_WAIT);
 }

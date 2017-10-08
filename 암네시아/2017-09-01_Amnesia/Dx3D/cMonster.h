@@ -15,8 +15,10 @@ protected:
 	cMonAnimCtrl*		m_pMonAnim;
 	D3DXVECTOR3*		m_pPlayerPos;
 	list<D3DXVECTOR3>	m_route;
+	vector<D3DXVECTOR3> m_wallSurface;
 
 protected:
+	SYNTHESIZE(D3DXVECTOR3, m_dir, Direction);
 	SYNTHESIZE(D3DXVECTOR3, m_pos, Position);
 	SYNTHESIZE(float, m_angle, Angle);
 	SYNTHESIZE(bool, m_move, Move);
@@ -33,10 +35,14 @@ public:
 	void SetState(MONSTER_STATE state);
 	void MoveRoute(float speed);
 
+	bool IsMeetPlayer();
+	bool IsPlayerAtNear();
+
 	inline int GetRouteSize() { return m_route.size(); }
 
 	inline D3DXVECTOR3 GetPlayerPos() { return *m_pPlayerPos; }
 	inline void SetPlayerPos(D3DXVECTOR3* pos) { m_pPlayerPos = pos; }
+	inline float GetAnimationTime() { return m_pMonAnim->GetAnimationTime(); }
 
 protected:
 	float GetDistance(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2);

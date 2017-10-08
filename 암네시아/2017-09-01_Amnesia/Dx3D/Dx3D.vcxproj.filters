@@ -208,6 +208,18 @@
     <Filter Include="영빈\Monster\AI\StateMachine\State\Wait">
       <UniqueIdentifier>{d5d0e847-f4bb-4c4f-bfc4-2fe8506d5ec2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State\LookPlayer">
+      <UniqueIdentifier>{488f6481-c768-4e21-b9d7-f7064f1496a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State\RunToPlayer">
+      <UniqueIdentifier>{c82de7a6-b3a6-4853-8668-f24437ddd280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State\MissedPlayer">
+      <UniqueIdentifier>{f629071c-fde6-44b7-9bf2-39856e28267a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="영빈\Monster\AI\StateMachine\State\Attack">
+      <UniqueIdentifier>{756ef2a4-e7af-47f1-98cb-a39462f50e08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -543,6 +555,18 @@
     <ClInclude Include="cStateWait.h">
       <Filter>영빈\Monster\AI\StateMachine\State\Wait</Filter>
     </ClInclude>
+    <ClInclude Include="cStateLookPlayer.h">
+      <Filter>영빈\Monster\AI\StateMachine\State\LookPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateRunToPlayer.h">
+      <Filter>영빈\Monster\AI\StateMachine\State\RunToPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMissedPlayer.h">
+      <Filter>영빈\Monster\AI\StateMachine\State\MissedPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateAttack.h">
+      <Filter>영빈\Monster\AI\StateMachine\State\Attack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -839,7 +863,6 @@
     <ClCompile Include="cUtil.cpp">
       <Filter>선생님\Util</Filter>
     </ClCompile>
-
     <ClCompile Include="cStateMoveToPos1.cpp">
       <Filter>영빈\Monster\AI\StateMachine\State\MoveTo</Filter>
     </ClCompile>
@@ -851,6 +874,18 @@
     </ClCompile>
     <ClCompile Include="cStateWait.cpp">
       <Filter>영빈\Monster\AI\StateMachine\State\Wait</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateLookPlayer.cpp">
+      <Filter>영빈\Monster\AI\StateMachine\State\LookPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateRunToPlayer.cpp">
+      <Filter>영빈\Monster\AI\StateMachine\State\RunToPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMissedPlayer.cpp">
+      <Filter>영빈\Monster\AI\StateMachine\State\MissedPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateAttack.cpp">
+      <Filter>영빈\Monster\AI\StateMachine\State\Attack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
