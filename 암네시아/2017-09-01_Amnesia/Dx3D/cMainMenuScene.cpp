@@ -13,7 +13,7 @@ enum
 	E_GAME_START = 101,
 	E_GAME_OPTION = 102,
 	E_GAME_CLOSE = 103,
-	E_BTN_SDW = 104,
+	E_BTN_LEE = 104,
 	E_BTN_NGYB = 105,
 	E_TEXT_VIEW,
 };
@@ -57,8 +57,8 @@ cMainMenuScene::cMainMenuScene()
 
 	BtnFunc(pButton, "설정", "설정Mouse", 1090, 270, 0.8f, 0.8f, E_GAME_OPTION);
 	BtnFunc(pButton, "종료", "종료Mouse", 1091, 340, 0.8f, 0.8f, E_GAME_CLOSE);
-	BtnFunc(pButton, "우기", "우기Mouse", 1080, 410, 0.5f, 0.5f, E_BTN_SDW);
-	BtnFunc(pButton, "꿍이", "꿍이Mouse", 1080, 480, 0.5f, 0.5f, E_BTN_NGYB);
+	BtnFunc(pButton, "UITest", "Lee", 1072, 410, 0.5f, 0.5f, E_BTN_LEE);
+	//BtnFunc(pButton, "꿍이", "꿍이Mouse", 1080, 480, 0.5f, 0.5f, E_BTN_NGYB);
 
 	cUITextView* pTextView = new cUITextView(cFontManager::E_NORMAL);
 	pTextView->SetText("");
@@ -146,13 +146,13 @@ void cMainMenuScene::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 
 void cMainMenuScene::OnMouse(cUIButton* pSender)
 {
-	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
+	/*cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_VIEW);
 	if (pTextView == NULL) return;
 
 	if (pSender->GetTag() == E_GAME_OPTION)
 	{
 		pTextView->SetText("게임 옵션");
-	}
+	}*/
 }
 
 void cMainMenuScene::OnClick(cUIButton* pSender)
@@ -163,26 +163,29 @@ void cMainMenuScene::OnClick(cUIButton* pSender)
 	if (pSender->GetTag() == E_GAME_START)
 	{
 		//	pTextView->SetText("게임 시작");
-		g_pSceneManager->SceneChange("cUITool_In_Game_Test");
+		//g_pSceneManager->SceneChange("cUITool_In_Game_Test");
+		g_pSceneManager->SceneChange("cLoadingScene");
 	}
-	/*else if (pSender->GetTag() == E_GAME_OPTION)
+	else if (pSender->GetTag() == E_GAME_OPTION)
 	{
-	pTextView->SetText("게임 옵션");
-	}*/
+		//pTextView->SetText("게임 옵션");
+		g_pSceneManager->SceneChange("cAStarScene");
+	}
 	else if (pSender->GetTag() == E_GAME_CLOSE)
 	{
 		//pTextView->SetText("게임 종료");
 		PostQuitMessage(0);
 	}
-	else if (pSender->GetTag() == E_BTN_SDW)
+	else if (pSender->GetTag() == E_BTN_LEE)
 	{
 		//g_pSceneManager->SceneChange("cScene_Shader_Scene_Test");
-		g_pSceneManager->SceneChange("cLoadingScene");
+		//g_pSceneManager->SceneChange("cLoadingScene");
+		g_pSceneManager->SceneChange("cUITool_In_Game_Test");
 	}
-	else if (pSender->GetTag() == E_BTN_NGYB)
+	/*else if (pSender->GetTag() == E_BTN_NGYB)
 	{
 		g_pSceneManager->SceneChange("cAStarScene");
-	}
+	}*/
 }
 
 void cMainMenuScene::OnRightClick(cUIButton* pSender)
