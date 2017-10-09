@@ -59,11 +59,11 @@ void cMultiBtn::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 }
 
-void cMultiBtn::OnMouse(cUIButton * pSender)
+void cMultiBtn::OnMouse(cUIButton* pSender)
 {
 }
 
-void cMultiBtn::OnClick(cUIButton * pSender)
+void cMultiBtn::OnClick(cUIButton* pSender)
 {
 	if (pSender->GetTag() == E_XBUTTON)
 	{
@@ -76,6 +76,6 @@ void cMultiBtn::OnClick(cUIButton * pSender)
 	}
 }
 
-void cMultiBtn::OnRightClick(cUIButton * pSender)
+void cMultiBtn::OnRightClick(cUIButton* pSender)
 {
 }

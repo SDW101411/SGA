@@ -84,5 +84,5 @@ void cLoadingScene::Render()
 
 void cLoadingScene::RenderUI()
 {
-	m_pUIRoot->Render(m_pSprite);
+	if(m_pUIRoot) m_pUIRoot->Render(m_pSprite);
 }

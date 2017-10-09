@@ -13,7 +13,6 @@
 #include "cDamegeImpact.h"
 #include "cCursorStatus.h"
 #include "cMouseCursor.h"
-//#include "cCloseOption.h"
 /*
 		2017-09-02 Main_admin.
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 
@@ -53,7 +52,6 @@ cMain_admin::cMain_admin()
 	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);
 	g_pSceneManager->INSERT("cScene_Light", new cScene_Light);
 	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
-	//g_pSceneManager->INSERT("cCloseOption", new cCloseOption);
 
 	g_pSceneManager->SceneChange("cMainMenuScene");
 	

@@ -113,7 +113,7 @@ void cMainMenuScene::RenderUI()
 	if (m_pUIRoot) m_pUIRoot->Render(m_pSprite);
 }
 
-void cMainMenuScene::BtnFunc(cUIButton * pButton, char * szStr, char * szStrGlow, float x, float y, float width, float height, int tag)
+void cMainMenuScene::BtnFunc(cUIButton* pButton, char* szStr, char* szStrGlow, float x, float y, float width, float height, int tag)
 {
 	char str[30], strGlow[40];
 	sprintf(str, "UI/%s.png", szStr);

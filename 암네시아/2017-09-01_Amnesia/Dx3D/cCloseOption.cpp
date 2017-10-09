@@ -14,6 +14,7 @@ enum
 cCloseOption::cCloseOption()
 	: m_pUIRoot(NULL)
 	, m_pSprite(NULL)
+	, m_bOn(false)
 {
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
@@ -21,7 +22,7 @@ cCloseOption::cCloseOption()
 	pImageView->SetScaling(0.1f, 0.1f);
 	m_pUIRoot = pImageView;
 
-	pImageView = new cUIImageView;
+	pImageView = new cUIImageView;	// "예" 버튼
 	pImageView->SetTexture("UI/Option/gui_amn_mm_window_bg.tga");
 	pImageView->SetPosition(470, 250);
 	pImageView->SetScaling(1.0f, 0.5f);
@@ -76,15 +77,9 @@ cCloseOption::cCloseOption()
 	pImageView->SetScaling(1.0f, 1.0f);
 	m_pUIRoot->AddChild(pImageView);
 
-	//pImageView = new cUIImageView;
-	//pImageView->SetTexture("UI/Option/gui_amn_mm_button_up_bg.tga");
-	//pImageView->SetPosition(550, 359);
-	//pImageView->SetScaling(0.8f, 2.0f);
-	//m_pUIRoot->AddChild(pImageView);
+	//////////////////////////////////////////////////////////////////////
 
-	
-
-	pImageView = new cUIImageView;
+	pImageView = new cUIImageView;	// "아니오" 버튼
 	pImageView->SetTexture("UI/Option/gui_amn_mm_button_up_border_l.tga");
 	pImageView->SetPosition(546, 362);
 	pImageView->SetScaling(1.5f, 9.0f);
@@ -182,7 +177,7 @@ cCloseOption::cCloseOption()
 
 	cUIButton* pButton = new cUIButton;
 	pButton->SetTexture("UI/Option/gui_amn_mm_button_up_bg.tga",
-		"UI/Option/gui_amn_mm_tab_label_bg_active.tga",
+		"UI/Option/gui_amn_mm_button_up_bg.tga",
 		"UI/Option/gui_amn_mm_button_up_bg.tga");
 	pButton->SetPosition(550, 359);
 	pButton->SetScaling(1.0f, 1.0f);
@@ -192,7 +187,7 @@ cCloseOption::cCloseOption()
 
 	pButton = new cUIButton;
 	pButton->SetTexture("UI/Option/gui_amn_mm_button_up_bg.tga",
-		"UI/Option/gui_amn_mm_tab_label_bg_active.tga",
+		"UI/Option/gui_amn_mm_button_up_bg.tga",
 		"UI/Option/gui_amn_mm_button_up_bg.tga");
 	pButton->SetPosition(738, 359);
 	pButton->SetScaling(1.0f, 1.0f);
@@ -233,31 +228,35 @@ cCloseOption::~cCloseOption()
 
 void cCloseOption::Update()
 {
-	SAFE_UPDATE(m_pUIRoot);
+	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) m_bOn = !m_bOn;
+		
+	if(m_bOn) SAFE_UPDATE(m_pUIRoot);
 }
 
-void cCloseOption::RenderUI()
+void cCloseOption::Render()
 {
-	if (m_pUIRoot) m_pUIRoot->Render(m_pSprite);
+	if (m_bOn) if (m_pUIRoot) m_pUIRoot->Render(m_pSprite);
 }
 
-void cCloseOption::OnMouse(cUIButton * pSender)
+void cCloseOption::OnMouse(cUIButton* pSender)
 {
 }
 
-void cCloseOption::OnClick(cUIButton * pSender)
+void cCloseOption::OnClick(cUIButton* pSender)
 {
-	//if (pSender->GetTag() == E_XBUTTON)
-	//{
-	//	// 처음 화면으로
-	//	g_pSceneManager->SceneChange("cMainMenuScene");
-	//}
-	//else if (pSender->GetTag() == E_SAVEBTN)
-	//{
-	//	// 저장용
-	//}
+	if (pSender->GetTag() == E_CLOSE)
+	{
+		// 처음 화면으로
+		m_bOn = false;
+		g_pSceneManager->SceneChange("cMainMenuScene");
+		//PostQuitMessage(0);
+	}
+	else if (pSender->GetTag() == E_CANCEL)
+	{
+		m_bOn = false;
+	}
 }
 
-void cCloseOption::OnRightClick(cUIButton * pSender)
+void cCloseOption::OnRightClick(cUIButton* pSender)
 {
 }
