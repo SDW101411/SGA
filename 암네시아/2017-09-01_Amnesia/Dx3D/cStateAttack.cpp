@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cStateAttack.h"
 #include "cMonster.h"
+#include "cDamegeImpact.h"
 
 cStateAttack::cStateAttack(cMonster * pThis)
 {
@@ -13,6 +14,7 @@ cStateAttack::~cStateAttack()
 
 void cStateAttack::Setup()
 {
+	m_pImpact = new cDamegeImpact();
 	m_attackTime = 0.0f;
 	m_isAttack = false;
 	m_pThis->SetAnim(MON_ANIM_ATTACK);
@@ -29,7 +31,8 @@ void cStateAttack::Update()
 	m_attackTime += g_pTimeManager->GetDeltaTime();
 	if (!m_isAttack && m_attackTime >= 0.5f)
 	{
-		// АјАн
+		m_pImpact->BloodImpact();
+		DATABASE->SetHp(DATABASE->GetHp() - 30.0f);
 		m_isAttack = true;
 	}
 	if (m_attackTime >= m_pThis->GetAnimationTime())
@@ -38,11 +41,12 @@ void cStateAttack::Update()
 		return;
 	}
 	m_pThis->SetAngle(GetAngle(m_pThis->GetPosition(), m_pThis->GetPlayerPos()));
+	SAFE_UPDATE(m_pImpact);
 }
 
 void cStateAttack::Render()
 {
-
+	SAFE_RENDER(m_pImpact);
 }
 
 float cStateAttack::GetAngle(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2)

@@ -1,13 +1,11 @@
 #pragma once
 
-#include "cScene.h"
-
 struct POS
 {
 	float x, y;
 };
 
-class cDamegeImpact : public cScene
+class cDamegeImpact
 {
 private:
 	cUIObject*			m_pUIRoot;

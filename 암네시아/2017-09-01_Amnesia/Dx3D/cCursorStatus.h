@@ -1,7 +1,5 @@
 #pragma once
 
-#include "cScene.h"
-
 enum CURSORSTATUS
 {
 	CUR_NORMAL,
@@ -10,7 +8,7 @@ enum CURSORSTATUS
 	CUR_IGNITE,
 };
 
-class cCursorStatus : public cScene
+class cCursorStatus
 {
 private:
 	cUIObject*		m_pUIRoot;
