@@ -288,21 +288,25 @@ void cPlayer::cObject_Item_OutLine_Update()
 				{
 				case ITEMMESH_TAG_POTION_OIL:
 				{
-					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_OIL);
+					SOUNDMANAGER->play("pick_potion");
+					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_OIL);	
 				}
 					break;
 				case ITEMMESH_TAG_POTION_TINDERBOX:
 				{
+					SOUNDMANAGER->play("pick_generic");
 					DATABASE->Insert(ITEM_TINDER);
 				}
 				break;
 				case ITEMMESH_TAG_POTION_HEALTH:
 				{
+					SOUNDMANAGER->play("pick_potion");
 					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_HP);
 				}
 				break;
 				case ITEMMESH_TAG_POTION_SANITY:
 				{
+					SOUNDMANAGER->play("pick_potion");
 					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_MENTAL);
 				}
 				break;
