@@ -16,7 +16,7 @@ public:
 	vector<cObject_Game*>	cObject_Vec;
 	vector<cObject_Map*>	cObject_Map_Vec;
 	vector<cObject_Light*>	cObject_Light_vec;
-	vector<cObject_Item*>		cObject_Item_vec;
+	vector<cObject_Item*>	cObject_Item_vec;
 	cDamegeImpact*			m_pDamegeImpact;
 	cUI_In_Game*			m_pUI_In_Game;
 
