@@ -29,7 +29,7 @@ void cStateMoveToPos2::Update()
 {
 	if (m_pThis->GetRouteSize() <= 0)
 		m_pThis->SetState(MON_STATE_WAIT);
-	m_pThis->MoveRoute(0.006);
+	m_pThis->MoveRoute(0.02f);
 	if (m_pThis->IsMeetPlayer()) m_pThis->SetState(MON_STATE_LOOKPLAYER);
 }
 

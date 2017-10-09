@@ -35,7 +35,7 @@ void cStateRunToPlayer::Update()
 		list<D3DXVECTOR3> route = g_pASTAR->FindPath(m_pThis->GetPosition(), m_pThis->GetPlayerPos());
 		if(route.size() > 0) m_pThis->SetRoute(route);
 	}
-	m_pThis->MoveRoute(0.03f);
+	m_pThis->MoveRoute(0.08f);
 	if (m_pThis->GetRouteSize() <= 0)
 	{
 		m_pThis->SetState(MON_STATE_MISSEDPLAYER);
