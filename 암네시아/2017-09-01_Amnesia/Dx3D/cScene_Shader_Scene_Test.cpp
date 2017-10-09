@@ -15,13 +15,11 @@
 #include "cUI_In_Game.h"
 #include "cCursorStatus.h"
 #include "cFrustum.h"
-#include "cCloseOption.h"
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
 	, m_pUI_In_Game(NULL)
 	, m_pCursorStatus(NULL)
-	, m_pCloseOption(NULL)
 {
 	m_pPlayer = NULL;
 }
@@ -38,7 +36,6 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
 	SAFE_DELETE(m_pCursorStatus);
-	SAFE_DELETE(m_pCloseOption);
 }
 
 void cScene_Shader_Scene_Test::Setup()
@@ -48,7 +45,6 @@ void cScene_Shader_Scene_Test::Setup()
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 	m_pCursorStatus = new cCursorStatus;
-	m_pCloseOption = new cCloseOption;
 
 	vector<D3DXVECTOR3> Surface_Intersept; Surface_Intersept = load.LoadToGroundSurface();
 	for (int i = 0; i < Surface_Intersept.size(); ++i) m_pPlayer->Surface_Insert(Surface_Intersept[i]);
@@ -127,7 +123,6 @@ void cScene_Shader_Scene_Test::Update()
 	SAFE_UPDATE(m_pDamegeImpact);
 	SAFE_UPDATE(m_pUI_In_Game);
 	SAFE_UPDATE(m_pCursorStatus);
-	SAFE_UPDATE(m_pCloseOption);
 	
 	if (m_pFrustum_c) m_pFrustum_c->Update();
 }
@@ -165,7 +160,6 @@ void cScene_Shader_Scene_Test::RenderUI()
 	SAFE_RENDER(m_pDamegeImpact);
 	SAFE_RENDER(m_pCursorStatus);
 	SAFE_RENDER(m_pUI_In_Game);
-	SAFE_RENDER(m_pCloseOption);
 }
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

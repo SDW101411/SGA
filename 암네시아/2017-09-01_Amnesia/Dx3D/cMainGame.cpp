@@ -156,9 +156,9 @@ void cMainGame::MsgProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 				//m_pSkinnedMesh->SetAnimationIndex(++n);
 			}
 			break;
-		//case VK_ESCAPE:	//esc키로 종료한다
-		//	PostMessage(hWnd, WM_DESTROY, 0, 0);
-		//	break;
+		case VK_ESCAPE:	//esc키로 종료한다
+			PostMessage(hWnd, WM_DESTROY, 0, 0);
+			break;
 		}
 		break;
 	case WM_DESTROY:	//종료 메시지

@@ -39,9 +39,8 @@ cUI_In_Game::cUI_In_Game()
 	, m_nRow(0)
 	, m_nCol(0)
 	, m_nState(UI_MAIN)
-	//, m_bOn(false)
+	, m_bOn(false)
 {
-	m_bOn = false;
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;
