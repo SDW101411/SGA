@@ -37,8 +37,8 @@ void cMonster::Update()
 
 void cMonster::Render()
 {
-	SAFE_RENDER(m_pMachine);
 	SAFE_RENDER(m_pMonAnim);
+	SAFE_RENDER(m_pMachine);
 }
 
 void cMonster::SetAnim(MON_ANIM tag)
