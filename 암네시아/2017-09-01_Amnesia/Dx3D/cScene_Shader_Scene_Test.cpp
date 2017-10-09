@@ -15,11 +15,13 @@
 #include "cUI_In_Game.h"
 #include "cCursorStatus.h"
 #include "cFrustum.h"
+#include "cCloseOption.h"
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
 	, m_pUI_In_Game(NULL)
 	, m_pCursorStatus(NULL)
+	, m_pCloseOption(NULL)
 {
 	m_pPlayer = NULL;
 }
@@ -27,6 +29,7 @@ cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 
 cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 {
+	m_pUI_In_Game->GetTabUIOn(false);
 	SAFE_DELETE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
@@ -35,6 +38,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
 	SAFE_DELETE(m_pCursorStatus);
+	SAFE_DELETE(m_pCloseOption);
 }
 
 void cScene_Shader_Scene_Test::Setup()
@@ -43,6 +47,7 @@ void cScene_Shader_Scene_Test::Setup()
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 	m_pCursorStatus = new cCursorStatus;
+	m_pCloseOption = new cCloseOption;
 
 	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
 	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
@@ -111,6 +116,7 @@ void cScene_Shader_Scene_Test::Update()
 	SAFE_UPDATE(m_pDamegeImpact);
 	SAFE_UPDATE(m_pUI_In_Game);
 	SAFE_UPDATE(m_pCursorStatus);
+	SAFE_UPDATE(m_pCloseOption);
 	
 	if (m_pFrustum_c) m_pFrustum_c->Update();
 }
@@ -148,6 +154,7 @@ void cScene_Shader_Scene_Test::RenderUI()
 	SAFE_RENDER(m_pDamegeImpact);
 	SAFE_RENDER(m_pCursorStatus);
 	SAFE_RENDER(m_pUI_In_Game);
+	SAFE_RENDER(m_pCloseOption);
 }
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

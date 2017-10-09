@@ -9,6 +9,7 @@ class cDamegeImpact;
 class cUI_In_Game;
 class cFrustum;
 class cCursorStatus;
+class cCloseOption;
 
 class cScene_Shader_Scene_Test : public cScene
 {
@@ -22,6 +23,7 @@ public:
 
 	cFrustum*				m_pFrustum_c;
 	cCursorStatus*			m_pCursorStatus;
+	cCloseOption*			m_pCloseOption;
 
 public:
 	cScene_Shader_Scene_Test();
