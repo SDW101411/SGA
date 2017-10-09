@@ -108,7 +108,7 @@ void cMainGame::Render()
 			1.0f, 0);
 
 	}
-	SAFE_RENDER(m_pGrid);
+	//SAFE_RENDER(m_pGrid);
 	SAFE_RENDER(m_pMain_admin);
 
 	if (c_Gaussian_On)
