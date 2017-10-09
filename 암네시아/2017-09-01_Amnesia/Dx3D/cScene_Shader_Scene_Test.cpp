@@ -111,7 +111,7 @@ void cScene_Shader_Scene_Test::Update()
 	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
 	SAFE_UPDATE(m_pUI_In_Game);
 	SAFE_UPDATE(m_pCursorStatus);
-
+	
 	if (m_pFrustum_c) m_pFrustum_c->Update();
 }
 

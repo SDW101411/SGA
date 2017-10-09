@@ -73,8 +73,8 @@ public:
 
 	void CreateItem(int tag);
 
-	void HeartState(int heart);
-	void BrainState(int brain);
+	void HeartState(float heart);
+	void BrainState(float brain);
 
 	void ValueCtr();
 

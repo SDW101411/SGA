@@ -68,7 +68,7 @@ cUI_In_Game::cUI_In_Game()
 	pImageView->SetTag(E_OIL);
 	m_pUIRoot->AddChild(pImageView);
 
-	sprintf(m_szHeartState, "UI/inventory_health_%d.tga", DATABASE->GetHp());
+	sprintf(m_szHeartState, "UI/inventory_health_100.tga");
 	cUIButton* pButton = new cUIButton;
 	pButton->SetTexture(m_szHeartState, m_szHeartState, m_szHeartState);
 	pButton->SetPosition(244, 100);
@@ -77,13 +77,13 @@ cUI_In_Game::cUI_In_Game()
 	pButton->SetTag(E_HEART);
 	m_pUIRoot->AddChild(pButton);
 
-	sprintf(m_szHeartGlowState, "UI/inventory_health_glow_%d.tga", DATABASE->GetHp());
+	sprintf(m_szHeartGlowState, "UI/inventory_health_glow_100.tga");
 	BtnFunc(pButton, m_szHeartState, m_szHeartGlowState, 244, 100, 1.1f, 1.1f, E_HEART_UP);
 
-	sprintf(m_szBrainState, "UI/inventory_sanity_%d.tga", DATABASE->GetMental());
+	sprintf(m_szBrainState, "UI/inventory_sanity_100.tga");
 	BtnFunc(pButton, m_szBrainState, m_szBrainState, 254, 380, 1.1f, 1.1f, E_BRAIN);
 
-	sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_%d.tga", DATABASE->GetMental());
+	sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_100.tga");
 	BtnFunc(pButton, m_szBrainState, m_szBrainGlowState, 254, 380, 1.1f, 1.1f, E_BRAIN_UP);
 
 	BtnFunc(pButton, "inventory_tinderboxes", "inventory_tinderboxes", 1094, 110, 1.0f, 1.0f, ITEM_TINDER);
@@ -101,8 +101,8 @@ cUI_In_Game::cUI_In_Game()
 
 	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, "", 600, 100, 440, 546, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_EXPLANATION);
 
-	char HP[20];
-	sprintf(HP, "%d %d", DATABASE->GetHp(), DATABASE->GetMental());
+	char HP[40];
+	sprintf(HP, "%.1f %.1f", DATABASE->GetHp(), DATABASE->GetMental());
 	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_HEART_BRAIN_HP);
 
 	char Mouse[20];
@@ -133,8 +133,8 @@ void cUI_In_Game::Update()
 	if (pTextView) pTextView->SetText("");
 	if (pTextView_2) pTextView_2->SetText("");
 
-	char HP[20];
-	sprintf(HP, "%d %d", DATABASE->GetHp(), DATABASE->GetMental());
+	char HP[40];
+	sprintf(HP, "%.1f %.1f", DATABASE->GetHp(), DATABASE->GetMental());
 	if (pTextView_3) pTextView_3->SetText(HP);
 
 	char Mouse[20];
@@ -318,7 +318,7 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 		{
 		case PLAYER_HEART_100: pTextView_2->SetText("전체적으로 좋다.");				break;
 		case PLAYER_HEART_75: pTextView_2->SetText("약간의 타박상이 있다.");			break;
-		case PLAYER_HEART_50: pTextView_2->SetText("상처에서 출혈이 너무 심해.");	break;
+		case PLAYER_HEART_50: pTextView_2->SetText("상처에서 출혈이 너무 심해.");		break;
 		case PLAYER_HEART_25: pTextView_2->SetText("간신히 살아있다.");				break;
 		}
 	}
@@ -373,32 +373,24 @@ void cUI_In_Game::OnClick(cUIButton* pSender)
 		//g_pSceneManager->SceneChange("cUIJournalScene");
 		m_nState = UI_JOURNAL;
 	}
-	/*else if (pSender->GetTag() == ITEM_HP)
-	{
-		if (m_nHeartHP < 100 && DATABASE->Load(ITEM_HP) > 0)
-		{
-			m_nHeartHP += 10;
-			DATABASE->Delete(ITEM_HP);
-		}
-	}*/
 }
 
 void cUI_In_Game::OnRightClick(cUIButton* pSender)
 {
 	if (pSender->GetTag() == ITEM_HP)
 	{
-		if (DATABASE->GetHp() < 100 && DATABASE->Load(ITEM_HP) > 0)
+		if (DATABASE->GetHp() < 100.0f && DATABASE->Load(ITEM_HP) > 0.0f)
 		{
 			SOUNDMANAGER->play("ui_use_health");
-			DATABASE->SetHp(DATABASE->GetHp() + 10);
+			DATABASE->SetHp(DATABASE->GetHp() + 10.0f);
 			DATABASE->Delete(ITEM_HP);
 		}
 	}
 	else if (pSender->GetTag() == ITEM_MENTAL)
 	{
-		if (DATABASE->GetMental() < 100 && DATABASE->Load(ITEM_MENTAL) > 0)
+		if (DATABASE->GetMental() < 100.0f && DATABASE->Load(ITEM_MENTAL) > 0.0f)
 		{
-			DATABASE->SetMental(DATABASE->GetMental() + 10);
+			DATABASE->SetMental(DATABASE->GetMental() + 10.0f);
 			DATABASE->Delete(ITEM_MENTAL);
 		}
 	}
@@ -550,19 +542,22 @@ void cUI_In_Game::CreateItem(int tag)
 	}
 }
 
-void cUI_In_Game::HeartState(int heart)
+void cUI_In_Game::HeartState(float heart)
 {
 	DATABASE->SetHp(heart);
-	if (DATABASE->GetHp() >= 100) HeartSate = PLAYER_HEART_100;
-	else if (DATABASE->GetHp() >= 75 && DATABASE->GetHp() <= 99) HeartSate = PLAYER_HEART_75;
-	else if (DATABASE->GetHp() >= 50 && DATABASE->GetHp() <= 74) HeartSate = PLAYER_HEART_50;
-	else if (DATABASE->GetHp() >   0 && DATABASE->GetHp() <= 49) HeartSate = PLAYER_HEART_25;
-	else if (DATABASE->GetHp() <= 0) HeartSate = PLAYER_DEATH;
+	if (DATABASE->GetHp() >= 100.0f)
+	{
+		HeartSate = PLAYER_HEART_100;
+		DATABASE->SetHp(100.0f);
+	}
+	else if (DATABASE->GetHp() >= 75.0f && DATABASE->GetHp() <= 99.9f) HeartSate = PLAYER_HEART_75;
+	else if (DATABASE->GetHp() >= 50.0f && DATABASE->GetHp() <= 74.9f) HeartSate = PLAYER_HEART_50;
+	else if (DATABASE->GetHp() >   0.0f && DATABASE->GetHp() <= 49.9f) HeartSate = PLAYER_HEART_25;
+	else if (DATABASE->GetHp() <= 0.0f) HeartSate = PLAYER_DEATH;
 
 	switch (HeartSate)
 	{
 	case PLAYER_HEART_100:
-		DATABASE->SetHp(100);
 		sprintf(m_szHeartState, "UI/inventory_health_100.tga");
 		sprintf(m_szHeartGlowState, "UI/inventory_health_glow_100.tga");
 		break;
@@ -578,7 +573,7 @@ void cUI_In_Game::HeartState(int heart)
 		sprintf(m_szHeartState, "UI/inventory_health_25.tga");
 		sprintf(m_szHeartGlowState, "UI/inventory_health_glow_25.tga");
 		break;
-	case PLAYER_DEATH: DATABASE->SetHp(0); break;
+	case PLAYER_DEATH: DATABASE->SetHp(0.0f); break;
 	}
 
 	cUIButton* pButton = (cUIButton*)m_pUIRoot->GetChildByTag(E_HEART);
@@ -587,19 +582,22 @@ void cUI_In_Game::HeartState(int heart)
 	if (pButton) pButton->SetTexture(m_szHeartState, m_szHeartGlowState, m_szHeartState);
 }
 
-void cUI_In_Game::BrainState(int brain)
+void cUI_In_Game::BrainState(float brain)
 {
 	DATABASE->SetMental(brain);
-	if (DATABASE->GetMental() >= 100) BrainSate = PLAYER_BRAIN_100;
-	else if (DATABASE->GetMental() >= 75 && DATABASE->GetMental() <= 99) BrainSate = PLAYER_BRAIN_75;
-	else if (DATABASE->GetMental() >= 50 && DATABASE->GetMental() <= 74) BrainSate = PLAYER_BRAIN_50;
-	else if (DATABASE->GetMental() >   0 && DATABASE->GetMental() <= 49) BrainSate = PLAYER_BRAIN_25;
-	else if (DATABASE->GetMental() <= 0) BrainSate = PLAYER_DEATH;
+	if (DATABASE->GetMental() >= 100.0f)
+	{
+		BrainSate = PLAYER_BRAIN_100;
+		DATABASE->SetMental(100.0f);
+	}
+	else if (DATABASE->GetMental() >= 75.0f && DATABASE->GetMental() <= 99.9f) BrainSate = PLAYER_BRAIN_75;
+	else if (DATABASE->GetMental() >= 50.0f && DATABASE->GetMental() <= 74.9f) BrainSate = PLAYER_BRAIN_50;
+	else if (DATABASE->GetMental() >   0.0f && DATABASE->GetMental() <= 49.9f) BrainSate = PLAYER_BRAIN_25;
+	else if (DATABASE->GetMental() <= 0.0f) BrainSate = PLAYER_DEATH;
 
 	switch (BrainSate)
 	{
 	case PLAYER_BRAIN_100:
-		DATABASE->SetMental(100);
 		sprintf(m_szBrainState, "UI/inventory_sanity_100.tga");
 		sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_100.tga");
 		break;
@@ -615,7 +613,7 @@ void cUI_In_Game::BrainState(int brain)
 		sprintf(m_szBrainState, "UI/inventory_sanity_25.tga");
 		sprintf(m_szBrainGlowState, "UI/inventory_sanity_glow_25.tga");
 		break;
-	case PLAYER_DEATH: DATABASE->SetMental(0); break;
+	case PLAYER_DEATH: DATABASE->SetMental(0.0f); break;
 	}
 
 	cUIButton* pButton = (cUIButton*)m_pUIRoot->GetChildByTag(E_BRAIN);
@@ -628,8 +626,8 @@ void cUI_In_Game::ValueCtr()
 {
 	if (KEYMANAGER->isOnceKeyDown('Z'))
 	{
-		DATABASE->SetHp(DATABASE->GetHp() - 5);
-		DATABASE->SetMental(DATABASE->GetMental() - 5);
+		DATABASE->SetHp(DATABASE->GetHp() - 0.5f);
+		DATABASE->SetMental(DATABASE->GetMental() - 0.5f);
 	}
 	if (KEYMANAGER->isOnceKeyDown('X'))
 	{
