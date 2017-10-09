@@ -34,7 +34,7 @@ cMainMenuScene::cMainMenuScene()
 	loader.PushNearLight(m_objLights, m_objMaps);
 
 	cUIImageView* pImageView = new cUIImageView;
-	pImageView->SetTexture("UI/tab_UI_bg.png");
+	pImageView->SetTexture("UI/mainMenuBg.png");
 	pImageView->SetScaling(6.48f, 5.1f);
 	pImageView->SetTag(E_GAME_BACKGROUND);
 	m_pUIRoot = pImageView;
