@@ -40,11 +40,6 @@ cPlayer::cPlayer(vector<cObject_Light*>* Light_Object)
 	m_pPlayerCtrl = new cPlayer_Ctrl(D3DXVECTOR3(0.f, 0.f, 0.f), 0.5f);
 
 	m_pPlayer_Animation_Index = cPlayer_Animation_HAND;
-
-	//m_Light_Vec_f = Light_Object;
-	//m_Light_Vec = Light_Object;
-
-
 }
 
 cPlayer::cPlayer(void * Light_Object)
@@ -65,7 +60,7 @@ cPlayer::cPlayer(void * Light_Object)
 	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[0]->m_pRootFrame,"index", &m_Mat_vec[0]);
 }
 
-cPlayer::cPlayer(cScene *Save)
+cPlayer::cPlayer(cScene *Save, D3DXVECTOR3 cPlayer_Pos)
 {
 	//메인 이게 메인이다.
 	m_pPlayerCtrl = NULL;
@@ -75,41 +70,36 @@ cPlayer::cPlayer(cScene *Save)
 	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_holster.X"));
 	m_PTarget_Mesh = m_pPlayer_animation_Vec[0];
 
-	m_pPlayerCtrl = new cPlayer_Ctrl(D3DXVECTOR3(0.f, 0.f, 0.f), 1.0f);
+	m_pPlayerCtrl = new cPlayer_Ctrl(cPlayer_Pos, 1.0f);
 	m_pPlayer_Animation_Index = cPlayer_Animation_HAND;
 
 	m_pMy_Scene = (cScene_Shader_Scene_Test*)Save;
 
 	m_Mat_vec.resize(4);
-	m_Mat_vec2.resize(4);
 
 	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[0]->m_pRootFrame, "index", &m_Mat_vec[0]);
 	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[1]->m_pRootFrame, "index", &m_Mat_vec[1]);
 	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[2]->m_pRootFrame, "index", &m_Mat_vec[2]);
 	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[3]->m_pRootFrame, "index", &m_Mat_vec[3]);
 
-	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[0]->m_pRootFrame, "index", &m_Mat_vec2[0]);
-	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[1]->m_pRootFrame, "index", &m_Mat_vec2[1]);
-	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[2]->m_pRootFrame, "index", &m_Mat_vec2[2]);
-	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[3]->m_pRootFrame, "index", &m_Mat_vec2[3]);
-
 	cObject = cMESH_MANAGER->FIND("PLAYERMESH_TAG_LANTERN");
 	m_pLantern = new cSkinnedMesh("X_File/entities/lantern/", "hand_lantern.X");
 
-
-	m_Lantern.x = 20.0403633;
-	m_Lantern.y = 32.0006371;
-	m_Lantern.z = 9.43012047;
-	m_Lantern.k = -0.615995646;
-	m_Lantern.l = -0.927991629;
-	x = 20.0403633;
-	y = 32.0006371;
-	z = 9.43012047;
-	k = -0.615995646;
-	l = -0.927991629;
+	{
+		m_Lantern.x = 20.0403633;
+		m_Lantern.y = 32.0006371;
+		m_Lantern.z = 9.43012047;
+		m_Lantern.k = -0.615995646;
+		m_Lantern.l = -0.927991629;
+		x = 20.0403633;
+		y = 32.0006371;
+		z = 9.43012047;
+		k = -0.615995646;
+		l = -0.927991629;
+	}
+	
 	m_Lantern.m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Lantern.fx");
 
-	m_PTarget_Test = new cSkinnedMesh("Test/", "Grunt_Run_And_Attack.x");
 }
 
 cPlayer::~cPlayer()
@@ -129,35 +119,22 @@ void cPlayer::Update()
 
 void cPlayer::Render()
 {
-
 	if (m_PTarget_Mesh)
 	{
 		D3DXVECTOR3 m_Camera = m_pPlayerCtrl->Get_m_Camera();
 		D3DXVECTOR3 Hand_Vector = D3DXVECTOR3(m_Camera.x, m_Camera.y, m_Camera.z);
 		cLight_Seting = D3DXVECTOR3(m_Camera.x, m_Camera.y, m_Camera.z);
-
 		D3DXMATRIX Hands_Matrix, matS, matR;
 		D3DXMatrixIsIdentity(&Hands_Matrix);
 		D3DXMatrixIsIdentity(&matS);
 		D3DXMatrixScaling(&matS, 0.01f, 0.01f, 0.01f);
-
-
 		D3DXMatrixTranslation(&Hands_Matrix, Hand_Vector.x, Hand_Vector.y, Hand_Vector.z);
-		//D3DXMatrixTranslation(&Hands_Matrix, 0, 0, 0);
-		//Hands_Matrix =  Hands_Matrix;
-		
 		Hands_Matrix = matS * m_pPlayerCtrl->Get_m_pTarget_Matrix() * Hands_Matrix;
 		if(m_pPlayer_Animation_Index != cPlayer_Animation_HAND) m_PTarget_Mesh->UpdateAndRender(Hands_Matrix);
-
-	}
+	}	
+	if (m_pPlayer_Animation_Index != cPlayer_Animation_HAND)Lantern_Rander();
 	
-	if (m_pPlayer_Animation_Index != cPlayer_Animation_HAND)
-	{
-		Lantern_Rander();
 
-	}
-
-	m_PTarget_Test->UpdateAndRender();
 	
 }
 
@@ -370,24 +347,14 @@ void cPlayer::Return_Name(ST_BONE * Insert, LPSTR NAME, ST_BONE ** Out)
 
 void cPlayer::Lantern_Rander()
 {
-	D3DXMATRIXA16 m_Rentern, Rx, Rz, Ry, TransY;
-	//D3DXMatrixRotationX(&Rx, 0.0f);
-	//D3DXMatrixRotationY(&m_Rentern, 0.0f);
-	//D3DXMatrixRotationZ(&Rz, );
-	//D3DXMatrixRotationX(&Rx, D3DX_PI * 0.65f);
-	//D3DXMatrixRotationX(&Ry, 0.3f);
-
-	D3DXMATRIXA16 i, ii, iii, iiii;
+	D3DXMATRIXA16 m_Rentern, Rx, Rz, Ry, TransY, i, ii;
 	D3DXMatrixIdentity(&i);
-	//D3DXMatrixTranslation(&ii,-0.6f,0,-0.91f);
 	D3DXMatrixTranslation(&ii, k, -0.01f, l);
 	i *= ii;
-	//g_pD3DDevice->SetTransform(D3DTS_WORLD, &i);
 
 	D3DXMatrixRotationX(&Rx, x);
 	D3DXMatrixRotationY(&Ry, y);
 	D3DXMatrixRotationZ(&Rz, z);
-	//D3DXMatrixTranslation(&TransY, 0.0f, -0.2f, 0.0f);
 	
 	switch (m_pPlayer_Animation_Index)
 	{
@@ -413,15 +380,7 @@ void cPlayer::Lantern_Rander()
 	break;
 	}
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_Rentern);
-	//m_Mat_vec2[1]->TransformationMatrix;
-	//m_pLantern->UpdateAndRender();
-	//m_Lantern.m_Normal_Effect->SetMatrix();
 	m_Lantern.m_Normal_Effect->SetMatrix("g_Worldmat", &m_Rentern);
-	//cObject->m_Mesh->DrawSubset(0);
-
-
-
-
 
 	D3DXMATRIXA16 matView, matProjection;
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_Rentern);
@@ -471,6 +430,10 @@ D3DXVECTOR3 cPlayer::Get_cPlayer_Pos()
 D3DXVECTOR3 * cPlayer::Get_p_cPlayer_Pos()
 {
 	return m_pPlayerCtrl->Get_m_Pos();
+}
+
+void cPlayer::cPlayer_Start_Seting()
+{
 }
 
 

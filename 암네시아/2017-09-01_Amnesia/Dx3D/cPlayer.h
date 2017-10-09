@@ -43,7 +43,6 @@ private:
 	vector<D3DXMATRIXA16*>			m_Mat_vec;
 	vector<ST_BONE*>				m_Mat_vec2;
 
-	cSkinnedMesh*					m_PTarget_Test;
 
 	cScene_Shader_Scene_Test		*m_pMy_Scene;
 
@@ -54,13 +53,12 @@ private:
 
 	float x, y, z, k, l;
 
-
 	Lantern							m_Lantern;
 public:
 	cPlayer();
 	cPlayer(vector<cObject_Light*>* Light_Object);
 	cPlayer(void * Light_Object);
-	cPlayer(cScene * Save);
+	cPlayer(cScene * Save, D3DXVECTOR3 cPlayer_Pos);
 	~cPlayer();
 
 public:
@@ -89,6 +87,9 @@ private:
 public:
 	D3DXVECTOR3 Get_cPlayer_Pos();
 	D3DXVECTOR3 *Get_p_cPlayer_Pos();
+
+public:
+	void cPlayer_Start_Seting();
 
 };
 

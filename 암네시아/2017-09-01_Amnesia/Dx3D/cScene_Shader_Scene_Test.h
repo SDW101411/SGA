@@ -7,6 +7,7 @@ class cObject_Light;
 class cObject_Item;
 class cDamegeImpact;
 class cUI_In_Game;
+class cFrustum;
 
 class cScene_Shader_Scene_Test : public cScene
 {
@@ -17,6 +18,8 @@ public:
 	vector<cObject_Item*>		cObject_Item_vec;
 	cDamegeImpact*			m_pDamegeImpact;
 	cUI_In_Game*			m_pUI_In_Game;
+
+	cFrustum*				m_pFrustum_c;
 
 public:
 	cScene_Shader_Scene_Test();

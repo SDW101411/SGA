@@ -14,6 +14,7 @@
 #include "cDamegeImpact.h"
 #include "cUI_In_Game.h"
 #include "cCursorStatus.h"
+#include "cFrustum.h"
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
@@ -36,11 +37,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 
 void cScene_Shader_Scene_Test::Setup()
 {
-	//cMapLoader loader;
-	//cObject_Map_Vec = loader.LoadToObject_Map();
-	//cObject_Light_vec = loader.LoadToObject_Light();
-
-	m_pPlayer = new cPlayer(this);
+	m_pPlayer = new cPlayer(this, D3DXVECTOR3(10.0f,0.0f,-10.0f));
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 
@@ -82,44 +79,8 @@ void cScene_Shader_Scene_Test::Setup()
 	g_pLoadManager()->GetObject_Map_Vec().clear();
 	g_pLoadManager()->GetObject_Light_Vec().clear();
 
-	/*cObject_Game *Test = new cObject_shirt_white;
-	Test->Set_Anit1hing(D3DXVECTOR3(-5, 1, 0), 0, 0, 0, 1, 1, 1);
-	cObject_Game *Test_1 = new cObject_shirt_white_Normal;
-	Test_1->Set_Anit1hing_Test(D3DXVECTOR3(-5, 1, -5), 0, 0, 0, 1, 1, 1);
-	cObject_Game *Test_2 = new cObject_shirt_white_Normal;
-	Test_2->Set_Anit1hing_Test(D3DXVECTOR3(-5, 1, -6), 0, 0, 0, 1, 1, 1);
-	cObject_Game *Test_3 = new cObject_shirt_white_Normal;
-	Test_3->Set_Anit1hing_Test(D3DXVECTOR3(-5, 1, -7), 0, 0, 0, 1, 1, 1);
-	cObject_Game *Test_4 = new cObject_shirt_white_Normal;
-	Test_4->Set_Anit1hing_Test(D3DXVECTOR3(-5, 1, -8), 0, 0, 0, 1, 1, 1);
-
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			cObject_Game *forTest = new cObject_shirt_white_Normal;
-			forTest->Set_Anit1hing_Test(D3DXVECTOR3(i * 2 + 3, 1, j * 2 + 3), 0, 0, 0, 1, 1, 1);
-			cObject_Vec.push_back(forTest);
-		}
-	}
-
-	cObject_Vec.push_back(Test);
-	cObject_Vec.push_back(Test_1);
-	cObject_Vec.push_back(Test_2);
-	cObject_Vec.push_back(Test_3);
-	cObject_Vec.push_back(Test_4);
-
-	cObject_Game *Test_6 = new cObject_shirt_white_Normal_Shadow;
-	Test_6->Set_Anit1hing_Test(D3DXVECTOR3(0, 1, 0), 0, 0, 0, 5, 5, 5);
-	cObject_Vec.push_back(Test_6);
-	m_pPlayer = new cPlayer;
-
-
-	cObject_Game *Test_Torch = new cObject_Torch;
-	Test_Torch->Set_Anit1hing_Test(D3DXVECTOR3(1, 1, 1), 0, 0, 0, 1, 1, 1);
-	cObject_Vec.push_back(Test_Torch);*/
-
-
+	m_pFrustum_c = NULL;
+	m_pFrustum_c = new cFrustum;
 }
 
 void cScene_Shader_Scene_Test::Release()
@@ -145,6 +106,8 @@ void cScene_Shader_Scene_Test::Update()
 	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
 	SAFE_UPDATE(m_pDamegeImpact);
 	SAFE_UPDATE(m_pUI_In_Game);
+
+	if (m_pFrustum_c) m_pFrustum_c->Update();
 }
 
 void cScene_Shader_Scene_Test::Render()
@@ -152,7 +115,17 @@ void cScene_Shader_Scene_Test::Render()
 	SAFE_RENDER(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_RENDER(p);
 
-	for each(auto p in cObject_Map_Vec)SAFE_RENDER(p);
+
+	for each (auto p in cObject_Map_Vec)
+	{
+		ST_SPHERE stSphere;
+		stSphere.p = p->GetPosition();
+		stSphere.r = 1.5f;
+		if (m_pFrustum_c->IsIn(&stSphere))
+		{
+			SAFE_RENDER(p);
+		}
+	}
 
 	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
 
