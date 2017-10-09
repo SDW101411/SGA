@@ -13,7 +13,7 @@
 #include "cDamegeImpact.h"
 #include "cCursorStatus.h"
 #include "cMouseCursor.h"
-#include "cCloseOption.h"
+//#include "cCloseOption.h"
 /*
 		2017-09-02 Main_admin.
 		이곳에서 부터 게임제작을 시작 하도록 합시다. 

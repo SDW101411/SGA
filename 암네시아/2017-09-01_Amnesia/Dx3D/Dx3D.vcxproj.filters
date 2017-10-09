@@ -573,9 +573,6 @@
     <ClInclude Include="cMenuCamera.h">
       <Filter>영빈\TestCamera</Filter>
     </ClInclude>
-    <ClInclude Include="cCloseOption.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -898,9 +895,6 @@
     </ClCompile>
     <ClCompile Include="cMenuCamera.cpp">
       <Filter>영빈\TestCamera</Filter>
-    </ClCompile>
-    <ClCompile Include="cCloseOption.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

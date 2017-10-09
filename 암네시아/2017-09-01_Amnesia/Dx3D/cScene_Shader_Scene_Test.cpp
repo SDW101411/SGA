@@ -39,10 +39,16 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 
 void cScene_Shader_Scene_Test::Setup()
 {
-	m_pPlayer = new cPlayer(this, D3DXVECTOR3(10.0f,0.0f,-10.0f));
+	cMapLoader load;
+	m_pPlayer = new cPlayer(this, load.LoadToPlayerPosition());
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 	m_pCursorStatus = new cCursorStatus;
+
+	vector<D3DXVECTOR3> Surface_Intersept; Surface_Intersept = load.LoadToGroundSurface();
+	for (int i = 0; i < Surface_Intersept.size(); ++i) m_pPlayer->Surface_Insert(Surface_Intersept[i]);
+	
+
 
 	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
 	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
@@ -84,6 +90,11 @@ void cScene_Shader_Scene_Test::Setup()
 
 	m_pFrustum_c = NULL;
 	m_pFrustum_c = new cFrustum;
+
+
+
+
+	
 }
 
 void cScene_Shader_Scene_Test::Release()
@@ -125,7 +136,7 @@ void cScene_Shader_Scene_Test::Render()
 	{
 		ST_SPHERE stSphere;
 		stSphere.p = p->GetPosition();
-		stSphere.r = 1.5f;
+		stSphere.r = 2.0f;
 		if (m_pFrustum_c->IsIn(&stSphere))
 		{
 			SAFE_RENDER(p);
