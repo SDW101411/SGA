@@ -45,11 +45,6 @@ void cDamegeImpact::Update()
 
 	if (pImageBack) pImageBack->SetAlphaValue(pImageBack->GetAlphaValue() - 5);
 	if (pImageBack->GetAlphaValue() <= 0) pImageBack->SetAlphaValue(0); //m_pUIRoot->Delete(E_BACK);
-
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
-	{
-		BloodImpact();
-	}
 	
 	if(pImageView) pImageView->SetAlphaValue(pImageView->GetAlphaValue() - g_pTimeManager->GetElapsedTime());
 

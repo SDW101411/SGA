@@ -1,9 +1,12 @@
 #pragma once
 #include "iState.h"
 
+class cDamegeImpact;
+
 class cStateAttack : public iState
 {
 private:
+	cDamegeImpact* m_pImpact;
 	float m_attackTime;
 	bool m_isAttack;
 public:
