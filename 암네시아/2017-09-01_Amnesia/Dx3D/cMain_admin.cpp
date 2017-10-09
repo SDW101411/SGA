@@ -52,7 +52,6 @@ cMain_admin::cMain_admin()
 	g_pSceneManager->INSERT("cLoadingScene", new cLoadingScene);
 	g_pSceneManager->INSERT("cScene_Light", new cScene_Light);
 	g_pSceneManager->INSERT("cDamegeImpact", new cDamegeImpact);
-	g_pSceneManager->INSERT("cCursorStatus", new cCursorStatus);
 	g_pSceneManager->INSERT("cScene_Shader_Scene_Test", new cScene_Shader_Scene_Test);
 
 	g_pSceneManager->SceneChange("cMainMenuScene");
