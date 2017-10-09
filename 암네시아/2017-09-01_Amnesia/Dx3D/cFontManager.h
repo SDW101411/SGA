@@ -14,6 +14,7 @@ public:
 		E_EXPLANATION,
 		E_NUMBER,
 		E_ITEM_VALUE,
+		E_OPTIONEXPLANATION,
 		E_END,
 	};
 
