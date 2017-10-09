@@ -43,6 +43,8 @@ void cScene_Shader_Scene_Test::Setup()
 {
 	SOUNDMANAGER->play("dan_grunt");
 	cMapLoader load;
+	D3DXVECTOR3 Pos;
+	Pos = load.LoadToPlayerPosition();
 	m_pPlayer = new cPlayer(this, load.LoadToPlayerPosition());
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
@@ -73,26 +75,40 @@ void cScene_Shader_Scene_Test::Setup()
 	D3DXVec3TransformCoord(&Light_Position, &D3DXVECTOR3(0, 1, -1), &matR);
 	//Save_1->m_lightPos_Light = dir;
 	
-	cObject_Light *Save_1 = new cObject_Light(MAPMESH_TAG_TORCH_STATIC_01, D3DXVECTOR3(3, 1, 3), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1), Particle_Position, Light_Position);
-	Save_1->m_Fire_On = true;
 
-	cObject_Light_vec.push_back(Save_1);
 
-	cObject_Item *Save_Item_1 = new cObject_Item(ITEMMESH_TAG_POTION_OIL, D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Item *Save_Item_1 = new cObject_Item(ITEMMESH_TAG_POTION_OIL, D3DXVECTOR3(Pos.x - 0.5, Pos.y, Pos.z + 1), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
 	cObject_Item_vec.push_back(Save_Item_1);
 
-	cObject_Item *Save_Item_2 = new cObject_Item(ITEMMESH_TAG_POTION_TINDERBOX, D3DXVECTOR3(1, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Item *Save_Item_11 = new cObject_Item(ITEMMESH_TAG_POTION_OIL, D3DXVECTOR3(Pos.x + 0.5, Pos.y, Pos.z + 1), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_11);
+
+	cObject_Item *Save_Item_2 = new cObject_Item(ITEMMESH_TAG_POTION_TINDERBOX, D3DXVECTOR3(Pos.x - 0.5, Pos.y, Pos.z + 0.5), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
 	cObject_Item_vec.push_back(Save_Item_2);
+	cObject_Item *Save_Item_22 = new cObject_Item(ITEMMESH_TAG_POTION_TINDERBOX, D3DXVECTOR3(Pos.x + 0.5, Pos.y, Pos.z + 0.5), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
-	cObject_Item *Save_Item_3 = new cObject_Item(ITEMMESH_TAG_POTION_HEALTH, D3DXVECTOR3(2, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Item_vec.push_back(Save_Item_22);
+
+	cObject_Item *Save_Item_3 = new cObject_Item(ITEMMESH_TAG_POTION_HEALTH, D3DXVECTOR3(Pos.x - 0.5, Pos.y, Pos.z ), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
 	cObject_Item_vec.push_back(Save_Item_3);
+	cObject_Item *Save_Item_33 = new cObject_Item(ITEMMESH_TAG_POTION_HEALTH, D3DXVECTOR3(Pos.x + 0.5, Pos.y, Pos.z ), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
-	cObject_Item *Save_Item_4 = new cObject_Item(ITEMMESH_TAG_POTION_SANITY, D3DXVECTOR3(3, 0, 0), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+	cObject_Item_vec.push_back(Save_Item_33);
+
+	cObject_Item *Save_Item_4 = new cObject_Item(ITEMMESH_TAG_POTION_SANITY, D3DXVECTOR3(Pos.x - 0.5, Pos.y, Pos.z - 0.5), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
 	cObject_Item_vec.push_back(Save_Item_4);
+	cObject_Item *Save_Item_44 = new cObject_Item(ITEMMESH_TAG_POTION_SANITY, D3DXVECTOR3(Pos.x + 0.5, Pos.y, Pos.z - 0.5), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
+
+	cObject_Item_vec.push_back(Save_Item_44);
+
+
+
+
 
 	g_pLoadManager()->GetObject_Map_Vec().clear();
 	g_pLoadManager()->GetObject_Light_Vec().clear();

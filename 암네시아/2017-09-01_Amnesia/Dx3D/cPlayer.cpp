@@ -129,7 +129,7 @@ void cPlayer::Update()
 	{
 		if (DATABASE->GetMental() < 100.0f)
 		{
-			DATABASE->SetMental(DATABASE->GetMental() + 0.1f);
+			DATABASE->SetMental(DATABASE->GetMental() + 0.01f);
 		}
 		else if (DATABASE->GetMental() > 100.0f)
 		{
@@ -145,8 +145,8 @@ void cPlayer::Update()
 			if (D3DXVec3Length(&(map->m_ParticlePosition - *m_pPlayerCtrl->Get_m_Pos())) < 5.0f)
 			{
 				if (DATABASE->GetMental() < 100.0f)
-					DATABASE->SetMental(DATABASE->GetMental() + 0.1f);
-				else if (DATABASE->GetMental() > 100.0f)
+					DATABASE->SetMental(DATABASE->GetMental() + 0.01f);
+				else if (DATABASE->GetMental() >= 100.0f)
 					DATABASE->SetMental(100.0f);
 				break;
 			}
@@ -286,11 +286,16 @@ void cPlayer::cLight_Object_Picking_Update()
 			else
 			{
 				m_pMy_Scene->m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_IGNITE);
-				if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+				if (DATABASE->Load(ITEM_TINDER) > 0)
 				{
-					SOUNDMANAGER->play("ui_use_tinderbox");
-					m_pMy_Scene->cObject_Light_vec[i]->SetFire(true);
+					if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+					{
+						SOUNDMANAGER->play("ui_use_tinderbox");
+						m_pMy_Scene->cObject_Light_vec[i]->SetFire(true);
+						DATABASE->Delete(ITEM_TINDER);
+					}
 				}
+				
 			}
 		}
 		

@@ -55,7 +55,7 @@ VS_OUTPUT Normal_Light_ALL_OutLine_Vertex_Shader_vs_main( VS_INPUT Input )
    float3 fvWorldNormal = normalize(mul(Input.Normal, gWorldMatrix));
    if(OutLine_On_Off)
    {
-      Output.Position.xy += fvWorldNormal.xy * 0.004f;
+      Output.Position.xy += fvWorldNormal.xy * 0.04f;
    }
    else
    {
@@ -70,7 +70,7 @@ VS_OUTPUT Normal_Light_ALL_OutLine_Vertex_Shader_vs_main( VS_INPUT Input )
 
 float4 Normal_Light_ALL_OutLine_Pixel_Shader_ps_main() : COLOR0
 {   
-   return( float4( 1.0f, 1.0f, 1.0f, 1.0f ) );
+   return( float4( 0.0f, 0.0f, 1.0f, 1.0f ) );
    
 }
 
