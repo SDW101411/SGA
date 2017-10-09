@@ -98,13 +98,13 @@ cUI_In_Game::cUI_In_Game()
 
 	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, "", 600, 100, 440, 546, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_EXPLANATION);
 
-	char HP[40];
-	sprintf(HP, "%.1f %.1f", DATABASE->GetHp(), DATABASE->GetMental());
-	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_HEART_BRAIN_HP);
+	//char HP[40];
+	//sprintf(HP, "%.1f %.1f", DATABASE->GetHp(), DATABASE->GetMental());
+	//TextViewFunc(pTextView, cFontManager::E_EXPLANATION, HP, 600, 100, 284, 50, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_HEART_BRAIN_HP);
 
-	char Mouse[20];
-	sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
-	TextViewFunc(pTextView, cFontManager::E_EXPLANATION, Mouse, 600, 100, 50, 300, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_MOUSEPOS);
+	//char Mouse[20];
+	//sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
+	//TextViewFunc(pTextView, cFontManager::E_EXPLANATION, Mouse, 600, 100, 50, 300, /*DT_CENTER | DT_VCENTER | */DT_WORDBREAK, E_TEXT_MOUSEPOS);
 
 	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
 	TextViewFunc(pTextView, cFontManager::E_NORMAL, m_szTinderNum, 40, 20, 1102, 136, DT_CENTER/* | DT_VCENTER*/ | DT_WORDBREAK, E_TEXT_TINDER_NUM);
@@ -124,19 +124,19 @@ void cUI_In_Game::Update()
 {
 	cUITextView* pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_TITLE);
 	cUITextView* pTextView_2 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_EXPLANATION);
-	cUITextView* pTextView_3 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_HEART_BRAIN_HP);
-	cUITextView* pTextView_4 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_MOUSEPOS);
+	//cUITextView* pTextView_3 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_HEART_BRAIN_HP);
+	//cUITextView* pTextView_4 = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_MOUSEPOS);
 
 	if (pTextView) pTextView->SetText("");
 	if (pTextView_2) pTextView_2->SetText("");
 
-	char HP[40];
-	sprintf(HP, "%.1f %.1f", DATABASE->GetHp(), DATABASE->GetMental());
-	if (pTextView_3) pTextView_3->SetText(HP);
+	//char HP[40];
+	//sprintf(HP, "%.1f %.1f", DATABASE->GetHp(), DATABASE->GetMental());
+	//if (pTextView_3) pTextView_3->SetText(HP);
 
-	char Mouse[20];
-	sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
-	if (pTextView_4) pTextView_4->SetText(Mouse);
+	//char Mouse[20];
+	//sprintf(Mouse, "%d, %d", _ptMousePos.x, _ptMousePos.y);
+	//if (pTextView_4) pTextView_4->SetText(Mouse);
 
 	pTextView = (cUITextView*)m_pUIRoot->GetChildByTag(E_TEXT_TINDER_NUM);
 	sprintf(m_szTinderNum, "x %d", DATABASE->Load(ITEM_TINDER));
@@ -626,13 +626,13 @@ void cUI_In_Game::ValueCtr()
 {
 	if (KEYMANAGER->isOnceKeyDown('Z'))
 	{
-		DATABASE->SetHp(DATABASE->GetHp() - 0.5f);
-		DATABASE->SetMental(DATABASE->GetMental() - 0.5f);
+		DATABASE->SetHp(DATABASE->GetHp() - 5.0f);
+		DATABASE->SetMental(DATABASE->GetMental() - 5.0f);
 	}
 	if (KEYMANAGER->isOnceKeyDown('X'))
 	{
-		DATABASE->SetHp(DATABASE->GetHp() + 5);
-		DATABASE->SetMental(DATABASE->GetMental() + 5);
+		DATABASE->SetHp(DATABASE->GetHp() + 5.0f);
+		DATABASE->SetMental(DATABASE->GetMental() + 5.0f);
 	}
 	if (KEYMANAGER->isOnceKeyDown('R')) DATABASE->Delete(ITEM_TINDER);
 	if (KEYMANAGER->isOnceKeyDown('T')) DATABASE->Insert(ITEM_TINDER);

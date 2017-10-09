@@ -41,6 +41,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 
 void cScene_Shader_Scene_Test::Setup()
 {
+	SOUNDMANAGER->play("dan_grunt");
 	cMapLoader load;
 	m_pPlayer = new cPlayer(this, load.LoadToPlayerPosition());
 	m_pUI_In_Game = new cUI_In_Game;
@@ -103,6 +104,7 @@ void cScene_Shader_Scene_Test::Setup()
 
 void cScene_Shader_Scene_Test::Release()
 {
+	SOUNDMANAGER->pause("dan_grunt");
 	for each(auto p in cObject_Vec)SAFE_DELETE(p);
 
 	for each(auto p in cObject_Map_Vec)SAFE_DELETE(p);
