@@ -114,11 +114,44 @@ cPlayer::~cPlayer()
 
 void cPlayer::Update()
 {
+	if(DATABASE->GetMental() > 0.0f)
+	DATABASE->SetMental(DATABASE->GetMental() - 0.0001f);
+	float MenTal = 100.0f - DATABASE->GetMental();
+
+	Wave_float = MenTal * 0.1f;
 
 	SAFE_UPDATE(m_pPlayerCtrl);
 	if(m_PTarget_Mesh)Animation_Change();
 	cLight_Object_Picking_Update();
 	cObject_Item_OutLine_Update();
+
+	if (m_pPlayer_Animation_Index == cPlayer_Animation_HAND_STAY)
+	{
+		if (DATABASE->GetMental() < 100.0f)
+		{
+			DATABASE->SetMental(DATABASE->GetMental() + 0.1f);
+		}
+		else if (DATABASE->GetMental() > 100.0f)
+		{
+			DATABASE->SetMental(100.0f);	
+		}
+	}
+	else
+	{
+		for each(auto map in m_pMy_Scene->cObject_Light_vec)
+		{
+			if (!map->m_Fire_On)continue;
+			//float D = D3DXVec3Length(&(*m_pPlayerCtrl->Get_m_Pos() - map->m_ParticlePosition));
+			if (D3DXVec3Length(&(map->m_ParticlePosition - *m_pPlayerCtrl->Get_m_Pos())) < 5.0f)
+			{
+				if (DATABASE->GetMental() < 100.0f)
+					DATABASE->SetMental(DATABASE->GetMental() + 0.1f);
+				else if (DATABASE->GetMental() > 100.0f)
+					DATABASE->SetMental(100.0f);
+				break;
+			}
+		}
+	}
 }
 
 void cPlayer::Render()

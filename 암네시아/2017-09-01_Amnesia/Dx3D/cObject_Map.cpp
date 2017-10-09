@@ -160,7 +160,7 @@ void cObject_Map::AnotherRander_1_4Light_Version()
 
 	
 
-	m_Normal_Effect->SetFloat("cLight_Length",3.0f + (rand() % 50 * 0.01f));
+	m_Normal_Effect->SetFloat("cLight_Length",3.4f + (rand() % 10 * 0.01f));
 
 
 
