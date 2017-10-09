@@ -8,6 +8,7 @@ class cObject_Item;
 class cDamegeImpact;
 class cUI_In_Game;
 class cFrustum;
+class cCursorStatus;
 
 class cScene_Shader_Scene_Test : public cScene
 {
@@ -20,6 +21,7 @@ public:
 	cUI_In_Game*			m_pUI_In_Game;
 
 	cFrustum*				m_pFrustum_c;
+	cCursorStatus*			m_pCursorStatus;
 
 public:
 	cScene_Shader_Scene_Test();
@@ -29,6 +31,7 @@ public:
 	void Release();
 	void Update();
 	void Render();
+	void RenderUI();
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
 
