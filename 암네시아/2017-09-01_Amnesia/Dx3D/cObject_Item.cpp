@@ -14,6 +14,7 @@ cObject_Item::cObject_Item(cMesh_Object_Tag Name, D3DXVECTOR3 Pos, D3DXVECTOR3 R
 	m_AngleX = Rotate.x; m_AngleY = Rotate.y; m_AngleZ = Rotate.z;
 	m_ScaleX = Scare.x; m_ScaleY = Scare.y; m_ScaleZ = Scare.z;
 	m_OutLine_On = false;
+	m_Render_On = true;
 
 	switch (Name)
 	{

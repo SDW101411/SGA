@@ -2,14 +2,15 @@
 class cObject_Item
 {
 public:
-	D3DXVECTOR3					m_Pos;
-	LPD3DXEFFECT				m_Normal_Effect;
-	float						m_ScaleX, m_ScaleY, m_ScaleZ;
-	float						m_AngleX, m_AngleY, m_AngleZ;
-	bool						m_OutLine_On;
-	Mesh_Manager_Tag*			cObject;
-	vector<cObject_Light*>		m_Light_vec;
-	SYNTHESIZE(cMesh_Object_Tag, Item_Tag);
+	D3DXVECTOR3						m_Pos;
+	LPD3DXEFFECT					m_Normal_Effect;
+	float							m_ScaleX, m_ScaleY, m_ScaleZ;
+	float							m_AngleX, m_AngleY, m_AngleZ;
+	bool							m_OutLine_On;
+	Mesh_Manager_Tag*				cObject;
+	vector<cObject_Light*>			m_Light_vec;
+	cMesh_Object_Tag				Item_Tag;
+	bool							m_Render_On;
 	//cMesh_Object_Tag			Item_Tag;
 public:
 	cObject_Item();
