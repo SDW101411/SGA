@@ -9,6 +9,7 @@ class cDamegeImpact;
 class cUI_In_Game;
 class cFrustum;
 class cCursorStatus;
+class cMonster;
 
 class cScene_Shader_Scene_Test : public cScene
 {
@@ -22,6 +23,7 @@ public:
 
 	cFrustum*				m_pFrustum_c;
 	cCursorStatus*			m_pCursorStatus;
+	cMonster*				m_pMonster;
 
 public:
 	cScene_Shader_Scene_Test();
