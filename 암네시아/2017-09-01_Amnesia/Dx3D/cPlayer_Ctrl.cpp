@@ -148,6 +148,7 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	D3DXVec3Normalize(&Direction_2, &Direction_2);
 	
 	static float Speed = 0.01f;
+	Update_Pos = *m_pPos;
 
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
@@ -197,6 +198,11 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	{
 		*m_pPos = Update_Pos;
 		m_Camera = Update_Pos;
+		m_Camera.y += m_UpY + check;
+	}
+	else
+	{
+		m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;
 	}
 }

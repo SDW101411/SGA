@@ -162,11 +162,11 @@ void cSkinnedMesh::Render(ST_BONE* pBone /*= NULL*/)
 				pBoneMesh->dwNumPaletteEntries );
 
 			m_pEffect->SetMatrix("g_mViewProj", &matViewProj);
-			m_pEffect->SetVector("vLightDiffuse", &D3DXVECTOR4( 1.0f, 1.0f, 1.0f, 1.0f ) );
-			m_pEffect->SetVector("vWorldLightPos", &D3DXVECTOR4( 500.0f, 500.0f, 500.0f, 1.0f ) );
+			m_pEffect->SetVector("vLightDiffuse", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1.0f ) );
+			m_pEffect->SetVector("vWorldLightPos", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f ) );
 			m_pEffect->SetVector("vWorldCameraPos", &D3DXVECTOR4( vEye, 1.0f ) );
-			m_pEffect->SetVector("vMaterialAmbient", &D3DXVECTOR4( 0.53f, 0.53f, 0.53f, 0.53f ) );
-			m_pEffect->SetVector("vMaterialDiffuse", &D3DXVECTOR4( 0.7f, 0.7f, 0.7f, 1.0f ) );
+			m_pEffect->SetVector("vMaterialAmbient", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1.0f) );
+			m_pEffect->SetVector("vMaterialDiffuse", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1.0f) );
 
 			// we're pretty much ignoring the materials we got from the x-file; just set
 			// the texture here
