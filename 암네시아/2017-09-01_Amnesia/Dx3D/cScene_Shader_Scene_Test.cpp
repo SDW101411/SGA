@@ -122,57 +122,77 @@ void cScene_Shader_Scene_Test::Release()
 
 void cScene_Shader_Scene_Test::Update()
 {
-	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
-	SAFE_UPDATE(m_pPlayer);
-	SAFE_UPDATE(m_pMonster);
-	for each(auto p in cObject_Vec)SAFE_UPDATE(p);
+	if (KEYMANAGER->isToggleKey(VK_TAB))
+	{
+		m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
+		SAFE_UPDATE(m_pPlayer);
+		SAFE_UPDATE(m_pMonster);
+		for each(auto p in cObject_Vec)SAFE_UPDATE(p);
 
-	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
+		for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
 
-	for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
+		for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
 
-	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
-	SAFE_UPDATE(m_pDamegeImpact);
-	SAFE_UPDATE(m_pUI_In_Game);
-	SAFE_UPDATE(m_pCursorStatus);
-	
-	if (m_pFrustum_c) m_pFrustum_c->Update();
+		for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
+		SAFE_UPDATE(m_pDamegeImpact);
+
+		SAFE_UPDATE(m_pCursorStatus);
+
+		if (m_pFrustum_c) m_pFrustum_c->Update();
+	}
+	else
+	{
+		SAFE_UPDATE(m_pUI_In_Game);
+	}
 }
 
 void cScene_Shader_Scene_Test::Render()
 {
-	SAFE_RENDER(m_pPlayer);
-	for each(auto p in cObject_Vec)SAFE_RENDER(p);
+	//if (KEYMANAGER->isToggleKey(VK_TAB))
+	//{
+		SAFE_RENDER(m_pPlayer);
+		for each(auto p in cObject_Vec)SAFE_RENDER(p);
 
 
-	for each (auto p in cObject_Map_Vec)
-	{
-		ST_SPHERE stSphere;
-		stSphere.p = p->GetPosition();
-		stSphere.r = 2.0f;
-		if (m_pFrustum_c->IsIn(&stSphere))
+		for each (auto p in cObject_Map_Vec)
 		{
-			SAFE_RENDER(p);
+			ST_SPHERE stSphere;
+			stSphere.p = p->GetPosition();
+			stSphere.r = 2.0f;
+			if (m_pFrustum_c->IsIn(&stSphere))
+			{
+				SAFE_RENDER(p);
+			}
 		}
-	}
 
-	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
+		for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
 
-	for each(auto p in cObject_Item_vec)
-	{
-		if(p->m_Render_On)
-		SAFE_RENDER(p);
-	}
+		for each(auto p in cObject_Item_vec)
+		{
+			if (p->m_Render_On)
+				SAFE_RENDER(p);
+		}
 
-	SAFE_RENDER(m_pPlayer);
-	SAFE_RENDER(m_pMonster);
+		SAFE_RENDER(m_pPlayer);
+		SAFE_RENDER(m_pMonster);
+	//}
+	//else
+	//{
+
+	//}
 }
 
 void cScene_Shader_Scene_Test::RenderUI()
 {
-	SAFE_RENDER(m_pDamegeImpact);
-	SAFE_RENDER(m_pCursorStatus);
-	SAFE_RENDER(m_pUI_In_Game);
+	//if (KEYMANAGER->isToggleKey(VK_TAB))
+	//{
+		SAFE_RENDER(m_pDamegeImpact);
+		SAFE_RENDER(m_pCursorStatus);
+	//}
+	//else
+	//{
+		SAFE_RENDER(m_pUI_In_Game);
+	//}
 }
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
