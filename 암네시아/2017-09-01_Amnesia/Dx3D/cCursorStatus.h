@@ -16,7 +16,7 @@ private:
 	cUIObject*		m_pUIRoot;
 	LPD3DXSPRITE	m_pSprite;
 	CURSORSTATUS	cursorStatus;
-	int				m_nStatus;
+	//int				m_nStatus;
 
 public:
 	cCursorStatus();
@@ -24,7 +24,6 @@ public:
 
 	void Update();
 	void Render();
-	void RenderUI();
 	void CursorStatus(int tag);
 };
 

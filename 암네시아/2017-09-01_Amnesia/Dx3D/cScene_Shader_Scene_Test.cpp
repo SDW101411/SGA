@@ -19,6 +19,7 @@
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
 	, m_pUI_In_Game(NULL)
+	, m_pCursorStatus(NULL)
 {
 	m_pPlayer = NULL;
 }
@@ -33,6 +34,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 	for each(auto p in cObject_Item_vec)SAFE_DELETE(p);
 	SAFE_DELETE(m_pDamegeImpact);
 	SAFE_DELETE(m_pUI_In_Game);
+	SAFE_DELETE(m_pCursorStatus);
 }
 
 void cScene_Shader_Scene_Test::Setup()
@@ -40,6 +42,7 @@ void cScene_Shader_Scene_Test::Setup()
 	m_pPlayer = new cPlayer(this, D3DXVECTOR3(10.0f,0.0f,-10.0f));
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
+	m_pCursorStatus = new cCursorStatus;
 
 	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
 	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
@@ -105,7 +108,9 @@ void cScene_Shader_Scene_Test::Update()
 
 	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
 	SAFE_UPDATE(m_pDamegeImpact);
+	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
 	SAFE_UPDATE(m_pUI_In_Game);
+	SAFE_UPDATE(m_pCursorStatus);
 
 	if (m_pFrustum_c) m_pFrustum_c->Update();
 }
@@ -132,8 +137,13 @@ void cScene_Shader_Scene_Test::Render()
 	for each(auto p in cObject_Item_vec)SAFE_RENDER(p);
 
 	SAFE_RENDER(m_pPlayer);
-	SAFE_RENDER(m_pUI_In_Game);
+}
+
+void cScene_Shader_Scene_Test::RenderUI()
+{
 	SAFE_RENDER(m_pDamegeImpact);
+	SAFE_RENDER(m_pCursorStatus);
+	SAFE_RENDER(m_pUI_In_Game);
 }
 
 void cScene_Shader_Scene_Test::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

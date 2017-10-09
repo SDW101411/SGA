@@ -10,8 +10,8 @@ enum
 cCursorStatus::cCursorStatus()
 	: m_pUIRoot(NULL)
 	, m_pSprite(NULL)
-	, cursorStatus(CUR_PICKUP)
-	, m_nStatus(0)
+	, cursorStatus(CUR_NORMAL)
+	//, m_nStatus(0)
 {
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
@@ -51,11 +51,6 @@ void cCursorStatus::Update()
 }
 
 void cCursorStatus::Render()
-{
-	
-}
-
-void cCursorStatus::RenderUI()
 {
 	m_pUIRoot->Render(m_pSprite);
 }
