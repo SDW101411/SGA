@@ -257,4 +257,5 @@ struct Particle_Data
 };
 
 extern bool c_Gaussian_On;
+extern bool bUITabOn;
 extern float Wave_float;

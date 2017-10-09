@@ -68,6 +68,7 @@ void cMultiBtn::OnClick(cUIButton* pSender)
 	if (pSender->GetTag() == E_XBUTTON)
 	{
 		// 처음 화면으로
+		bUITabOn = false;
 		g_pSceneManager->SceneChange("cMainMenuScene");
 	}
 	else if (pSender->GetTag() == E_SAVEBTN)

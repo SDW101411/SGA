@@ -39,7 +39,7 @@ cUI_In_Game::cUI_In_Game()
 	, m_nRow(0)
 	, m_nCol(0)
 	, m_nState(UI_MAIN)
-	, m_bOn(false)
+	//, m_bOn(false)
 {
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
@@ -114,7 +114,6 @@ cUI_In_Game::cUI_In_Game()
 
 cUI_In_Game::~cUI_In_Game()
 {
-	m_bOn = false;
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
 	SAFE_DELETE(m_pBorder);
@@ -160,13 +159,13 @@ void cUI_In_Game::Update()
 	ValueCtr();
 	UpdateItemState();
 
-	if (KEYMANAGER->isOnceKeyDown(VK_TAB)) m_bOn = !m_bOn;
+	if (KEYMANAGER->isOnceKeyDown(VK_TAB)) bUITabOn = !bUITabOn;
 
 	//if (KEYMANAGER->isToggleKey(VK_TAB))
 	//{
 	//}
 	//else
-	if(m_bOn)
+	if(bUITabOn)
 	{
 		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
@@ -240,7 +239,7 @@ void cUI_In_Game::Render()
 	//{
 	//	RenderUI();
 	//}
-	if (m_bOn) RenderUI();
+	if (bUITabOn) RenderUI();
 }
 
 void cUI_In_Game::RenderUI()

@@ -55,7 +55,7 @@ private:
 	cUIButton*						m_pItemOil;
 	cUIJournal*						m_pJournal;
 
-	bool							m_bOn;
+	//bool							m_bOn;
 
 public:
 	cUI_In_Game();
@@ -84,6 +84,6 @@ public:
 
 	void FindPostion(IN int row, IN int col, OUT int& x, OUT int& y);
 	bool FindRowCol(OUT int& row, OUT int& col);
-	bool GetTabUIOn(bool on) { return m_bOn = on; }
+	//bool GetTabUIOn(bool on) { return m_bOn = on; }
 };
 
