@@ -24,5 +24,6 @@ void cSoundTrack::Insert()
 	SOUNDMANAGER->addSound("player_falldamage2", "player_falldamage2.ogg", false, false);
 	SOUNDMANAGER->addSound("player_falldamage3", "player_falldamage3.ogg", false, false);
 	SOUNDMANAGER->addSound("pick_potion", "pick_potion.ogg", false, false);
+	SOUNDMANAGER->addSound("pick_generic", "pick_generic.ogg", false, false);
 	SOUNDMANAGER->addSound("ui_use_tinderbox", "ui_use_tinderbox.ogg", false, false);
 }
