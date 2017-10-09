@@ -39,6 +39,8 @@ private:
 public:
 	vector<cObject_Map*>					LoadToObject_Map();
 	vector<cObject_Light*>					LoadToObject_Light();
+	vector<cObject_Map*>					LoadToMenuObject_Map();
+	vector<cObject_Light*>					LoadToMenuObject_Light();
 	vector<D3DXVECTOR3>						LoadToGroundSurface();
 	vector<D3DXVECTOR3>						LoadToWallSurface();
 	map<int, map<int, vector<cMapObject*>>> LoadToMapObject();

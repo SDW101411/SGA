@@ -220,6 +220,9 @@
     <Filter Include="영빈\Monster\AI\StateMachine\State\Attack">
       <UniqueIdentifier>{756ef2a4-e7af-47f1-98cb-a39462f50e08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="영빈\TestCamera">
+      <UniqueIdentifier>{3283235b-5879-4fc6-a4c0-1796f18ddbb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -567,6 +570,9 @@
     <ClInclude Include="cStateAttack.h">
       <Filter>영빈\Monster\AI\StateMachine\State\Attack</Filter>
     </ClInclude>
+    <ClInclude Include="cMenuCamera.h">
+      <Filter>영빈\TestCamera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cMainGame.cpp">
@@ -886,6 +892,9 @@
     </ClCompile>
     <ClCompile Include="cStateAttack.cpp">
       <Filter>영빈\Monster\AI\StateMachine\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="cMenuCamera.cpp">
+      <Filter>영빈\TestCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

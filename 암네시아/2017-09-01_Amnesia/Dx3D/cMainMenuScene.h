@@ -4,12 +4,18 @@
 #include "cUIButton.h"
 
 class cUITextView;
+class cMenuCamera;
+class cObject_Light;
+class cObject_Map;
 
 class cMainMenuScene : public cScene, iButtonDelegate
 {
 private:
 	cUIObject*		m_pUIRoot;
 	LPD3DXSPRITE	m_pSprite;
+	cMenuCamera*	m_pMenuCamera;
+	vector<cObject_Light*>	m_objLights;
+	vector<cObject_Map*>	m_objMaps;
 
 public:
 	cMainMenuScene();

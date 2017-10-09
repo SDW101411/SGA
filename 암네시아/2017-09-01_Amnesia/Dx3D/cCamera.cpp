@@ -57,6 +57,18 @@ void cCamera::Update()
 	{
 		vTarget = *m_pvTarget;
 	}
+
+	char str[1024];
+	sprintf(str, "vTarget = %f %f %f\n", vTarget.x, vTarget.y, vTarget.z);
+	OutputDebugString(str);
+	sprintf(str, "AngleX = %f\n", m_fAngleX);
+	OutputDebugString(str);
+	sprintf(str, "AngleY = %f\n", m_fAngleY);
+	OutputDebugString(str);
+	sprintf(str, "AngleY = %f\n", m_fAngleY);
+	OutputDebugString(str);
+	sprintf(str, "Distance = %f\n", m_fDistance);
+	OutputDebugString(str);
 	
 	m_vEye = m_vEye + vTarget;
 	

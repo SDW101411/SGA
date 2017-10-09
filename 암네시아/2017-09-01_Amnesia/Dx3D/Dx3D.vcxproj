@@ -123,6 +123,7 @@
     <ClInclude Include="cMapSaveBtn.h" />
     <ClInclude Include="cMapToolScene.h" />
     <ClInclude Include="cMapSurface.h" />
+    <ClInclude Include="cMenuCamera.h" />
     <ClInclude Include="cMesh_Manager.h" />
     <ClInclude Include="cMonAnimCtrl.h" />
     <ClInclude Include="cMonster.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="cLerp.cpp" />
     <ClCompile Include="cLoadingScene.cpp" />
     <ClCompile Include="cLoadManager.cpp" />
+    <ClCompile Include="cMenuCamera.cpp" />
     <ClCompile Include="cStateAttack.cpp" />
     <ClCompile Include="cStateLookPlayer.cpp" />
     <ClCompile Include="cMainGame.cpp" />

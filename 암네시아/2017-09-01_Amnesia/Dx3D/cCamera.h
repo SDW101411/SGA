@@ -1,7 +1,7 @@
 #pragma once
 class cCamera
 {
-private:
+protected:
 	D3DXVECTOR3*	m_pvTarget;
 	float			m_fAngleX;
 	float			m_fAngleY;
@@ -15,7 +15,7 @@ public:
 	~cCamera(void);
 
 	void Setup(D3DXVECTOR3* pvTarget = NULL);
-	void Update();
+	virtual void Update();
 	void MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	D3DXVECTOR3 * get_pvPostion();
 };

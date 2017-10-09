@@ -2,6 +2,10 @@
 #include "cMainMenuScene.h"
 #include "cUIImageView.h"
 #include "cUITextView.h"
+#include "cMenuCamera.h"
+#include "cObject_Light.h"
+#include "cObject_Map.h"
+#include "cMapLoader.h"
 
 enum
 {
@@ -20,8 +24,17 @@ cMainMenuScene::cMainMenuScene()
 {
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
+	cMapLoader loader;
+
+	m_pMenuCamera = new cMenuCamera;
+
+	m_objLights = loader.LoadToMenuObject_Light();
+	m_objMaps = loader.LoadToMenuObject_Map();
+
+	loader.PushNearLight(m_objLights, m_objMaps);
+
 	cUIImageView* pImageView = new cUIImageView;
-	pImageView->SetTexture("UI/tab_UI_bg2.png");
+	pImageView->SetTexture("UI/tab_UI_bg.png");
 	pImageView->SetScaling(6.48f, 5.1f);
 	pImageView->SetTag(E_GAME_BACKGROUND);
 	m_pUIRoot = pImageView;
@@ -63,6 +76,8 @@ cMainMenuScene::~cMainMenuScene()
 {
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pUIRoot);
+	for each(auto p in m_objLights) SAFE_DELETE(p);
+	for each(auto p in m_objMaps) SAFE_DELETE(p);
 }
 
 void cMainMenuScene::Setup()
@@ -81,11 +96,16 @@ void cMainMenuScene::Update()
 	if (pTextView) pTextView->SetText("");
 
 	SAFE_UPDATE(m_pUIRoot);
+	SAFE_UPDATE(m_pMenuCamera);
+
+	for each(auto p in m_objLights) SAFE_UPDATE(p);
+	for each(auto p in m_objMaps) SAFE_UPDATE(p);
 }
 
 void cMainMenuScene::Render()
 {
-	
+	for each(auto p in m_objLights) SAFE_RENDER(p);
+	for each(auto p in m_objMaps) SAFE_RENDER(p);
 }
 
 void cMainMenuScene::RenderUI()

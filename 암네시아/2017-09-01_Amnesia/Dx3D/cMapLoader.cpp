@@ -95,6 +95,95 @@ vector<cObject_Light*> cMapLoader::LoadToObject_Light()
 	return lightPos;
 }
 
+vector<cObject_Map*> cMapLoader::LoadToMenuObject_Map()
+{
+	vector<cObject_Map*> rtnObjList;
+
+	m_fp = fopen("Data/MenuData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_LTPOS))
+		{
+			m_leftTop.x = GetFloat();
+			m_leftTop.y = GetFloat();
+			m_leftTop.z = GetFloat();
+			GetToken();
+		}
+		else if (IsEqual(str, ID_MESH))
+		{
+			while (true)
+			{
+				str = GetToken();
+				if (IsEqual(str, ID_MAPMESH_TAG_CEILING_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_CEILING_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CEILING_BROKEN))
+					PushObject_Map(MAPMESH_TAG_CEILING_BROKEN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CEILING_NORMAL))
+					PushObject_Map(MAPMESH_TAG_CEILING_NORMAL, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_WALL_WORN))
+					PushObject_Map(MAPMESH_TAG_WALL_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_PILLAR_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_PILLAR_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_PILLAR_FULL))
+					PushObject_Map(MAPMESH_TAG_PILLAR_FULL, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_FLOOR_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_FLOOR_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CONCAVE_WORN))
+					PushObject_Map(MAPMESH_TAG_CONCAVE_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONCAVE_WORN))
+					PushObject_Map(MAPMESH_TAG_CORNER_CONCAVE_WORN, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_CORNER_CONVER_SHORT))
+					PushObject_Map(MAPMESH_TAG_CORNER_CONVER_SHORT, rtnObjList);
+				else if (IsEqual(str, ID_MAPMESH_TAG_BARREL_DEFAULT))
+					PushObject_Map(MAPMESH_TAG_BARREL_DEFAULT, rtnObjList);
+				else if (IsEqual(str, ID_END))
+					break;
+			}
+		}
+	}
+
+	fclose(m_fp);
+
+	return rtnObjList;
+}
+
+vector<cObject_Light*> cMapLoader::LoadToMenuObject_Light()
+{
+	vector<cObject_Light*> lightPos;
+
+	m_fp = fopen("Data/MenuData.txt", "r");
+
+	char* str;
+
+	while (!feof(m_fp))
+	{
+		str = GetToken();
+
+		if (str == NULL) continue;
+		else if (IsEqual(str, ID_MESH))
+		{
+			while (true)
+			{
+				if (IsEqual(GetToken(), ID_MAPMESH_TAG_TORCH_STATIC_01))
+				{
+					PushLight(lightPos);
+					break;
+				}
+			}
+		}
+	}
+
+	fclose(m_fp);
+
+	return lightPos;
+}
+
 vector<D3DXVECTOR3> cMapLoader::LoadToGroundSurface()
 {
 	vector<D3DXVECTOR3> rtnObjList;
