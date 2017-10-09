@@ -12,7 +12,7 @@ cAStarScene::cAStarScene()
 {
 	cAStarBtn* pBtn = new cAStarBtn;
 	m_pIUI = pBtn;
-	m_pMesh = new cSkinnedMesh("Monster/", "idle.X");
+	m_pMesh = new cSkinnedMesh("Monster/", "idle");
 }
 
 cAStarScene::~cAStarScene()

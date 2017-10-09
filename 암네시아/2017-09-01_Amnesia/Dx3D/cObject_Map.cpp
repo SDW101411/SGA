@@ -157,7 +157,7 @@ void cObject_Map::AnotherRander_1_4Light_Version()
 		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
 		m_Normal_Effect->SetBool("Light_4", m_Light_vec[2]->m_Fire_On);
 	}
-	m_Normal_Effect->SetFloat("cLight_Length",10.0f);
+	m_Normal_Effect->SetFloat("cLight_Length",3.5f);
 
 
 
@@ -192,7 +192,7 @@ void cObject_Map::AnotherRander_2()
 
 void cObject_Map::m_Light_Vec_Push(cObject_Light * save_Target)
 {
-	if (m_Light_vec.size() < 2)
+	if (m_Light_vec.size() < 1)
 	{
 		m_Light_vec.push_back(save_Target);
 	}

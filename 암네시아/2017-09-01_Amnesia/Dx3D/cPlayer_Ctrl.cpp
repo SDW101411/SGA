@@ -148,14 +148,17 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	D3DXVec3Normalize(&Direction_2, &Direction_2);
 	
 	static float Speed = 0.01f;
+	Update_Pos = *m_pPos;
 
+	bool On = false;
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		//*m_pPos += Direction * m_Speed;
 		Update_Pos = *m_pPos + (Direction * m_Speed);
 		/*m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;*/
-		check += Speed;
+		//check += Speed;
+		On = true;
 
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
@@ -164,7 +167,8 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 		/**m_pPos += Direction * -m_Speed;
 		m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;*/
-		check += Speed * -1;
+		//check += Speed * -1;
+		On = true;
 	}
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
@@ -172,7 +176,8 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 		/**m_pPos += Direction_2 * m_Speed;
 		m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;*/
-		check += Speed;
+		//check += Speed;
+		On = true;
 
 	}
 	if (KEYMANAGER->isStayKeyDown('A'))
@@ -181,7 +186,8 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 		/**m_pPos += Direction_2 * -m_Speed;
 		m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;*/
-		check += Speed * -1;
+		On = true;
+		
 	}
 
 	if (check >= m_UpY/6)
@@ -195,9 +201,16 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 
 	if (Get_Ray(Update_Pos.x, Update_Pos.y, Update_Pos.z))
 	{
+		if (On)
+			check += Speed * -1;
 		*m_pPos = Update_Pos;
 		m_Camera = Update_Pos;
 		m_Camera.y += m_UpY + check;
+	}
+	else
+	{
+		m_Camera = *m_pPos;
+		m_Camera.y += m_UpY;
 	}
 }
 

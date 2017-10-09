@@ -27,7 +27,7 @@ void cMonster::Update()
 
 	D3DXMATRIX scale, rotY, tran;
 	D3DXMatrixTranslation(&tran, m_pos.x, m_pos.y, m_pos.z);
-	D3DXMatrixScaling(&scale, 1.275f, 1.275f, 1.275f);
+	D3DXMatrixScaling(&scale, 2.0f, 2.0f, 2.0f);
 	D3DXMatrixRotationY(&rotY, D3DX_PI - m_angle + D3DX_PI * 0.5f);
 	m_dir = D3DXVECTOR3(cosf(m_angle) * 1, 0, sinf(m_angle) * 1);
 	D3DXVec3Normalize(&m_dir, &m_dir);
@@ -67,7 +67,7 @@ void cMonster::MoveRoute(float speed)
 		D3DXVECTOR3 target = m_route.front();
 		D3DXVECTOR3 dir = target - m_pos;
 		D3DXVec3Normalize(&dir, &dir);
-		m_pos += dir * MON_MOVESPEED;
+		m_pos += dir * speed;
 		m_angle = GetAngle(m_pos, m_route.front());
 	}
 	else m_move = false;
