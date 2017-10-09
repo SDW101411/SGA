@@ -4,11 +4,11 @@
 
 cMonAnimCtrl::cMonAnimCtrl()
 {
-	m_meshList[MON_ANIM_IDLE]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "idle.X");
-	m_meshList[MON_ANIM_IDLE_EXTRA] = g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "idle_extra.X");
-	m_meshList[MON_ANIM_WALK]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "walk.X");
-	m_meshList[MON_ANIM_RUN]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "run.X");
-	m_meshList[MON_ANIM_ATTACK]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "attack.X");
+	m_meshList[MON_ANIM_IDLE]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "idle");
+	m_meshList[MON_ANIM_IDLE_EXTRA] = g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "idle_extra");
+	m_meshList[MON_ANIM_WALK]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "walk");
+	m_meshList[MON_ANIM_RUN]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "run");
+	m_meshList[MON_ANIM_ATTACK]		= g_pSkinnedMeshManager->GetSkinnedMesh("Monster/", "attack");
 
 	SetAnimation(MON_ANIM_IDLE);
 }

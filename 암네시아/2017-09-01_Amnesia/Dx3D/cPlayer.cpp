@@ -65,10 +65,10 @@ cPlayer::cPlayer(cScene *Save, D3DXVECTOR3 cPlayer_Pos)
 {
 	//메인 이게 메인이다.
 	m_pPlayerCtrl = NULL;
-	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands.X"));
-	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_draw.X"));
-	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_idle.X"));
-	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_holster.X"));
+	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands"));
+	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_draw"));
+	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_idle"));
+	m_pPlayer_animation_Vec.push_back(new cSkinnedMesh("cPlayer_Hand_X_file/", "hands_lantern_holster"));
 	m_PTarget_Mesh = m_pPlayer_animation_Vec[0];
 
 	m_pPlayerCtrl = new cPlayer_Ctrl(cPlayer_Pos, 1.0f);
@@ -84,7 +84,7 @@ cPlayer::cPlayer(cScene *Save, D3DXVECTOR3 cPlayer_Pos)
 	Return_Name((ST_BONE*)m_pPlayer_animation_Vec[3]->m_pRootFrame, "index", &m_Mat_vec[3]);
 
 	cObject = cMESH_MANAGER->FIND("PLAYERMESH_TAG_LANTERN");
-	m_pLantern = new cSkinnedMesh("X_File/entities/lantern/", "hand_lantern.X");
+	m_pLantern = new cSkinnedMesh("X_File/entities/lantern/", "hand_lantern");
 
 	{
 		m_Lantern.x = 20.0403633;

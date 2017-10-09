@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "cSkinnedMesh.h"
 #include "cAllocateHierarchy.h"
+#include "cMesh_Manager.h"
 
 cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 	: m_pRootFrame(NULL)
@@ -44,7 +45,23 @@ cSkinnedMesh::~cSkinnedMesh(void)
 void cSkinnedMesh::Load( char* szDirectory, char* szFilename )
 {
 	m_pEffect = LoadEffect("MultiAnimation.hpp");
+
+	m_pEffect_2 = (LPD3DXEFFECT)cMESH_MANAGER->FIND_SHADER("Shader_Light_OutLine");
 							
+	std::string sMesh(szDirectory); sMesh += std::string(szFilename); sMesh += std::string(".x");
+	std::string sTex(szDirectory); sTex += std::string(".dds");
+	std::string sNormal(szDirectory); sNormal += std::string("_nrm.dds");
+	std::string sSpec(szDirectory); sSpec += std::string("_spec.dds");
+
+	LPDIRECT3DTEXTURE9	m_Texture;
+	LPDIRECT3DTEXTURE9	m_Normal;
+	LPDIRECT3DTEXTURE9	m_Specqural;
+
+	/*cMesh_Manager::LoadTexture();
+	m_Texture = LoadTexture(sTex.c_str());
+	m_Normal = LoadTexture(sNormal.c_str());
+	m_Specqural = LoadTexture(sSpec.c_str());*/
+
 	int nPaletteSize = 0;
 	m_pEffect->GetInt("MATRIX_PALETTE_SIZE", &nPaletteSize);
 
@@ -55,7 +72,7 @@ void cSkinnedMesh::Load( char* szDirectory, char* szFilename )
 	std::string sFullPath(szDirectory);
 	sFullPath += std::string(szFilename);
 
-	D3DXLoadMeshHierarchyFromX(sFullPath.c_str(),
+	D3DXLoadMeshHierarchyFromX(sMesh.c_str(),
 		D3DXMESH_MANAGED,
 		g_pD3DDevice,
 		&ah,
@@ -165,8 +182,8 @@ void cSkinnedMesh::Render(ST_BONE* pBone /*= NULL*/)
 			m_pEffect->SetVector("vLightDiffuse", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1.0f ) );
 			m_pEffect->SetVector("vWorldLightPos", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f ) );
 			m_pEffect->SetVector("vWorldCameraPos", &D3DXVECTOR4( vEye, 1.0f ) );
-			m_pEffect->SetVector("vMaterialAmbient", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1.0f) );
-			m_pEffect->SetVector("vMaterialDiffuse", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1.0f) );
+			m_pEffect->SetVector("vMaterialAmbient", &D3DXVECTOR4(cLight_Color_Seting.x -0.2f, cLight_Color_Seting.y - 0.2f, cLight_Color_Seting.z, 1.0f) );
+			m_pEffect->SetVector("vMaterialDiffuse", &D3DXVECTOR4(cLight_Color_Seting.x - 0.2f, cLight_Color_Seting.y - 0.2f, cLight_Color_Seting.z, 1.0f) );
 
 			// we're pretty much ignoring the materials we got from the x-file; just set
 			// the texture here
@@ -189,6 +206,27 @@ void cSkinnedMesh::Render(ST_BONE* pBone /*= NULL*/)
 				m_pEffect->EndPass();
 			}
 			m_pEffect->End();
+
+			{
+			//	D3DXVECTOR4	gWorldCameraPosition(cCameara_seting.x, cCameara_seting.y, cCameara_seting.z, 1.0f);
+			//	m_pEffect_2->SetMatrix("gWorldMatrix", &pBone->CombinedTransformationMatrix);
+			//	m_pEffect_2->SetMatrix("gWorldViewProjectionMatrix", &(pBone->CombinedTransformationMatrix*matView * matProj));
+			//	m_pEffect_2->SetVector("gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
+			//	m_pEffect_2->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
+			//	m_pEffect_2->SetFloat("cLight_Length", 10.0f);
+			//	m_pEffect_2->SetVector("gWorldCameraPosition", &gWorldCameraPosition);
+			//	m_pEffect_2->SetVector("gLightColor_1", &D3DXVECTOR4(cLight_Color_Seting_2.x, cLight_Color_Seting_2.y, cLight_Color_Seting_2.z, 1));
+			//	m_pEffect_2->SetVector("gLightColor_2", &D3DXVECTOR4(cLight_Color_Seting.x, cLight_Color_Seting.y, cLight_Color_Seting.z, 1));
+			//	m_pEffect_2->SetVector("gLightColor_3", &D3DXVECTOR4(cLight_Color_Seting_3.x, cLight_Color_Seting_3.y, cLight_Color_Seting_3.z, 1));
+			//	m_pEffect_2->SetVector("NormalMapping_Pass_0_Pixel_Shader_gWorldLightPosition", &D3DXVECTOR4(cLight_Seting.x, cLight_Seting.y, cLight_Seting.z, 1.0f));
+			//	m_pEffect_2->SetMatrix("gWorldMatrix", &pBone->CombinedTransformationMatrix);
+			//	m_pEffect_2->SetMatrix("gViewMatrix", &matView);
+			//	m_pEffect_2->SetMatrix("gVPmatrix", &(matView*matProj));
+			//	m_pEffect_2->SetMatrix("gProjectionMatrix", &matProj);
+			///*	m_pEffect_2->SetTexture("DiffuseMap_Tex", cObject->m_Texture);
+			//	m_pEffect_2->SetTexture("NormalMap_Tex", cObject->m_Normal);
+			//	m_pEffect_2->SetTexture("SpecularMap_Tex", cObject->m_Specqural);*/
+			}
 		}
 	}
 

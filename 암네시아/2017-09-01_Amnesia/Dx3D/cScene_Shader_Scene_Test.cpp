@@ -54,8 +54,12 @@ void cScene_Shader_Scene_Test::Setup()
 	
 
 
+
 	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
 	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
+
+
+	load.PushNearLight(cObject_Light_vec, cObject_Map_Vec);
 
 	D3DXVECTOR3 lightPos, Light_Position, Particle_Position;
 	D3DXMATRIX	matRX, matRY, matRZ, matR;

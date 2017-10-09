@@ -12,6 +12,7 @@ private:
 	DWORD						m_dwWorkingPaletteSize;
 	D3DXMATRIX*					m_pmWorkingPalette;
 	LPD3DXEFFECT				m_pEffect;
+	LPD3DXEFFECT				m_pEffect_2;
 
 	// 객체마다 생성
 	LPD3DXANIMATIONCONTROLLER	m_pAnimController;
