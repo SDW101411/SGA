@@ -16,7 +16,11 @@ void cStateRunToPlayer::Setup()
 {
 	m_isMissedPlayer = false;
 	m_pThis->SetAnim(MON_ANIM_RUN);
-	m_pThis->SetRoute(g_pASTAR->FindPath(m_pThis->GetPosition(), m_pThis->GetPlayerPos()));
+	list<D3DXVECTOR3> path = g_pASTAR->FindPath(m_pThis->GetPosition(), m_pThis->GetPlayerPos());
+	if (path.size() > 0)
+	{
+		m_pThis->SetRoute(path);
+	}
 	m_pThis->SetMove(true);
 }
 

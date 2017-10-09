@@ -71,8 +71,11 @@ void cMainGame::Update()
 
 	SAFE_UPDATE(m_pCrtCtrl);
 	cLight_Seting = *m_pCrtCtrl->GetPosition();
-	SAFE_UPDATE(m_pCamera);
-	cCameara_seting = *m_pCamera->get_pvPostion();
+	if (KEYMANAGER->isToggleKey(VK_TAB))
+	{
+		SAFE_UPDATE(m_pCamera);
+		cCameara_seting = *m_pCamera->get_pvPostion();
+	}
 	SAFE_UPDATE(m_pMain_admin);
 
 	g_pAutoReleasePool->Drain();

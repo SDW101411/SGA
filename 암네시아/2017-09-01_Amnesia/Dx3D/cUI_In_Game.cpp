@@ -44,8 +44,8 @@ cUI_In_Game::cUI_In_Game()
 	D3DXCreateSprite(g_pD3DDevice, &m_pSprite);
 
 	cUIImageView* pImageView = new cUIImageView;
-	pImageView->SetTexture("UI/tab_UI_bg.png");
-	pImageView->SetScaling(0.75f, 0.65f);
+	pImageView->SetTexture("UI/menu_gamma.tga");
+	pImageView->SetScaling(6.48f, 5.1f);
 	pImageView->SetTag(E_BACKGROUND);
 	m_pUIRoot = pImageView;
 
@@ -159,14 +159,14 @@ void cUI_In_Game::Update()
 	ValueCtr();
 	UpdateItemState();
 
-	if (KEYMANAGER->isOnceKeyDown(VK_TAB)) bUITabOn = !bUITabOn;
+	//if (KEYMANAGER->isOnceKeyDown(VK_TAB)) bUITabOn = !bUITabOn;
 
 	//if (KEYMANAGER->isToggleKey(VK_TAB))
 	//{
 	//}
 	//else
-	if(bUITabOn)
-	{
+	////if(bUITabOn)
+	//{
 		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
 			if (PtInRect(&m_InventoryRc, _ptMousePos))
@@ -227,19 +227,19 @@ void cUI_In_Game::Update()
 			SAFE_UPDATE(m_pJournal);
 			break;
 		}
-	}
+	//}
 }
 
 void cUI_In_Game::Render()
 {
-	//if (KEYMANAGER->isToggleKey(VK_TAB))
-	//{
-	//}
-	//else
-	//{
-	//	RenderUI();
-	//}
-	if (bUITabOn) RenderUI();
+	if (KEYMANAGER->isToggleKey(VK_TAB))
+	{
+	}
+	else
+	{
+		RenderUI();
+	}
+	//if (bUITabOn) RenderUI();
 }
 
 void cUI_In_Game::RenderUI()

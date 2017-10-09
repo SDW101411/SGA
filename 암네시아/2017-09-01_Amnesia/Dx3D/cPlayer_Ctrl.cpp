@@ -53,7 +53,10 @@ void cPlayer_Ctrl::Update()
 
 void cPlayer_Ctrl::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	cPlayer_cCamera_MsgProc(hWnd, message, wParam, lParam);
+	if (KEYMANAGER->isToggleKey(VK_TAB))
+	{
+		cPlayer_cCamera_MsgProc(hWnd, message, wParam, lParam);
+	}
 }
 
 void cPlayer_Ctrl::cPlayer_cCamera_Update()
