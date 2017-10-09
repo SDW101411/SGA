@@ -114,6 +114,7 @@ cPlayer::~cPlayer()
 
 void cPlayer::Update()
 {
+
 	SAFE_UPDATE(m_pPlayerCtrl);
 	if(m_PTarget_Mesh)Animation_Change();
 	cLight_Object_Picking_Update();

@@ -157,7 +157,10 @@ void cObject_Map::AnotherRander_1_4Light_Version()
 		m_Normal_Effect->SetVector("Normal_Light_ALL_Pass_0_Pixel_Shader_gWorldLightPosition_4", &D3DXVECTOR4(m_Light_vec[2]->m_Pos.x, m_Light_vec[2]->m_Pos.y, m_Light_vec[2]->m_Pos.z, 1.0f));
 		m_Normal_Effect->SetBool("Light_4", m_Light_vec[2]->m_Fire_On);
 	}
-	m_Normal_Effect->SetFloat("cLight_Length",3.5f);
+
+	
+
+	m_Normal_Effect->SetFloat("cLight_Length",3.0f + (rand() % 50 * 0.01f));
 
 
 
