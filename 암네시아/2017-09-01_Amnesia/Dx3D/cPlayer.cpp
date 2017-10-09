@@ -8,7 +8,8 @@
 #include "cRay.h"
 #include "cObject_Item.h"
 #include "cScene.h"
-
+#include "cCursorStatus.h"
+#include "cUI_In_Game.h"
 
 
 
@@ -225,30 +226,38 @@ void cPlayer::set_m_Light_Vector(void * Vector)
 void cPlayer::cLight_Object_Picking_Update()
 {
 
-	if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+	for (int i = 0; i < m_pMy_Scene->cObject_Light_vec.size(); ++i)
 	{
 		POINT DD = _ptMousePos;
-		for (int i = 0; i < m_pMy_Scene->cObject_Light_vec.size(); ++i)
+		ST_SPHERE Save;
+		Save.p = m_pMy_Scene->cObject_Light_vec[i]->m_ParticlePosition;
+		Save.r = 1.0f;
+		cRay Pick;
+		Pick = cRay::RayAtWorldSpace(730, 330);
+		Save.isPicked = Pick.IsPicked(&Save);
+		if (Save.isPicked)
 		{
-			ST_SPHERE Save;
-			Save.p = m_pMy_Scene->cObject_Light_vec[i]->m_ParticlePosition;
-			Save.r = 1.0f;
-			cRay Pick;
-			Pick = cRay :: RayAtWorldSpace(730, 330);
-			Save.isPicked = Pick.IsPicked(&Save);
-			if (Save.isPicked)
-			{
+			
 			int D = 0;
 			if (m_pMy_Scene->cObject_Light_vec[i]->m_Fire_On)
+			{
+				if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
 				{
 					m_pMy_Scene->cObject_Light_vec[i]->SetFire(false);
 				}
+				
+			}
 			else
 			{
-				m_pMy_Scene->cObject_Light_vec[i]->SetFire(true);
-			}
+				m_pMy_Scene->m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_IGNITE);
+				if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+				{
+					m_pMy_Scene->cObject_Light_vec[i]->SetFire(true);
+				}
 			}
 		}
+		
+
 	}
 }
 
@@ -256,6 +265,7 @@ void cPlayer::cObject_Item_OutLine_Update()
 {
 	for (int i = 0; i < m_pMy_Scene->cObject_Item_vec.size(); ++i)
 	{
+		if (!m_pMy_Scene->cObject_Item_vec[i]->m_Render_On)continue;
 		m_pMy_Scene->cObject_Item_vec[i]->m_OutLine_On = false;
 		ST_SPHERE Save;
 		Save.p = m_pMy_Scene->cObject_Item_vec[i]->m_Pos;
@@ -266,9 +276,38 @@ void cPlayer::cObject_Item_OutLine_Update()
 		if (Save.isPicked)
 		{
 			m_pMy_Scene->cObject_Item_vec[i]->m_OutLine_On = true;
+			m_pMy_Scene->m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_PICKUP);
+			if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+			{
+				m_pMy_Scene->cObject_Item_vec[i]->m_Render_On = false;
+
+				switch (m_pMy_Scene->cObject_Item_vec[i]->Item_Tag)
+				{
+				case ITEMMESH_TAG_POTION_OIL:
+				{
+					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_OIL);
+				}
+					break;
+				case ITEMMESH_TAG_POTION_TINDERBOX:
+				{
+					DATABASE->Insert(ITEM_TINDER);
+				}
+				break;
+				case ITEMMESH_TAG_POTION_HEALTH:
+				{
+					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_HP);
+				}
+				break;
+				case ITEMMESH_TAG_POTION_SANITY:
+				{
+					m_pMy_Scene->m_pUI_In_Game->CreateItem(ITEM_MENTAL);
+				}
+				break;
+				}
+				
+			}
 		}
 	}
-
 }
 
 void cPlayer::cFind_Hand(cSkinnedMesh* Insert, D3DXMATRIXA16* out)

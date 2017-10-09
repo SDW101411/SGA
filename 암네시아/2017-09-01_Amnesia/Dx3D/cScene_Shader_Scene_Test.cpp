@@ -99,6 +99,7 @@ void cScene_Shader_Scene_Test::Release()
 
 void cScene_Shader_Scene_Test::Update()
 {
+	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
 	SAFE_UPDATE(m_pPlayer);
 	for each(auto p in cObject_Vec)SAFE_UPDATE(p);
 
@@ -108,7 +109,6 @@ void cScene_Shader_Scene_Test::Update()
 
 	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
 	SAFE_UPDATE(m_pDamegeImpact);
-	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
 	SAFE_UPDATE(m_pUI_In_Game);
 	SAFE_UPDATE(m_pCursorStatus);
 	
@@ -134,7 +134,11 @@ void cScene_Shader_Scene_Test::Render()
 
 	for each(auto p in cObject_Light_vec)SAFE_RENDER(p);
 
-	for each(auto p in cObject_Item_vec)SAFE_RENDER(p);
+	for each(auto p in cObject_Item_vec)
+	{
+		if(p->m_Render_On)
+		SAFE_RENDER(p);
+	}
 
 	SAFE_RENDER(m_pPlayer);
 }

@@ -6,6 +6,7 @@ private:
 	D3DXVECTOR3*	m_pTarget;
 	D3DXVECTOR3		m_Camera;
 	D3DXVECTOR3		m_pViewTarget;
+	D3DXVECTOR3		m_pViewTarget_2;
 
 	float			m_Speed;
 

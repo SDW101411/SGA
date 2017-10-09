@@ -63,11 +63,14 @@ void cPlayer_Ctrl::cPlayer_cCamera_Update()
 	D3DXMatrixRotationY(&matRY, m_fAngleY);
 	D3DXMatrixIdentity(&matR);
 	m_pViewTarget = D3DXVECTOR3(0, 0, -10.0);
+	m_pViewTarget_2 = D3DXVECTOR3(-10.0f, 0, 0);
 	matR = matRX * matRY;
 
 	D3DXVec3TransformCoord(&m_pViewTarget, &m_pViewTarget, &matR);
+	D3DXVec3TransformCoord(&m_pViewTarget_2, &m_pViewTarget_2, &matR);
 
 	m_pViewTarget = m_pViewTarget + m_Camera;
+	m_pViewTarget_2 = m_pViewTarget_2 + m_Camera;
 
 	D3DXMATRIX matView;
 	D3DXMatrixLookAtLH(&matView,
@@ -132,13 +135,16 @@ void cPlayer_Ctrl::cPlayer_cCamera_MsgProc(HWND hWnd, UINT message, WPARAM wPara
 
 void cPlayer_Ctrl::cPlayer_cMove_Update()
 {
-	D3DXVECTOR3 Direction;
+	D3DXVECTOR3 Direction, Direction_2;
 	D3DXVECTOR3 anothor = m_pViewTarget;
+	D3DXVECTOR3 anothor_2 = m_pViewTarget_2;
 	anothor.y = m_pPos->y;
 	Direction = anothor - *m_pPos;
+	anothor_2.y = m_pPos->y;
+	Direction_2 = anothor_2 - *m_pPos;
 
 	D3DXVec3Normalize(&Direction, &Direction);
-
+	D3DXVec3Normalize(&Direction_2, &Direction_2);
 	
 	static float Speed = 0.01f;
 
@@ -153,6 +159,21 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
 		*m_pPos += Direction * -m_Speed;
+		m_Camera = *m_pPos;
+		m_Camera.y += m_UpY + check;
+		check += Speed * -1;
+	}
+	if (KEYMANAGER->isStayKeyDown('D'))
+	{
+		*m_pPos += Direction_2 * m_Speed;
+		m_Camera = *m_pPos;
+		m_Camera.y += m_UpY + check;
+		check += Speed;
+
+	}
+	if (KEYMANAGER->isStayKeyDown('A'))
+	{
+		*m_pPos += Direction_2 * -m_Speed;
 		m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;
 		check += Speed * -1;
