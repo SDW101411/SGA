@@ -22,6 +22,8 @@ private:
 
 	SYNTHESIZE_PASS_BY_REF(D3DXMATRIX, m_World, m_World_f);
 
+	vector<D3DXVECTOR3>			m_Surface;
+
 public:
 	cPlayer_Ctrl();
 	cPlayer_Ctrl(D3DXVECTOR3 Save);
@@ -38,10 +40,14 @@ public:
 	D3DXMATRIX Get_m_pTarget_Matrix(D3DXVECTOR3 Insert);
 	D3DXMATRIX Get_m_pTarget_Matrix();
 
+	bool Get_Ray(IN float x, OUT float & y, IN float z);
+
 private:
 	void cPlayer_cCamera_Update();
 	void cPlayer_cCamera_MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 private:
 	void cPlayer_cMove_Update();
+public:
+	void m_surface_Insert(D3DXVECTOR3 Save);
 };
 

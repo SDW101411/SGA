@@ -138,6 +138,7 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	D3DXVECTOR3 Direction, Direction_2;
 	D3DXVECTOR3 anothor = m_pViewTarget;
 	D3DXVECTOR3 anothor_2 = m_pViewTarget_2;
+	D3DXVECTOR3 Update_Pos;
 	anothor.y = m_pPos->y;
 	Direction = anothor - *m_pPos;
 	anothor_2.y = m_pPos->y;
@@ -150,32 +151,36 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
-		*m_pPos += Direction * m_Speed;
-		m_Camera = *m_pPos;
-		m_Camera.y += m_UpY + check;
+		//*m_pPos += Direction * m_Speed;
+		Update_Pos = *m_pPos + (Direction * m_Speed);
+		/*m_Camera = *m_pPos;
+		m_Camera.y += m_UpY + check;*/
 		check += Speed;
 
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
-		*m_pPos += Direction * -m_Speed;
+		Update_Pos = *m_pPos + (Direction * -m_Speed);
+		/**m_pPos += Direction * -m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += m_UpY + check;
+		m_Camera.y += m_UpY + check;*/
 		check += Speed * -1;
 	}
 	if (KEYMANAGER->isStayKeyDown('D'))
 	{
-		*m_pPos += Direction_2 * m_Speed;
+		Update_Pos = *m_pPos + (Direction_2 * m_Speed);
+		/**m_pPos += Direction_2 * m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += m_UpY + check;
+		m_Camera.y += m_UpY + check;*/
 		check += Speed;
 
 	}
 	if (KEYMANAGER->isStayKeyDown('A'))
 	{
-		*m_pPos += Direction_2 * -m_Speed;
+		Update_Pos = *m_pPos + (Direction_2 * -m_Speed);
+		/**m_pPos += Direction_2 * -m_Speed;
 		m_Camera = *m_pPos;
-		m_Camera.y += m_UpY + check;
+		m_Camera.y += m_UpY + check;*/
 		check += Speed * -1;
 	}
 
@@ -187,6 +192,18 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	{
 		Speed *= -1;
 	}
+
+	if (Get_Ray(Update_Pos.x, Update_Pos.y, Update_Pos.z))
+	{
+		*m_pPos = Update_Pos;
+		m_Camera = Update_Pos;
+		m_Camera.y += m_UpY + check;
+	}
+}
+
+void cPlayer_Ctrl::m_surface_Insert(D3DXVECTOR3 Save)
+{
+	m_Surface.push_back(Save);
 }
 
 D3DXVECTOR3 * cPlayer_Ctrl::Get_m_pTarget()
@@ -240,4 +257,25 @@ D3DXMATRIX cPlayer_Ctrl::Get_m_pTarget_Matrix()
 	matR = matRX * matRY;
 
 	return matR;
+}
+
+bool cPlayer_Ctrl::Get_Ray(IN float x, OUT float& y, IN float z)
+{
+	D3DXVECTOR3 vRayPos(x, 1000.f, z);
+	D3DXVECTOR3 vRayDir(0, -1, 0);
+	float u, v, d;
+	for (size_t i = 0; i < m_Surface.size(); i += 3)
+	{
+		if (D3DXIntersectTri(&m_Surface[i],
+			&m_Surface[i + 1],
+			&m_Surface[i + 2],
+			&vRayPos,
+			&vRayDir,
+			&u, &v, &d))
+		{
+			y = 1000 - d;
+			return true;
+		}
+	}
+	return false;
 }

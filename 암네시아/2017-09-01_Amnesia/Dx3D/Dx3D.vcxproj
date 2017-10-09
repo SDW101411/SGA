@@ -94,7 +94,6 @@
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cAseLoader.h" />
     <ClInclude Include="cAStar.h" />
-    <ClInclude Include="cCloseOption.h" />
     <ClInclude Include="cCursorStatus.h" />
     <ClInclude Include="cDamegeImpact.h" />
     <ClInclude Include="cDatabase.h" />
@@ -208,7 +207,6 @@
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cAseLoader.cpp" />
     <ClCompile Include="cAStar.cpp" />
-    <ClCompile Include="cCloseOption.cpp" />
     <ClCompile Include="cCursorStatus.cpp" />
     <ClCompile Include="cDamegeImpact.cpp" />
     <ClCompile Include="cDatabase.cpp" />

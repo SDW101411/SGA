@@ -54,6 +54,8 @@ private:
 	float x, y, z, k, l;
 
 	Lantern							m_Lantern;
+
+
 public:
 	cPlayer();
 	cPlayer(vector<cObject_Light*>* Light_Object);
@@ -90,6 +92,7 @@ public:
 
 public:
 	void cPlayer_Start_Seting();
+	void Surface_Insert(D3DXVECTOR3	Save);
 
 };
 

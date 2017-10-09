@@ -101,6 +101,8 @@ cPlayer::cPlayer(cScene *Save, D3DXVECTOR3 cPlayer_Pos)
 	
 	m_Lantern.m_Normal_Effect = cMESH_MANAGER->LoadShader("Test/Lantern.fx");
 
+
+
 }
 
 cPlayer::~cPlayer()
@@ -252,6 +254,7 @@ void cPlayer::cLight_Object_Picking_Update()
 				m_pMy_Scene->m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_IGNITE);
 				if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
 				{
+					SOUNDMANAGER->play("ui_use_tinderbox");
 					m_pMy_Scene->cObject_Light_vec[i]->SetFire(true);
 				}
 			}
@@ -280,7 +283,7 @@ void cPlayer::cObject_Item_OutLine_Update()
 			if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
 			{
 				m_pMy_Scene->cObject_Item_vec[i]->m_Render_On = false;
-
+				SOUNDMANAGER->play("pick_potion");
 				switch (m_pMy_Scene->cObject_Item_vec[i]->Item_Tag)
 				{
 				case ITEMMESH_TAG_POTION_OIL:
@@ -473,6 +476,11 @@ D3DXVECTOR3 * cPlayer::Get_p_cPlayer_Pos()
 
 void cPlayer::cPlayer_Start_Seting()
 {
+}
+
+void cPlayer::Surface_Insert(D3DXVECTOR3 Save)
+{
+	m_pPlayerCtrl->m_surface_Insert(Save);
 }
 
 
