@@ -15,6 +15,7 @@
 #include "cUI_In_Game.h"
 #include "cCursorStatus.h"
 #include "cFrustum.h"
+#include "cMonster.h"
 
 cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
@@ -22,6 +23,7 @@ cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	, m_pCursorStatus(NULL)
 {
 	m_pPlayer = NULL;
+	m_pMonster = NULL;
 }
 
 
@@ -45,6 +47,8 @@ void cScene_Shader_Scene_Test::Setup()
 	m_pUI_In_Game = new cUI_In_Game;
 	m_pDamegeImpact = new cDamegeImpact;
 	m_pCursorStatus = new cCursorStatus;
+	m_pMonster = new cMonster;
+	m_pMonster->SetPlayerPos(m_pPlayer->Get_p_cPlayer_Pos());
 
 	vector<D3DXVECTOR3> Surface_Intersept; Surface_Intersept = load.LoadToGroundSurface();
 	for (int i = 0; i < Surface_Intersept.size(); ++i) m_pPlayer->Surface_Insert(Surface_Intersept[i]);
@@ -107,12 +111,15 @@ void cScene_Shader_Scene_Test::Release()
 	for each(auto p in cObject_Light_vec)SAFE_DELETE(p);
 
 	for each(auto p in cObject_Item_vec)SAFE_DELETE(p);
+
+	SAFE_DELETE(m_pMonster);
 }
 
 void cScene_Shader_Scene_Test::Update()
 {
 	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
 	SAFE_UPDATE(m_pPlayer);
+	SAFE_UPDATE(m_pMonster);
 	for each(auto p in cObject_Vec)SAFE_UPDATE(p);
 
 	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
@@ -153,6 +160,7 @@ void cScene_Shader_Scene_Test::Render()
 	}
 
 	SAFE_RENDER(m_pPlayer);
+	SAFE_RENDER(m_pMonster);
 }
 
 void cScene_Shader_Scene_Test::RenderUI()
