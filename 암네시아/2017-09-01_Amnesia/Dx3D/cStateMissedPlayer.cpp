@@ -14,6 +14,8 @@ cStateMissedPlayer::~cStateMissedPlayer()
 
 void cStateMissedPlayer::Setup()
 {
+	SOUNDMANAGER->stop("MonsterMissedPlayer");
+	SOUNDMANAGER->play("MonsterMissedPlayer");
 	m_pThis->SetAnim(MON_ANIM_IDLE_EXTRA);
 	m_pThis->SetMove(false);
 	m_waitTime = 0.0f;
@@ -34,6 +36,8 @@ void cStateMissedPlayer::Update()
 	}
 	if (m_pThis->IsPlayerAtNear())
 	{
+		SOUNDMANAGER->stop("MonsterRunToPlayer");
+		SOUNDMANAGER->play("MonsterRunToPlayer");
 		m_pThis->SetState(MON_STATE_RUNTOPLAYER);
 		return;
 	}

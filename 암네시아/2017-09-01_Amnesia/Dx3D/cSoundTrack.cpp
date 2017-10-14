@@ -27,4 +27,9 @@ void cSoundTrack::Insert()
 	SOUNDMANAGER->addSound("pick_potion", "pick_potion.ogg", false, false);
 	SOUNDMANAGER->addSound("pick_generic", "pick_generic.ogg", false, false);
 	SOUNDMANAGER->addSound("ui_use_tinderbox", "ui_use_tinderbox.ogg", false, false);
+
+	SOUNDMANAGER->addSound("MonsterLookPlayer", "Sound/Enemy/brute/amb_idle_whimp01.ogg", false, false);
+	SOUNDMANAGER->addSound("MonsterRunToPlayer", "Sound/Enemy/brute/amb_idle_scratch01.ogg", false, false);
+	SOUNDMANAGER->addSound("MonsterHitPlayer", "Sound/Enemy/brute/attack_claw_hit01.ogg", false, false);
+	SOUNDMANAGER->addSound("MonsterMissedPlayer", "Sound/Enemy/brute/amb_idle_scratch04.ogg", false, false);
 }

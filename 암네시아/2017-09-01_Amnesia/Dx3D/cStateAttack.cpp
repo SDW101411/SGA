@@ -33,6 +33,8 @@ void cStateAttack::Update()
 	{
 		m_pImpact->BloodImpact();
 		DATABASE->SetHp(DATABASE->GetHp() - 30.0f);
+		SOUNDMANAGER->stop("MonsterHitPlayer");
+		SOUNDMANAGER->play("MonsterHitPlayer");
 		m_isAttack = true;
 	}
 	if (m_attackTime >= m_pThis->GetAnimationTime())

@@ -14,6 +14,8 @@ cStateLookPlayer::~cStateLookPlayer()
 
 void cStateLookPlayer::Setup()
 {
+	SOUNDMANAGER->stop("MonsterLookPlayer");
+	SOUNDMANAGER->play("MonsterLookPlayer");
 	m_lookTime = 0.0f;
 	m_pThis->SetAnim(MON_ANIM_IDLE);
 	m_pThis->SetMove(false);
@@ -33,7 +35,12 @@ void cStateLookPlayer::Update()
 		m_pThis->SetState(MON_STATE_WAIT);
 		return;
 	}
-	if (m_lookTime >= 2.0f) m_pThis->SetState(MON_STATE_RUNTOPLAYER);
+	if (m_lookTime >= 2.0f)
+	{
+		SOUNDMANAGER->stop("MonsterRunToPlayer");
+		SOUNDMANAGER->play("MonsterRunToPlayer");
+		m_pThis->SetState(MON_STATE_RUNTOPLAYER);
+	}
 }
 
 void cStateLookPlayer::Render()
