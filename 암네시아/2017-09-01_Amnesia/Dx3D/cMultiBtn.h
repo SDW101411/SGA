@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IUI.h"
+#include "cUI.h"
 
-class cMultiBtn : public IUI
+class cMultiBtn : public cUI
 {
 private:
 	cUIObject*		m_pUIRoot;

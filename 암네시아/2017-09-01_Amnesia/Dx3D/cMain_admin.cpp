@@ -3,7 +3,6 @@
 #include "cScene.h"
 #include "cScene_Test_1.h"
 #include "cMapToolScene.h"   // 테스트 씬 입니다 -영빈-
-#include "cUIToolTestScene.h"
 #include "cScene_Shader_Scene_Test.h"
 #include "cMainMenuScene.h"
 #include "cUITool_In_Game_Test.h"	// 게임 UI - LEE
@@ -87,7 +86,7 @@ void cMain_admin::Render()
 void cMain_admin::RenderUI()
 {
 	g_pSceneManager->Render_UI();
-	SAFE_RENDER(m_pMouseCursor);
+	if(bCursorImageOn) SAFE_RENDER(m_pMouseCursor);
 }
 
 void cMain_admin::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

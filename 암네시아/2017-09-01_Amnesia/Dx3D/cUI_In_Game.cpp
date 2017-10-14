@@ -165,8 +165,8 @@ void cUI_In_Game::Update()
 	//{
 	//}
 	//else
-	////if(bUITabOn)
-	//{
+	if(bUITabOn)
+	{
 		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
 			if (PtInRect(&m_InventoryRc, _ptMousePos))
@@ -227,19 +227,19 @@ void cUI_In_Game::Update()
 			SAFE_UPDATE(m_pJournal);
 			break;
 		}
-	//}
+	}
 }
 
 void cUI_In_Game::Render()
 {
-	if (KEYMANAGER->isToggleKey(VK_TAB))
-	{
-	}
-	else
-	{
-		RenderUI();
-	}
-	//if (bUITabOn) RenderUI();
+	//if (KEYMANAGER->isToggleKey(VK_TAB))
+	//{
+	//}
+	//else
+	//{
+	//	RenderUI();
+	//}
+	if (bUITabOn) RenderUI();
 }
 
 void cUI_In_Game::RenderUI()
@@ -317,10 +317,10 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 		pTextView->SetText("체력");
 		switch (HeartSate)
 		{
-		case PLAYER_HEART_100: pTextView_2->SetText("전체적으로 좋다.");				break;
-		case PLAYER_HEART_75: pTextView_2->SetText("약간의 타박상이 있다.");			break;
-		case PLAYER_HEART_50: pTextView_2->SetText("상처에서 출혈이 너무 심해.");		break;
-		case PLAYER_HEART_25: pTextView_2->SetText("간신히 살아있다.");				break;
+		case PLAYER_HEART_100: pTextView_2->SetText("전체적으로 좋다.");							break;
+		case PLAYER_HEART_75: pTextView_2->SetText("약간의 타박상이 있다.");						break;
+		case PLAYER_HEART_50: pTextView_2->SetText("상처에서 출혈이 너무 심해.");					break;
+		case PLAYER_HEART_25: case PLAYER_DEATH: pTextView_2->SetText("간신히 살아있다.");		break;
 		}
 	}
 	else if (pSender->GetTag() == E_BRAIN || pSender->GetTag() == E_BRAIN_UP)
@@ -328,10 +328,10 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 		pTextView->SetText("정신도");
 		switch (BrainSate)
 		{
-		case PLAYER_BRAIN_100: pTextView_2->SetText("깔끔하다.");					break;
-		case PLAYER_BRAIN_75: pTextView_2->SetText("약간의 투통이 있다.");			break;
-		case PLAYER_BRAIN_50: pTextView_2->SetText("제정신이 아니야, 손이 떨려.");	break;
-		case PLAYER_BRAIN_25: pTextView_2->SetText("...");							break;
+		case PLAYER_BRAIN_100: pTextView_2->SetText("깔끔하다.");								break;
+		case PLAYER_BRAIN_75: pTextView_2->SetText("약간의 투통이 있다.");						break;
+		case PLAYER_BRAIN_50: pTextView_2->SetText("제정신이 아니야, 손이 떨려.");				break;
+		case PLAYER_BRAIN_25: case PLAYER_DEATH: pTextView_2->SetText("...");					break;
 		}
 	}
 	else if (pSender->GetTag() == ITEM_TINDER)
@@ -363,6 +363,11 @@ void cUI_In_Game::OnMouse(cUIButton* pSender)
 	{
 		pTextView->SetText("아편");
 		pTextView_2->SetText("강장약은 건강 상태를 좋게 하고 부상을 치료한다.");
+	}
+	else if (pSender->GetTag() == ITEM_MENTAL)
+	{
+		pTextView->SetText("정신도약");
+		pTextView_2->SetText("정신을 낫게 해준다.");
 	}
 }
 

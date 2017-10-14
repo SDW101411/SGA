@@ -1,5 +1,5 @@
 #pragma once
-class IUI;
+class cUI;
 class cPlayer;
 class cScene
 {
@@ -7,7 +7,7 @@ private:
 	SYNTHESIZE(Scene_oBject_List, oBject_List, OBJECTLIST);
 	SYNTHESIZE(bool, UI_On);
 	cPlayer *m_pPlayer;
-	IUI*	m_pIUI;
+	cUI*	m_pIUI;
 
 public:
 	cScene();

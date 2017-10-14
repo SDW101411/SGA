@@ -26,6 +26,7 @@ cPlayer_Ctrl::cPlayer_Ctrl(D3DXVECTOR3 Save, float UpY)
 	, m_fAngleY(0.0f)
 	, m_isLButtonDown(false)
 	, m_Speed(0.05f)
+	, m_fRunSpeed(1.0f)
 	, m_pTarget(NULL)
 	, check(0.0f)
 	, fx(0.0f)
@@ -53,7 +54,8 @@ void cPlayer_Ctrl::Update()
 
 void cPlayer_Ctrl::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	if (KEYMANAGER->isToggleKey(VK_TAB))
+	//if (KEYMANAGER->isToggleKey(VK_TAB))
+	if (bUITabOn == false)
 	{
 		cPlayer_cCamera_MsgProc(hWnd, message, wParam, lParam);
 	}
@@ -85,8 +87,19 @@ void cPlayer_Ctrl::cPlayer_cCamera_Update()
 
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
 
+	/*float fDeltaX = (_ptMousePos.x - m_ptPrevMouse.x) / 500.f;
+	float fDeltaY = (_ptMousePos.y - m_ptPrevMouse.y) / 250.f;
 
-	
+	m_fAngleY += fDeltaX;
+	m_fAngleX -= fDeltaY;
+
+	if (m_fAngleX < -D3DX_PI / 2.0f + 0.0001f)
+		m_fAngleX = -D3DX_PI / 2.0f + 0.0001f;
+
+	if (m_fAngleX >  D3DX_PI / 2.0f - 0.0001f)
+		m_fAngleX = D3DX_PI / 2.0f - 0.0001f;
+
+	m_ptPrevMouse = _ptMousePos;*/
 
 }
 
@@ -154,10 +167,19 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	Update_Pos = *m_pPos;
 
 	bool On = false;
+	if (KEYMANAGER->isStayKeyDown(VK_LSHIFT))
+	{
+		m_fRunSpeed = 2.0f;
+	}
+	else
+	{
+		m_fRunSpeed = 1.0f;
+	}
+
 	if (KEYMANAGER->isStayKeyDown('W'))
 	{
 		//*m_pPos += Direction * m_Speed;
-		Update_Pos = *m_pPos + (Direction * m_Speed);
+		Update_Pos = *m_pPos + (Direction * m_Speed) * m_fRunSpeed;
 		/*m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;*/
 		//check += Speed;
@@ -166,7 +188,7 @@ void cPlayer_Ctrl::cPlayer_cMove_Update()
 	}
 	if (KEYMANAGER->isStayKeyDown('S'))
 	{
-		Update_Pos = *m_pPos + (Direction * -m_Speed);
+		Update_Pos = *m_pPos + (Direction * -m_Speed) * m_fRunSpeed;
 		/**m_pPos += Direction * -m_Speed;
 		m_Camera = *m_pPos;
 		m_Camera.y += m_UpY + check;*/

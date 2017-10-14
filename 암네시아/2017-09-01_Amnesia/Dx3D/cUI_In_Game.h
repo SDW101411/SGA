@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IUI.h"
+#include "cUI.h"
 
 class cUITool;
 class cUITextView;
@@ -25,7 +25,7 @@ enum UISTATE
 	UI_JOURNAL,
 };
 
-class cUI_In_Game : public IUI
+class cUI_In_Game : public cUI
 {
 private:
 	cUIObject*						m_pUIRoot;

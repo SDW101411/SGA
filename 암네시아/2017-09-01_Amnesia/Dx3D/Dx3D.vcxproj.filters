@@ -375,12 +375,6 @@
     <ClInclude Include="cSoundManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="cTabUI.h">
-      <Filter>한나\UIs</Filter>
-    </ClInclude>
-    <ClInclude Include="cSceneUI.h">
-      <Filter>한나\UIs</Filter>
-    </ClInclude>
     <ClInclude Include="cSceneManager.h">
       <Filter>선생님\Manager</Filter>
     </ClInclude>
@@ -404,9 +398,6 @@
     </ClInclude>
     <ClInclude Include="cUIGrid.h">
       <Filter>한나\UIs</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIToolTestScene.h">
-      <Filter>한나\UIToolTestScene</Filter>
     </ClInclude>
     <ClInclude Include="cPlayer.h">
       <Filter>동욱\플레이어%28Test%29\플레이어%28cPlayer%29</Filter>
@@ -442,12 +433,6 @@
       <Filter>한나\Database</Filter>
     </ClInclude>
     <ClInclude Include="cUI_In_Game.h">
-      <Filter>한나\UI정리</Filter>
-    </ClInclude>
-    <ClInclude Include="cUITool_In_Game_Test.h">
-      <Filter>한나\UI정리</Filter>
-    </ClInclude>
-    <ClInclude Include="IUI.h">
       <Filter>한나\UI정리</Filter>
     </ClInclude>
     <ClInclude Include="cMultiBtn.h">
@@ -573,7 +558,10 @@
     <ClInclude Include="cMenuCamera.h">
       <Filter>영빈\TestCamera</Filter>
     </ClInclude>
-    <ClInclude Include="cCloseOption.h">
+    <ClInclude Include="cUITool_In_Game_Test.h">
+      <Filter>한나\UIToolTestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI.h">
       <Filter>한나\UI정리</Filter>
     </ClInclude>
   </ItemGroup>
@@ -707,12 +695,6 @@
     <ClCompile Include="cSoundManager.cpp">
       <Filter>선생님\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="cTabUI.cpp">
-      <Filter>한나\UIs</Filter>
-    </ClCompile>
-    <ClCompile Include="cSceneUI.cpp">
-      <Filter>한나\UIs</Filter>
-    </ClCompile>
     <ClCompile Include="cSceneManager.cpp">
       <Filter>선생님\Manager</Filter>
     </ClCompile>
@@ -736,9 +718,6 @@
     </ClCompile>
     <ClCompile Include="cUIGrid.cpp">
       <Filter>한나\UIs</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIToolTestScene.cpp">
-      <Filter>한나\UIToolTestScene</Filter>
     </ClCompile>
     <ClCompile Include="cPlayer.cpp">
       <Filter>동욱\플레이어%28Test%29\플레이어%28cPlayer%29</Filter>
@@ -774,12 +753,6 @@
       <Filter>한나\Database</Filter>
     </ClCompile>
     <ClCompile Include="cUI_In_Game.cpp">
-      <Filter>한나\UI정리</Filter>
-    </ClCompile>
-    <ClCompile Include="cUITool_In_Game_Test.cpp">
-      <Filter>한나\UI정리</Filter>
-    </ClCompile>
-    <ClCompile Include="IUI.cpp">
       <Filter>한나\UI정리</Filter>
     </ClCompile>
     <ClCompile Include="cMultiBtn.cpp">
@@ -899,7 +872,10 @@
     <ClCompile Include="cMenuCamera.cpp">
       <Filter>영빈\TestCamera</Filter>
     </ClCompile>
-    <ClCompile Include="cCloseOption.cpp">
+    <ClCompile Include="cUITool_In_Game_Test.cpp">
+      <Filter>한나\UIToolTestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI.cpp">
       <Filter>한나\UI정리</Filter>
     </ClCompile>
   </ItemGroup>

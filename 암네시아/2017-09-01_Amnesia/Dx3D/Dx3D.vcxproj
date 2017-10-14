@@ -151,7 +151,6 @@
     <ClInclude Include="cRay.h" />
     <ClInclude Include="cScene.h" />
     <ClInclude Include="cSceneManager.h" />
-    <ClInclude Include="cSceneUI.h" />
     <ClInclude Include="cScene_Item.h" />
     <ClInclude Include="cScene_Light.h" />
     <ClInclude Include="cScene_Manager.h" />
@@ -169,7 +168,6 @@
     <ClInclude Include="cStateMoveToPos2.h" />
     <ClInclude Include="cStateRunToPlayer.h" />
     <ClInclude Include="cStateWait.h" />
-    <ClInclude Include="cTabUI.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="cUIButton.h" />
@@ -180,7 +178,6 @@
     <ClInclude Include="cUIObject.h" />
     <ClInclude Include="cUITextView.h" />
     <ClInclude Include="cUITool.h" />
-    <ClInclude Include="cUIToolTestScene.h" />
     <ClInclude Include="cUITool_In_Game_Test.h" />
     <ClInclude Include="cUI_In_Game.h" />
     <ClInclude Include="cMultiBtn.h" />
@@ -190,7 +187,7 @@
     <ClInclude Include="iMap.h" />
     <ClInclude Include="cMapTool.h" />
     <ClInclude Include="iState.h" />
-    <ClInclude Include="IUI.h" />
+    <ClInclude Include="cUI.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="singletonBase.h" />
@@ -266,7 +263,6 @@
     <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cScene.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
-    <ClCompile Include="cSceneUI.cpp" />
     <ClCompile Include="cScene_Item.cpp" />
     <ClCompile Include="cScene_Light.cpp" />
     <ClCompile Include="cScene_Manager.cpp" />
@@ -282,7 +278,6 @@
     <ClCompile Include="cStateMoveToPos2.cpp" />
     <ClCompile Include="cStateRunToPlayer.cpp" />
     <ClCompile Include="cStateWait.cpp" />
-    <ClCompile Include="cTabUI.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="cUIButton.cpp" />
@@ -293,7 +288,6 @@
     <ClCompile Include="cUIObject.cpp" />
     <ClCompile Include="cUITextView.cpp" />
     <ClCompile Include="cUITool.cpp" />
-    <ClCompile Include="cUIToolTestScene.cpp" />
     <ClCompile Include="cUITool_In_Game_Test.cpp" />
     <ClCompile Include="cUI_In_Game.cpp" />
     <ClCompile Include="cMultiBtn.cpp" />
@@ -302,7 +296,7 @@
     <ClCompile Include="Dx3D.cpp" />
     <ClCompile Include="iMap.cpp" />
     <ClCompile Include="cMapTool.cpp" />
-    <ClCompile Include="IUI.cpp" />
+    <ClCompile Include="cUI.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

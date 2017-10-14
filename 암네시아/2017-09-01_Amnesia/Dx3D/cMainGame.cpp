@@ -71,7 +71,8 @@ void cMainGame::Update()
 
 	SAFE_UPDATE(m_pCrtCtrl);
 	cLight_Seting = *m_pCrtCtrl->GetPosition();
-	if (KEYMANAGER->isToggleKey(VK_TAB))
+	//if (KEYMANAGER->isToggleKey(VK_TAB))
+	if(bUITabOn == false)
 	{
 		SAFE_UPDATE(m_pCamera);
 		cCameara_seting = *m_pCamera->get_pvPostion();

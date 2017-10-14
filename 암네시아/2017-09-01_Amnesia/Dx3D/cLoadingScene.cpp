@@ -52,6 +52,7 @@ cLoadingScene::~cLoadingScene()
 
 void cLoadingScene::Setup()
 {
+	bCursorImageOn = false;
 	SOUNDMANAGER->play("dan_brute");
 	DWORD dwThID;
 	InitializeCriticalSection(&cs);

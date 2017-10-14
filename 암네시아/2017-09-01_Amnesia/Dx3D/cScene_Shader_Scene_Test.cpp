@@ -21,6 +21,7 @@ cScene_Shader_Scene_Test::cScene_Shader_Scene_Test()
 	: m_pDamegeImpact(NULL)
 	, m_pUI_In_Game(NULL)
 	, m_pCursorStatus(NULL)
+	, m_bShow(true)
 {
 	m_pPlayer = NULL;
 	m_pMonster = NULL;
@@ -41,6 +42,7 @@ cScene_Shader_Scene_Test::~cScene_Shader_Scene_Test()
 
 void cScene_Shader_Scene_Test::Setup()
 {
+	bUITabOn = false;
 	SOUNDMANAGER->play("dan_grunt");
 	cMapLoader load;
 	D3DXVECTOR3 Pos;
@@ -55,12 +57,8 @@ void cScene_Shader_Scene_Test::Setup()
 	vector<D3DXVECTOR3> Surface_Intersept; Surface_Intersept = load.LoadToGroundSurface();
 	for (int i = 0; i < Surface_Intersept.size(); ++i) m_pPlayer->Surface_Insert(Surface_Intersept[i]);
 	
-
-
-
 	cObject_Map_Vec = g_pLoadManager()->GetObject_Map_Vec();
 	cObject_Light_vec = g_pLoadManager()->GetObject_Light_Vec();
-
 
 	load.PushNearLight(cObject_Light_vec, cObject_Map_Vec);
 
@@ -75,8 +73,6 @@ void cScene_Shader_Scene_Test::Setup()
 	D3DXVec3TransformCoord(&Light_Position, &D3DXVECTOR3(0, 1, -1), &matR);
 	//Save_1->m_lightPos_Light = dir;
 	
-
-
 	cObject_Item *Save_Item_1 = new cObject_Item(ITEMMESH_TAG_POTION_OIL, D3DXVECTOR3(Pos.x - 0.5, Pos.y, Pos.z + 1), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1, 1, 1));
 
 	cObject_Item_vec.push_back(Save_Item_1);
@@ -106,19 +102,11 @@ void cScene_Shader_Scene_Test::Setup()
 
 	cObject_Item_vec.push_back(Save_Item_44);
 
-
-
-
-
 	g_pLoadManager()->GetObject_Map_Vec().clear();
 	g_pLoadManager()->GetObject_Light_Vec().clear();
 
 	m_pFrustum_c = NULL;
 	m_pFrustum_c = new cFrustum;
-
-
-
-
 	
 }
 
@@ -138,7 +126,34 @@ void cScene_Shader_Scene_Test::Release()
 
 void cScene_Shader_Scene_Test::Update()
 {
-	if (KEYMANAGER->isToggleKey(VK_TAB))
+	//if (KEYMANAGER->isToggleKey(VK_TAB))
+	//{
+	//	//bCursorImageOn = false;
+	//	//bUITabOn = false;
+	//	m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
+	//	SAFE_UPDATE(m_pPlayer);
+	//	SAFE_UPDATE(m_pMonster);
+	//	for each(auto p in cObject_Vec)SAFE_UPDATE(p);
+	//
+	//	for each(auto p in cObject_Map_Vec)SAFE_UPDATE(p);
+	//
+	//	for each(auto p in cObject_Light_vec)SAFE_UPDATE(p);
+	//
+	//	for each(auto p in cObject_Item_vec)SAFE_UPDATE(p);
+	//	SAFE_UPDATE(m_pDamegeImpact);
+	//
+	//	SAFE_UPDATE(m_pCursorStatus);
+	//
+	//	if (m_pFrustum_c) m_pFrustum_c->Update();
+	//}
+	//else
+	//{
+	//	//bCursorImageOn = true;
+	//	//bUITabOn = true;
+	//	SAFE_UPDATE(m_pUI_In_Game);
+	//}
+
+	if (m_bShow)
 	{
 		m_pCursorStatus->CursorStatus(CURSORSTATUS::CUR_NORMAL);
 		SAFE_UPDATE(m_pPlayer);
@@ -156,9 +171,16 @@ void cScene_Shader_Scene_Test::Update()
 
 		if (m_pFrustum_c) m_pFrustum_c->Update();
 	}
-	else
+	else if (m_bShow == false)
 	{
 		SAFE_UPDATE(m_pUI_In_Game);
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_TAB))
+	{
+		m_bShow = !m_bShow;
+		bUITabOn = !bUITabOn;
+		bCursorImageOn = !bCursorImageOn;
 	}
 }
 

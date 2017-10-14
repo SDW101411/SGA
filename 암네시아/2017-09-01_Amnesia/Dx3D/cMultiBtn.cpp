@@ -69,6 +69,7 @@ void cMultiBtn::OnClick(cUIButton* pSender)
 	{
 		// 처음 화면으로
 		bUITabOn = false;
+		bCursorImageOn = true;
 		g_pSceneManager->SceneChange("cMainMenuScene");
 	}
 	else if (pSender->GetTag() == E_SAVEBTN)

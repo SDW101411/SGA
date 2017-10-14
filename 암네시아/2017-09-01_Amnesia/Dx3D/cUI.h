@@ -2,14 +2,14 @@
 
 #include "cUIButton.h"
 
-class IUI : public iButtonDelegate
+class cUI : public iButtonDelegate
 {
 private:
 	
 
 public:
-	IUI();
-	virtual ~IUI();
+	cUI();
+	virtual ~cUI();
 
 public:
 	virtual void Update();

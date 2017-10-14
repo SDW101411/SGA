@@ -66,6 +66,20 @@ void cCamera::Update()
 		&vTarget, 
 		&D3DXVECTOR3(0, 1, 0));
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
+
+	/*float fDeltaX = (_ptMousePos.x - m_ptPrevMouse.x) / 50.f;
+	float fDeltaY = (_ptMousePos.y - m_ptPrevMouse.y) / 50.f;
+
+	m_fAngleY += fDeltaX;
+	m_fAngleX += fDeltaY;
+
+	if (m_fAngleX < -D3DX_PI / 2.0f + 0.0001f)
+		m_fAngleX = -D3DX_PI / 2.0f + 0.0001f;
+
+	if (m_fAngleX >  D3DX_PI / 2.0f - 0.0001f)
+		m_fAngleX = D3DX_PI / 2.0f - 0.0001f;
+
+	m_ptPrevMouse = _ptMousePos;*/
 }
 
 void cCamera::MsgProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )

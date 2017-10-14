@@ -2,12 +2,12 @@
 
 #include "cScene.h"
 
-class IUI;
+class cUI;
 
 class cUITool_In_Game_Test : public cScene
 {
 private:
-	IUI* m_pUI;
+	cUI* m_pUI;
 
 public:
 	cUITool_In_Game_Test();

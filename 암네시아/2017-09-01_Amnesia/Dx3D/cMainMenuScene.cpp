@@ -82,6 +82,7 @@ cMainMenuScene::~cMainMenuScene()
 
 void cMainMenuScene::Setup()
 {
+	bCursorImageOn = true;
 	SOUNDMANAGER->play("game_menu");
 }
 

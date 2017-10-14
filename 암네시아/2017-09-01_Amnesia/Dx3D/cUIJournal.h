@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IUI.h"
+#include "cUI.h"
 
-class cUIJournal : public IUI
+class cUIJournal : public cUI
 {
 private:
 	cUIObject*						m_pUIRoot;

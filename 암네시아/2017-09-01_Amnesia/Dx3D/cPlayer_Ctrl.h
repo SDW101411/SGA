@@ -9,6 +9,7 @@ private:
 	D3DXVECTOR3		m_pViewTarget_2;
 
 	float			m_Speed;
+	float			m_fRunSpeed;
 
 	bool			m_isLButtonDown;
 

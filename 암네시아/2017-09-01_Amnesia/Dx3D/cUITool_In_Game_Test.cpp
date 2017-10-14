@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "cUITool_In_Game_Test.h"
 #include "cUI_In_Game.h"
-#include "IUI.h"
+#include "cUI.h"
 #include "cMultiBtn.h"
 
 cUITool_In_Game_Test::cUITool_In_Game_Test()

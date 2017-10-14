@@ -129,7 +129,7 @@ void cPlayer::Update()
 	{
 		if (DATABASE->GetMental() < 100.0f)
 		{
-			DATABASE->SetMental(DATABASE->GetMental() + 0.01f);
+			DATABASE->SetMental(DATABASE->GetMental() + 0.001f);
 		}
 		else if (DATABASE->GetMental() > 100.0f)
 		{
@@ -267,7 +267,7 @@ void cPlayer::cLight_Object_Picking_Update()
 		POINT DD = _ptMousePos;
 		ST_SPHERE Save;
 		Save.p = m_pMy_Scene->cObject_Light_vec[i]->m_ParticlePosition;
-		Save.r = 1.0f;
+		Save.r = 0.2f;
 		cRay Pick;
 		Pick = cRay::RayAtWorldSpace(730, 330);
 		Save.isPicked = Pick.IsPicked(&Save);
@@ -311,7 +311,7 @@ void cPlayer::cObject_Item_OutLine_Update()
 		m_pMy_Scene->cObject_Item_vec[i]->m_OutLine_On = false;
 		ST_SPHERE Save;
 		Save.p = m_pMy_Scene->cObject_Item_vec[i]->m_Pos;
-		Save.r = 0.2f;
+		Save.r = 0.1f;
 		cRay Pick;
 		Pick = cRay::RayAtWorldSpace(730, 330);
 		Save.isPicked = Pick.IsPicked(&Save);
